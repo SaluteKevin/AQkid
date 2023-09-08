@@ -1,6 +1,0 @@
-help = [
-    'up',
-    'down',
-    'login',
-
-]
