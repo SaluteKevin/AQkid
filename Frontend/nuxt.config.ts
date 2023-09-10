@@ -2,9 +2,19 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
-    '@sidebase/nuxt-auth',
-    '@nuxtjs/axios',  
-    '@nuxtjs/tailwindcss'
+    // ...
+    '@pinia/nuxt',
   ],
- 
+  css: [
+    '@/assets/css/styles.css',
+  ],
+
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+
 })
+
