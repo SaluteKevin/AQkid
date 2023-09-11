@@ -23,4 +23,13 @@ Route::middleware(['auth:sanctum','multirole:staff'])->get('/test', function (Re
     return [ 'success' => true ];
 });
 
+
+Route::middleware(['auth:sanctum'])->post('/revoke', function (Request $request) {
+    $user = auth()->user();
+
+    // Revoke all of the user's tokens
+    $user->tokens->each->delete();
+});
+
+
 Route::post('/loginServer', [AuthController::class,'loginServer'])->name('login.server');

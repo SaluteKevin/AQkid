@@ -19,66 +19,35 @@ class UserManager {
 
     public function __construct() {}
 
-    public function login(LoginRequest $loginRequest) {
+    public function login(LoginRequest $request) {
 
-        $loginRequest->authenticate();
+        $request->authenticate();
 
     }
 
-    // public function createSession() {
+    public function generateApiToken(LoginRequest $request) {
 
-    //     $agent = new Agent();
+        if ($this->isEmail($request->input('username'))) {
+        
+            $user = User::where('email',$request->get('username'))->first();
 
-    //     if (UserSession::where('device', $agent->device())->where('browser',$agent->browser())->first() != null) {
-            
-    //         if (UserSession::where('user_id', Auth::getUser()->id)->where('device', $agent->device())->where('browser',$agent->browser())->first() != null) {
-                
-    //             return true;
+            return [    
+                        'authorize' => true,
+                        'token' => $user->createToken("postman",['staff'])->plainTextToken
+                    ];
 
-    //         }
-            
-    //         $session = UserSession::where('device', $agent->device())->where('browser',$agent->browser())->first();
-    //         $session->user_id = Auth::getUser()->id;
-    //         $session->created_at = Carbon::now();
-            
-    //         if ($session->save()) {
-    //             return true;
-    //         }
+        
+        }
 
-    //         throw new CustomException("Can't generate your session", 302);
+        $user = User::where('username',$request->get('username'))->first();
 
-            
-    //     }
+            return [    
+                        'authorize' => true,
+                        'token' => $user->createToken("postman",['staff'])->plainTextToken
+                    ];
 
-    //     else {
+    }
 
-    //         $session = new UserSession();
-    //         $session->user_id = Auth::getUser()->id;
-    //         $session->device = $agent->device();
-    //         $session->platform = $agent->platform();
-    //         $session->browser = $agent->browser();
-
-    //         if ($agent->isMobile()) {
-    //             $session->system = "mobile";
-                
-    //             if ($session->save()) {
-    //                 return true;
-                
-    //             }
-
-    //             throw new CustomException("Can't generate your session", 302);
-    //         }
-
-    //         $session->system = "desktop";
-    //         if ($session->save()) {
-    //             return true;
-    //         }
-            
-    //         throw new CustomException("Can't generate your session", 302);
-
-    //     }
-
-    // }
 
     public function logout(Request $request) {
 

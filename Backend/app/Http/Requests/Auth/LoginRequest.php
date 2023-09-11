@@ -5,9 +5,11 @@ namespace App\Http\Requests\Auth;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 
 class LoginRequest extends FormRequest
 {
@@ -27,8 +29,9 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'username' => ['required', 'string'],
             'password' => ['required', 'string'],
+            'remember' => ['nullable']
         ];
     }
 
@@ -37,19 +40,58 @@ class LoginRequest extends FormRequest
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function authenticate(): void
+    public function authenticate()
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-            RateLimiter::hit($this->throttleKey());
+        if ($this->isEmail($this->get('username'))) {
+            
+            
+            if (! Auth::validate(['email' => $this->input('username'), 'password' => $this->input('password')])) {
+                RateLimiter::hit($this->throttleKey());
 
-            throw ValidationException::withMessages([
-                'email' => __('auth.failed'),
-            ]);
+                $errorMessage = "Invalid credentials";
+
+                if (!User::where('email', $this->get('username'))->first()) {
+                    $errorMessage = "Oops, Look like this email doesn't exist!!";
+                } elseif (!Auth::validate(['email' => $this->get('username'), 'password' => $this->get('password')])) {
+                    $errorMessage = "Wrong password, Check again!!";
+                }
+
+                throw ValidationException::withMessages([
+                    'error' => $errorMessage,
+                ]);
+                
+            }
+
+            RateLimiter::clear($this->throttleKey());
+
+
         }
 
-        RateLimiter::clear($this->throttleKey());
+        else {
+
+            if (! Auth::validate(['username' => $this->input('username'), 'password' => $this->input('password')])) {
+                RateLimiter::hit($this->throttleKey());
+
+                $errorMessage = "Invalid credentials";
+
+                if (!User::where('username', $this->get('username'))->first()) {
+                    $errorMessage ="Oops, Look like this username doesn't exist!!";
+                } elseif (!Auth::validate(['username' => $this->get('username'), 'password' => $this->get('password')])) {
+                    $errorMessage = "Wrong password, Check again!!";
+                }
+
+                throw ValidationException::withMessages([
+                    'error' => $errorMessage,
+                ]);
+                
+            }
+
+            RateLimiter::clear($this->throttleKey());
+
+        }
+
     }
 
     /**
@@ -68,7 +110,7 @@ class LoginRequest extends FormRequest
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
         throw ValidationException::withMessages([
-            'email' => trans('auth.throttle', [
+            'error' => trans('auth.throttle', [
                 'seconds' => $seconds,
                 'minutes' => ceil($seconds / 60),
             ]),
@@ -80,6 +122,21 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->input('email')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->input('username')).'|'.$this->ip());
+    }
+
+
+    /**
+     * Check if input is username or email
+     */
+    public function isEmail($param) {
+
+        $factory = $this->container->make(ValidationFactory::class);
+
+        return ! $factory->make(
+            ['username' => $param],
+            ['username' => 'email']
+        )->fails();
+
     }
 }
