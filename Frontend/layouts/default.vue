@@ -1,7 +1,7 @@
 <template>
-    <div>
+    
     <AppHeader />
-    <section>
+    <section >
         <slot />
     </section>
     <AppFooter />
@@ -13,5 +13,5 @@
                 <span class="text-sm font-semibold tracking-wide text-yellow-900 dark:text-white"> Upgrade to Premium</span>
             </a>
     </div>
-    </div>
+    
 </template>

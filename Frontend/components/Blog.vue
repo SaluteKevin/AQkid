@@ -1,5 +1,5 @@
 <template>
-<div id="blog">
+<div id="blog" >
   <Container>
       <div class="mb-12 space-y-2 text-center">
         <h2 class="text-3xl font-bold text-gray-800 md:text-4xl dark:text-white">Latest Articles</h2>

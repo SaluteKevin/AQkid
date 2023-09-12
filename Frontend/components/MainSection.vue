@@ -1,10 +1,10 @@
 <template>
 
 <div class="relative" id="home">
-    <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40">
+    <!-- <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40">
         <div class="blur-[80px] h-56 bg-gradient-to-br from-orange-500 to-orange-100"></div>
         <div class="blur-[80px] h-32 bg-gradient-to-r from-orange-400 to-cyan-700"></div>
-    </div>
+    </div> -->
     <Container>
         <div class="relative pt-36 ml-auto">
             <div class="lg:w-2/3 text-center mx-auto">

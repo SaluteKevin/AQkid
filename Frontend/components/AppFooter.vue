@@ -1,6 +1,7 @@
 <template>
 
-<footer class="py-20 md:py-40">
+<footer class="py-20 md:py-40 bg-black">
+  
     <Container>
       <div class="m-auto md:w-10/12 lg:w-8/12 xl:w-6/12">
         <div class="flex flex-wrap items-center justify-between md:flex-nowrap">
