@@ -1,15 +1,15 @@
 <template>
 
 <div class="relative" id="home">
-    <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
-        <div class="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400 dark:from-blue-700"></div>
-        <div class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
+    <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40">
+        <div class="blur-[80px] h-56 bg-gradient-to-br from-orange-500 to-orange-100"></div>
+        <div class="blur-[80px] h-32 bg-gradient-to-r from-orange-400 to-cyan-700"></div>
     </div>
     <Container>
         <div class="relative pt-36 ml-auto">
             <div class="lg:w-2/3 text-center mx-auto">
-                <h1 class="text-gray-900 dark:text-white font-bold text-5xl md:text-6xl xl:text-7xl">Shaping a world with <span class="text-primary dark:text-white">reimagination.</span></h1>
-                <p class="mt-8 text-gray-700 dark:text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio incidunt nam itaque sed eius modi error totam sit illum. Voluptas doloribus asperiores quaerat aperiam. Quidem harum omnis beatae ipsum soluta!</p>
+                <h1 class="text-cyan-900  font-bold text-5xl md:text-6xl xl:text-7xl">AquaKids <span class="text-orange-500">Chiangmai</span></h1>
+                <p class="mt-8 text-gray-700 text-2xl">สระว่ายน้ำสำหรับเด็กที่ AquaKid Chiangmai เป็นสถานที่ที่เราเน้นการเรียนรู้ผ่านการเล่นและการสนุก มาร่วมเรียนรู้และสร้างความทรงจำที่น่ารักกับเราวันนี้!</p>
                 <div class="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
                     <a
                       href="#"
