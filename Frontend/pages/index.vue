@@ -1,7 +1,5 @@
-
-
 <template>
-    <main class="space-y-40 py-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-400 to-indigo-900">
+    <main class="space-y-40 py-20 backdrop-blur-2xl bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-200 to-sky-400">
         <MainSection />
         <Features />
         <Stats />
@@ -13,5 +11,6 @@
 
 
 <script setup lang="ts">
-    await useApiFetch("/sanctum/csrf-cookie");
+await useApiFetch("/sanctum/csrf-cookie");
+
 </script>
