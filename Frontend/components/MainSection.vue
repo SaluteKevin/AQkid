@@ -8,7 +8,7 @@
     <Container>
         <div class="relative pt-36 ml-auto">
             <div class="lg:w-2/3 text-center mx-auto">
-                <h1 class="text-cyan-900  font-bold text-5xl md:text-6xl xl:text-7xl">AquaKids <span class="text-orange-500">Chiangmai</span></h1>
+                <h1 class="animate-fade-up text-cyan-900  font-bold text-5xl md:text-6xl xl:text-7xl">AquaKids <span class="text-orange-500">Chiangmai</span></h1>
                 <p class="mt-8 text-gray-700 text-2xl">สระว่ายน้ำสำหรับเด็กที่ AquaKid Chiangmai เป็นสถานที่ที่เราเน้นการเรียนรู้ผ่านการเล่นและการสนุก มาร่วมเรียนรู้และสร้างความทรงจำที่น่ารักกับเราวันนี้!</p>
                 <div class="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
                     <a

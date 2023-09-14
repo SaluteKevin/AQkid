@@ -1,6 +1,7 @@
 import type {UseFetchOptions} from 'nuxt/app';
 import {useRequestHeaders} from "nuxt/app";
 import { useAuthStore } from '~/store/useAuthStore';
+import nuxtStorage from 'nuxt-storage';
 
 export function useApiFetch<T>(path: string, options: UseFetchOptions<T> = {}) {
   let headers: any = {}
@@ -19,9 +20,9 @@ export function useApiFetch<T>(path: string, options: UseFetchOptions<T> = {}) {
     }
   }
 
-  const authStore = useAuthStore();
-  if (authStore.apiToken != null) {
-    headers['Authorization'] = `Bearer ${authStore.apiToken}`;
+  const apiToken = nuxtStorage.localStorage.getData('ApiToken');
+  if (apiToken != null) {
+    headers['Authorization'] = `Bearer ${apiToken}`;
   }
 
   return useFetch("http://localhost:8000" + path, {

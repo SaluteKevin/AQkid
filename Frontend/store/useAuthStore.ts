@@ -21,7 +21,6 @@ type RegistrationInfo = {
 
 export const useAuthStore = defineStore('auth', () => {
   const user = ref<User | null>(null)
-  const apiToken = ref<string | null>(null); // Store the API token
   const isLoggedIn = computed(() => !!user.value)
 
   async function logout() {
@@ -61,12 +60,6 @@ export const useAuthStore = defineStore('auth', () => {
     return register;
   }
 
-  // Function to set the API token
-  function setApiToken(token: string) {
-    apiToken.value = token;
-  }
 
-  
-
-  return {user, login, isLoggedIn, fetchUser, logout, register, apiToken, setApiToken}
+  return {user, login, isLoggedIn, fetchUser, logout, register}
 })
