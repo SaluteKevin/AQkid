@@ -8,7 +8,7 @@ type User = {
 }
 
 type Credentials = {
-  email: string;
+  username: string;
   password: string;
 }
 
@@ -37,7 +37,7 @@ export const useAuthStore = defineStore('auth', () => {
   async function login(credentials: Credentials) {
     await useApiFetch("/sanctum/csrf-cookie");
 
-    const login = await useApiFetch("/login", {
+    const login = await useApiFetch("/api/loginServer", {
       method: "POST",
       body: credentials,
     });
@@ -60,6 +60,14 @@ export const useAuthStore = defineStore('auth', () => {
     return register;
   }
 
+  async function testCSRF() {
+    await useApiFetch("/sanctum/csrf-cookie");
+  }
 
-  return {user, login, isLoggedIn, fetchUser, logout, register}
+  function clog() {
+    console.log("test");
+  }
+
+
+  return {user, login, isLoggedIn, fetchUser, logout, register, testCSRF, clog}
 })

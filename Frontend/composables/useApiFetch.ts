@@ -1,13 +1,13 @@
 import type {UseFetchOptions} from 'nuxt/app';
 import {useRequestHeaders} from "nuxt/app";
-import { useAuthStore } from '~/store/useAuthStore';
 import nuxtStorage from 'nuxt-storage';
 
 export function useApiFetch<T>(path: string, options: UseFetchOptions<T> = {}) {
   let headers: any = {}
 
-  const token = useCookie('XSRF-TOKEN');
+  headers['Accept'] = 'application/json';
 
+  const token = useCookie('XSRF-TOKEN');
   if (token.value) {
     headers['X-XSRF-TOKEN'] = token.value as string;
   }
@@ -25,7 +25,7 @@ export function useApiFetch<T>(path: string, options: UseFetchOptions<T> = {}) {
     headers['Authorization'] = `Bearer ${apiToken}`;
   }
 
-  return useFetch("http://localhost:8000" + path, {
+  return useFetch("http://localhost" + path, {
     credentials: "include",
     watch: false,
     ...options,
