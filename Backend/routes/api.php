@@ -33,3 +33,7 @@ Route::middleware(['auth:sanctum'])->post('/revoke', function (Request $request)
 
 
 Route::post('/loginServer', [AuthController::class,'loginServer'])->name('login.server');
+
+Route::post('/testFETCH', function () {
+    return ['success' => true];
+})->name('test.server');
