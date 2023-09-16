@@ -46,7 +46,8 @@
 <script setup lang="ts">
 
 import {useAuthStore} from "~/stores/useAuthStore";
-import nuxtStorage from 'nuxt-storage';
+// import nuxtStorage from 'nuxt-storage';
+import Cookies from 'js-cookie';
 import {useApiFetch} from "~/composables/useApiFetch";
 
 const auth = useAuthStore();
@@ -64,22 +65,23 @@ async function handleLogin() {
 
     const {data: login, error: loginerror } = await useApiFetch("/api/loginServer", {
       method: "POST",
-      body: form.value,
+      body: {
+        username: "test",
+        password: "123"
+      },
     });
 
     if (loginerror.value) {
         console.log(loginerror.value.data.message);
     }
 
-    
-
-    nuxtStorage.localStorage.setData('ApiToken', login.value.token);
+    // nuxtStorage.localStorage.setData('ApiToken', login.value.token);
+    Cookies.set("ApiToken", login.value.token);
 
     const {data: user, error: usererror} = await useApiFetch("/api/user");
     console.log(user.value);
 
 }
-
 
 
 </script>

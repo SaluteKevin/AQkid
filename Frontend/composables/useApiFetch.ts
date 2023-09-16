@@ -1,6 +1,7 @@
 import type {UseFetchOptions} from 'nuxt/app';
 import {useRequestHeaders} from "nuxt/app";
-import nuxtStorage from 'nuxt-storage';
+// import nuxtStorage from 'nuxt-storage';
+import Cookies from 'js-cookie';
 
 export function useApiFetch<T>(path: string, options: UseFetchOptions<T> = {}) {
   let headers: any = {}
@@ -20,7 +21,8 @@ export function useApiFetch<T>(path: string, options: UseFetchOptions<T> = {}) {
     }
   }
 
-  const apiToken = nuxtStorage.localStorage.getData('ApiToken');
+  // const apiToken = nuxtStorage.localStorage.getData('ApiToken');
+  const apiToken = Cookies.get("ApiToken");
   if (apiToken != null) {
     headers['Authorization'] = `Bearer ${apiToken}`;
   }
