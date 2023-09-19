@@ -1,8 +1,7 @@
 <template>
-    <main class="space-y-40 py-20 backdrop-blur-2xl bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-200 to-sky-400">
+    <main class="bg-orange-500">
         <MainSection />
         <Features />
-        <Stats />
         <Testimonials />
         <CallToAction />
         <Blog />
