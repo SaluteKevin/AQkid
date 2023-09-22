@@ -29,10 +29,10 @@
             <h5
               class="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary"
             >
-              First feature
+            สระน้ำเกลือ
             </h5>
             <p class="text-gray-600 dark:text-gray-300">
-              Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum.
+              สุขภาพที่ดีในรูปแบบของการสนุกสนาน เด็กๆจะรักการเรียนรู้และสนุกสนานกับการฝึกว่ายน้ำที่นี่ เปิดโอกาสให้เด็กของคุณลองสิ่งใหม่ๆ ในสระน้ำเกลือของเรา การสร้างประสบการณ์การเรียนรู้และการว่ายน้ำที่ยอดเยี่ยม
             </p>
           </div>
           <a href="#" class="flex items-center justify-between group-hover:text-secondary">
@@ -57,10 +57,10 @@
             <h5
               class="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary"
             >
-              Second feature
+              ได้รับการฝึกสอนโดยผู้เชี่ยวชาญ
             </h5>
             <p class="text-gray-600 dark:text-gray-300">
-              Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum.
+              เปิดโอกาสให้ลูกของคุณเรียนรู้การว่ายน้ำจากผู้เชี่ยวชาญ ที่สอนว่ายน้ำของเราคือที่เริ่มต้นที่ดีที่สุดสำหรับการปรับปรุงทักษะ และน้ำเป็นความสนุกและการเรียนรู้ ด้วยผู้สอนที่มีความรู้และความคิดสร้างสรรค์ ที่นี่คุณจะพบประสบการณ์การสอนว่ายน้ำที่ไม่เหมือนใคร
             </p>
           </div>
           <a href="#" class="flex items-center justify-between group-hover:text-secondary">
@@ -85,10 +85,10 @@
             <h5
               class="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary"
             >
-              Third feature
+            ความปลอดภัย
             </h5>
             <p class="text-gray-600 dark:text-gray-300">
-              Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum.
+              ความปลอดภัยที่สูงสุดในความสวยงาม ที่นี่เราไม่เพียงให้คุณร่วมสนุกในการว่ายน้ำ แต่ยังร่วมสนุกในความมั่นใจที่คุณอยู่ในสถานที่ที่ปลอดภัยสูงสุด
             </p>
           </div>
           <a href="#" class="flex items-center justify-between group-hover:text-secondary">
