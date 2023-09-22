@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
+    // $request->user()->info;
+    // return $request->user();
+    return User::with('info')->get();
 });
 
 Route::middleware(['auth:sanctum','multirole:staff'])->get('/test', function (Request $request) {
@@ -33,3 +36,8 @@ Route::middleware(['auth:sanctum'])->post('/revoke', function (Request $request)
 
 
 Route::post('/loginServer', [AuthController::class,'loginServer'])->name('login.server');
+Route::get('/setApiCookie', [AuthController::class,'setApiCookie'])->name('cookie.server');
+
+Route::post('/testFETCH', function () {
+    return ['success' => true];
+})->name('test.server');

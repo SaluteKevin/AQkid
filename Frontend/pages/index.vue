@@ -1,8 +1,7 @@
 <template>
-    <main class="space-y-40 py-20 backdrop-blur-2xl bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-200 to-sky-400">
+    <main class="bg-orange-500">
         <MainSection />
         <Features />
-        <Stats />
         <Testimonials />
         <CallToAction />
         <Blog />
@@ -11,6 +10,19 @@
 
 
 <script setup lang="ts">
-await useApiFetch("/sanctum/csrf-cookie");
+import {useAuthStore} from "~/stores/useAuthStore";
+import nuxtStorage from 'nuxt-storage';
+import Cookies from 'js-cookie';
+
+const auth = useAuthStore();
+await auth.testCSRF();
+
+
+
+
+
+
+
+
 
 </script>

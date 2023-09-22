@@ -8,6 +8,7 @@ use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Http\Response;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 
 
@@ -67,4 +68,21 @@ class AuthController extends Controller
         )->fails();
 
     }
+
+
+
+    public function setApiCookie(Request $request) {
+
+        $cookieValue = $request->get('token');
+        $minutesToExpire = 60; // Set the expiration time in minutes (e.g., 60 minutes)
+
+        $response = new Response($cookieValue);
+
+        // Set the custom cookie using the cookie() helper
+        $response->cookie('ApiToken', $cookieValue, $minutesToExpire);
+
+        return $response;
+        
+    }
+
 }

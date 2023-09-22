@@ -1,12 +1,14 @@
 import type {UseFetchOptions} from 'nuxt/app';
 import {useRequestHeaders} from "nuxt/app";
-import { useAuthStore } from '~/store/useAuthStore';
+// import nuxtStorage from 'nuxt-storage';
+import Cookies from 'js-cookie';
 
 export function useApiFetch<T>(path: string, options: UseFetchOptions<T> = {}) {
   let headers: any = {}
 
-  const token = useCookie('XSRF-TOKEN');
+  headers['Accept'] = 'application/json';
 
+  const token = useCookie('XSRF-TOKEN');
   if (token.value) {
     headers['X-XSRF-TOKEN'] = token.value as string;
   }
@@ -19,12 +21,13 @@ export function useApiFetch<T>(path: string, options: UseFetchOptions<T> = {}) {
     }
   }
 
-  const authStore = useAuthStore();
-  if (authStore.apiToken != null) {
-    headers['Authorization'] = `Bearer ${authStore.apiToken}`;
+  // const apiToken = nuxtStorage.localStorage.getData('ApiToken');
+  const apiToken = Cookies.get("ApiToken");
+  if (apiToken != null) {
+    headers['Authorization'] = `Bearer ${apiToken}`;
   }
 
-  return useFetch("http://localhost:8000" + path, {
+  return useFetch("http://localhost" + path, {
     credentials: "include",
     watch: false,
     ...options,

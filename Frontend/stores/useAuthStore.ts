@@ -8,7 +8,7 @@ type User = {
 }
 
 type Credentials = {
-  email: string;
+  username: string;
   password: string;
 }
 
@@ -21,7 +21,6 @@ type RegistrationInfo = {
 
 export const useAuthStore = defineStore('auth', () => {
   const user = ref<User | null>(null)
-  const apiToken = ref<string | null>(null); // Store the API token
   const isLoggedIn = computed(() => !!user.value)
 
   async function logout() {
@@ -36,9 +35,9 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function login(credentials: Credentials) {
-    await useApiFetch("/sanctum/csrf-cookie");
+    await useApiFetch("/sanctum/csrf-cookie/");
 
-    const login = await useApiFetch("/login", {
+    const login = await useApiFetch("/api/loginServer/", {
       method: "POST",
       body: credentials,
     });
@@ -61,12 +60,14 @@ export const useAuthStore = defineStore('auth', () => {
     return register;
   }
 
-  // Function to set the API token
-  function setApiToken(token: string) {
-    apiToken.value = token;
+  async function testCSRF() {
+    await useApiFetch("/sanctum/csrf-cookie");
   }
 
-  
+  function clog() {
+    console.log("test");
+  }
 
-  return {user, login, isLoggedIn, fetchUser, logout, register, apiToken, setApiToken}
+
+  return {user, login, isLoggedIn, fetchUser, logout, register, testCSRF, clog}
 })
