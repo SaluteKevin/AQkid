@@ -7,82 +7,84 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use Illuminate\Http\Response;
-use Illuminate\Contracts\Validation\Factory as ValidationFactory;
+
 
 
 class AuthController extends Controller
 {
-    public function loginServer(LoginRequest $request) {
 
-        UserService::getUserManager()->login($request);
+    /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
 
-        return UserService::getUserManager()->generateApiToken($request);
+    /**
+     * Get a JWT via given credentials.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function login(LoginRequest $request)
+    {
 
-        
+        $request->authenticate();
 
+        $token = UserService::getUserManager()->generateApiToken($request);
 
-    
-        // if ($this->isEmail($request->input('username'))) {
-        //     if (!Auth::validate(['email' => $request->input('username'), 'password' => $request->input('password')])) {
-        //         return [
-        //             'success' => false,
-        //         ];
-        //     }
-        //     else {
-        //         $user = User::where('email',$request->input('username'))->first();
-        //         return [
-        //             'success' => true,
-        //             'token' => $user->createToken("postman",['staff'])->plainTextToken
-        //         ];
-
-
-        //     }
-        // } else {
-        //     if (!Auth::validate(['username' => $request->input('username'), 'password' => $request->input('password')])) {
-        //         return [
-        //             'success' => false,
-        //         ];
-        //     }
-        //     else {
-        //         $user = User::where('username',$request->input('username'))->first();
-        //         return [
-        //             'success' => true,
-        //             'token' => $user->createToken("postman",['staff'])->plainTextToken
-        //         ];
-
-        //     }
-        // }
-        
+        return $this->respondWithToken($token);
 
     }
 
-    public function isEmail($param) {
-
-        $factory = app(ValidationFactory::class);
-
-        return ! $factory->make(
-            ['username' => $param],
-            ['username' => 'email']
-        )->fails();
-
+    /**
+     * Get the authenticated User.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function me()
+    {
+        return response()->json(auth()->user());
     }
 
+    /**
+     * Log the user out (Invalidate the token).
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function logout()
+    {
+        auth()->logout();
 
-
-    public function setApiCookie(Request $request) {
-
-        $cookieValue = $request->get('token');
-        $minutesToExpire = 60; // Set the expiration time in minutes (e.g., 60 minutes)
-
-        $response = new Response($cookieValue);
-
-        // Set the custom cookie using the cookie() helper
-        $response->cookie('ApiToken', $cookieValue, $minutesToExpire);
-
-        return $response;
-        
+        return response()->json(['message' => 'Successfully logged out']);
     }
+
+    /**
+     * Refresh a token.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function refresh()
+    {
+        return $this->respondWithToken(auth()->refresh());
+    }
+
+    /**
+     * Get the token array structure.
+     *
+     * @param  string $token
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function respondWithToken($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+        ]);
+    }
+
 
 }

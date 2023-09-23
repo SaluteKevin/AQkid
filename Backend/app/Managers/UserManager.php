@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Phattarachai\LaravelMobileDetect\Agent;
 use App\Exceptions\CustomException;
 use App\Models\PasswordResetToken;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Services\MailService;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 
@@ -19,63 +20,25 @@ class UserManager {
 
     public function __construct() {}
 
-    public function login(LoginRequest $request) {
-
-        $request->authenticate();
-
-    }
-
     public function generateApiToken(LoginRequest $request) {
 
         if ($this->isEmail($request->input('username'))) {
         
-            $user = User::where('email',$request->get('username'))->first();
+            $token = JWTAuth::attempt(['email' => $request->get('username'),'password' => $request->get('password')]);
 
-            return [    
-                        'authorize' => true,
-                        'token' => $user->createToken("postman",['staff'])->plainTextToken
-                    ];
+            return $token;
 
         
         }
 
-        $user = User::where('username',$request->get('username'))->first();
+        $token = JWTAuth::attempt(['username' => $request->get('username'),'password' => $request->get('password')]);
 
-            return [    
-                        'authorize' => true,
-                        'token' => $user->createToken("postman",['staff'])->plainTextToken
-                    ];
+
+        return $token;
+        
 
     }
 
-
-    public function logout(Request $request) {
-
-        // $agent = new Agent();
-        
-        // $activeSession = UserSession::where('user_id', Auth::getUser()->id)->where('device', $agent->device())->where('browser',$agent->browser())->first();
-
-        // if ($activeSession != null) {
-
-        //     // Mark the session as invalidated by setting invalidated_at column for log if you want later
-        //     if ($activeSession->delete() && (Auth::logout() == null)) {
-
-        //         $request->session()->invalidate();
-        //         $request->session()->regenerateToken();
-
-        //         return true;
-
-        //     }
-
-            
-
-        // }
-
-        // throw new CustomException("Failed to logout.", 302);
-
-        
-    
-    }
 
     public function verifyUser($userId) {
 
@@ -150,20 +113,6 @@ class UserManager {
         )->fails();
 
     }
-
-    // public function validatePasswordResetToken($token) {
-
-    //     $token = PasswordResetToken::where('token', $token)->first();
-
-    //     if ($token != null) {
-    //         return true;
-    //     }
-        
-    //     throw new CustomException("Oops, It looks like your token has expired.", 302, route('login'));
-
-
-
-    // }
 
     public function resetPassword(Request $request, $token) {
         
