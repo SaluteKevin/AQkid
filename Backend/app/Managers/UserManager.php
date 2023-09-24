@@ -68,7 +68,7 @@ class UserManager {
 
                     MailService::getMailManager()->sendResetPasswordMail($user->email);
 
-                    return true;
+                    return response()->json(['message' => "We have sent you a ResetPassword Email"]);
                 }
 
                 return response()->json(['message' => "Oops, Sorry your account email is not verify."], 422);
@@ -91,7 +91,7 @@ class UserManager {
 
                     MailService::getMailManager()->sendResetPasswordMail($user->email);
 
-                    return true;
+                    return response()->json(['message' => "We have sent you a ResetPassword Email"]);
                 }
 
                 return response()->json(['message' => "Oops, Sorry your account email is not verify."], 422);

@@ -43,6 +43,8 @@ use App\Models\User;
 // })->name('test.server');
 
 
+Route::post('forgotPassword', [AuthController::class, 'forgotPassword'])->name('forgot.password'); 
+
 Route::group([
 
     'middleware' => 'api',

@@ -20,7 +20,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login','forgotPassword','resetPassword']]);
     }
 
     /**
@@ -84,6 +84,16 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
         ]);
+    }
+
+    public function forgotPassword(Request $request) {
+
+        return UserService::getUserManager()->forgotPassword($request);
+
+    }
+
+    public function resetPassword(Request $request) {
+
     }
 
 
