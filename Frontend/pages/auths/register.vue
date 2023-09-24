@@ -42,3 +42,13 @@
 </section>
 
 </template>
+
+<script setup lang="ts">
+
+const RegisterError = ref({
+    errors: null
+})
+const RegisterForm = ref({
+    name: ""
+})
+</script>
