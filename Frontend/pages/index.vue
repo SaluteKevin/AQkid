@@ -4,7 +4,6 @@
         <Features />
         <Testimonials />
         <CallToAction />
-        <Blog />
     </main>
 </template>
 

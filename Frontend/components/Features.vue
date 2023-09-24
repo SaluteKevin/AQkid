@@ -31,7 +31,7 @@
     <div
       class="mt-12 mx-12 grid divide-x divide-gray-100 overflow-hidden rounded-3xl text-gray-600 grid-cols-4"
     >
-      <div class="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
+      <div class="group relative bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
         <div class="relative space-y-8 py-12 p-8">
           <img
             src="https://cdn-icons-png.flaticon.com/512/4341/4341139.png"
@@ -43,24 +43,18 @@
 
           <div class="space-y-2">
             <h5
-              class="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary"
+              class="text-xl font-semibold text-white transition group-hover:text-secondary"
             >
             สระน้ำเกลือ
               
             </h5>
-            <p class="text-gray-600 dark:text-gray-300">
+            <p class="text-gray-300">
               สุขภาพที่ดีในรูปแบบของการสนุกสนาน เด็กๆจะรักการเรียนรู้และสนุกสนานกับการฝึกว่ายน้ำที่นี่ เปิดโอกาสให้เด็กของคุณลองสิ่งใหม่ๆ ในสระน้ำเกลือของเรา การสร้างประสบการณ์การเรียนรู้และการว่ายน้ำที่ยอดเยี่ยม
             </p>
           </div>
-          <a href="#" class="flex items-center justify-between group-hover:text-secondary">
-            <span class="text-sm">Read more</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-              <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd" />
-            </svg>                
-          </a>
         </div>
       </div>
-      <div class="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
+      <div class="group relative bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
         <div class="relative space-y-8 py-12 p-8">
           <img
             src="https://cdn-icons-png.flaticon.com/512/4341/4341134.png"
@@ -72,23 +66,17 @@
 
           <div class="space-y-2">
             <h5
-              class="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary"
+              class="text-xl font-semibold text-white transition group-hover:text-secondary"
             >
               ได้รับการฝึกสอนโดยผู้เชี่ยวชาญ
             </h5>
-            <p class="text-gray-600 dark:text-gray-300">
+            <p class="text-gray-300">
               เปิดโอกาสให้ลูกของคุณเรียนรู้การว่ายน้ำจากผู้เชี่ยวชาญ ที่สอนว่ายน้ำของเราคือที่เริ่มต้นที่ดีที่สุดสำหรับการปรับปรุงทักษะ และน้ำเป็นความสนุกและการเรียนรู้ ด้วยผู้สอนที่มีความรู้และความคิดสร้างสรรค์ ที่นี่คุณจะพบประสบการณ์การสอนว่ายน้ำที่ไม่เหมือนใคร
             </p>
           </div>
-          <a href="#" class="flex items-center justify-between group-hover:text-secondary">
-            <span class="text-sm">Read more</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-              <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd" />
-            </svg>                
-          </a>
         </div>
       </div>
-      <div class="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
+      <div class="group relative bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
         <div class="relative space-y-8 py-12 p-8">
           <img
             src="https://cdn-icons-png.flaticon.com/512/4341/4341160.png"
@@ -100,27 +88,21 @@
 
           <div class="space-y-2">
             <h5
-              class="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary"
+              class="text-xl font-semibold text-white transition group-hover:text-secondary"
             >
             ความปลอดภัย
             </h5>
-            <p class="text-gray-600 dark:text-gray-300">
+            <p class="text-gray-300">
               ความปลอดภัยที่สูงสุดในความสวยงาม ที่นี่เราไม่เพียงให้คุณร่วมสนุกในการว่ายน้ำ แต่ยังร่วมสนุกในความมั่นใจที่คุณอยู่ในสถานที่ที่ปลอดภัยสูงสุด
             </p>
           </div>
-          <a href="#" class="flex items-center justify-between group-hover:text-secondary">
-            <span class="text-sm">Read more</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-              <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z" clip-rule="evenodd" />
-            </svg>                
-          </a>
         </div>
       </div>
       <div
-        class="group relative bg-gray-50 dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10"
+        class="group relative bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10"
       >
         <div
-          class="relative space-y-8 py-12 p-8 transition duration-300 group-hover:bg-white dark:group-hover:bg-gray-800"
+          class="relative space-y-8 py-12 p-8 transition duration-300 group-hover:bg-gray-800"
         >
           <img
             src="https://cdn-icons-png.flaticon.com/512/4341/4341025.png"
@@ -132,11 +114,11 @@
 
           <div class="space-y-2">
             <h5
-              class="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary"
+              class="text-xl font-semibold text-white transition group-hover:text-secondary"
             >
               More features
             </h5>
-            <p class="text-gray-600 dark:text-gray-300">
+            <p class="text-gray-300">
               Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum.
             </p>
           </div>

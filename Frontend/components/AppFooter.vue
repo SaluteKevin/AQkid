@@ -1,14 +1,16 @@
 <template>
 
-<footer class="py-20 md:py-40 bg-black">
-  
-    <Container>
-      <div class="m-auto md:w-10/12 lg:w-8/12 xl:w-6/12">
-        <div class="flex flex-wrap items-center justify-between md:flex-nowrap">
+<footer class="">
+    <div class="bg-white h-2">
+    </div>
+
+    <div class="bg-cyan-900">
+      <div class="m-auto">
+        <div class="flex items-center justify-between">
           <div
-            class="flex w-full justify-center space-x-12 text-gray-600 dark:text-gray-300 sm:w-7/12 md:justify-start"
+            class="flex w-full justify-center space-x-12 text-white sm:w-7/12 md:justify-start "
           >
-            <ul class="list-inside list-disc space-y-8">
+            <!-- <ul class="list-inside list-disc space-y-8">
               <li><a href="#" class="transition hover:text-primary">Home</a></li>
   
               <li><a href="#" class="transition hover:text-primary">About</a></li>
@@ -16,9 +18,9 @@
               <li><a href="#" class="transition hover:text-primary">Blocks</a></li>
               <li><a href="#" class="transition hover:text-primary">Contact</a></li>
               <li><a href="#" class="transition hover:text-primary">Terms of Use</a></li>
-            </ul>
+            </ul> -->
   
-            <ul role="list" class="space-y-8">
+            <ul role="list" class="space-y-8 bg-cyan-950 pl-16 pr-64 pb-8 pt-6">
               <li>
                 <a href="#" class="flex items-center space-x-3 transition hover:text-primary">
                   <svg
@@ -34,23 +36,9 @@
                   <span>Github</span>
                 </a>
               </li>
+              
               <li>
-                <a href="#" class="flex items-center space-x-3 transition hover:text-primary">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    class="w-5"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
-                    />
-                  </svg>
-                  <span>Twitter</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center space-x-3 transition hover:text-primary">
+                <a href="https://www.youtube.com/@aquakidschiangmai271" target="https://www.youtube.com/@aquakidschiangmai271" class="flex items-center space-x-3 transition hover:text-primary">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -66,7 +54,7 @@
               </li>
   
               <li>
-                <a href="#" class="flex items-center space-x-3 transition hover:text-primary">
+                <a href="https://facebook.com/profile.php?id=100063802697610" target="https://facebook.com/profile.php?id=100063802697610" class="flex items-center space-x-3 transition hover:text-primary">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -81,51 +69,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="flex items-center space-x-3 transition hover:text-primary">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    class="w-5"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M9.025 8c0 2.485-2.02 4.5-4.513 4.5A4.506 4.506 0 0 1 0 8c0-2.486 2.02-4.5 4.512-4.5A4.506 4.506 0 0 1 9.025 8zm4.95 0c0 2.34-1.01 4.236-2.256 4.236-1.246 0-2.256-1.897-2.256-4.236 0-2.34 1.01-4.236 2.256-4.236 1.246 0 2.256 1.897 2.256 4.236zM16 8c0 2.096-.355 3.795-.794 3.795-.438 0-.793-1.7-.793-3.795 0-2.096.355-3.795.794-3.795.438 0 .793 1.699.793 3.795z"
-                    />
-                  </svg>
-                  <span>Medium</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center space-x-3 transition hover:text-primary">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="5"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M8 0a8 8 0 0 0-2.915 15.452c-.07-.633-.134-1.606.027-2.297.146-.625.938-3.977.938-3.977s-.239-.479-.239-1.187c0-1.113.645-1.943 1.448-1.943.682 0 1.012.512 1.012 1.127 0 .686-.437 1.712-.663 2.663-.188.796.4 1.446 1.185 1.446 1.422 0 2.515-1.5 2.515-3.664 0-1.915-1.377-3.254-3.342-3.254-2.276 0-3.612 1.707-3.612 3.471 0 .688.265 1.425.595 1.826a.24.24 0 0 1 .056.23c-.061.252-.196.796-.222.907-.035.146-.116.177-.268.107-1-.465-1.624-1.926-1.624-3.1 0-2.523 1.834-4.84 5.286-4.84 2.775 0 4.932 1.977 4.932 4.62 0 2.757-1.739 4.976-4.151 4.976-.811 0-1.573-.421-1.834-.919l-.498 1.902c-.181.695-.669 1.566-.995 2.097A8 8 0 1 0 8 0z"
-                    />
-                  </svg>
-                  <span>Pintrest</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center space-x-3 transition hover:text-primary">
-                  <img
-                    class="h-5 w-5"
-                    width="32"
-                    height="32"
-                    src="https://c5.patreon.com/external/favicon/favicon.ico?v=69kMELnXkB"
-                    alt="patreon icon"
-                  />
-                  <span>Patreon</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="flex items-center space-x-3 transition hover:text-primary">
+                <a href="https://www.instagram.com/explore/locations/762486143922342/aquakids-chiangmai/" target="https://www.instagram.com/explore/locations/762486143922342/aquakids-chiangmai/" class="flex items-center space-x-3 transition hover:text-primary">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -142,26 +86,25 @@
             </ul>
           </div>
           <div
-            class="m-auto mt-16 w-10/12 space-y-6 text-center sm:mt-auto sm:w-5/12 sm:text-left"
+            class="m-auto mt-16 w-10/12 space-y-6 text-white text-right pr-24"
           >
-            <span class="block text-gray-500 dark:text-gray-400"
-              >We change the way UI components librairies are used</span
-            >
   
-            <span class="block text-gray-500 dark:text-gray-400">Tailus Blocks &copy; <span id="year"></span></span>
-  
-            <span class="flex justify-between text-gray-600 dark:text-white">
-              <a href="#" class="font-medium">Terms of Use </a>
-              <a href="#" class="font-medium"> Privacy Policy</a>
+            <span class="block">
+              Contact Us
             </span>
-  
-            <span class="block text-gray-500 dark:text-gray-400"
-              >Need help? <a href="#" class="font-semibold text-gray-600 dark:text-white"> Contact Us</a></span
-            >
+            <span>
+              Tel. 097 276 2626
+            </span>
+            <span class="block">
+              Email
+            </span>
+            <span>
+              aquababiescm@gmail.com
+            </span>
           </div>
         </div>
       </div>
-      </Container>
+    </div>
     
 </footer>
 
