@@ -2,7 +2,7 @@
     <main class="bg-orange-500">
         <MainSection />
         <Features />
-        <Testimonials />
+        <Reviews/>
         <CallToAction />
     </main>
 </template>
