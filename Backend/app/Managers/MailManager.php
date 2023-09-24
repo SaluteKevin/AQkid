@@ -42,7 +42,7 @@ class MailManager {
                 return true;
             }
 
-            throw new CustomException("Oops, Sorry there is a problem in sending the reset password email link.", 302);
+            return response()->json(['message' => "Oops, Sorry there is a problem in sending the reset password email link."], 422);
 
         }
 
@@ -63,7 +63,7 @@ class MailManager {
             return true;
         }
 
-        throw new CustomException("Oops, Sorry there is a problem in sending the reset password email link.", 302);
+        return response()->json(['message' => "Oops, Sorry there is a problem in sending the reset password email link."], 422);
 
     }
 

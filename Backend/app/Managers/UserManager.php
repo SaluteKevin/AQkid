@@ -49,7 +49,7 @@ class UserManager {
             return true;
         }
 
-        throw new CustomException("Can't verify your email.", 302, route('login'));
+        return response()->json(['message' => "Can't verify your email."], 422);
 
 
 
@@ -71,11 +71,12 @@ class UserManager {
                     return true;
                 }
 
-                throw new CustomException("Oops, Sorry your account email is not verify.", 302);
+                return response()->json(['message' => "Oops, Sorry your account email is not verify."], 422);
+
 
             }
 
-            throw new CustomException("Oops, Sorry we can't find your email account.", 302);
+            return response()->json(['message' => "Oops, Sorry we can't find your email account."], 422);
 
         }
 
@@ -93,11 +94,11 @@ class UserManager {
                     return true;
                 }
 
-                throw new CustomException("Oops, Sorry your account email is not verify.", 302);
+                return response()->json(['message' => "Oops, Sorry your account email is not verify."], 422);
 
             }
 
-            throw new CustomException("Oops, Sorry we can't find your username account.", 302);
+            return response()->json(['message' => "Oops, Sorry we can't find your username account."], 422);
 
         }
 
@@ -130,15 +131,15 @@ class UserManager {
                     return true;
                 }
 
-                throw new CustomException("Oops, It looks like there is a problem in process of reset your password.", 302);
+                return response()->json(['message' => "Oops, It looks like there is a problem in process of reset your password."], 422);
 
             }
 
-            throw new CustomException("Oops, Sorry We can't find your account.", 302, route('login'));
+            return response()->json(['message' => "Oops, Sorry We can't find your account."], 422);
             
         }
         
-        throw new CustomException("Oops, It looks like your token has expired.", 302, route('login'));
+        return response()->json(['message' => "Oops, It looks like your token has expired."], 422);
 
 
     }
@@ -155,12 +156,12 @@ class UserManager {
 
             }
 
-            throw new CustomException("Oops, It looks like there is a problem in process of reset your password.", 302);
+            return response()->json(['message' => "Oops, It looks like there is a problem in process of reseting your password."], 422);
             
 
         }
 
-        throw new CustomException("Oops, It looks like your token has expired.", 302, route('login'));
+        return response()->json(['message' => "Oops, It looks like your token has expired."], 422);
 
     }
     
