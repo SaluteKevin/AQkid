@@ -1,9 +1,9 @@
 <template>
     <main class="bg-orange-500">
-        <MainSection />
-        <Features />
-        <Reviews/>
-        <CallToAction />
+        <LandingMainSection />
+        <LandingFeatures />
+        <LandingReviews/>
+        <LandingCallToAction />
     </main>
 </template>
 
