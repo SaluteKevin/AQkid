@@ -20,7 +20,7 @@
       </div>
       <div class="ml-6">
         <img 
-                  class="object-cover h-full w-full" 
+                  class="object-cover h-96 w-full" 
                   src="https://scontent.fbkk5-3.fna.fbcdn.net/v/t39.30808-6/361648744_738993304904086_5497916127488969777_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=49d041&_nc_eui2=AeFMubsCRSwz6iDFYx77bIGSAAirkUfjhMkACKuRR-OEyUmhJOC1N1NcpieLoIOnDIbPhzPv9EH7HOOKslpGVPo3&_nc_ohc=LjuCZNndeFMAX97rKAp&_nc_ht=scontent.fbkk5-3.fna&oh=00_AfB38iF9lNALkcDOQ6uwuN3SO09WBNC5ZwJio4h6gPShDg&oe=650F3A70"
                   >
       </div>
