@@ -1,10 +1,10 @@
 <template>
     <div>
-        <AppHeader class="sticky top-0 z-50" />
+        <LayoutAppHeader class="sticky top-0 z-50" />
         <section>
             <slot />
         </section>
-        <AppFooter />
+        <LayoutAppFooter />
         <div class="fixed inset-x-6 bottom-6 z-40 mx-auto w-max">
                 <a href="https://tailus.gumroad.com/l/astls-premium" target="_blank" class="flex gap-3 rounded-2xl border border-yellow-900/30 bg-gradient-to-br from-white/50 to-yellow-100 p-3 shadow-2xl shadow-yellow-900/50 backdrop-blur-xl dark:border-white/10 dark:from-gray-800 dark:to-black/70 dark:shadow-primary/50">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-yellow-600 dark:text-yellow-500">

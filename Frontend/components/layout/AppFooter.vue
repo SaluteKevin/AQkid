@@ -86,7 +86,7 @@
             </ul>
           </div>
           <div
-            class="m-auto mt-16 w-10/12 space-y-6 text-white text-right pr-24"
+            class="m-auto mt-16 w-10/12 space-y-6 text-white text-right pr-16"
           >
   
             <span class="block">
