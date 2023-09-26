@@ -22,6 +22,9 @@ erDiagram
         INT teacher_id FK "NOT NULL"
         VARCHAR title "NOT NULL"
         INT quota "NOT NULL"
+        INT capacity "NOT NULL"
+        INT min_age
+        INT max_age
         ENUM status "NOT NULL"
         TIMESTAMP created_at "NOT NULL"
         TIMESTAMP updated_at "NOT NULL"
