@@ -11,7 +11,7 @@
 
 ## Queries
 
-MySQL queries for initializing and manupulating data
+MySQL queries for initializing and manipulating data
 
 `TIMESTAMP` type format `$ date "+%Y-%m-%d %H:%M:%S"`
 
