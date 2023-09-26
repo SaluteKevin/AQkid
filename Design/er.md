@@ -23,7 +23,7 @@ erDiagram
         VARCHAR title "NOT NULL"
         INT quota "NOT NULL"
         INT capacity "NOT NULL"
-        INT min_age
+        INT min_age "DEFAULT 0"
         INT max_age
         ENUM status "NOT NULL"
         TIMESTAMP created_at "NOT NULL"
