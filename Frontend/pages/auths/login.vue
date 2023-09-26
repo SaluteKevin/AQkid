@@ -47,9 +47,6 @@
 <script setup lang="ts">
 
 import {useAuthStore} from "~/stores/useAuthStore";
-// import nuxtStorage from 'nuxt-storage';
-import Cookies from 'js-cookie';
-import {useApiFetch} from "~/composables/useApiFetch";
 
 const auth = useAuthStore();
 
@@ -60,8 +57,7 @@ const form = ref({
 
 async function handleLogin() {
 
-    // const {data, error} = await useApiFetch("/api/testFETCH", {method: "POST"});
-    // console.log(data.value.success);
+   
     await useApiFetch("/sanctum/csrf-cookie");
 
     const {data: login, error: loginerror } = await useApiFetch("/api/loginServer", {
@@ -75,12 +71,6 @@ async function handleLogin() {
     if (loginerror.value) {
         console.log(loginerror.value.data.message);
     }
-
-    // nuxtStorage.localStorage.setData('ApiToken', login.value.token);
-    Cookies.set("ApiToken", login.value.token);
-
-    const {data: user, error: usererror} = await useApiFetch("/api/user");
-    console.log(user.value);
 
 }
 

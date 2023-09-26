@@ -67,13 +67,6 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
-
-    public function info(): HasOne {
-
-        return $this->hasOne(UserFull::class);
-
-    }
-
     public function notis(): HasMany {
 
         return $this->hasMany(UserNoti::class);

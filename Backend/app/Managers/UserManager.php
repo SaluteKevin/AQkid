@@ -3,13 +3,9 @@
 namespace App\Managers;
 
 use App\Models\User;
-use App\Models\UserSession;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-use Phattarachai\LaravelMobileDetect\Agent;
-use App\Exceptions\CustomException;
 use App\Models\PasswordResetToken;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Services\MailService;
