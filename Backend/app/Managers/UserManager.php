@@ -3,14 +3,11 @@
 namespace App\Managers;
 
 use App\Models\User;
-use App\Models\UserSession;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-use Phattarachai\LaravelMobileDetect\Agent;
-use App\Exceptions\CustomException;
 use App\Models\PasswordResetToken;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Services\MailService;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 
@@ -19,63 +16,25 @@ class UserManager {
 
     public function __construct() {}
 
-    public function login(LoginRequest $request) {
-
-        $request->authenticate();
-
-    }
-
     public function generateApiToken(LoginRequest $request) {
 
         if ($this->isEmail($request->input('username'))) {
         
-            $user = User::where('email',$request->get('username'))->first();
+            $token = JWTAuth::attempt(['email' => $request->get('username'),'password' => $request->get('password')]);
 
-            return [    
-                        'authorize' => true,
-                        'token' => $user->createToken("postman",['staff'])->plainTextToken
-                    ];
+            return $token;
 
         
         }
 
-        $user = User::where('username',$request->get('username'))->first();
+        $token = JWTAuth::attempt(['username' => $request->get('username'),'password' => $request->get('password')]);
 
-            return [    
-                        'authorize' => true,
-                        'token' => $user->createToken("postman",['staff'])->plainTextToken
-                    ];
+
+        return $token;
+        
 
     }
 
-
-    public function logout(Request $request) {
-
-        // $agent = new Agent();
-        
-        // $activeSession = UserSession::where('user_id', Auth::getUser()->id)->where('device', $agent->device())->where('browser',$agent->browser())->first();
-
-        // if ($activeSession != null) {
-
-        //     // Mark the session as invalidated by setting invalidated_at column for log if you want later
-        //     if ($activeSession->delete() && (Auth::logout() == null)) {
-
-        //         $request->session()->invalidate();
-        //         $request->session()->regenerateToken();
-
-        //         return true;
-
-        //     }
-
-            
-
-        // }
-
-        // throw new CustomException("Failed to logout.", 302);
-
-        
-    
-    }
 
     public function verifyUser($userId) {
 
@@ -86,7 +45,7 @@ class UserManager {
             return true;
         }
 
-        throw new CustomException("Can't verify your email.", 302, route('login'));
+        return response()->json(['message' => "Can't verify your email."], 422);
 
 
 
@@ -105,14 +64,15 @@ class UserManager {
 
                     MailService::getMailManager()->sendResetPasswordMail($user->email);
 
-                    return true;
+                    return response()->json(['message' => "We have sent you a ResetPassword Email"]);
                 }
 
-                throw new CustomException("Oops, Sorry your account email is not verify.", 302);
+                return response()->json(['message' => "Oops, Sorry your account email is not verify."], 422);
+
 
             }
 
-            throw new CustomException("Oops, Sorry we can't find your email account.", 302);
+            return response()->json(['message' => "Oops, Sorry we can't find your email account."], 422);
 
         }
 
@@ -127,14 +87,14 @@ class UserManager {
 
                     MailService::getMailManager()->sendResetPasswordMail($user->email);
 
-                    return true;
+                    return response()->json(['message' => "We have sent you a ResetPassword Email"]);
                 }
 
-                throw new CustomException("Oops, Sorry your account email is not verify.", 302);
+                return response()->json(['message' => "Oops, Sorry your account email is not verify."], 422);
 
             }
 
-            throw new CustomException("Oops, Sorry we can't find your username account.", 302);
+            return response()->json(['message' => "Oops, Sorry we can't find your username account."], 422);
 
         }
 
@@ -150,20 +110,6 @@ class UserManager {
         )->fails();
 
     }
-
-    // public function validatePasswordResetToken($token) {
-
-    //     $token = PasswordResetToken::where('token', $token)->first();
-
-    //     if ($token != null) {
-    //         return true;
-    //     }
-        
-    //     throw new CustomException("Oops, It looks like your token has expired.", 302, route('login'));
-
-
-
-    // }
 
     public function resetPassword(Request $request, $token) {
         
@@ -181,15 +127,15 @@ class UserManager {
                     return true;
                 }
 
-                throw new CustomException("Oops, It looks like there is a problem in process of reset your password.", 302);
+                return response()->json(['message' => "Oops, It looks like there is a problem in process of reset your password."], 422);
 
             }
 
-            throw new CustomException("Oops, Sorry We can't find your account.", 302, route('login'));
+            return response()->json(['message' => "Oops, Sorry We can't find your account."], 422);
             
         }
         
-        throw new CustomException("Oops, It looks like your token has expired.", 302, route('login'));
+        return response()->json(['message' => "Oops, It looks like your token has expired."], 422);
 
 
     }
@@ -206,12 +152,12 @@ class UserManager {
 
             }
 
-            throw new CustomException("Oops, It looks like there is a problem in process of reset your password.", 302);
+            return response()->json(['message' => "Oops, It looks like there is a problem in process of reseting your password."], 422);
             
 
         }
 
-        throw new CustomException("Oops, It looks like your token has expired.", 302, route('login'));
+        return response()->json(['message' => "Oops, It looks like your token has expired."], 422);
 
     }
     

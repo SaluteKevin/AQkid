@@ -47,7 +47,7 @@ class LoginRequest extends FormRequest
         if ($this->isEmail($this->get('username'))) {
             
             
-            if (! Auth::validate(['email' => $this->input('username'), 'password' => $this->input('password')])) {
+            if (! Auth::validate(['email' => $this->get('username'), 'password' => $this->get('password')])) {
                 RateLimiter::hit($this->throttleKey());
 
                 $errorMessage = "Invalid credentials";
@@ -71,7 +71,7 @@ class LoginRequest extends FormRequest
 
         else {
 
-            if (! Auth::validate(['username' => $this->input('username'), 'password' => $this->input('password')])) {
+            if (! Auth::validate(['username' => $this->get('username'), 'password' => $this->get('password')])) {
                 RateLimiter::hit($this->throttleKey());
 
                 $errorMessage = "Invalid credentials";
@@ -122,7 +122,7 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->input('username')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->get('username')).'|'.$this->ip());
     }
 
 
