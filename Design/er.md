@@ -19,7 +19,7 @@ erDiagram
 
     courses {
         INT id PK "NOT NULL, AUTO_INCREMENT"
-        INT teacher_id FK "NOT NULL"
+        INT teacher_id FK
         VARCHAR title "NOT NULL"
         INT quota "NOT NULL"
         INT capacity "NOT NULL"
@@ -47,15 +47,23 @@ erDiagram
         TIMESTAMP updated_at "NOT NULL"
     }
 
-    attendances {
+    student_attendances {
         INT timeslot_id FK "NOT NULL"
         INT student_id FK "NOT NULL"
     }
 
+    teacher_attendances {
+        INT timeslot_id FK "NOT NULL"
+        INT teacher_id FK "NOT NULL"
+    }
+
     users ||--o{ registrations : registers
     registrations }o--|| courses : issues
-
     courses ||--o{ timeslots : allocates
-    users ||--o{ attendances  : attends
-    attendances }o--|| timeslots : attends
+
+    users ||--o{ student_attendances  : attends
+    student_attendances }o--|| timeslots : attends
+
+    users ||--o{ teacher_attendances  : attends
+    teacher_attendances }o--|| timeslots : attends
 ```
