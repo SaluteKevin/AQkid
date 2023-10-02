@@ -101,12 +101,12 @@ CREATE TABLE IF NOT EXISTS `teacher_attendances` (
 );
 ```
 
-### Seeding
+#### Seeding
 
 The following queries create required tables then initializes them
 with demo records.
 
-#### Tables
+##### Tables
 
 ```txt
 SELECT * FROM `user`;
