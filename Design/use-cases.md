@@ -103,8 +103,7 @@ CREATE TABLE IF NOT EXISTS `teacher_attendances` (
 
 #### Seeding
 
-The following queries create required tables then initializes them
-with demo records.
+The following queries initializes tables with demo records.
 
 ##### Tables
 
