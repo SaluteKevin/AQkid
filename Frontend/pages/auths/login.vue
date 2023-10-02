@@ -109,10 +109,12 @@
                 </div>
             </div>
         </div>
-        <div class="flex-1 bg-orange-500 text-center hidden lg:flex">
-            <div class="w-full bg-cover bg-center bg-no-repeat"
+        <div class="flex-1 bg-orange-500 text-center hidden lg:flex rounded-r-lg">
+            <!-- <div class="w-full bg-cover bg-center "
                 style="background-image: url('https://scontent-sin6-2.xx.fbcdn.net/v/t39.30808-6/362288650_738993328237417_988681206543655468_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=49d041&_nc_eui2=AeHKvyMFkp3zIBK4UdJbhACtxwiiq0roXf_HCKKrSuhd_4z3wzy3lklqvECuReZ1JRmKzwXf41fw4gQIwL1OS0LE&_nc_ohc=-WswNL9jDvgAX8WPqtn&_nc_ht=scontent-sin6-2.xx&oh=00_AfCszx782q0zHh9smqJrqG798172pAZdXGAZoBkgOBxWoA&oe=651FA667');">
-            </div>
+            </div> -->
+            <img class="w-full object-cover rounded-r-lg" src="https://scontent-sin6-2.xx.fbcdn.net/v/t39.30808-6/362288650_738993328237417_988681206543655468_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=49d041&_nc_eui2=AeHKvyMFkp3zIBK4UdJbhACtxwiiq0roXf_HCKKrSuhd_4z3wzy3lklqvECuReZ1JRmKzwXf41fw4gQIwL1OS0LE&_nc_ohc=-WswNL9jDvgAX8WPqtn&_nc_ht=scontent-sin6-2.xx&oh=00_AfCszx782q0zHh9smqJrqG798172pAZdXGAZoBkgOBxWoA&oe=651FA667">
+        
         </div>
     </div>
 </div>
