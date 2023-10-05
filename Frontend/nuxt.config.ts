@@ -2,6 +2,12 @@
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
+  runtimeConfig: {
+    public: {
+      apiBaseURL: "http://localhost/api/"
+    }
+  },
   modules: [
     // ...
     '@pinia/nuxt',
