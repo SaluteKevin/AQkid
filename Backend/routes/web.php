@@ -28,9 +28,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/resetPassword/{token}', function ($token) {
-    return view('auth.reset-password',['token' => $token]);
-})->name('reset.password');
-Route::post('/resetPassword/{token}', [AuthController::class, 'resetPassword'])->name('reset.password');
 
 require __DIR__.'/auth.php';

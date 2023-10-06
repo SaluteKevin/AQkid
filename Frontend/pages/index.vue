@@ -9,18 +9,6 @@
 
 
 <script setup lang="ts">
-import {useAuthStore} from "~/stores/useAuthStore";
-import nuxtStorage from 'nuxt-storage';
-import Cookies from 'js-cookie';
-
-const auth = useAuthStore();
-await auth.testCSRF();
-
-
-
-
-
-
 
 
 

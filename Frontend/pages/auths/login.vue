@@ -14,10 +14,10 @@
                 <div class="mt-12 flex flex-col items-center">
                     <form class="w-full flex-1 mt-8" @submit.prevent="handleLogin()">
                         <div class="mx-auto max-w-xs">
-                            <input
+                            <input v-model="loginForm.username"
                                 class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                 type="text" name="username" placeholder="Email or Username" />
-                            <input
+                            <input v-model="loginForm.password"
                                 class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                                 type="password" name="password" placeholder="Password" />
                             <button type="submit"
@@ -41,7 +41,7 @@
             </div>
             <div class="flex-1 bg-orange-500 text-center hidden lg:flex rounded-r-lg">
                
-                <img class="w-full object-cover rounded-r-lg" src="https://scontent-sin6-2.xx.fbcdn.net/v/t39.30808-6/362288650_738993328237417_988681206543655468_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=49d041&_nc_eui2=AeHKvyMFkp3zIBK4UdJbhACtxwiiq0roXf_HCKKrSuhd_4z3wzy3lklqvECuReZ1JRmKzwXf41fw4gQIwL1OS0LE&_nc_ohc=-WswNL9jDvgAX8WPqtn&_nc_ht=scontent-sin6-2.xx&oh=00_AfCszx782q0zHh9smqJrqG798172pAZdXGAZoBkgOBxWoA&oe=651FA667">
+                <!-- <img class="w-full object-cover rounded-r-lg" src="https://scontent-sin6-2.xx.fbcdn.net/v/t39.30808-6/362288650_738993328237417_988681206543655468_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=49d041&_nc_eui2=AeHKvyMFkp3zIBK4UdJbhACtxwiiq0roXf_HCKKrSuhd_4z3wzy3lklqvECuReZ1JRmKzwXf41fw4gQIwL1OS0LE&_nc_ohc=-WswNL9jDvgAX8WPqtn&_nc_ht=scontent-sin6-2.xx&oh=00_AfCszx782q0zHh9smqJrqG798172pAZdXGAZoBkgOBxWoA&oe=651FA667"> -->
             
             </div>
         </div>
@@ -51,35 +51,51 @@
 </template>
     
     
-    <script setup lang="ts">
+<script setup lang="ts">
     
     import {useAuthStore} from "~/stores/useAuthStore";
     
     const auth = useAuthStore();
     
-    const form = ref({
-      username: "test",
-      password: "123"
+    const loginForm = ref({
+      username: "",
+      password: ""
     });
     
     async function handleLogin() {
     
        
-        await useApiFetch("/sanctum/csrf-cookie");
-    
-        const {data: login, error: loginerror } = await useApiFetch("/api/loginServer", {
-          method: "POST",
-          body: {
-            username: "test",
-            password: "123"
-          },
+        await useApiFetch<any>("sanctum/csrf-cookie", {});
+        
+         
+        const {data: loginResponse, error: loginError } = await useApiFetch("api/auth/login", {
+            method: "POST",
+            body: {
+                username: loginForm.value.username,
+                password: loginForm.value.password
+            },
         });
-    
-        if (loginerror.value) {
-            console.log(loginerror.value.data.message);
+        
+        if (loginResponse.value) {
+
+            
+            await navigateTo(`/home`);
+
+
+        } 
+
+        else {
+
+            if (loginError.value) {
+
+                console.log(loginError.value.data.errors);
+
+            }
+
+
         }
-    
+
     }
     
     
-    </script>
+</script>

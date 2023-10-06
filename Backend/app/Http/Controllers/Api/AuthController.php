@@ -86,15 +86,5 @@ class AuthController extends Controller
         ]);
     }
 
-    public function forgotPassword(Request $request) {
-
-        return UserService::getUserManager()->forgotPassword($request);
-
-    }
-
-    public function resetPassword(Request $request) {
-
-    }
-
 
 }

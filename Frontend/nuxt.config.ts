@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBaseURL: "http://localhost/api/"
+      apiBaseURL: "http://localhost/"
     }
   },
   modules: [

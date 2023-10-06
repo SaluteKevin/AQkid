@@ -1,16 +1,18 @@
-import type { UseFetchOptions } from 'nuxt/app';
-import { useRequestHeaders } from "nuxt/app";
 import { useRuntimeConfig } from "nuxt/app";
 import { useAuthStore } from "~/stores/useAuthStore";
 
-export default async function <T>(path: string, options: UseFetchOptions<T> = {}) {
+type Headers = {
+  [key: string] :string
+}
+
+export default async function<T>(path: string, options: {}) {
 
   const config = useRuntimeConfig();
   const auth = useAuthStore();
 
-  let headers: any = {};
-
-  headers['Accept'] = 'application/json';
+  const headers : Headers = {
+    "Accept": "application/json"
+  }
 
   const XSRFToken = useCookie('XSRF-TOKEN');
 
@@ -18,28 +20,16 @@ export default async function <T>(path: string, options: UseFetchOptions<T> = {}
     headers['X-XSRF-TOKEN'] = XSRFToken.value as string;
   }
 
-  if (process.server) {
-    headers = {
-      ...headers,
-      ...useRequestHeaders(["cookie"]),
-      referer: "http://localhost:3000",
-    };
-  }
-
   if (auth.isLogin) {
     headers['Authorization'] = `Bearer ${auth.token}`;
   }
 
-  return await useFetch(path, {
-    credentials: "include",
-    watch: false,
-    baseURL: config.public.apiBaseURL,
+  return await useFetch<T>(path, {
     ...options,
-    headers: {
-      ...headers,
-      ...options?.headers
-    }
-  });
+    baseURL: config.public.apiBaseURL,
+    headers
+
+  })
 
 
 
