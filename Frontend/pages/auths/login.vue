@@ -61,7 +61,7 @@
       username: "",
       password: ""
     });
-    
+
     async function handleLogin() {
     
         await auth.setCSRFCookie();
