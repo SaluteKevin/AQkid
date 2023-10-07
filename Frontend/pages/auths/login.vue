@@ -64,9 +64,7 @@
     
     async function handleLogin() {
     
-       
-        await useApiFetch<any>("sanctum/csrf-cookie", {});
-        
+        await auth.setCSRFCookie();
          
         const {data: loginResponse, error: loginError } = await useApiFetch("api/auth/login", {
             method: "POST",
@@ -78,9 +76,11 @@
         
         if (loginResponse.value) {
 
+            await auth.setJWTToken(loginResponse.value.access_token);
+
+            await auth.fetchAuthUser();
             
             await navigateTo(`/home`);
-
 
         } 
 
