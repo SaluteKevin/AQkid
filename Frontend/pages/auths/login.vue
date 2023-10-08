@@ -20,6 +20,9 @@
                             <input v-model="loginForm.password"
                                 class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                                 type="password" name="password" placeholder="Password" />
+                            <p class="text-red-500" v-for="error in loginErrors" :key="error">
+                                {{ error }}
+                            </p>
                             <button type="submit"
                                 class="mt-5 tracking-wide font-semibold bg-orange-500 text-white-500 w-full py-4 rounded-lg hover:bg-green-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                                 <svg class="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2"
@@ -41,7 +44,7 @@
             </div>
             <div class="flex-1 bg-orange-500 text-center hidden lg:flex rounded-r-lg">
                
-                <!-- <img class="w-full object-cover rounded-r-lg" src="https://scontent-sin6-2.xx.fbcdn.net/v/t39.30808-6/362288650_738993328237417_988681206543655468_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=49d041&_nc_eui2=AeHKvyMFkp3zIBK4UdJbhACtxwiiq0roXf_HCKKrSuhd_4z3wzy3lklqvECuReZ1JRmKzwXf41fw4gQIwL1OS0LE&_nc_ohc=-WswNL9jDvgAX8WPqtn&_nc_ht=scontent-sin6-2.xx&oh=00_AfCszx782q0zHh9smqJrqG798172pAZdXGAZoBkgOBxWoA&oe=651FA667"> -->
+                <img class="w-full object-cover rounded-r-lg" src="https://scontent-sin6-2.xx.fbcdn.net/v/t39.30808-6/362288650_738993328237417_988681206543655468_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=49d041&_nc_eui2=AeHKvyMFkp3zIBK4UdJbhACtxwiiq0roXf_HCKKrSuhd_4z3wzy3lklqvECuReZ1JRmKzwXf41fw4gQIwL1OS0LE&_nc_ohc=-WswNL9jDvgAX8WPqtn&_nc_ht=scontent-sin6-2.xx&oh=00_AfCszx782q0zHh9smqJrqG798172pAZdXGAZoBkgOBxWoA&oe=651FA667">
             
             </div>
         </div>
@@ -61,6 +64,8 @@
       username: "",
       password: ""
     });
+
+    const loginErrors = ref<{ [k: string]: any }>({});
 
     async function handleLogin() {
     
@@ -88,7 +93,25 @@
 
             if (loginError.value) {
 
-                console.log(loginError.value.data.errors);
+                const errors = loginError.value.data.errors;
+
+                loginErrors.value = {};
+
+                for (const key in errors) {
+
+                    if (errors.hasOwnProperty(key)) {
+
+                    const errorMessages = errors[key];
+                    
+                    
+                        for (const errorMessage of errorMessages) {
+                            
+                            loginErrors.value[errorMessage] = errorMessage;
+                        
+                        }
+
+                    }
+                }
 
             }
 
