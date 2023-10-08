@@ -56,3 +56,5 @@ flowchart TD
     - Schedule index panes
         - Calendar pane
         - Agenda pane
+
+        ![outlook-calendar-view-annotated.png](../images/outlook-calendar-view-annotated.png)
