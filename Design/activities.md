@@ -1,5 +1,5 @@
 # Activities
 
-https://drive.google.com/file/d/1qv-r26YeusZIkOWNg9UBukHOd1RVTvFO/view?usp=sharing
+**Edit here**: [drive.google.com](https://drive.google.com/file/d/1qv-r26YeusZIkOWNg9UBukHOd1RVTvFO/view?usp=sharing)
 
-![aqkids-activities.drawio.png](images/aqkids-activities.drawio.png)
+![aqkids_activities-latest.drawio.png](images/aqkids_activities-latest.drawio.png)
