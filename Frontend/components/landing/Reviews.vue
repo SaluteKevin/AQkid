@@ -1,5 +1,5 @@
 <template>
-<div class="text-white bg-gray-100 mt-10 px-6 pb-6" id="reviews">
+<div class="text-white bg-gray-100 px-6 pb-6" id="reviews">
     <div class="">
       <h2 class="text-center text-6xl font-bold text-cyan-950 py-6">
         Reviews!
@@ -9,7 +9,7 @@
 
       <div class="max-w-sm rounded overflow-hidden shadow-lg place-self-center bg-white hover:scale-125 duration-300">
         <img class="w-full h-64 object-cover" 
-        src="https://scontent.fbkk10-1.fna.fbcdn.net/v/t39.30808-6/271903862_10159688540849376_8948354250851847496_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5614bc&_nc_eui2=AeEqsOa5O5Pb5ekttHrvoM__cQI8r7aBg6VxAjyvtoGDpcuz5AIpgUkoM5NQJICozjnbcLRwmbGH6ut7wpUBlp5q&_nc_ohc=KRQkTT8vTI4AX8J--t6&_nc_ht=scontent.fbkk10-1.fna&oh=00_AfCS7EuZrk9c-thQTSKMNwGgtdgCvdzsITWWsvXi9HPwsw&oe=651146C1"
+        src="https://media.discordapp.net/attachments/871313414616657920/1160600807801102396/271903862_10159688540849376_8948354250851847496_n.png?ex=653540bb&is=6522cbbb&hm=71d04246d3bec025772cdf98a0db7af644fe36cef18591b9b9786d9791c12225&=&width=726&height=545"
         >
         <div class="px-6 py-4">
           <div class="font-bold text-xl mb-2 text-orange-500">
@@ -24,7 +24,7 @@
 
       <div class="max-w-sm rounded overflow-hidden shadow-lg place-self-center bg-white hover:scale-125 duration-300">
         <img class="w-full h-64 object-cover" 
-        src="https://scontent.fbkk10-1.fna.fbcdn.net/v/t39.30808-6/271933448_5564275880254766_1832002438206814920_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5614bc&_nc_eui2=AeF-nPpwgC7D3RWJq3aza18sxsqy9mp08zjGyrL2anTzOAihM9S1aqpuBLWRmZNa7Z-jqQyyS7o2bDdW7hTaV-bL&_nc_ohc=oCC1vsPlfW4AX_5qu4G&_nc_ht=scontent.fbkk10-1.fna&oh=00_AfDqqSAb_BmfT1bn07rgNme9SIhEP53RNo5RV_ld_asRYQ&oe=651133BB"
+        src="https://media.discordapp.net/attachments/871313414616657920/1160600865963524160/271933448_5564275880254766_1832002438206814920_n.png?ex=653540c9&is=6522cbc9&hm=a8e7e64b0ce7725b7f6ece79df289863814adb07591cef9e2fc04aa8cbd7a8b6&=&width=409&height=545"
         >
         <div class="px-6 py-4">
           <div class="font-bold text-xl mb-2 text-orange-500">
@@ -39,7 +39,7 @@
 
       <div class="max-w-sm rounded overflow-hidden shadow-lg place-self-center bg-white hover:scale-125 duration-300">
         <img class="w-full h-64 object-cover" 
-        src="https://scontent.fbkk10-1.fna.fbcdn.net/v/t39.30808-6/267627553_10158582063122944_8390153846949698207_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5614bc&_nc_eui2=AeFsuAiNjJGJ1e5uE2f4kYe8WitwH7WNnKRaK3AftY2cpCak6DEjaFOzf-qwaf5Cyee8C1yYbs9zNAB-_b3km_9m&_nc_ohc=wtSK7vTR5IgAX-2SRBw&_nc_ht=scontent.fbkk10-1.fna&oh=00_AfAeli4X7_YtQ3JQIDZcUHSP0NbqltAZLxB_UfvDXINVNQ&oe=6511EFA2"
+        src="https://media.discordapp.net/attachments/871313414616657920/1160601117944721428/267627553_10158582063122944_8390153846949698207_n.png?ex=65354105&is=6522cc05&hm=9638819f32cd20923eb15c737bae1304dbd0284c5bfa8e3a72cd2fe15118ad0f&=&width=409&height=545"
         >
         <div class="px-6 py-4">
           <div class="font-bold text-xl mb-2 text-orange-500">
@@ -54,7 +54,7 @@
 
       <div class="max-w-sm rounded overflow-hidden shadow-lg place-self-center bg-white hover:scale-125 duration-300">
         <img class="w-full h-64 object-cover" 
-        src="https://scontent.fbkk20-1.fna.fbcdn.net/v/t39.30808-6/270038517_4687873974660638_9097962751416104999_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5614bc&_nc_eui2=AeHpnn2r_iPJ2XVCnPoloDIiVxQd0Z8tnBpXFB3Rny2cGvdDjhmfqjlJysj44GeZOhGy7x6ni8-0hXyk9rUhWpbA&_nc_ohc=NRcWlorGuCgAX_8HUft&_nc_ht=scontent.fbkk20-1.fna&oh=00_AfBVToksKZ17TAOn39Ac08aKSj_tYMXzakDmwslZR269Jg&oe=65113777"
+        src="https://media.discordapp.net/attachments/871313414616657920/1160601184021774356/270038517_4687873974660638_9097962751416104999_n.png?ex=65354115&is=6522cc15&hm=ce863532f12c69c9f5027aadab81cba8f35b551545916cefd8172bbeb4b92497&=&width=409&height=545"
         >
         <div class="px-6 py-4">
           <div class="font-bold text-xl mb-2 text-orange-500">
@@ -69,7 +69,7 @@
 
       <div class="max-w-sm rounded overflow-hidden shadow-lg place-self-center bg-white hover:scale-125 duration-300">
         <img class="w-full h-64 object-cover" 
-        src="https://scontent.fbkk20-1.fna.fbcdn.net/v/t39.30808-6/258397402_4855220244508897_4255804475468976414_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5614bc&_nc_eui2=AeEST-hSK4X8JWPOkpQkzgfVuuu78jy8fxi667vyPLx_GDhvjSGnLpYyHWAVbHA4h0vWWTfoIhNgdYmXvnrNlZMp&_nc_ohc=ys1-YGZUxZUAX9PoeTn&_nc_oc=AQkffNsnjaOuToGxK2xFoRa2ovtY8mpV8ui-CoWlQ1JS3MByVCAyk3mu__38XPvL0uk&_nc_ht=scontent.fbkk20-1.fna&oh=00_AfA0JorK_Ulnunz5L-4ROpprqL9a20ZFzYfkw1l4B5vWSA&oe=6512D1CE"
+        src="https://media.discordapp.net/attachments/871313414616657920/1160601509956964523/258397402_4855220244508897_4255804475468976414_n.png?ex=65354162&is=6522cc62&hm=df137a62cd0fd39554caaf30612bf8284415391b3235fe79d1de7ebb82e9efeb&=&width=409&height=545"
         >
         <div class="px-6 py-4">
           <div class="font-bold text-xl mb-2 text-orange-500">
@@ -84,7 +84,7 @@
 
       <div class="max-w-sm rounded overflow-hidden shadow-lg place-self-center bg-white hover:scale-125 duration-300">
         <img class="w-full h-64 object-cover" 
-        src="https://scontent.fbkk20-1.fna.fbcdn.net/v/t39.30808-6/258544317_1590498887960348_1140566917094527056_n.jpg?stp=dst-jpg_p960x960&_nc_cat=111&ccb=1-7&_nc_sid=5614bc&_nc_eui2=AeEGY6_NzhVyYnhlMuo4LzKcz9_G9FPdxhnP38b0U93GGVQv4H7iCnTi5LUvTAi57qFEbfzJ0Ud1UcVxWiug3XDM&_nc_ohc=_FHQZDf_0lcAX9XX6vF&_nc_ht=scontent.fbkk20-1.fna&oh=00_AfD7wHV90bzWKWPiOAg_-35L4xPcajWkLNzOvnq8WyMPKQ&oe=6511EDB6"
+        src="https://media.discordapp.net/attachments/871313414616657920/1160601681864700036/258544317_1590498887960348_1140566917094527056_n.png?ex=6535418b&is=6522cc8b&hm=1cbb5f26166af5f461b824d22381f9c1fc26be5b91ac504cd6498c16e8c83f75&=&width=545&height=545"
         >
         <div class="px-6 py-4">
           <div class="font-bold text-xl mb-2 text-orange-500">
