@@ -18,7 +18,6 @@ flowchart TD
     staffHome --> teacherIndex[Teacher List]
 
     teacherIndex --> teacherCreate[Create Teacher]
-    teacherIndex --> teacherEdit[Edit Teacher]
 
     staffHome --> studentIndex[Student List]
 ```
