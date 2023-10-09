@@ -4,6 +4,13 @@
 
 All the logic
 
+## Terms
+
+1. *generic timeslot*  
+    A timeslot that includes day of week and time, e.g., `Tue 08:00:00`.
+1. *specific timeslot*  
+    A timeslot that includes date and time, e.g., `2023-10-31 08:00:00`.
+
 ## Course Creation and Enrollment
 
 ```mermaid
