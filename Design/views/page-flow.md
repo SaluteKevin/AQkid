@@ -1,9 +1,6 @@
 # Page Flow
 
-> **View online here**: [mermaidchart.com](https://www.mermaidchart.com/raw/7d0eb959-dbbf-4d38-822f-5882321e7f74?version=v0.1&theme=light&format=svg)  
-
 All the pages
-
 
 ## Unauthorized
 
@@ -40,7 +37,6 @@ flowchart TD
     - Edit schedule pane
     - Create schedule pane
 
-
 ## Teacher
 
 ```mermaid
@@ -58,7 +54,6 @@ flowchart TD
             - Student attendance pop-up
 
         ![outlook-calendar-view-annotated.png](../images/outlook-calendar-view-annotated.png)
-
 
 ## Student
 

@@ -2,7 +2,6 @@
 
 This page presents design decisions
 
-
 ## Object Definitions
 
 1. course
