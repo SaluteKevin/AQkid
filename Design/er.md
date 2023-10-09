@@ -1,5 +1,7 @@
 # ER Diagram
 
+> **View online here**: [mermaidchart.com](https://www.mermaidchart.com/raw/930a80f8-a45b-40eb-9f5e-878a44120805?version=v0.1&theme=light&format=svg)
+
 ```mermaid
 erDiagram
     users {
@@ -35,6 +37,14 @@ erDiagram
         INT course_id FK "NOT NULL"
         INT student_id FK "NOT NULL"
         ENUM status "NOT NULL"
+        TIMESTAMP created_at "NOT NULL"
+        TIMESTAMP updated_at "NOT NULL"
+    }
+
+    receipts {
+        INT id PK "NOT NULL, AUTO_INCREMENT"
+        INT registration_id FK "NOT NULL"
+        INT student_id FK "NOT NULL"
         TIMESTAMP created_at "NOT NULL"
         TIMESTAMP updated_at "NOT NULL"
     }
