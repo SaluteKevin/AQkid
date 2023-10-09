@@ -20,7 +20,7 @@ flowchart TD
 
     staffHome[Home]
 
-    staffHome --> courseRequestIndex[Course Requests] -- Select --> courseRequestShow[Review Request]
+    staffHome --> enrollmentRequestIndex[Enrollment Requests] -- Select --> courseRequestShow[Review Request]
 
     staffHome --> scheduleEdit[Manage Schedule]
 
