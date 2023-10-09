@@ -10,7 +10,7 @@ flowchart TD
     start[Landing]
     
     start --> login[Login] --> home[Home]
-    start --> register[Register] --> home[Home]
+    start --> register[Register] --> home[["Home (by Roles)"]]
 ```
 
 ## Staff
