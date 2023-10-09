@@ -11,7 +11,7 @@
             </div>
             <div class="ml-2">มาที่ Aquakids Chiangmai แล้วว่ายน้ำกัน!</div>
           </span>
-          <div class="text-white text-2xl space-y-4">
+          <div class="text-white text-2xl space-y-4 ">
             <div>• เปิดรับทดลองเรียนฟรี! สำหรับนักเรียนใหม่ อายุตั้งแต่แรกเกิด - 10 ปี</div>
             <div>• เป็นสถาบันสอนว่ายน้ำที่ใช้สระระบบน้ำเกลือปรับอุณหภูมิ! </div>
             <div>• เป็นสระในร่มและเครื่องกรองน้ำมากถึง 3 ตัว</div>
