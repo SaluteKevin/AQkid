@@ -61,11 +61,11 @@ CREATE TABLE IF NOT EXISTS `courses` (
 );
 
 
-CREATE TABLE IF NOT EXISTS `registrations` (
+CREATE TABLE IF NOT EXISTS `enrollments` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `course_id` INT NOT NULL,
     `student_id` INT NOT NULL,
-    `status` ENUM('PENDING', 'APPROVED', 'REJECTED') NOT NULL,
+    `status` ENUM('PENDING', 'SUCCESS', 'FAILED') NOT NULL,
     `created_at` TIMESTAMP NOT NULL,
     `updated_at` TIMESTAMP NOT NULL,
     PRIMARY KEY (`id`),
@@ -132,7 +132,7 @@ SELECT * FROM `courses`;
 +----+------------+----------+-------+----------+---------+---------+---------+-------------+-------------+
 
 
-SELECT * FROM `registrations`;
+SELECT * FROM `enrollments`;
 +----+-----------+------------+---------+-------------+-------------+
 | id | course_id | student_id | status  | created_at  | updated_at  |
 +----+-----------+------------+---------+-------------+-------------+
@@ -200,7 +200,7 @@ INSERT INTO `courses` (`title`, `quota`, `capacity`, `min_age`, `max_age`, `stat
     ('Thu 16pm', 10, 4, 12, 24, 'PENDING', NOW(), NOW());
 
 
-INSERT INTO `registrations` (`course_id`, `student_id`, `status`, `created_at`, `updated_at`) VALUES
+INSERT INTO `enrollments` (`course_id`, `student_id`, `status`, `created_at`, `updated_at`) VALUES
     (2, 4, 'PENDING', NOW(), NOW()),
     (2, 6, 'PENDING', NOW(), NOW());
 
@@ -236,7 +236,7 @@ INSERT INTO `student_attendances` (`timeslot_id`, `student_id`) VALUES
 
     > ข้อมูล:
     >
-    >     SELECT `users`.*, `registrations`.`id` AS `registration_id`, `registrations`.`course_id`, `registrations`.`status`, `registrations`.`created_at`, `registrations`.`updated_at` FROM `users` JOIN `registrations` ON `users`.`id` = `registrations`.`student_id` WHERE `username` = 'a.doe'\G
+    >     SELECT `users`.*, `enrollments`.`id` AS `enrollment_id`, `enrollments`.`course_id`, `enrollments`.`status`, `enrollments`.`created_at`, `enrollments`.`updated_at` FROM `users` JOIN `enrollments` ON `users`.`id` = `enrollments`.`student_id` WHERE `username` = 'a.doe'\G
     >     *************************** 1. row ***************************
     >                  id: 7
     >            username: a.doe
@@ -250,17 +250,17 @@ INSERT INTO `student_attendances` (`timeslot_id`, `student_id`) VALUES
     >               email: a.doe@example.com
     >          created_at: <CREATE_USER_TIMESTAMP>
     >          updated_at: <CREATE_USER_TIMESTAMP>
-    >     registration_id: 4
+    >     enrollment_id: 4
     >           course_id: 3
     >              status: PENDING
-    >          created_at: <REGISTRATION_TIMESTAMP>
-    >          updated_at: <REGISTRATION_TIMESTAMP>
+    >          created_at: <enrollment_TIMESTAMP>
+    >          updated_at: <enrollment_TIMESTAMP>
 
     ```sql
     INSERT INTO `users` (`username`, `password`, `role`, `first_name`, `middle_name`, `last_name`, `birthdate`, `phone_number`, `email`, `created_at`, `updated_at`) VALUES
         ('a.doe', 'password', 'STUDENT', 'Alice', 'Linus', 'Doe', '2016-05-02', '0123456789', 'a.doe@example.com', NOW(), NOW());
 
-    INSERT INTO `registrations` (`course_id`, `student_id`, `status`, `created_at`, `updated_at`)
+    INSERT INTO `enrollments` (`course_id`, `student_id`, `status`, `created_at`, `updated_at`)
         SELECT
             3 AS `course_id`,
             `id` AS `student_id`,
