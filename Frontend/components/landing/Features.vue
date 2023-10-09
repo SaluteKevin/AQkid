@@ -3,7 +3,7 @@
     <div class="sm:px-2 md:px-24">
       <div class="grid grid-flow-col content-center pt-16">
         <div class="px-12 ml-2 ">
-          <span class="my-8 text-2xl font-bold text-white md:text-4xl flex">
+          <span class="my-8 text-2xl font-bold text-white md:text-4xl flex sm:text-cyan-950">
             <div>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-secondary">
               <path fill-rule="evenodd" d="M9 4.5a.75.75 0 01.721.544l.813 2.846a3.75 3.75 0 002.576 2.576l2.846.813a.75.75 0 010 1.442l-2.846.813a3.75 3.75 0 00-2.576 2.576l-.813 2.846a.75.75 0 01-1.442 0l-.813-2.846a3.75 3.75 0 00-2.576-2.576l-2.846-.813a.75.75 0 010-1.442l2.846-.813A3.75 3.75 0 007.466 7.89l.813-2.846A.75.75 0 019 4.5zM18 1.5a.75.75 0 01.728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 010 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 01-1.456 0l-.258-1.036a2.625 2.625 0 00-1.91-1.91l-1.036-.258a.75.75 0 010-1.456l1.036-.258a2.625 2.625 0 001.91-1.91l.258-1.036A.75.75 0 0118 1.5zM16.5 15a.75.75 0 01.712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 010 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 01-1.422 0l-.395-1.183a1.5 1.5 0 00-.948-.948l-1.183-.395a.75.75 0 010-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0116.5 15z" clip-rule="evenodd" />
@@ -18,7 +18,7 @@
             <div>• มีการตรวจเช็คคุณภาพน้ำจากบริษัทผู้เชี่ยวชาญอยู่ประจำ</div>
           </div>
         </div>
-        <div class="ml-6">
+        <div class="md:ml-6 sm:mr-16">
           <img 
                     class="object-cover h-96 w-full rounded-full hover:scale-105 duration-300 hover:shadow-xl" 
                     src="https://cdn.discordapp.com/attachments/871313414616657920/1160598734435000320/361648744_738993304904086_5497916127488969777_n.jpg?ex=65353ecd&is=6522c9cd&hm=f40ddd518cda5b4e57d4151e11a931e8b1b228434af310d54725a7ab08979f4e&"
