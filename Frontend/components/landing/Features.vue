@@ -29,10 +29,10 @@
   
   
       <div
-        class=" mx-12 md:grid md:divide-x sm:divide-y divide-gray-100 overflow-hidden rounded-3xl text-gray-600 grid-cols-4 py-12"
+        class=" mx-12 md:grid md:divide-x divide-gray-100 overflow-hidden rounded-3xl text-gray-600 grid-cols-3  py-12"
       >
-        <div class="group relative sm:bg-gradient-to-r sm:from-indigo-500 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
-          <div class="relative space-y-8 py-12 p-8">
+        <div class="group relative md:bg-gradient-to-t md:from-blue-600 md:from-20% sm:to-0% hover:z-[1]">
+          <div class="relative space-y-8 py-12 p-8 ">
             <img
               src="https://cdn-icons-png.flaticon.com/512/4341/4341139.png"
               class="w-12"
@@ -54,7 +54,7 @@
             </div>
           </div>
         </div>
-        <div class="group relative bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
+        <div class="group relative md:bg-gradient-to-t md:from-blue-600 md:from-10% sm:to-0% hover:z-[1]">
           <div class="relative space-y-8 py-12 p-8">
             <img
               src="https://cdn-icons-png.flaticon.com/512/4341/4341134.png"
@@ -76,8 +76,8 @@
             </div>
           </div>
         </div>
-        <div class="group relative bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
-          <div class="relative space-y-8 py-12 p-8">
+        <div class="group relative md:bg-gradient-to-t md:from-blue-600 md:from-10% sm:to-0% hover:z-[1]">
+          <div class="relative space-y-8 py-12 p-8 ">
             <img
               src="https://cdn-icons-png.flaticon.com/512/4341/4341160.png"
               class="w-12"
@@ -98,11 +98,11 @@
             </div>
           </div>
         </div>
-        <div
-          class="group relative bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10"
+        <!-- <div
+          class="group relative md:bg-gradient-to-t md:from-blue-600 md:from-10% sm:to-0% hover:z-[1]"
         >
           <div
-            class="relative space-y-8 py-12 p-8 transition duration-300 group-hover:bg-gray-800"
+            class="relative space-y-8 py-12 p-8"
           >
             <img
               src="https://cdn-icons-png.flaticon.com/512/4341/4341025.png"
@@ -129,7 +129,7 @@
               </svg>                
             </a>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
