@@ -4,12 +4,24 @@
 
 All the pages
 
+
+## Unauthorized
+
+```mermaid
+flowchart TD
+
+    start[Landing]
+    
+    start --> login[Login] --> home[Home]
+    start --> register[Register] --> home[Home]
+```
+
 ## Staff
 
 ```mermaid
 flowchart TD
 
-    start[Landing] --> staffLogin[Login] --> staffHome[Home]
+    staffHome[Home]
 
     staffHome --> courseRequestIndex[Course Requests] -- Select --> courseRequestShow[Review Request]
 
@@ -34,7 +46,7 @@ flowchart TD
 ```mermaid
 flowchart TD
 
-    start[Landing] --> teacherLogin[Login] --> teacherHome[Home]
+    teacherHome[Home]
 
     teacherHome --> teacherProfileShow[Profile] --> teacherProfileEdit[Edit Profile]
 ```
@@ -53,16 +65,8 @@ flowchart TD
 ```mermaid
 flowchart TD
 
-    start[Landing]
-    studentLogin[Login]
-    studentRegister[Register]
     studentHome[Home]
 
-    start --> studentLogin --> studentHome
-    start --> studentRegister --> studentHome
-
-    studentHome[Home]
-    
     studentHome --> studentProfileShow[Profile]
     studentProfileShow --> studentProfileEdit[Edit Profile]
 
