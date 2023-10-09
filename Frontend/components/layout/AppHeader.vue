@@ -18,10 +18,13 @@
                 
                 <div class="space-x-4">
                     <NuxtLink class="py-2 px-4 text-white font-semibold rounded-md bg-cyan-900 hover:bg-cyan-950 duration-200" to="/auths/login">
-                    Select
+                    Select Course
                     </NuxtLink>
                     <NuxtLink class="py-2 px-4 text-white font-semibold rounded-md bg-orange-500 hover:bg-orange-700 duration-200" to="/auths/register">
-                    Register
+                    Profile
+                    </NuxtLink>
+                    <NuxtLink class="py-2 px-4 text-white font-semibold rounded-md bg-gray-500 hover:bg-gray-200 hover:text-cyan-900 duration-200" to="/auths/register">
+                    LogOut
                     </NuxtLink>
                     
                 </div>

@@ -1,6 +1,6 @@
 <template>
   <div id="features" class="">
-    <div class="px-24">
+    <div class="sm:px-2 md:px-24">
       <div class="grid grid-flow-col content-center pt-16">
         <div class="px-12 ml-2 ">
           <span class="my-8 text-2xl font-bold text-white md:text-4xl flex">
@@ -29,9 +29,9 @@
   
   
       <div
-        class=" mx-12 grid divide-x divide-gray-100 overflow-hidden rounded-3xl text-gray-600 grid-cols-4 py-12"
+        class=" mx-12 md:grid md:divide-x sm:divide-y divide-gray-100 overflow-hidden rounded-3xl text-gray-600 grid-cols-4 py-12"
       >
-        <div class="group relative bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
+        <div class="group relative sm:bg-gradient-to-r sm:from-indigo-500 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
           <div class="relative space-y-8 py-12 p-8">
             <img
               src="https://cdn-icons-png.flaticon.com/512/4341/4341139.png"
