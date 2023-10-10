@@ -1,7 +1,5 @@
 # Business Logic
 
-> **View online here**: [mermaidchart.com](https://www.mermaidchart.com/raw/7d0eb959-dbbf-4d38-822f-5882321e7f74?version=v0.1&theme=light&format=svg)  
-
 All the logic
 
 ## Terms
@@ -12,6 +10,8 @@ All the logic
     A timeslot that includes date and time, e.g., `2023-10-31 08:00:00`.
 
 ## Course Creation and Enrollment
+
+> **View online here**: [mermaidchart.com](https://www.mermaidchart.com/raw/7d0eb959-dbbf-4d38-822f-5882321e7f74?version=v0.1&theme=light&format=svg)  
 
 ```mermaid
 flowchart LR
@@ -35,12 +35,13 @@ flowchart LR
 
         paymentDetails[Show payment details]
 
-        subgraph uploadPaymentSlipInterval[Defined payment interval]
+        subgraph uploadPaymentSlipInterval[Predefined payment interval]
             direction TB
 
             uploadPaymentSlip[Upload payment slip]
-            uploadPaymentSlip -- Yes --> submitEnrollmentRequest[Submit enrollment request]
-            uploadPaymentSlip -- No/cancel --> abortEnrollment[Abort enrollment]
+            uploadPaymentSlip --> confirmUpload{Confirm upload}
+            confirmUpload -- Yes --> submitEnrollmentRequest[Submit enrollment request]
+            confirmUpload -- No/cancel --> abortEnrollment[Abort enrollment]
         end
 
         paymentDetails --> uploadPaymentSlipInterval{Upload payment slip}
@@ -61,4 +62,4 @@ flowchart LR
     staffConfirmEnrollment --> stop([Stop])
 ```
 
-- Defined payment interval: short 5min?
+- Predefined payment interval: short 5min?
