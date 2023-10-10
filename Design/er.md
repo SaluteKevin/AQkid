@@ -14,8 +14,9 @@ erDiagram
         VARCHAR last_name "NOT NULL"
         DATE birthdate "NOT NULL"
         VARCHAR phone_number "NOT NULL"
-        VARCHAR email
         VARCHAR profile_image_path "NOT NULL"
+        VARCHAR email "UNIQUE"
+        TIMESTAMP email_verified_at
         TIMESTAMP created_at "NOT NULL"
         TIMESTAMP updated_at "NOT NULL"
     }

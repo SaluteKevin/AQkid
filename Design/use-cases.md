@@ -30,16 +30,18 @@ SELECT DATABASE();
 ```sql
 CREATE TABLE IF NOT EXISTS `users` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `username` VARCHAR(32) UNIQUE NOT NULL,
-    `password` VARCHAR(256) NOT NULL,
+    `username` VARCHAR(255) UNIQUE NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
     `role` ENUM('STAFF', 'TEACHER', 'STUDENT') NOT NULL,
-    `first_name` VARCHAR(32) NOT NULL,
-    `middle_name` VARCHAR(32),
-    `last_name` VARCHAR(32) NOT NULL,
+    `first_name` VARCHAR(255) NOT NULL,
+    `middle_name` VARCHAR(255),
+    `last_name` VARCHAR(255) NOT NULL,
     `birthdate` DATE NOT NULL,
     `phone_number` VARCHAR(16) NOT NULL,
     `email` VARCHAR(320),
+    `email_verified_at` timestamp NULL DEFAULT NULL,
     `profile_image_path` VARCHAR(260) NOT NULL,
+    `remember_token` VARCHAR(100) DEFAULT NULL,
     `created_at` TIMESTAMP NOT NULL,
     `updated_at` TIMESTAMP NOT NULL,
     PRIMARY KEY (`id`)
@@ -131,17 +133,16 @@ The following queries initializes tables with demo records.
 
 ```txt
 SELECT * FROM `user`;
-+----+------------+------------------+---------+------------+-------------+-----------------+------------+--------------+---------------------------------------+-------------------------------------+---------------------+---------------------+
-| id | username   | password         | role    | first_name | middle_name | last_name       | birthdate  | phone_number | email                                 | profile_image_path                  | created_at          | updated_at          |
-+----+------------+------------------+---------+------------+-------------+-----------------+------------+--------------+---------------------------------------+-------------------------------------+---------------------+---------------------+
-|  1 | staff_01   | staff_password   | STAFF   | Salute     | NULL        | Khumyunn        | 1998-09-22 | 0998765432   | salute.k@staff.aqkids.example.com     | assets/staff_01/profile_image.png   | 2022-11-28 08:00:00 | 2022-11-28 08:00:00 |
-|  2 | teacher_01 | teacher_password | TEACHER | Potsawat   | NULL        | Thinkanwatthana | 2000-01-01 | 0987654321   | potsawat.t@teacher.aqkids.example.com | assets/teacher_01/profile_image.png | 2022-11-29 08:00:00 | 2022-11-29 08:00:00 |
-|  3 | teacher_02 | teacher_password | TEACHER | Jonathan   | NULL        | Thinkanwatthana | 2001-01-01 | 0987654321   | jonathan.t@teacher.aqkids.example.com | assets/teacher_02/profile_image.png | 2022-11-29 09:00:00 | 2022-11-29 09:00:00 |
-|  4 | j.doe      | password         | STUDENT | John       | Linus       | Doe             | 2014-05-01 | 0123456789   | j.doe@example.com                     | assets/j.doe/profile_image.png      | 2022-12-07 09:00:00 | 2022-12-07 09:00:00 |
-|  5 | a.seed     | password         | STUDENT | Apple      | NULL        | Seed            | 2014-08-21 | 0123456789   | a.seed@example.com                    | assets/a.seed/profile_image.png     | 2022-12-07 09:40:00 | 2022-12-07 09:40:00 |
-|  6 | b.bird     | password         | STUDENT | Burden     | NULL        | Bird            | 1997-01-16 | 0987654321   | b.bird@example.com                    | assets/b.bird/profile_image.png     | 2022-12-07 09:55:00 | 2022-12-07 09:55:00 |
-+----+------------+------------------+---------+------------+-------------+-----------------+------------+--------------+---------------------------------------+-------------------------------------+---------------------+---------------------+
-
++----+------------+------------------+---------+------------+-------------+-----------------+------------+--------------+---------------------------------------+-------------------+-------------------------------------+----------------+---------------------+---------------------+
+| id | username   | password         | role    | first_name | middle_name | last_name       | birthdate  | phone_number | email                                 | email_verified_at | profile_image_path                  | remember_token | created_at          | updated_at          |
++----+------------+------------------+---------+------------+-------------+-----------------+------------+--------------+---------------------------------------+-------------------+-------------------------------------+----------------+---------------------+---------------------+
+|  1 | staff_01   | staff_password   | STAFF   | Salute     | NULL        | Khumyunn        | 1998-09-22 | 0998765432   | salute.k@staff.aqkids.example.com     | NULL              | assets/staff_01/profile_image.png   | NULL           | 2022-11-28 08:00:00 | 2022-11-28 08:00:00 |
+|  2 | teacher_01 | teacher_password | TEACHER | Potsawat   | NULL        | Thinkanwatthana | 2000-01-01 | 0987654321   | potsawat.t@teacher.aqkids.example.com | NULL              | assets/teacher_01/profile_image.png | NULL           | 2022-11-29 08:00:00 | 2022-11-29 08:00:00 |
+|  3 | teacher_02 | teacher_password | TEACHER | Jonathan   | NULL        | Thinkanwatthana | 2001-01-01 | 0987654321   | jonathan.t@teacher.aqkids.example.com | NULL              | assets/teacher_02/profile_image.png | NULL           | 2022-11-29 09:00:00 | 2022-11-29 09:00:00 |
+|  4 | j.doe      | password         | STUDENT | John       | Linus       | Doe             | 2014-05-01 | 0123456789   | j.doe@example.com                     | NULL              | assets/j.doe/profile_image.png      | NULL           | 2022-12-07 09:00:00 | 2022-12-07 09:00:00 |
+|  5 | a.seed     | password         | STUDENT | Apple      | NULL        | Seed            | 2014-08-21 | 0123456789   | a.seed@example.com                    | NULL              | assets/a.seed/profile_image.png     | NULL           | 2022-12-07 09:40:00 | 2022-12-07 09:40:00 |
+|  6 | b.bird     | password         | STUDENT | Burden     | NULL        | Bird            | 1997-01-16 | 0987654321   | b.bird@example.com                    | NULL              | assets/b.bird/profile_image.png     | NULL           | 2022-12-07 09:55:00 | 2022-12-07 09:55:00 |
++----+------------+------------------+---------+------------+-------------+-----------------+------------+--------------+---------------------------------------+-------------------+-------------------------------------+----------------+---------------------+---------------------+
 
 SELECT * FROM `courses`;
 +----+------------+----------+-------+----------+---------+---------+----------+---------------------+---------------------+-----------+---------------------+---------------------+
