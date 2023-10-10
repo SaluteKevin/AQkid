@@ -1,6 +1,6 @@
 <template>
-    <div class="p-16 min-h-screen bg-gradient-to-l to-purple-50 to-60% from-[#bce1ff] from-10%">
-    <h2 class="my-4 text-4xl font-semibold text-fray-600">Request List</h2>
+    <div class="p-16 min-h-screen bg-gradient-to-b to-purple-100 to-60% from-[#bce1ff] from-10%">
+    <h2 class="my-4 text-4xl font-semibold text-gray-600">Request List</h2>
 			<div class="pb-2 flex items-center justify-between text-gray-600">
 				<!-- Header -->
 				<div>
@@ -179,6 +179,8 @@
 
 
 			</div>
+
+			<Paginate class="mt-8" :from="1" :last_page="10"/>
 
 
         </div>  

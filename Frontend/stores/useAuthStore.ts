@@ -43,7 +43,7 @@ export const useAuthStore = defineStore('auth', {
         this.token = token
     },
 
-    clearAuth(){
+    async clearAuth(){
         this.token = ''
         this.user.value = {}
     }
