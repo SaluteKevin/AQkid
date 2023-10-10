@@ -12,10 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('receipts', function (Blueprint $table) {
-            $table->unsignedBigInteger('enrollment_id');
-
             $table->id();
-            $table->foreign('enrollment_id')->references('id')->on('enrollments');
+            $table->unsignedBigInteger('enrollment_id');
             $table->timestamp('payment_timestamp');
             $table->timestamp('receipt_timestamp');
             $table->string('description');
@@ -23,6 +21,8 @@ return new class extends Migration
             $table->float('subtotal');
             $table->float('total');
             $table->timestamps();
+
+            $table->foreign('enrollment_id')->references('id')->on('enrollments');
         });
     }
 

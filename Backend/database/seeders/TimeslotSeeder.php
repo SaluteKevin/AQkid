@@ -40,8 +40,8 @@ class TimeslotSeeder extends Seeder
                         'course_id' => $courseId,
                         'datetime' => date('Y-m-d H:i:s', $dateTime),
                         'type' => TimeslotTypeEnum::MAKEUP->name,
-                        'created_at' => $courseCreatedAt,
-                        'updated_at' => $courseCreatedAt
+                        'created_at' => '2023-03-01 10:00:00',
+                        'updated_at' => '2023-03-01 10:00:00'
                     ]);
                 }
             }

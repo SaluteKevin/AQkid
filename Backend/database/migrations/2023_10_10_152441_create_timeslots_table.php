@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('timeslots', function (Blueprint $table) {
-            $table->unsignedBigInteger('course_id');
-
             $table->id();
-            $table->foreign('course_id')->references('id')->on('courses');
+            $table->unsignedBigInteger('course_id');
             $table->datetime('datetime');
             $table->enum('type', ['REGULAR', 'MAKEUP', 'UNDEFINED']);
             $table->timestamps();
+
+            $table->foreign('course_id')->references('id')->on('courses');
         });
     }
 

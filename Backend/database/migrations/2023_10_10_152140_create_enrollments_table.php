@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('enrollments', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('student_id');
-
-            $table->id();
-            $table->foreign('course_id')->references('id')->on('courses');
-            $table->foreign('student_id')->references('id')->on('users');
             $table->enum('status', ['PENDING', 'SUCCESS', 'FAILED']);
             $table->timestamps();
+
+            $table->foreign('course_id')->references('id')->on('courses');
+            $table->foreign('student_id')->references('id')->on('users');
         });
     }
 

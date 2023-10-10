@@ -12,10 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('courses', function (Blueprint $table) {
-            $table->unsignedBigInteger('teacher_id');
-
             $table->id();
-            $table->foreign('teacher_id')->references('id')->on('users');
+            $table->unsignedBigInteger('teacher_id');
             $table->string('title', 128);
             $table->integer('quota');
             $table->integer('capacity');
@@ -26,6 +24,8 @@ return new class extends Migration
             $table->datetime('start_datetime');
             $table->enum('status', ['PENDING', 'OPEN', 'FULL', 'ACTIVE', 'ENDED', 'CANCELLED']);
             $table->timestamps();
+
+            $table->foreign('teacher_id')->references('id')->on('users');
         });
     }
 

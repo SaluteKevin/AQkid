@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('student_attendances', function (Blueprint $table) {
             $table->unsignedBigInteger('timeslot_id');
             $table->unsignedBigInteger('student_id');
+            $table->enum('has_attended', ['TRUE', 'FALSE'])->default('FALSE');
 
             $table->foreign('timeslot_id')->references('id')->on('timeslots');
             $table->foreign('student_id')->references('id')->on('users');
-            $table->enum('has_attended', ['TRUE', 'FALSE'])->default('FALSE');
         });
     }
 
