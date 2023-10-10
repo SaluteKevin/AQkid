@@ -75,11 +75,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(UserNoti::class);
     }
 
-    public function student_attendances(): BelongsToMany {
+    public function studentAttendances(): BelongsToMany {
         return $this->belongsToMany(Timeslot::class, 'student_attendances', 'student_id', 'timeslot_id')->withPivot('has_attended');
     }
 
-    public function teacher_attendances(): BelongsToMany {
+    public function teacherAttendances(): BelongsToMany {
         return $this->belongsToMany(Timeslot::class, 'teacher_attendances', 'teacher_id', 'timeslot_id');
     }
 }

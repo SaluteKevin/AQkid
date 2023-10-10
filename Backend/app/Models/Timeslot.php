@@ -16,11 +16,11 @@ class Timeslot extends Model
         return $this->belongsTo(Course::class);
     }
 
-    public function student_attendances(): BelongsToMany {
+    public function studentAttendances(): BelongsToMany {
         return $this->belongsToMany(User::class, 'student_attendances', 'timeslot_id', 'student_id')->withPivot('has_attended');
     }
 
-    public function teacher_attendances(): BelongsToMany {
+    public function teacherAttendances(): BelongsToMany {
         return $this->belongsToMany(User::class, 'teacher_attendances', 'timeslot_id', 'teacher_id');
     }
 }

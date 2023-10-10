@@ -19,7 +19,7 @@ class TeacherAttendanceSeeder extends Seeder
 
         foreach ($timeslotIds as $timeslotId) {
             $timeslot = Timeslot::find($timeslotId);
-            $teacher->teacher_attendances()->attach($timeslot);
+            $teacher->teacherAttendances()->attach($timeslot);
         }
     }
 }
