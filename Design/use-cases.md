@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     `birthdate` DATE NOT NULL,
     `phone_number` VARCHAR(16) NOT NULL,
     `email` VARCHAR(320),
+    `profile_image_path` VARCHAR(260) NOT NULL,
     `created_at` TIMESTAMP NOT NULL,
     `updated_at` TIMESTAMP NOT NULL,
     PRIMARY KEY (`id`)
@@ -53,7 +54,10 @@ CREATE TABLE IF NOT EXISTS `courses` (
     `capacity` INT NOT NULL,
     `min_age` INT DEFAULT 0,
     `max_age` INT,
-    `status` ENUM('PENDING', 'OPEN', 'FULL', 'ACTIVE', 'ENDED') NOT NULL,
+    `duration` INT NOT NULL DEFAULT 60,
+    `opens_until` DATETIME NOT NULL,
+    `start_datetime` DATETIME NOT NULL,
+    `status` ENUM('PENDING', 'OPEN', 'FULL', 'ACTIVE', 'ENDED', 'CANCELLED') NOT NULL,
     `created_at` TIMESTAMP NOT NULL,
     `updated_at` TIMESTAMP NOT NULL,
     PRIMARY KEY (`id`),
@@ -74,10 +78,27 @@ CREATE TABLE IF NOT EXISTS `enrollments` (
 );
 
 
+CREATE TABLE IF NOT EXISTS `receipts` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `enrollment_id` INT,
+    `payment_timestamp` TIMESTAMP NOT NULL,
+    `receipt_timestamp` TIMESTAMP NOT NULL,
+    `description` VARCHAR(1000) NOT NULL,
+    `amount` FLOAT NOT NULL,
+    `subtotal` FLOAT NOT NULL,
+    `total` FLOAT NOT NULL,
+    `created_at` TIMESTAMP NOT NULL,
+    `updated_at` TIMESTAMP NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`enrollment_id`) REFERENCES `enrollments` (`id`)
+);
+
+
 CREATE TABLE IF NOT EXISTS `timeslots` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `course_id` INT NOT NULL,
     `datetime` DATETIME NOT NULL,
+    `type` ENUM('REGULAR', 'MAKEUP', 'UNDEFINED') NOT NULL,
     `created_at` TIMESTAMP NOT NULL,
     `updated_at` TIMESTAMP NOT NULL,
     PRIMARY KEY (`id`),
@@ -88,6 +109,7 @@ CREATE TABLE IF NOT EXISTS `timeslots` (
 CREATE TABLE IF NOT EXISTS `student_attendances` (
     `timeslot_id` INT NOT NULL,
     `student_id` INT NOT NULL,
+    `has_attended` ENUM('TRUE', 'FALSE') NOT NULL,
     FOREIGN KEY (`timeslot_id`) REFERENCES `timeslots` (`id`),
     FOREIGN KEY (`student_id`) REFERENCES `users` (`id`)
 );
@@ -109,53 +131,72 @@ The following queries initializes tables with demo records.
 
 ```txt
 SELECT * FROM `user`;
-+----+------------+------------------+---------+------------+-------------+-----------------+------------+--------------+---------------------------------------+-------------+-------------+
-| id | username   | password         | role    | first_name | middle_name | last_name       | birthdate  | phone_number | email                                 | created_at  | updated_at  |
-+----+------------+------------------+---------+------------+-------------+-----------------+------------+--------------+---------------------------------------+-------------+-------------+
-|  1 | staff_01   | staff_password   | STAFF   | Salute     | NULL        | Khumyunn        | 1998-09-22 | 0998765432   | salute.k@staff.aqkids.example.com     | <TIMESTAMP> | <TIMESTAMP> |
-|  2 | teacher_01 | teacher_password | TEACHER | Potsawat   | NULL        | Thinkanwatthana | 2000-01-01 | 0987654321   | potsawat.t@teacher.aqkids.example.com | <TIMESTAMP> | <TIMESTAMP> |
-|  3 | teacher_02 | teacher_password | TEACHER | Jonathan   | NULL        | Thinkanwatthana | 2001-01-01 | 0987654321   | jonathan.t@teacher.aqkids.example.com | <TIMESTAMP> | <TIMESTAMP> |
-|  4 | j.doe      | password         | STUDENT | John       | Linus       | Doe             | 2014-05-01 | 0123456789   | j.doe@example.com                     | <TIMESTAMP> | <TIMESTAMP> |
-|  5 | a.seed     | password         | STUDENT | Apple      | NULL        | Seed            | 2014-08-21 | 0123456789   | a.seed@example.com                    | <TIMESTAMP> | <TIMESTAMP> |
-|  6 | b.bird     | password         | STUDENT | Burden     | NULL        | Bird            | 1997-01-16 | 0987654321   | b.bird@example.com                    | <TIMESTAMP> | <TIMESTAMP> |
-+----+------------+------------------+---------+------------+-------------+-----------------+------------+--------------+---------------------------------------+-------------+-------------+
++----+------------+------------------+---------+------------+-------------+-----------------+------------+--------------+---------------------------------------+-------------------------------------+---------------------+---------------------+
+| id | username   | password         | role    | first_name | middle_name | last_name       | birthdate  | phone_number | email                                 | profile_image_path                  | created_at          | updated_at          |
++----+------------+------------------+---------+------------+-------------+-----------------+------------+--------------+---------------------------------------+-------------------------------------+---------------------+---------------------+
+|  1 | staff_01   | staff_password   | STAFF   | Salute     | NULL        | Khumyunn        | 1998-09-22 | 0998765432   | salute.k@staff.aqkids.example.com     | assets/staff_01/profile_image.png   | 2022-11-28 08:00:00 | 2022-11-28 08:00:00 |
+|  2 | teacher_01 | teacher_password | TEACHER | Potsawat   | NULL        | Thinkanwatthana | 2000-01-01 | 0987654321   | potsawat.t@teacher.aqkids.example.com | assets/teacher_01/profile_image.png | 2022-11-29 08:00:00 | 2022-11-29 08:00:00 |
+|  3 | teacher_02 | teacher_password | TEACHER | Jonathan   | NULL        | Thinkanwatthana | 2001-01-01 | 0987654321   | jonathan.t@teacher.aqkids.example.com | assets/teacher_02/profile_image.png | 2022-11-29 09:00:00 | 2022-11-29 09:00:00 |
+|  4 | j.doe      | password         | STUDENT | John       | Linus       | Doe             | 2014-05-01 | 0123456789   | j.doe@example.com                     | assets/j.doe/profile_image.png      | 2022-12-07 09:00:00 | 2022-12-07 09:00:00 |
+|  5 | a.seed     | password         | STUDENT | Apple      | NULL        | Seed            | 2014-08-21 | 0123456789   | a.seed@example.com                    | assets/a.seed/profile_image.png     | 2022-12-07 09:40:00 | 2022-12-07 09:40:00 |
+|  6 | b.bird     | password         | STUDENT | Burden     | NULL        | Bird            | 1997-01-16 | 0987654321   | b.bird@example.com                    | assets/b.bird/profile_image.png     | 2022-12-07 09:55:00 | 2022-12-07 09:55:00 |
++----+------------+------------------+---------+------------+-------------+-----------------+------------+--------------+---------------------------------------+-------------------------------------+---------------------+---------------------+
 
 
 SELECT * FROM `courses`;
-+----+------------+----------+-------+----------+---------+---------+---------+-------------+-------------+
-| id | teacher_id | title    | quota | capacity | min_age | max_age | status  | created_at  | updated_at  |
-+----+------------+----------+-------+----------+---------+---------+---------+-------------+-------------+
-|  1 |          2 | Tue 10am |    10 |        4 |       0 |       6 | PENDING | <TIMESTAMP> | <TIMESTAMP> |
-|  2 |          3 | Wed 10am |    10 |        4 |       6 |      12 | OPEN    | <TIMESTAMP> | <TIMESTAMP> |
-|  3 |          2 | Wed 16pm |    10 |        4 |      12 |      24 | OPEN    | <TIMESTAMP> | <TIMESTAMP> |
-|  4 |       NULL | Thu 16pm |    10 |        4 |      12 |      24 | PENDING | <TIMESTAMP> | <TIMESTAMP> |
-+----+------------+----------+-------+----------+---------+---------+---------+-------------+-------------+
++----+------------+----------+-------+----------+---------+---------+----------+---------------------+---------------------+-----------+---------------------+---------------------+
+| id | teacher_id | title    | quota | capacity | min_age | max_age | duration | opens_until         | start_datetime      | status    | created_at          | updated_at          |
++----+------------+----------+-------+----------+---------+---------+----------+---------------------+---------------------+-----------+---------------------+---------------------+
+|  1 |          2 | Tue 10am |    10 |        4 |       0 |       6 |       60 | 2023-01-03 10:00:00 | 2023-01-03 10:00:00 | CANCELLED | 2022-12-05 08:00:00 | 2023-01-03 10:00:00 |
+|  2 |          3 | Wed 10am |    10 |        4 |       6 |      12 |       60 | 2023-01-04 10:00:00 | 2023-01-04 10:00:00 | ENDED     | 2022-12-05 08:05:00 | 2023-03-08 11:00:00 |
+|  3 |          2 | Wed 16pm |    10 |        4 |      12 |      24 |       60 | 2024-01-03 16:00:00 | 2024-01-03 16:00:00 | OPEN      | 2023-10-02 08:10:00 | 2023-10-02 08:10:00 |
++----+------------+----------+-------+----------+---------+---------+----------+---------------------+---------------------+-----------+---------------------+---------------------+
 
 
 SELECT * FROM `enrollments`;
-+----+-----------+------------+---------+-------------+-------------+
-| id | course_id | student_id | status  | created_at  | updated_at  |
-+----+-----------+------------+---------+-------------+-------------+
-|  1 |         2 |          4 | PENDING | <TIMESTAMP> | <TIMESTAMP> |
-|  2 |         2 |          6 | PENDING | <TIMESTAMP> | <TIMESTAMP> |
-+----+-----------+------------+---------+-------------+-------------+
++----+-----------+------------+---------+---------------------+---------------------+
+| id | course_id | student_id | status  | created_at          | updated_at          |
++----+-----------+------------+---------+---------------------+---------------------+
+|  1 |         2 |          4 | SUCCESS | 2022-12-07 09:10:00 | 2022-12-08 09:00:00 |
+|  2 |         2 |          6 | SUCCESS | 2022-12-07 10:05:00 | 2022-12-08 09:02:00 |
++----+-----------+------------+---------+---------------------+---------------------+
+
+
+SELECT * FROM `receipts`;
++----+---------------+---------------------+---------------------+-------------+--------+----------+-------+---------------------+---------------------+
+| id | enrollment_id | payment_timestamp   | receipt_timestamp   | description | amount | subtotal | total | created_at          | updated_at          |
++----+---------------+---------------------+---------------------+-------------+--------+----------+-------+---------------------+---------------------+
+|  1 |             1 | 2022-12-07 09:10:00 | 2022-12-08 09:00:00 | Course fee  |   7500 |     7500 |  7500 | 2022-12-08 09:00:00 | 2022-12-08 09:00:00 |
+|  2 |             2 | 2022-12-07 10:05:00 | 2022-12-08 09:02:00 | Course fee  |   7500 |     7500 |  7500 | 2022-12-08 09:02:00 | 2022-12-08 09:02:00 |
++----+---------------+---------------------+---------------------+-------------+--------+----------+-------+---------------------+---------------------+
 
 
 SELECT * FROM `timeslots`;
-+----+-----------+---------------------+-------------+-------------+
-| id | course_id | datetime            | created_at  | updated_at  |
-+----+-----------+---------------------+-------------+-------------+
-|  1 |         2 | 2024-01-02 10:00:00 | <TIMESTAMP> | <TIMESTAMP> |
-|  2 |         2 | 2024-01-09 10:00:00 | <TIMESTAMP> | <TIMESTAMP> |
-|  3 |         2 | 2024-01-16 10:00:00 | <TIMESTAMP> | <TIMESTAMP> |
-|  4 |         2 | 2024-01-23 10:00:00 | <TIMESTAMP> | <TIMESTAMP> |
-|  5 |         2 | 2024-01-30 10:00:00 | <TIMESTAMP> | <TIMESTAMP> |
-|  6 |         2 | 2024-02-06 10:00:00 | <TIMESTAMP> | <TIMESTAMP> |
-|  7 |         2 | 2024-02-13 10:00:00 | <TIMESTAMP> | <TIMESTAMP> |
-|  8 |         2 | 2024-02-20 10:00:00 | <TIMESTAMP> | <TIMESTAMP> |
-|  9 |         2 | 2024-02-27 10:00:00 | <TIMESTAMP> | <TIMESTAMP> |
-| 10 |         2 | 2024-03-05 10:00:00 | <TIMESTAMP> | <TIMESTAMP> |
-+----+-----------+---------------------+-------------+-------------+
++----+-----------+---------------------+---------+---------------------+---------------------+
+| id | course_id | datetime            | type    | created_at          | updated_at          |
++----+-----------+---------------------+---------+---------------------+---------------------+
+|  1 |         2 | 2023-01-04 10:00:00 | REGULAR | 2022-12-05 08:05:00 | 2022-12-05 08:05:00 |
+|  2 |         2 | 2023-01-11 10:00:00 | REGULAR | 2022-12-05 08:05:00 | 2022-12-05 08:05:00 |
+|  3 |         2 | 2023-01-18 10:00:00 | REGULAR | 2022-12-05 08:05:00 | 2022-12-05 08:05:00 |
+|  4 |         2 | 2023-01-25 10:00:00 | REGULAR | 2022-12-05 08:05:00 | 2022-12-05 08:05:00 |
+|  5 |         2 | 2023-02-01 10:00:00 | REGULAR | 2022-12-05 08:05:00 | 2022-12-05 08:05:00 |
+|  6 |         2 | 2023-02-08 10:00:00 | REGULAR | 2022-12-05 08:05:00 | 2022-12-05 08:05:00 |
+|  7 |         2 | 2023-02-15 10:00:00 | REGULAR | 2022-12-05 08:05:00 | 2022-12-05 08:05:00 |
+|  8 |         2 | 2023-02-22 10:00:00 | REGULAR | 2022-12-05 08:05:00 | 2022-12-05 08:05:00 |
+|  9 |         2 | 2023-03-01 10:00:00 | REGULAR | 2022-12-05 08:05:00 | 2022-12-05 08:05:00 |
+| 10 |         2 | 2023-03-08 10:00:00 | REGULAR | 2022-12-05 08:05:00 | 2022-12-05 08:05:00 |
+| 11 |         2 | 2023-03-15 10:00:00 | MAKEUP  | 2023-03-01 10:00:00 | 2023-03-01 10:00:00 |
+| 12 |         3 | 2024-01-03 16:00:00 | REGULAR | 2023-10-02 08:10:00 | 2023-10-02 08:10:00 |
+| 13 |         3 | 2024-01-10 16:00:00 | REGULAR | 2023-10-02 08:10:00 | 2023-10-02 08:10:00 |
+| 14 |         3 | 2024-01-17 16:00:00 | REGULAR | 2023-10-02 08:10:00 | 2023-10-02 08:10:00 |
+| 15 |         3 | 2024-01-24 16:00:00 | REGULAR | 2023-10-02 08:10:00 | 2023-10-02 08:10:00 |
+| 16 |         3 | 2024-01-31 16:00:00 | REGULAR | 2023-10-02 08:10:00 | 2023-10-02 08:10:00 |
+| 17 |         3 | 2024-02-07 16:00:00 | REGULAR | 2023-10-02 08:10:00 | 2023-10-02 08:10:00 |
+| 18 |         3 | 2024-02-14 16:00:00 | REGULAR | 2023-10-02 08:10:00 | 2023-10-02 08:10:00 |
+| 19 |         3 | 2024-02-21 16:00:00 | REGULAR | 2023-10-02 08:10:00 | 2023-10-02 08:10:00 |
+| 20 |         3 | 2024-02-28 16:00:00 | REGULAR | 2023-10-02 08:10:00 | 2023-10-02 08:10:00 |
+| 21 |         3 | 2024-03-06 16:00:00 | REGULAR | 2023-10-02 08:10:00 | 2023-10-02 08:10:00 |
++----+-----------+---------------------+---------+---------------------+---------------------+
 
 
 SELECT * FROM `teacher_attendances`;
@@ -168,54 +209,81 @@ SELECT * FROM `teacher_attendances`;
 
 
 SELECT * FROM `student_attendances`;
-+-------------+------------+
-| timeslot_id | student_id |
-+-------------+------------+
-|           1 |          4 |
-|           1 |          6 |
-|           2 |          4 |
-|           2 |          6 |
-+-------------+------------+
++-------------+------------+--------------+
+| timeslot_id | student_id | has_attended |
++-------------+------------+--------------+
+|           1 |          4 | TRUE         |
+|           1 |          6 | TRUE         |
+|           2 |          4 | TRUE         |
+|           2 |          6 | TRUE         |
+|           3 |          4 | TRUE         |
+|           3 |          6 | TRUE         |
+|           4 |          4 | TRUE         |
+|           4 |          6 | TRUE         |
+|           5 |          4 | TRUE         |
+|           5 |          6 | TRUE         |
+|           6 |          4 | TRUE         |
+|           6 |          6 | TRUE         |
+|           7 |          4 | TRUE         |
+|           7 |          6 | TRUE         |
+|           8 |          4 | TRUE         |
+|           8 |          6 | TRUE         |
+|           9 |          4 | TRUE         |
+|           9 |          6 | TRUE         |
+|          10 |          4 | FALSE        |
+|          10 |          6 | TRUE         |
+|          11 |          4 | TRUE         |
++-------------+------------+--------------+
 ```
 
 ```sql
-INSERT INTO `users` (`username`, `password`, `role`, `first_name`, `middle_name`, `last_name`, `birthdate`, `phone_number`, `email`, `created_at`, `updated_at`) VALUES
-    ('staff_01', 'staff_password', 'STAFF', 'Salute', NULL, 'Khumyunn', '1998-09-22', '0998765432', 'salute.k@staff.aqkids.example.com', NOW(), NOW()),
-    ('teacher_01', 'teacher_password', 'TEACHER', 'Potsawat', NULL, 'Thinkanwatthana', '2000-01-01', '0987654321', 'potsawat.t@teacher.aqkids.example.com', NOW(), NOW()),
-    ('teacher_02', 'teacher_password', 'TEACHER', 'Jonathan', NULL, 'Thinkanwatthana', '2001-01-01', '0987654321', 'jonathan.t@teacher.aqkids.example.com', NOW(), NOW()),
-    ('j.doe', 'password', 'STUDENT', 'John', 'Linus', 'Doe', '2014-05-01', '0123456789', 'j.doe@example.com', NOW(), NOW()),
-    ('a.seed', 'password', 'STUDENT', 'Apple', NULL, 'Seed', '2014-08-21', '0123456789', 'a.seed@example.com', NOW(), NOW()),
-    ('b.bird', 'password', 'STUDENT', 'Burden', NULL, 'Bird', '1997-01-16', '0987654321', 'b.bird@example.com', NOW(), NOW());
+INSERT INTO `users` (`username`, `password`, `role`, `first_name`, `middle_name`, `last_name`, `birthdate`, `phone_number`, `email`, `profile_image_path`, `created_at`, `updated_at`) VALUES
+    ('staff_01', 'staff_password', 'STAFF', 'Salute', NULL, 'Khumyunn', '1998-09-22', '0998765432', 'salute.k@staff.aqkids.example.com', 'assets/staff_01/profile_image.png', '2022-11-28 08:00:00','2022-11-28 08:00:00'),
+    ('teacher_01', 'teacher_password', 'TEACHER', 'Potsawat', NULL, 'Thinkanwatthana', '2000-01-01', '0987654321', 'potsawat.t@teacher.aqkids.example.com', 'assets/teacher_01/profile_image.png', '2022-11-29 08:00:00','2022-11-29 08:00:00'),
+    ('teacher_02', 'teacher_password', 'TEACHER', 'Jonathan', NULL, 'Thinkanwatthana', '2001-01-01', '0987654321', 'jonathan.t@teacher.aqkids.example.com', 'assets/teacher_02/profile_image.png', '2022-11-29 09:00:00','2022-11-29 09:00:00'),
+    ('j.doe', 'password', 'STUDENT', 'John', 'Linus', 'Doe', '2014-05-01', '0123456789', 'j.doe@example.com', 'assets/j.doe/profile_image.png', '2022-12-07 09:00:00','2022-12-07 09:00:00'),
+    ('a.seed', 'password', 'STUDENT', 'Apple', NULL, 'Seed', '2014-08-21', '0123456789', 'a.seed@example.com', 'assets/a.seed/profile_image.png', '2022-12-07 09:40:00','2022-12-07 09:40:00'),
+    ('b.bird', 'password', 'STUDENT', 'Burden', NULL, 'Bird', '1997-01-16', '0987654321', 'b.bird@example.com', 'assets/b.bird/profile_image.png', '2022-12-07 09:55:00','2022-12-07 09:55:00');
 
 
--- Teacher-assigned courses
-INSERT INTO `courses` (`teacher_id`, `title`, `quota`, `capacity`, `min_age`, `max_age`, `status`, `created_at`, `updated_at`) VALUES
-    (2, 'Tue 10am', 10, 4, 0, 6, 'PENDING', NOW(), NOW()),
-    (3, 'Wed 10am', 10, 4, 6, 12, 'OPEN', NOW(), NOW()),
-    (2, 'Wed 16pm', 10, 4, 12, 24, 'OPEN', NOW(), NOW());
-
-
--- Unassigned courses
-INSERT INTO `courses` (`title`, `quota`, `capacity`, `min_age`, `max_age`, `status`, `created_at`, `updated_at`) VALUES
-    ('Thu 16pm', 10, 4, 12, 24, 'PENDING', NOW(), NOW());
+INSERT INTO `courses` (`teacher_id`, `title`, `quota`, `capacity`, `min_age`, `max_age`, `duration`, `opens_until`, `start_datetime`, `status`, `created_at`, `updated_at`) VALUES
+    (2, 'Tue 10am', 10, 4, 0, 6, 60, '2023-01-03 10:00:00', '2023-01-03 10:00:00', 'CANCELLED', '2022-12-05 08:00:00', '2023-01-03 10:00:00'),
+    (3, 'Wed 10am', 10, 4, 6, 12, 60, '2023-01-04 10:00:00', '2023-01-04 10:00:00', 'ENDED', '2022-12-05 08:05:00', '2023-03-08 11:00:00'),
+    (2, 'Wed 16pm', 10, 4, 12, 24, 60, '2024-01-03 16:00:00', '2024-01-03 16:00:00', 'OPEN', '2023-10-02 08:10:00', '2023-10-02 08:10:00');
 
 
 INSERT INTO `enrollments` (`course_id`, `student_id`, `status`, `created_at`, `updated_at`) VALUES
-    (2, 4, 'PENDING', NOW(), NOW()),
-    (2, 6, 'PENDING', NOW(), NOW());
+    (2, 4, 'SUCCESS', '2022-12-07 09:10:00', '2022-12-08 09:00:00'),
+    (2, 6, 'SUCCESS', '2022-12-07 10:05:00', '2022-12-08 09:02:00');
 
 
-INSERT INTO `timeslots` (`course_id`, `datetime`, `created_at`, `updated_at`) VALUES
-    (2, '2024-01-02 10:00:00', NOW(), NOW()),
-    (2, '2024-01-09 10:00:00', NOW(), NOW()),
-    (2, '2024-01-16 10:00:00', NOW(), NOW()),
-    (2, '2024-01-23 10:00:00', NOW(), NOW()),
-    (2, '2024-01-30 10:00:00', NOW(), NOW()),
-    (2, '2024-02-06 10:00:00', NOW(), NOW()),
-    (2, '2024-02-13 10:00:00', NOW(), NOW()),
-    (2, '2024-02-20 10:00:00', NOW(), NOW()),
-    (2, '2024-02-27 10:00:00', NOW(), NOW()),
-    (2, '2024-03-05 10:00:00', NOW(), NOW());
+INSERT INTO `receipts` (`enrollment_id`, `payment_timestamp`, `receipt_timestamp`, `description`, `amount`, `subtotal`, `total`, `created_at`, `updated_at`) VALUES
+    (1, '2022-12-07 09:10:00', '2022-12-08 09:00:00', 'Course fee', 7500.00, 7500.00, 7500.00, '2022-12-08 09:00:00', '2022-12-08 09:00:00'),
+    (2, '2022-12-07 10:05:00', '2022-12-08 09:02:00', 'Course fee', 7500.00, 7500.00, 7500.00, '2022-12-08 09:02:00', '2022-12-08 09:02:00');
+
+
+INSERT INTO `timeslots` (`course_id`, `datetime`, `type`, `created_at`, `updated_at`) VALUES
+    (2, '2023-01-04 10:00:00', 'REGULAR', '2022-12-05 08:05:00', '2022-12-05 08:05:00'),
+    (2, '2023-01-11 10:00:00', 'REGULAR', '2022-12-05 08:05:00', '2022-12-05 08:05:00'),
+    (2, '2023-01-18 10:00:00', 'REGULAR', '2022-12-05 08:05:00', '2022-12-05 08:05:00'),
+    (2, '2023-01-25 10:00:00', 'REGULAR', '2022-12-05 08:05:00', '2022-12-05 08:05:00'),
+    (2, '2023-02-01 10:00:00', 'REGULAR', '2022-12-05 08:05:00', '2022-12-05 08:05:00'),
+    (2, '2023-02-08 10:00:00', 'REGULAR', '2022-12-05 08:05:00', '2022-12-05 08:05:00'),
+    (2, '2023-02-15 10:00:00', 'REGULAR', '2022-12-05 08:05:00', '2022-12-05 08:05:00'),
+    (2, '2023-02-22 10:00:00', 'REGULAR', '2022-12-05 08:05:00', '2022-12-05 08:05:00'),
+    (2, '2023-03-01 10:00:00', 'REGULAR', '2022-12-05 08:05:00', '2022-12-05 08:05:00'),
+    (2, '2023-03-08 10:00:00', 'REGULAR', '2022-12-05 08:05:00', '2022-12-05 08:05:00'),
+    (2, '2023-03-15 10:00:00', 'MAKEUP', '2023-03-01 10:00:00', '2023-03-01 10:00:00'),
+    (3, '2024-01-03 16:00:00', 'REGULAR', '2023-10-02 08:10:00', '2023-10-02 08:10:00'),
+    (3, '2024-01-10 16:00:00', 'REGULAR', '2023-10-02 08:10:00', '2023-10-02 08:10:00'),
+    (3, '2024-01-17 16:00:00', 'REGULAR', '2023-10-02 08:10:00', '2023-10-02 08:10:00'),
+    (3, '2024-01-24 16:00:00', 'REGULAR', '2023-10-02 08:10:00', '2023-10-02 08:10:00'),
+    (3, '2024-01-31 16:00:00', 'REGULAR', '2023-10-02 08:10:00', '2023-10-02 08:10:00'),
+    (3, '2024-02-07 16:00:00', 'REGULAR', '2023-10-02 08:10:00', '2023-10-02 08:10:00'),
+    (3, '2024-02-14 16:00:00', 'REGULAR', '2023-10-02 08:10:00', '2023-10-02 08:10:00'),
+    (3, '2024-02-21 16:00:00', 'REGULAR', '2023-10-02 08:10:00', '2023-10-02 08:10:00'),
+    (3, '2024-02-28 16:00:00', 'REGULAR', '2023-10-02 08:10:00', '2023-10-02 08:10:00'),
+    (3, '2024-03-06 16:00:00', 'REGULAR', '2023-10-02 08:10:00', '2023-10-02 08:10:00');
 
 
 INSERT INTO `teacher_attendances` (`timeslot_id`, `teacher_id`) VALUES
@@ -223,129 +291,89 @@ INSERT INTO `teacher_attendances` (`timeslot_id`, `teacher_id`) VALUES
     (2, 2);
 
 
-INSERT INTO `student_attendances` (`timeslot_id`, `student_id`) VALUES
-    (1, 4),
-    (1, 6),
-    (2, 4),
-    (2, 6);
+INSERT INTO `student_attendances` (`timeslot_id`, `student_id`, `has_attended`) VALUES
+    (1, 4, 'TRUE'),
+    (1, 6, 'TRUE'),
+    (2, 4, 'TRUE'),
+    (2, 6, 'TRUE'),
+    (3, 4, 'TRUE'),
+    (3, 6, 'TRUE'),
+    (4, 4, 'TRUE'),
+    (4, 6, 'TRUE'),
+    (5, 4, 'TRUE'),
+    (5, 6, 'TRUE'),
+    (6, 4, 'TRUE'),
+    (6, 6, 'TRUE'),
+    (7, 4, 'TRUE'),
+    (7, 6, 'TRUE'),
+    (8, 4, 'TRUE'),
+    (8, 6, 'TRUE'),
+    (9, 4, 'TRUE'),
+    (9, 6, 'TRUE'),
+    (10, 4, 'FALSE'),
+    (10, 6, 'TRUE'),
+    (11, 4, 'TRUE');
 ```
 
 ### Use-cases
 
 1. สมัครเรียน
-
-    > ข้อมูล:
-    >
-    >     SELECT `users`.*, `enrollments`.`id` AS `enrollment_id`, `enrollments`.`course_id`, `enrollments`.`status`, `enrollments`.`created_at`, `enrollments`.`updated_at` FROM `users` JOIN `enrollments` ON `users`.`id` = `enrollments`.`student_id` WHERE `username` = 'a.doe'\G
-    >     *************************** 1. row ***************************
-    >                  id: 7
-    >            username: a.doe
-    >            password: password
-    >                role: STUDENT
-    >          first_name: Alice
-    >         middle_name: Linus
-    >           last_name: Doe
-    >           birthdate: 2016-05-02
-    >        phone_number: 0123456789
-    >               email: a.doe@example.com
-    >          created_at: <CREATE_USER_TIMESTAMP>
-    >          updated_at: <CREATE_USER_TIMESTAMP>
-    >     enrollment_id: 4
-    >           course_id: 3
-    >              status: PENDING
-    >          created_at: <enrollment_TIMESTAMP>
-    >          updated_at: <enrollment_TIMESTAMP>
-
     ```sql
-    INSERT INTO `users` (`username`, `password`, `role`, `first_name`, `middle_name`, `last_name`, `birthdate`, `phone_number`, `email`, `created_at`, `updated_at`) VALUES
-        ('a.doe', 'password', 'STUDENT', 'Alice', 'Linus', 'Doe', '2016-05-02', '0123456789', 'a.doe@example.com', NOW(), NOW());
+    INSERT INTO `users` (`username`, `password`, `role`, `first_name`, `middle_name`, `last_name`, `birthdate`, `phone_number`, `email`, `profile_image_path`, `created_at`, `updated_at`) VALUES
+        ('a.doe', 'password', 'STUDENT', 'Alice', 'Linus', 'Doe', '2016-05-02', '0123456789', 'a.doe@example.com', 'assets/a.doe/profile_image.png','2023-11-02 10:10:00','2023-11-02 10:10:00');
 
     INSERT INTO `enrollments` (`course_id`, `student_id`, `status`, `created_at`, `updated_at`)
         SELECT
             3 AS `course_id`,
             `id` AS `student_id`,
             'PENDING' AS `status`,
-            NOW() AS `created_at`,
-            NOW() AS `updated_at`
+            '2023-11-02 10:10:00' AS `created_at`,
+            '2023-11-02 10:10:00' AS `updated_at`
         FROM `users`
         WHERE `username` = 'a.doe';
     ```
 
 1. สมัครสอน
-
-    > ข้อมูล:
-    > 
-    >       SELECT * FROM `users` WHERE `username` = 'ingfosbreak'\G
-    >       *************************** 1. row ***************************
-    >                 id: 8
-    >           username: ingfosbreak
-    >           password: password
-    >               role: TEACHER
-    >         first_name: Panachai
-    >        middle_name: NULL
-    >          last_name: Kotchagason
-    >          birthdate: 2000-10-10
-    >       phone_number: 0123456789
-    >              email: panachai.k@example.com
-    >         created_at: <CREATE_USER_TIMESTAMP>
-    >         updated_at: <CREATE_USER_TIMESTAMP>
-
     ```sql
-    INSERT INTO `users` (`username`, `password`, `role`, `first_name`, `middle_name`, `last_name`, `birthdate`, `phone_number`, `email`, `created_at`, `updated_at`) VALUES
-        ('ingfosbreak', 'password', 'TEACHER', 'Panachai', NULL, 'Kotchagason', '2000-10-10', '0123456789', 'panachai.k@example.com', NOW(), NOW());
+    INSERT INTO `users` (`username`, `password`, `role`, `first_name`, `middle_name`, `last_name`, `birthdate`, `phone_number`, `email`, `profile_image_path`, `created_at`, `updated_at`) VALUES
+        ('ingfosbreak', 'password', 'TEACHER', 'Panachai', NULL, 'Kotchagason', '2000-10-10', '0123456789', 'panachai.k@example.com', 'assets/ingfosbreak/profile_image.png', NOW(), NOW());
     ```
 
 1. จัดคาบเรียน
 
     ```sql
-    INSERT INTO `timeslots` (`course_id`, `datetime`, `created_at`, `updated_at`) VALUES
-        (2, '2024-01-02 16:00:00', NOW(), NOW()),
-        (2, '2024-01-09 16:00:00', NOW(), NOW()),
-        (2, '2024-01-16 16:00:00', NOW(), NOW()),
-        (2, '2024-01-23 16:00:00', NOW(), NOW()),
-        (2, '2024-01-30 16:00:00', NOW(), NOW()),
-        (2, '2024-02-06 16:00:00', NOW(), NOW()),
-        (2, '2024-02-13 16:00:00', NOW(), NOW()),
-        (2, '2024-02-20 16:00:00', NOW(), NOW()),
-        (2, '2024-02-27 16:00:00', NOW(), NOW()),
-        (2, '2024-03-05 16:00:00', NOW(), NOW());
+    INSERT INTO `timeslots` (`course_id`, `datetime`, `type`, `created_at`, `updated_at`) VALUES
+        (3, '2024-01-03 16:00:00', 'REGULAR', NOW(), NOW()),
+        (3, '2024-01-10 16:00:00', 'REGULAR', NOW(), NOW()),
+        (3, '2024-01-17 16:00:00', 'REGULAR', NOW(), NOW()),
+        (3, '2024-01-24 16:00:00', 'REGULAR', NOW(), NOW()),
+        (3, '2024-01-31 16:00:00', 'REGULAR', NOW(), NOW()),
+        (3, '2024-02-07 16:00:00', 'REGULAR', NOW(), NOW()),
+        (3, '2024-02-14 16:00:00', 'REGULAR', NOW(), NOW()),
+        (3, '2024-02-21 16:00:00', 'REGULAR', NOW(), NOW()),
+        (3, '2024-02-28 16:00:00', 'REGULAR', NOW(), NOW()),
+        (3, '2024-03-06 16:00:00', 'REGULAR', NOW(), NOW());
+
     ```
 
 1. รับผิดชอบ
-
-    > ข้อมูล:
-    > 
-    >       SELECT `courses`.*, `users`.`username`, `users`.`first_name`, `users`.`middle_name`, `users`.`last_name` FROM `courses` JOIN `users` ON `courses`.`teacher_id` = `users`.`id` WHERE `courses`.`id` = 4\G
-    >       *************************** 1. row ***************************
-    >                id: 4
-    >        teacher_id: 2
-    >             title: Thu 16pm
-    >             quota: 10
-    >          capacity: 4
-    >           min_age: 12
-    >           max_age: 24
-    >            status: PENDING
-    >        created_at: 2023-10-02 15:12:55
-    >        updated_at: 2023-10-02 16:07:20
-    >          username: teacher_01
-    >        first_name: Potsawat
-    >       middle_name: NULL
-    >         last_name: Thinkanwatthana
 
     ```sql
     UPDATE `courses`
     SET
         `teacher_id` = 2,
         `updated_at` = NOW()
-    WHERE `id` = 4
+    WHERE `id` = 3
         AND `teacher_id` IS NULL;
     ```
 
 1. เข้าเรียน
 
     ```sql
-    INSERT INTO `student_attendances` (`timeslot_id`, `student_id`) VALUES
-        (10, 7);
+    UPDATE `student_attendances`
+    SET `has_attended` = 'TRUE'
+    WHERE `timeslot_id` = 11
+        AND `student_id` = 4;
     ```
 
 1. เข้าสอน
@@ -358,12 +386,14 @@ INSERT INTO `student_attendances` (`timeslot_id`, `student_id`) VALUES
 1. จัดคาบเรียนเสริม
 
     ```sql
-    INSERT INTO `timeslots` (`course_id`, `datetime`, `created_at`, `updated_at`) VALUES
-        (3, '2024-03-12 16:00:00', NOW(), NOW());
+    INSERT INTO `timeslots` (`course_id`, `datetime`, `type`, `created_at`, `updated_at`) VALUES
+        (3, '2024-03-13 16:00:00', 'MAKEUP', NOW(), NOW());
     ```
 
 1. ปิดคอร์ส
 
     ```sql
-    UPDATE `courses` SET `status` = 'ENDED' WHERE `id` = 2;
+    UPDATE `courses`
+    SET `status` = 'CANCELLED'
+    WHERE `id` = 3;
     ```
