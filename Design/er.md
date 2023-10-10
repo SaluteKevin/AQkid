@@ -17,6 +17,7 @@ erDiagram
         VARCHAR profile_image_path "NOT NULL"
         VARCHAR email "UNIQUE"
         TIMESTAMP email_verified_at
+        VARCHAR remember_token
         TIMESTAMP created_at "NOT NULL"
         TIMESTAMP updated_at "NOT NULL"
     }
@@ -63,7 +64,7 @@ erDiagram
         INT id PK "NOT NULL, AUTO_INCREMENT"
         INT course_id FK "NOT NULL"
         DATETIME datetime "NOT NULL"
-        ENUM type "NOT NULL"
+        ENUM type "NOT NULL, DEFAULT 'UNDEFINED'"
         TIMESTAMP created_at "NOT NULL"
         TIMESTAMP updated_at "NOT NULL"
     }
@@ -71,7 +72,7 @@ erDiagram
     student_attendances {
         INT timeslot_id FK "NOT NULL"
         INT student_id FK "NOT NULL"
-        ENUM has_attended "NOT NULL"
+        ENUM has_attended "NOT NULL, DEFAULT 'FALSE'"
     }
 
     teacher_attendances {

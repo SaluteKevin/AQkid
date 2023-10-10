@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `timeslots` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `course_id` INT NOT NULL,
     `datetime` DATETIME NOT NULL,
-    `type` ENUM('REGULAR', 'MAKEUP', 'UNDEFINED') NOT NULL,
+    `type` ENUM('REGULAR', 'MAKEUP', 'UNDEFINED') NOT NULL DEFAULT 'UNDEFINED',
     `created_at` TIMESTAMP NOT NULL,
     `updated_at` TIMESTAMP NOT NULL,
     PRIMARY KEY (`id`),
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `timeslots` (
 CREATE TABLE IF NOT EXISTS `student_attendances` (
     `timeslot_id` INT NOT NULL,
     `student_id` INT NOT NULL,
-    `has_attended` ENUM('TRUE', 'FALSE') NOT NULL,
+    `has_attended` ENUM('TRUE', 'FALSE') NOT NULL DEAULT 'FALSE',
     FOREIGN KEY (`timeslot_id`) REFERENCES `timeslots` (`id`),
     FOREIGN KEY (`student_id`) REFERENCES `users` (`id`)
 );
@@ -250,7 +250,7 @@ INSERT INTO `users` (`username`, `password`, `role`, `first_name`, `middle_name`
 INSERT INTO `courses` (`teacher_id`, `title`, `quota`, `capacity`, `min_age`, `max_age`, `duration`, `opens_until`, `start_datetime`, `status`, `created_at`, `updated_at`) VALUES
     (2, 'Tue 10am', 10, 4, 0, 6, 60, '2023-01-03 10:00:00', '2023-01-03 10:00:00', 'CANCELLED', '2022-12-05 08:00:00', '2023-01-03 10:00:00'),
     (3, 'Wed 10am', 10, 4, 6, 12, 60, '2023-01-04 10:00:00', '2023-01-04 10:00:00', 'ENDED', '2022-12-05 08:05:00', '2023-03-08 11:00:00'),
-    (2, 'Wed 16pm', 10, 4, 12, 24, 60, '2024-01-03 16:00:00', '2024-01-03 16:00:00', 'OPEN', '2023-10-02 08:10:00', '2023-10-02 08:10:00');
+    (2, 'Wed 4pm', 10, 4, 12, 24, 60, '2024-01-03 16:00:00', '2024-01-03 16:00:00', 'OPEN', '2023-10-02 08:10:00', '2023-10-02 08:10:00');
 
 
 INSERT INTO `enrollments` (`course_id`, `student_id`, `status`, `created_at`, `updated_at`) VALUES
