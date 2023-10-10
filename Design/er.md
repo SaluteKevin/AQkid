@@ -24,12 +24,13 @@ erDiagram
         INT id PK "NOT NULL, AUTO_INCREMENT"
         INT teacher_id FK
         VARCHAR title "NOT NULL"
-        DATETIME opens_until
-        DATETIME start_datetime "NOT NULL"
         INT quota "NOT NULL"
         INT capacity "NOT NULL"
         INT min_age "DEFAULT 0"
         INT max_age
+        INT duration "NOT NULL, DEFAULT 60"
+        DATETIME opens_until "NOT NULL"
+        DATETIME start_datetime "NOT NULL"
         ENUM status "NOT NULL"
         TIMESTAMP created_at "NOT NULL"
         TIMESTAMP updated_at "NOT NULL"
@@ -47,8 +48,8 @@ erDiagram
     receipts {
         INT id PK "NOT NULL, AUTO_INCREMENT"
         INT enrollment_id FK "NOT NULL"
-        TIMESTAMP payment_date "NOT NULL"
-        TIMESTAMP receipt_date "NOT NULL"
+        TIMESTAMP payment_timestamp "NOT NULL"
+        TIMESTAMP receipt_timestamp "NOT NULL"
         VARCHAR description "NOT NULL"
         FLOAT amount "NOT NULL"
         FLOAT subtotal "NOT NULL"
@@ -61,6 +62,7 @@ erDiagram
         INT id PK "NOT NULL, AUTO_INCREMENT"
         INT course_id FK "NOT NULL"
         DATETIME datetime "NOT NULL"
+        ENUM type "NOT NULL"
         TIMESTAMP created_at "NOT NULL"
         TIMESTAMP updated_at "NOT NULL"
     }
@@ -68,7 +70,7 @@ erDiagram
     student_attendances {
         INT timeslot_id FK "NOT NULL"
         INT student_id FK "NOT NULL"
-        ENUM attended "NOT NULL"
+        ENUM has_attended "NOT NULL"
     }
 
     teacher_attendances {
