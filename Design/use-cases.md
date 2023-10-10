@@ -20,8 +20,8 @@ MySQL queries for initializing and manipulating data
 #### Create Database
 
 ```sql
-CREATE DATABASE IF NOT EXISTS aqkids;
-USE aqkids;
+CREATE DATABASE IF NOT EXISTS `aqkids`;
+USE `aqkids`;
 SELECT DATABASE();
 ```
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     `birthdate` DATE NOT NULL,
     `phone_number` VARCHAR(16) NOT NULL,
     `email` VARCHAR(320),
-    `email_verified_at` timestamp NULL DEFAULT NULL,
+    `email_verified_at` TIMESTAMP NULL DEFAULT NULL,
     `profile_image_path` VARCHAR(260) NOT NULL,
     `remember_token` VARCHAR(100) DEFAULT NULL,
     `created_at` TIMESTAMP NOT NULL,
@@ -143,6 +143,7 @@ SELECT * FROM `user`;
 |  5 | a.seed     | <HASH_OF "password">                                         | STUDENT | Apple      | NULL        | Seed            | 2014-08-21 | 0123457689   | assets/a.seed/profile_image.png     | NULL  | NULL              | NULL           | 2022-12-07 09:40:00 | 2022-12-07 09:40:00 |
 |  6 | b.bird     | <HASH_OF "password">                                         | STUDENT | Burden     | NULL        | Bird            | 1997-01-16 | 0123457698   | assets/b.bird/profile_image.png     | NULL  | NULL              | NULL           | 2022-12-07 09:55:00 | 2022-12-07 09:55:00 |
 +----+------------+--------------------------------------------------------------+---------+------------+-------------+-----------------+------------+--------------+-------------------------------------+-------+-------------------+----------------+---------------------+---------------------+
+
 
 SELECT * FROM `courses`;
 +----+------------+----------+-------+----------+---------+---------+----------+---------------------+---------------------+-----------+---------------------+---------------------+
