@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -66,12 +67,19 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-
-    public function notis(): HasMany {
-
-        return $this->hasMany(UserNoti::class);
-
+    public function enrollments(): HasMany {
+        return $this->hasMany(Enrollment::class);
     }
 
-   
+    public function notis(): HasMany {
+        return $this->hasMany(UserNoti::class);
+    }
+
+    public function student_attendances(): BelongsToMany {
+        return $this->belongsToMany(Timeslot::class, 'student_attendances', 'student_id', 'timeslot_id')->withPivot('has_attended');
+    }
+
+    public function teacher_attendances(): BelongsToMany {
+        return $this->belongsToMany(Timeslot::class, 'teacher_attendances', 'teacher_id', 'timeslot_id');
+    }
 }
