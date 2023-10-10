@@ -35,7 +35,7 @@
                 
         </div>
     </div>
-    <aside ref="sidebar" class = "w-60 -translate-x-48 fixed transition transform ease-in-out duration-1000 z-50 flex h-screen bg-[#1E293B] ">
+    <aside v-click-outside="closeNav" ref="sidebar" class = "w-60 -translate-x-48 fixed transition transform ease-in-out duration-1000 z-50 flex h-screen bg-[#1E293B] ">
         <!-- open sidebar button -->
         <div ref="maxToolbar" class = "max-toolbar translate-x-24 scale-x-0 w-full -right-6 transition transform ease-in duration-300 flex items-center justify-between border-4 border-gray-950 bg-[#1E293B]  absolute top-5 rounded-full h-12">            
             <div  class = "flex items-center space-x-3 group bg-gradient-to-r from-amber-500 via-orange-500 to-orange-700  pl-14 pr-4 py-1 rounded-full text-white h-full w-full font-semibold">
@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-        <div v-click-outside="closeNav" @click="openNav()" class = "cursor-pointer -right-6 transition transform ease-in-out duration-500 flex border-4 border-gray-950 bg-[#1E293B] hover:bg-white absolute top-2 rounded-full text-white hover:rotate-45">            
+        <div  @click="openNav()" class = "cursor-pointer -right-6 transition transform ease-in-out duration-500 flex border-4 border-gray-950 bg-[#1E293B] hover:bg-white absolute top-2 rounded-full text-white hover:rotate-45">            
             <img src="/images/AQKids_logo.png" class="w-16 h-16">
         </div>
         <!-- MAX SIDEBAR-->
