@@ -1,111 +1,86 @@
 <template>
-
-<footer class="">
-    <div class="bg-white h-2">
-    </div>
-
-    <div class="bg-cyan-900">
-      <div class="m-auto">
-        <div class="flex items-center justify-between">
-          <div
-            class="flex w-full justify-center space-x-12 text-white sm:w-7/12 md:justify-start "
-          >
-            <!-- <ul class="list-inside list-disc space-y-8">
-              <li><a href="#" class="transition hover:text-primary">Home</a></li>
-  
-              <li><a href="#" class="transition hover:text-primary">About</a></li>
-              <li><a href="#" class="transition hover:text-primary">Guide</a></li>
-              <li><a href="#" class="transition hover:text-primary">Blocks</a></li>
-              <li><a href="#" class="transition hover:text-primary">Contact</a></li>
-              <li><a href="#" class="transition hover:text-primary">Terms of Use</a></li>
-            </ul> -->
-  
-            <ul role="list" class="space-y-8 bg-cyan-950 pl-16 pr-64 pb-8 pt-6">
-              <li>
-                <a href="#" class="flex items-center space-x-3 transition hover:text-primary">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    class="w-5"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-                    />
-                  </svg>
-                  <span>Github</span>
-                </a>
-              </li>
-              
-              <li>
-                <a href="https://www.youtube.com/@aquakidschiangmai271" target="https://www.youtube.com/@aquakidschiangmai271" class="flex items-center space-x-3 transition hover:text-primary">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    class="w-5"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"
-                    />
-                  </svg>
-                  <span>YouTube</span>
-                </a>
-              </li>
-  
-              <li>
-                <a href="https://facebook.com/profile.php?id=100063802697610" target="https://facebook.com/profile.php?id=100063802697610" class="flex items-center space-x-3 transition hover:text-primary">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    class="w-5"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"
-                    />
-                  </svg>
-                  <span>Facebook</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/explore/locations/762486143922342/aquakids-chiangmai/" target="https://www.instagram.com/explore/locations/762486143922342/aquakids-chiangmai/" class="flex items-center space-x-3 transition hover:text-primary">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    class="w-5"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
-                    />
-                  </svg>
-                  <span>Instagram</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div
-            class="m-auto mt-16 w-10/12 space-y-6 text-white text-right pr-16"
-          >
-  
-            <span class="block">
-              Contact Us
-            </span>
-            <span>
-              Tel. 097 276 2626
-            </span>
-            <span class="block">
-              Email
-            </span>
-            <span>
-              aquababiescm@gmail.com
-            </span>
-          </div>
+<footer class="bg-gradient-to-r from-gray-100 via-[#bce1ff] to-gray-100">
+  <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+      <div>
+        <div class="flex gap-5 items-center">
+        <img src="/images/AQKids_logo.png" class="h-12"> AQKIDS
+      </div>
+        <p class="max-w-xs mt-4 text-sm text-gray-600">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, accusantium.
+        </p>
+        <div class="flex mt-8 space-x-6 text-gray-600">
+          <a class="hover:opacity-75" href="https://facebook.com/profile.php?id=100063802697610" rel="noreferrer">
+            <span class="sr-only"> Facebook </span>
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
+            </svg>
+          </a>
+          <a class="hover:opacity-75" href="https://www.instagram.com/explore/locations/762486143922342/aquakids-chiangmai/" rel="noreferrer">
+            <span class="sr-only"> Instagram </span>
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
+            </svg>
+          </a>
+          <a class="hover:opacity-75" href="https://www.youtube.com/@aquakidschiangmai271" rel="noreferrer">
+            <span class="sr-only"> Youtube </span>
+            <svg  class="w-6 h-6" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+            </svg>
+          </a>
+          
+        </div>
+      </div>
+      <div class="grid grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <p class="font-medium">
+            Company
+          </p>
+          <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+            <a class="hover:opacity-75" href> About </a>
+            <a class="hover:opacity-75" href> Meet the Team </a>
+            <a class="hover:opacity-75" href> History </a>
+            <a class="hover:opacity-75" href> Careers </a>
+          </nav>
+        </div>
+        <div>
+          <p class="font-medium">
+            Services
+          </p>
+          <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+            <a class="hover:opacity-75" href> 1on1 Coaching </a>
+            <a class="hover:opacity-75" href> Company Review </a>
+            <a class="hover:opacity-75" href> Accounts Review </a>
+            <a class="hover:opacity-75" href> HR Consulting </a>
+            <a class="hover:opacity-75" href> SEO Optimisation </a>
+          </nav>
+        </div>
+        <div>
+          <p class="font-medium">
+            Contact
+          </p>
+          <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+            <a class="hover:opacity-75" href> Tel: <br>+66 097 276 2626</a>
+            <a class="hover:opacity-75" href> Email: <br>aquababiescm@gmail.com </a>
+          </nav>
+        </div>
+        <div>
+          <p class="font-medium">
+            Legal
+          </p>
+          <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+            <a class="hover:opacity-75" href> Privacy Policy </a>
+            <a class="hover:opacity-75" href> Terms &amp; Conditions </a>
+            <a class="hover:opacity-75" href> Returns Policy </a>
+            <a class="hover:opacity-75" href> Accessibility </a>
+          </nav>
         </div>
       </div>
     </div>
-    
+    <p class="mt-8 text-xs text-gray-800">
+      © 2022 Comany Name
+    </p>
+  </div>
 </footer>
 
 </template>
