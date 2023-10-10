@@ -1,6 +1,45 @@
 <template>
     <div class="p-16 min-h-screen bg-gradient-to-l to-purple-50 to-60% from-[#bce1ff] from-10%">
-    <h2 class="my-4 text-4xl font-semibold text-fray-600">Teacher List</h2>
+    <div class="flex justify-between items-center">
+        <h2 class="my-4 text-4xl font-semibold text-fray-600">Teacher List</h2>
+        <label
+            class="relative bg-white min-w-sm max-w-2xl flex flex-col md:flex-row items-center justify-center border  px-2 rounded-2xl gap-2 shadow-2xl focus-within:border-gray-300"
+            for="search-bar">
+            <input id="search-bar" placeholder="teacher name"
+                class="px-6 py-2 w-full rounded-md flex-1 outline-none bg-white">
+            <button
+                class="w-full md:w-auto px-4 py-1 bg-black border-black text-white fill-white active:scale-95 duration-100 border will-change-transform overflow-hidden relative rounded-xl transition-all disabled:opacity-70">
+                
+                <div class="relative">
+
+                    <!-- Loading animation change opacity to display -->
+                    <div
+                        class="flex items-center justify-center h-3 w-3 absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 transition-all">
+                        <svg class="opacity-0 animate-spin w-full h-full" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                            </path>
+                        </svg>
+                    </div>
+
+                    <div class="flex items-center transition-all opacity-1 valid: "><span
+                            class="text-sm font-semibold whitespace-nowrap  mx-auto">
+                            Search
+                        </span>
+                    </div>
+
+                </div>
+                
+            </button>
+        </label>    
+        <button class="px-3 py-2 bg-white font-medium text-gray-800 rounded-lg shadow-md border border-gray-300 hover:bg-gray-200">
+            Register teacher
+
+        </button>
+    </div>
 			<div class="pb-2 flex items-center justify-between text-gray-600">
 				<!-- Header -->
 				<div>
@@ -73,7 +112,7 @@
                     <div
 						class="mr-16 flex flex-col capitalize text-gray-600">
 						<span>Profile info</span>
-						<NuxtLink to="">
+						<NuxtLink to="/staff/detail/teacher">
 						<span class="text-gray-600">see more...</span>
                         </NuxtLink>
 					</div>
@@ -133,7 +172,7 @@
                     <div
 						class="mr-16 flex flex-col capitalize text-gray-600">
 						<span>Profile info</span>
-						<NuxtLink to="">
+						<NuxtLink to="/staff/detail/teacher">
 						<span class="text-gray-600">see more...</span>
                         </NuxtLink>
 					</div>
@@ -144,6 +183,8 @@
 
         </div>
 
+       
+        
             
 
 			
