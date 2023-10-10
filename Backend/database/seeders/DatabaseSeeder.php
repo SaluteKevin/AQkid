@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
             EnrollmentSeeder::class,
             ReceiptSeeder::class,
             TimeslotSeeder::class,
-            StudentAttendanceSeeder::class,
             TeacherAttendanceSeeder::class,
+            StudentAttendanceSeeder::class,
         ]);
     }
 }
