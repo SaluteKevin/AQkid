@@ -50,6 +50,25 @@ class StaffController extends Controller
         // return specific enrollment request
 
     }
+
+    public function addTimeslot() {
+
+    }
+
+    public function removeTimeslot() {
+        
+    }
+
+
+    public function addStudentAttendance() {
+
+        
+    }
+
+    public function removeStudentAttendance() {
+
+
+    }
     
     public function allTeachers() {
 
