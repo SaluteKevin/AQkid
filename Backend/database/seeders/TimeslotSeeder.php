@@ -19,26 +19,26 @@ class TimeslotSeeder extends Seeder
 
         foreach ($courses as $course) {
             $courseId = $course->id;
-            $dateTime = strtotime($course->start_datetime);
-            $quota = $course->quota;
+            $courseQuota = $course->quota;
             $courseCreatedAt = $course->created_at;
+            $timeslotDateTime = strtotime($course->start_datetime);
 
-            for ($time = 0; $time < $quota; $time++) {
+            for ($time = 0; $time < $courseQuota; $time++) {
                 Timeslot::create([
                     'course_id' => $courseId,
-                    'datetime' => date('Y-m-d H:i:s', $dateTime),
+                    'datetime' => date('Y-m-d H:i:s', $timeslotDateTime),
                     'type' => TimeslotTypeEnum::REGULAR->name,
                     'created_at' => $courseCreatedAt,
                     'updated_at' => $courseCreatedAt
                 ]);
 
-                $dateTime = strtotime('+1 week', $dateTime);
+                $timeslotDateTime = strtotime('+1 week', $timeslotDateTime);
 
                 // Make-up class for student_id = 4
-                if ($courseId == 2 && date('Y-m-d H:i:s', $dateTime) == '2023-03-15 10:00:00') {
+                if ($courseId == 2 && date('Y-m-d H:i:s', $timeslotDateTime) == '2023-03-15 10:00:00') {
                     Timeslot::create([
                         'course_id' => $courseId,
-                        'datetime' => date('Y-m-d H:i:s', $dateTime),
+                        'datetime' => date('Y-m-d H:i:s', $timeslotDateTime),
                         'type' => TimeslotTypeEnum::MAKEUP->name,
                         'created_at' => '2023-03-01 10:00:00',
                         'updated_at' => '2023-03-01 10:00:00'

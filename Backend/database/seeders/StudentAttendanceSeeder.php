@@ -19,13 +19,13 @@ class StudentAttendanceSeeder extends Seeder
             User::find(6)
         ];
 
-        $timeslot_ids = range(1, 10);
+        $timeslotIds = range(1, 10);
 
-        foreach ($timeslot_ids as $timeslot_id) {
-            $timeslot = Timeslot::find($timeslot_id);
+        foreach ($timeslotIds as $timeslotId) {
+            $timeslot = Timeslot::find($timeslotId);
 
             foreach ($students as $student) {
-                $student->student_attendances()->attach($timeslot, ['has_attended' => ($timeslot_id == 10 && $student->id == 4) ? 'FALSE' : 'TRUE']);
+                $student->student_attendances()->attach($timeslot, ['has_attended' => ($timeslotId == 10 && $student->id == 4) ? 'FALSE' : 'TRUE']);
             }
         }
 
