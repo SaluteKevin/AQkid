@@ -1,7 +1,7 @@
 <template>
 <section class="">
   <div
-       class="max-w-lg bg-gradient-to-b from-blue-950 to-black px-4 pt-24 py-16 mx-auto text-left md:max-w-none md:text-center"
+       class="max-w-lg bg-gradient-to-b from-blue-950 from-10% via-black via-90% to-sky-200 to-95% px-4 pt-24 py-24 mx-auto text-left md:max-w-none md:text-center"
      >
        <h1
          class=" font-extrabold leading-10 tracking-tight  text-white text-center sm:leading-none md:text-6xl text-4xl lg:text-7xl"

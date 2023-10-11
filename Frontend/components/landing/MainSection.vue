@@ -26,7 +26,7 @@
         </div>
         <img 
                     class="w-full object-cover"
-                    src="https://media.discordapp.net/attachments/871313414616657920/1160588644088807434/water-texture-background-transparent-liquid-removebg.png?ex=65353567&is=6522c067&hm=65c3e362e05ede81b4ce95b62707a1d58f73459c66db953494615f8ae913ec9d&=&width=1001&height=448">
+                    src="https://media.discordapp.net/attachments/1139884248376016906/1161715416142458952/kWxg7GulvATreEgkgASSABJAAEkACSAAJIIE6TYDVEjGVyWRlL6omXqcp4OReiQAa6aEDVEBJAAEkACSAAJIAEkgASQABJAAkig6gn8H5o7yEFNCx1AAAAAElFTkSuQmCC.png?ex=65394eca&is=6526d9ca&hm=9e2e65ff2eee14af569ff2cd2530f07debe8e7c4fa91a2fb78c0f3e671b95520&=&width=1447&height=648">
         <!-- <div class="flex place-content-center justify-center space-x-8 mx-12 absolute inset-x-0 bottom-0">
               <div class="h-full w-full">
                 <img 
