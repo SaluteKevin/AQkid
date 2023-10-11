@@ -7,6 +7,8 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use App\Models\User;
 
 
 
@@ -20,7 +22,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','forgotPassword','resetPassword']]);
+        $this->middleware('auth:api', ['except' => ['login','register']]);
     }
 
     /**
@@ -36,6 +38,40 @@ class AuthController extends Controller
         $token = UserService::getUserManager()->generateApiToken($request);
 
         return $this->respondWithToken($token);
+
+    }
+
+    public function register(Request $request)
+    {
+
+        Log::info($request->all());
+        
+        if ($request->get('profile_image_path')) {
+            return response()->json([
+                'access_token' => "ok",
+            ]);
+        }
+
+        return response()->json([
+            'access_token' => "not ok",
+        ]);
+        
+        // $user = new User();
+        // $user->username = $request->get('username');
+        // $user->password = $request->get('password');
+        // $user->role = 'STUDENT';
+        // $user->first_name = $request->get('firstname');
+        // $user->middle_name = $request->get('middlename');
+        // $user->last_name = $request->get('lastname');
+        // $user->birthdate = $request->get('birthdate');
+        // $user->phone_number = $request->get('phone_number');
+        // $user->email = $request->get('email');
+        // $user->profile_image_path = "test";
+        // $user->save();
+        
+        Log::info($request->all());
+
+        return $request->all();
 
     }
 

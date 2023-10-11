@@ -163,6 +163,8 @@ import {useAuthStore} from "~/stores/useAuthStore";
     
 const auth = useAuthStore();
 
+await auth.setCSRFCookie();
+
 async function logout() {
 
     await auth.clearAuth();

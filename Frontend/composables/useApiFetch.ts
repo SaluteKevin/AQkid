@@ -11,7 +11,7 @@ export default async function<T>(path: string, options: {}) {
   const auth = useAuthStore();
 
   const headers : Headers = {
-    "Accept": "application/json"
+    "Accept": "application/json",
   }
 
   const XSRFToken = useCookie('XSRF-TOKEN');
@@ -29,7 +29,10 @@ export default async function<T>(path: string, options: {}) {
     watch: false,
     ...options,
     baseURL: config.public.apiBaseURL,
-    headers
+    headers : {
+      ...headers,
+      ...options?.headers
+    }
 
   })
 
