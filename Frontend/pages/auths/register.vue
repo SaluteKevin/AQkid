@@ -10,14 +10,14 @@
                         <div class="flex-grow border-t border-gray-400"></div>
                     </div>
                     <label for="username" class="flex">Username <span class="text-red-500 mt-1 ml-2">  ***</span></label>
-                    <input 
+                    <input v-model="RegistrationForm.username"
                         type="text"
                         class="block border border-grey-light w-full p-3 rounded  "
                         name="username"
                         placeholder="Username" id="username"/>
 
                     <label for="email" class="flex mt-4">Email</label>
-                    <input 
+                    <input v-model="RegistrationForm.email"
                         type="email"
                         class="block border border-grey-light w-full p-3 rounded"
                         name="email"
@@ -25,7 +25,7 @@
                         id="email"/>
 
                     <label for="password" class="flex mt-4">Password <span class="text-red-500 mt-1 ml-2">  ***</span></label>
-                    <input 
+                    <input v-model="RegistrationForm.password"
                         type="text"
                         class="block border border-grey-light w-full p-3 rounded"
                         name="password"
@@ -33,7 +33,7 @@
                         id="password"/>
                     
                     <label for="confirm_password" class="flex mt-4">Confirm Password <span class="text-red-500 mt-1 ml-2">  ***</span></label>
-                    <input 
+                    <input v-model="RegistrationForm.confirm_password"
                         type="text"
                         class="block border border-grey-light w-full p-3 rounded"
                         name="confirm_password"
@@ -47,7 +47,7 @@
                     </div>
                     
                     <label for="firstname" class="flex mt-4">Firstname<span class="text-red-500 mt-1 ml-2">  ***</span></label>
-                    <input 
+                    <input v-model="RegistrationForm.firstname"
                         type="text"
                         class="block border border-grey-light w-full p-3 rounded"
                         name="firstname"
@@ -55,7 +55,7 @@
                         id="firstname"/>
 
                     <label for="middlename" class="flex mt-4">Middlename</label>
-                    <input 
+                    <input v-model="RegistrationForm.middlename"
                         type="text"
                         class="block border border-grey-light w-full p-3 rounded"
                         name="middlename"
@@ -63,7 +63,7 @@
                         id="middlename"/>
 
                     <label for="lastname" class="flex mt-4">Lastname<span class="text-red-500 mt-1 ml-2">  ***</span></label>
-                    <input 
+                    <input v-model="RegistrationForm.lastname"
                         type="text"
                         class="block border border-grey-light w-full p-3 rounded"
                         name="lastname"
@@ -71,11 +71,13 @@
                         id="lastname"/>
 
                     <label for="birthdate" class="flex mt-4">Birthdate<span class="text-red-500 mt-1 ml-2">  ***</span></label>
-                    <input type="date" id="birthdate" name="birthdate"
+                    <input v-model="RegistrationForm.birthdate"
+                    type="date" id="birthdate" name="birthdate"
                     class="block border border-grey-light w-full p-3 rounded">
                         
                     <label for="phone_number" class="flex mt-4">Birthdate<span class="text-red-500 mt-1 ml-2">  ***</span></label>
-                    <input type="tel" id="phone_number" name="phone_number" placeholder="091-111-1111" 
+                    <input v-model="RegistrationForm.phone_number"
+                    type="tel" id="phone_number" name="phone_number" placeholder="091-111-1111" 
                     class="block border border-grey-light w-full p-3 rounded">
 
                     <!-- image -->
@@ -135,19 +137,87 @@
     </div>
 </template>
 
-<style>
-::placeholder {
-  color: red;
-  opacity: 1; /* Firefox */
-}
-</style>
 
 <script setup lang="ts">
 definePageMeta({layout: false})
 
+import {useAuthStore} from "~/stores/useAuthStore";
+    
+const auth = useAuthStore();
 
-function handleRegister() {
-console.log("assa")
+await auth.setCSRFCookie();
+
+const RegistrationForm = ref({
+    username: "",
+    email: "",
+    password: "",
+    confirm_password: "",
+    firstname: "",
+    middlename: "",
+    lastname: "",
+    birthdate:"",
+    phone_number:"",
+    
+});
+
+const profile_image_path =  ref<File | null>(null)
+
+
+async function handleRegister() {
+
+    console.log(profile_image_path.value);
+    const formData = new FormData()
+
+    if (profile_image_path.value) {
+        formData.append('profile_image_path', profile_image_path.value)
+    }
+
+    for (const item in RegistrationForm.value) {
+        formData.append(item, RegistrationForm.value[item]);
+    }
+
+    const {data: registerResponse, error: registerError } = await useApiFetch("api/auth/register", {
+            method: "POST",
+            body: formData,
+    });
+
+    if (registerResponse.value) {
+
+        console.log(registerResponse.value);
+
+        // await navigateTo(`/auths/login`);
+
+    } 
+
+    else {
+
+        if (registerError.value) {
+
+            console.log(registerError);
+            const errors = registerError.value.data.errors;
+
+            // loginErrors.value = {};
+
+            // for (const key in errors) {
+
+            //     if (errors.hasOwnProperty(key)) {
+
+            //     const errorMessages = errors[key];
+                
+                
+            //         for (const errorMessage of errorMessages) {
+                        
+            //             loginErrors.value[errorMessage] = errorMessage;
+                    
+            //         }
+
+            //     }
+            // }
+
+        }
+
+    }   
+
 
 }
 
@@ -169,6 +239,7 @@ const handleImageChange = () => {
         imagePreview.value.src = event.target?.result as string;
         imagePreviewSrc.value = event.target?.result as string; // Set the image source
         imagefix.value = false;
+        profile_image_path.value = selectedFile;
       }
     };
 
@@ -179,6 +250,7 @@ const handleImageChange = () => {
       imagePreview.value.src = '';
       imagePreviewSrc.value = ''; // Clear the image source
       imagefix.value = true;
+      profile_image_path.value = null;
     }
   }
 };
@@ -188,6 +260,7 @@ const removeImagePreview = () => {
     imagePreview.value.src = '';
     imagePreviewSrc.value = ''; // Clear the image source
     imagefix.value = true;
+    profile_image_path.value = null;
   }
 
   if (profileImageInput.value) {
