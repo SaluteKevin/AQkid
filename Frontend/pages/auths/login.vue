@@ -17,10 +17,17 @@
                             <input v-model="loginForm.username"
                                 class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                                 type="text" name="username" placeholder="Email or Username" />
+                            <p class="text-red-500" v-for="error in loginErrors['username']" :key="error">
+                                {{ error }}
+                            </p>
                             <input v-model="loginForm.password"
                                 class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
                                 type="password" name="password" placeholder="Password" />
-                            <p class="text-red-500" v-for="error in loginErrors" :key="error">
+                            <p class="text-red-500" v-for="error in loginErrors['password']" :key="error">
+                                {{ error }}
+                            </p>
+
+                            <p class="text-red-500" v-for="error in loginErrors['error']" :key="error">
                                 {{ error }}
                             </p>
                             <button type="submit"
@@ -120,15 +127,11 @@
                     if (errors.hasOwnProperty(key)) {
 
                     const errorMessages = errors[key];
-                    
-                    
-                        for (const errorMessage of errorMessages) {
-                            
-                            loginErrors.value[errorMessage] = errorMessage;
-                        
-                        }
 
+                    loginErrors.value[key] = errorMessages;
+                    
                     }
+
                 }
 
             }
