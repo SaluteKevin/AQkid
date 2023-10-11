@@ -9,18 +9,27 @@
   import FullCalendar from '@fullcalendar/vue3'
   import interactionPlugin from '@fullcalendar/interaction'
   import timeGridPlugin from '@fullcalendar/timegrid'
+  import dayGridPlugin from '@fullcalendar/daygrid'
   
 
   const calendarOptions = ref({
-          plugins: [interactionPlugin, timeGridPlugin],
-          initialView: 'timeGridWeek',
+          plugins: [interactionPlugin, timeGridPlugin, dayGridPlugin],
+          initialView: 'dayGridMonth',
           nowIndicator: true,
           editable: true,
-          initialEvents: [
-            { title: 'nice event', start: new Date() }
-          ]
+          dateClick: handleDateClick,
+        //   initialEvents: [
+        //     { title: 'nice event', start: new Date(2023,12,15) }
+        //   ],
+          events: [
+          { title: 'event 1', date: '2023-12-19' },
+          { title: 'event 2', date: '2023-09-12' }
+        ]
         })
 
+    function  handleDateClick (arg) {
+      alert('date click! ' + arg.dateStr);
+    }
  
   </script>
   
