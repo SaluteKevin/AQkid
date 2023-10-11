@@ -20,8 +20,8 @@
         </div>
         <div class="md:ml-6 sm:mr-16">
           <img 
-                    class="object-cover h-96 w-full rounded-full hover:scale-105 duration-300 hover:shadow-xl" 
-                    src="https://cdn.discordapp.com/attachments/871313414616657920/1160598734435000320/361648744_738993304904086_5497916127488969777_n.jpg?ex=65353ecd&is=6522c9cd&hm=f40ddd518cda5b4e57d4151e11a931e8b1b228434af310d54725a7ab08979f4e&"
+                    class="object-cover h-80 w-full rounded-full hover:scale-105 duration-300" 
+                    src="/images/AQKids_logo.png"
                     >
         </div>
       </div>

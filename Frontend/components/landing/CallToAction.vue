@@ -1,10 +1,10 @@
 <template>
-<section class="bg-black">
+<section class="">
   <div
-       class="max-w-lg bg-black px-4 pt-24 py-8 mx-auto text-left md:max-w-none md:text-center"
+       class="max-w-lg bg-gradient-to-b from-blue-950 to-black px-4 pt-24 py-8 mx-auto text-left md:max-w-none md:text-center"
      >
        <h1
-         class="text-3xl font-extrabold leading-10 tracking-tight text-left text-white text-center sm:leading-none md:text-6xl text-4xl lg:text-7xl"
+         class=" font-extrabold leading-10 tracking-tight  text-white text-center sm:leading-none md:text-6xl text-4xl lg:text-7xl"
        >
          <span class="inline md:block">Join Us</span>
          <span
