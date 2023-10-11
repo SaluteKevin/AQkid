@@ -33,7 +33,7 @@
 
                 <a class="flex text-gray-600 
                     cursor-pointer transition-colors duration-300
-                    font-semibold text-blue-600">
+                    font-semibold hover:text-blue-600">
                     Themes
                 </a>
 
@@ -78,7 +78,7 @@
                 <!-- Login -->
                 <NuxtLink class="flex text-gray-600 
                     cursor-pointer transition-colors duration-300
-                    font-semibold text-blue-600" to="/auths/login">
+                    font-semibold hover:text-blue-600" to="/auths/login">
 
                     <svg class="fill-current h-5 w-5 mr-2 mt-0.5" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24"

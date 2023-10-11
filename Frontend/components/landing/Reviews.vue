@@ -1,6 +1,6 @@
 <template>
   <div class="h-full relative">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-2">
     <div class="grid gap-4">
         <div>
             <img class="h-full w-auto rounded-lg object-cover border-2 shadow-2xl" src="https://cdn.discordapp.com/attachments/871313414616657920/1160601509956964523/258397402_4855220244508897_4255804475468976414_n.png?ex=65354162&is=6522cc62&hm=df137a62cd0fd39554caaf30612bf8284415391b3235fe79d1de7ebb82e9efeb&" alt="">
