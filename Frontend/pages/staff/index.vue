@@ -1,18 +1,32 @@
 <template>
-<div class="grid grid-rows-5 grid-flow-col">
-    <div class="bg-rose-300 row-span-5 col-span-4 h-96 w-full">
-
+    <div class='app p-12'>
+      <FullCalendar :options='calendarOptions' />
     </div>
-    <div class="bg-amber-300 row-span-2 col-span-2 h-48 w-full">
+  </template>
+  
+  <script setup lang="ts">
+  definePageMeta({layout: "staff"})
+  import FullCalendar from '@fullcalendar/vue3'
+  import interactionPlugin from '@fullcalendar/interaction'
+  import timeGridPlugin from '@fullcalendar/timegrid'
+  
 
-    </div>
-    <div class="bg-green-300 row-span-3 col-span-2 h-48 w-full">
+  const calendarOptions = ref({
+          plugins: [interactionPlugin, timeGridPlugin],
+          initialView: 'timeGridWeek',
+          nowIndicator: true,
+          editable: true,
+          initialEvents: [
+            { title: 'nice event', start: new Date() }
+          ]
+        })
 
-    </div>
-</div>
-</template>
-
-<script setup lang="ts">
-
-definePageMeta({layout: "staff"})
-</script>
+ 
+  </script>
+  
+  <style scoped>
+    .app {
+      font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+      font-size: 14px;
+    }
+  </style>
