@@ -84,8 +84,26 @@
             await auth.setJWTToken(loginResponse.value.access_token);
 
             await auth.fetchAuthUser();
+
+            if (auth.user.value.role === "STAFF") {
+
+                await navigateTo(`/staff`);
+
+            }
+
+            if (auth.user.value.role === "TEACHER") {
+
+                await navigateTo(`/home`);
+
+            }
+
+            if (auth.user.value.role === "STUDENT") {
+
+                await navigateTo(`/home`);
+
+            }
+             
             
-            await navigateTo(`/home`);
 
         } 
 
