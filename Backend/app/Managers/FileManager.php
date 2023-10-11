@@ -13,14 +13,11 @@ class FileManager {
     public function uploadFile(string $path, $file) {
         
         if($file) {
-            $file_name = Carbon::now() . $file->getClientOriginalName();
-            $file_path = $path . $file_name;
+            
+            $file_path = $path;
             
             if (Storage::disk('public')->put($file_path, file_get_contents($file))) {
-                return array(
-                    'name' => $file_name,
-                    'file_path' => $file_path,
-                );
+                return $file_path;
             }
 
             return false;
