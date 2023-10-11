@@ -1,5 +1,5 @@
 <template>
-    <div class='app p-12'>
+    <div class='app p-12 transform ease-in-out'>
       <FullCalendar :options='calendarOptions' />
     </div>
   </template>

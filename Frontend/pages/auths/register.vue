@@ -15,6 +15,9 @@
                         class="block border border-grey-light w-full p-3 rounded  "
                         name="username"
                         placeholder="Username" id="username"/>
+                    <p class="text-red-500" v-for="error in RegistrationError['username']" :key="error">
+                                {{ error }}
+                    </p>
 
                     <label for="email" class="flex mt-4">Email</label>
                     <input v-model="RegistrationForm.email"
@@ -23,6 +26,9 @@
                         name="email"
                         placeholder="Email (Optional)" 
                         id="email"/>
+                        <p class="text-red-500" v-for="error in RegistrationError['email']" :key="error">
+                                {{ error }}
+                        </p>
 
                     <label for="password" class="flex mt-4">Password <span class="text-red-500 mt-1 ml-2">  ***</span></label>
                     <input v-model="RegistrationForm.password"
@@ -32,13 +38,17 @@
                         placeholder="Password" 
                         id="password"/>
                     
-                    <label for="confirm_password" class="flex mt-4">Confirm Password <span class="text-red-500 mt-1 ml-2">  ***</span></label>
-                    <input v-model="RegistrationForm.confirm_password"
+                    <p class="text-red-500" v-for="error in RegistrationError['password']" :key="error">
+                                {{ error }}
+                    </p>
+                    
+                    <label for="password_confirmation" class="flex mt-4">Confirm Password <span class="text-red-500 mt-1 ml-2">  ***</span></label>
+                    <input v-model="RegistrationForm.password_confirmation"
                         type="text"
                         class="block border border-grey-light w-full p-3 rounded"
-                        name="confirm_password"
+                        name="password_confirmation"
                         placeholder="Confirm Password" 
-                        id="confirm_password"/>
+                        id="password_confirmation"/>
 
                     <div class="relative flex py-5 items-center w-full px-10">
                         <div class="flex-grow border-t border-gray-400"></div>
@@ -54,6 +64,10 @@
                         placeholder="Firstname" 
                         id="firstname"/>
 
+                    <p class="text-red-500" v-for="error in RegistrationError['firstname']" :key="error">
+                                {{ error }}
+                    </p>
+
                     <label for="middlename" class="flex mt-4">Middlename</label>
                     <input v-model="RegistrationForm.middlename"
                         type="text"
@@ -62,6 +76,10 @@
                         placeholder="Middlename" 
                         id="middlename"/>
 
+                    <p class="text-red-500" v-for="error in RegistrationError['middlename']" :key="error">
+                                {{ error }}
+                    </p>
+
                     <label for="lastname" class="flex mt-4">Lastname<span class="text-red-500 mt-1 ml-2">  ***</span></label>
                     <input v-model="RegistrationForm.lastname"
                         type="text"
@@ -69,16 +87,27 @@
                         name="lastname"
                         placeholder="Lastname" 
                         id="lastname"/>
+                    
+                    <p class="text-red-500" v-for="error in RegistrationError['lastname']" :key="error">
+                                {{ error }}
+                    </p>
 
                     <label for="birthdate" class="flex mt-4">Birthdate<span class="text-red-500 mt-1 ml-2">  ***</span></label>
                     <input v-model="RegistrationForm.birthdate"
                     type="date" id="birthdate" name="birthdate"
                     class="block border border-grey-light w-full p-3 rounded">
+                    <p class="text-red-500" v-for="error in RegistrationError['birthdate']" :key="error">
+                                {{ error }}
+                    </p>
                         
                     <label for="phone_number" class="flex mt-4">Birthdate<span class="text-red-500 mt-1 ml-2">  ***</span></label>
                     <input v-model="RegistrationForm.phone_number"
                     type="tel" id="phone_number" name="phone_number" placeholder="091-111-1111" 
                     class="block border border-grey-light w-full p-3 rounded">
+
+                    <p class="text-red-500" v-for="error in RegistrationError['phone_number']" :key="error">
+                                {{ error }}
+                    </p>
 
                     <!-- image -->
 
@@ -124,6 +153,10 @@
                                hover:shadow-xl duration-300 hover:bg-white hover:text-indigo-600 w-full text-center py-3 rounded text-white my-1"
                     >Create Account</button>
 
+                    <p class="text-red-500" v-for="error in RegistrationError['message']" :key="error">
+                                {{ error }}
+                    </p>
+
                     <div class="text-grey-dark">
                     Already Sign Up? 
                     <NuxtLink class="no-underline border-b border-blue text-indigo-600" to="/auths/login">
@@ -151,7 +184,7 @@ const RegistrationForm = ref({
     username: "",
     email: "",
     password: "",
-    confirm_password: "",
+    password_confirmation: "",
     firstname: "",
     middlename: "",
     lastname: "",
@@ -160,12 +193,13 @@ const RegistrationForm = ref({
     
 });
 
+const RegistrationError = ref<{ [k: string]: any }>({})
+
 const profile_image_path =  ref<File | null>(null)
 
 
 async function handleRegister() {
 
-    console.log(profile_image_path.value);
     const formData = new FormData()
 
     if (profile_image_path.value) {
@@ -183,9 +217,7 @@ async function handleRegister() {
 
     if (registerResponse.value) {
 
-        console.log(registerResponse.value);
-
-        // await navigateTo(`/auths/login`);
+        await navigateTo(`/auths/login`);
 
     } 
 
@@ -193,26 +225,22 @@ async function handleRegister() {
 
         if (registerError.value) {
 
-            console.log(registerError);
+            
             const errors = registerError.value.data.errors;
 
-            // loginErrors.value = {};
+            RegistrationError.value = {};
 
-            // for (const key in errors) {
+            for (const key in errors) {
 
-            //     if (errors.hasOwnProperty(key)) {
+                if (errors.hasOwnProperty(key)) {
 
-            //     const errorMessages = errors[key];
+                const errorMessages = errors[key];
                 
-                
-            //         for (const errorMessage of errorMessages) {
-                        
-            //             loginErrors.value[errorMessage] = errorMessage;
-                    
-            //         }
+                RegistrationError.value[key] = errorMessages;
 
-            //     }
-            // }
+                }
+            }
+            
 
         }
 
