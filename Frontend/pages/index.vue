@@ -1,5 +1,5 @@
 <template>
-    <main class="overflow-hidden overflow-y-scroll no-scrollbar">
+    <main class="overflow-hidden">
         
         <LandingMainSection @scroll="JoinUs" class=" bg-gradient-to-b from-white from-55%  via-sky-300 via-75% to-indigo-400"/>
         
