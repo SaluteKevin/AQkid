@@ -1,7 +1,7 @@
 <template>
     <div class="h-screen justify-end place-item-center flex overflow-hidden">
-        <div class="relative w-full grid grid-cols-2 md:grid-cols-4 gap-4 p-2 bg-gradient-to-br from-indigo-700 via-cyan-400 to-orange-300">
-            <div class="bg-gray-200 bg-opacity-80 absolute inset-0 w-2/3 h-2/3 mx-auto my-auto overflow-y-auto">
+        <div class=" relative w-full grid grid-cols-2 md:grid-cols-4 gap-4 p-2 bg-gradient-to-br from-indigo-700 via-cyan-400 to-orange-300">
+            <div class="bg-gray-100 rounded-md absolute inset-0 w-2/3 h-2/3 mx-auto my-auto overflow-y-auto">
                 <img src="/images/AQKids_logo.png" class="w-32 h-32 mx-auto mt-16">
                 <div class="text-center font-semibold  mt-4">
                     <span class="text-orange-500 text-4xl">Aquakids</span> <span class="text-cyan-950 text-4xl">Chiangmai</span>
