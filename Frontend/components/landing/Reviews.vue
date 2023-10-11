@@ -1,5 +1,10 @@
 <template>
-<div class="text-white bg-gray-100 px-6 pb-6" id="reviews">
+  <div class="h-screen relative">
+            <Bubble></Bubble>    
+            <BubbleCloud></BubbleCloud>
+                    
+  </div>
+<!-- <div class="text-white bg-gray-100 px-6 pb-6" id="reviews">
     <div class="">
       <h2 class="text-center text-6xl font-bold text-cyan-950 py-6">
         Reviews!
@@ -98,5 +103,5 @@
       </div>
       
   </div>
-</div>
+</div> -->
 </template>

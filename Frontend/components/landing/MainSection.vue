@@ -20,9 +20,8 @@
         </div>
         <img 
                     class="w-full object-cover"
-                    src="https://media.discordapp.net/attachments/871313414616657920/1160588644088807434/water-texture-background-transparent-liquid-removebg.png?ex=65353567&is=6522c067&hm=65c3e362e05ede81b4ce95b62707a1d58f73459c66db953494615f8ae913ec9d&=&width=1001&height=448"
-                    >
-        <div class="flex place-content-center justify-center space-x-8 mx-12 absolute inset-x-0 bottom-0">
+                    src="https://media.discordapp.net/attachments/871313414616657920/1160588644088807434/water-texture-background-transparent-liquid-removebg.png?ex=65353567&is=6522c067&hm=65c3e362e05ede81b4ce95b62707a1d58f73459c66db953494615f8ae913ec9d&=&width=1001&height=448">
+        <!-- <div class="flex place-content-center justify-center space-x-8 mx-12 absolute inset-x-0 bottom-0">
               <div class="h-full w-full">
                 <img 
                   class="object-cover h-72 w-full rounded-full hover:scale-105 duration-300 hover:shadow-xl" 
@@ -41,7 +40,7 @@
                   src="https://cdn.discordapp.com/attachments/871313414616657920/1160597040829583481/354233673_713421017461315_3218277473228969050_n.png?ex=65353d39&is=6522c839&hm=b23adbca1a8abef24f7735c92454bce3d23e1a92f946566b96d15e7fb942cef9&"
                   >
               </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

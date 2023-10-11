@@ -31,7 +31,7 @@
       <div
         class=" mx-12 md:grid md:divide-x divide-gray-100 overflow-hidden rounded-3xl text-gray-600 grid-cols-3  py-12"
       >
-        <div class="group relative md:bg-gradient-to-t md:from-blue-600 md:from-20% sm:to-0% hover:z-[1]">
+        <div class="group relative  hover:z-[1]">
           <div class="relative space-y-8 py-12 p-8 ">
             <img
               src="https://cdn-icons-png.flaticon.com/512/4341/4341139.png"
@@ -54,7 +54,7 @@
             </div>
           </div>
         </div>
-        <div class="group relative md:bg-gradient-to-t md:from-blue-600 md:from-10% sm:to-0% hover:z-[1]">
+        <div class="group relative  hover:z-[1]">
           <div class="relative space-y-8 py-12 p-8">
             <img
               src="https://cdn-icons-png.flaticon.com/512/4341/4341134.png"
@@ -76,7 +76,7 @@
             </div>
           </div>
         </div>
-        <div class="group relative md:bg-gradient-to-t md:from-blue-600 md:from-10% sm:to-0% hover:z-[1]">
+        <div class="group relative  hover:z-[1]">
           <div class="relative space-y-8 py-12 p-8 ">
             <img
               src="https://cdn-icons-png.flaticon.com/512/4341/4341160.png"

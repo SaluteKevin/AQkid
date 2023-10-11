@@ -1,11 +1,12 @@
 <template>
     <main>
-        <div class="bg-gradient-to-b from-white from-30% via-blue-100 via-40% to-blue-600 to-80%">
-            <LandingMainSection />
-            <LandingFeatures />
-        </div>
         
-        <LandingReviews/>
+        <LandingMainSection class="bg-gradient-to-b from-white via-white to-blue-200"/>
+        
+        <LandingFeatures class="bg-gradient-to-b from-blue-200 via-blue-400 to-gray-950" />
+        
+        <LandingReviews class="bg-gradient-to-b from-gray-950 to-black"/>
+        
         <LandingCallToAction />
     </main>
 </template>

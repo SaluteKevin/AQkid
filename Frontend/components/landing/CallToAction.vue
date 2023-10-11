@@ -1,22 +1,23 @@
 <template>
-<div class="py-24 bg-blue-950">
-  <div aria-hidden="true" class="absolute inset-0 h-max w-full m-auto grid grid-cols-2 -space-x-52 opacity-40">
-  </div>
-      <div class="mt-6 m-auto space-y-6">
-        <h1 class="text-center text-4xl font-semibold text-white md:text-5xl"><span>Let's swim</span> today!</h1>
-        <p class="text-center text-xl text-gray-200">
-          มาว่ายเรียนว่ายน้ำและสนุกสนานไปด้วยกันที่ Aquakids Chiangmai
-        </p>
-        <div class="flex flex-wrap justify-center gap-6">
-          <a
-              href="#"
-              class="bg-white rounded-md relative flex h-12 items-center justify-center px-8 hover:scale-110 duration-300"
-            >
-              <span class="relative text-base font-semibold text-cyan-900"
-                >Join now</span
-              >
-            </a>
-        </div>
-      </div>
-</div>
+<section class="bg-black">
+  <div
+       class="max-w-lg bg-black px-4 pt-24 py-8 mx-auto text-left md:max-w-none md:text-center"
+     >
+       <h1
+         class="text-3xl font-extrabold leading-10 tracking-tight text-left text-white text-center sm:leading-none md:text-6xl text-4xl lg:text-7xl"
+       >
+         <span class="inline md:block">Join Us</span>
+         <span
+           class=" mt-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-emerald-400 to-green-500 md:inline-block"
+         > Swim<span class="bg-clip-text text-transparent bg-gradient-to-r from-teal-500 via-cyon-400 to-purple-300"> Together</span> </span>
+       </h1>
+       <div
+         class="mx-auto rounded-lg font-black mt-5 text-zinc-400 md:mt-12 md:max-w-lg text-center lg:text-lg"
+       >
+         <button class="bg-tkb border text-sm text-white py-3 px-7 rounded-full" >
+         Join Sahilnetic
+         </button>
+       </div>
+     </div>
+</section>
 </template>

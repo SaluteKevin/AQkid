@@ -285,6 +285,7 @@
 
 </template>
 
+
 <script setup lang="ts">
 definePageMeta({layout: "staff"})
 
@@ -308,7 +309,7 @@ const regisUp  = async() => {
             behavior: 'smooth',
         });
     }
-    
+
 };
 
 const regisDown  = async() => {
