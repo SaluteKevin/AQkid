@@ -20,7 +20,7 @@
         </div>
         <div class="md:ml-6 sm:mr-16">
           <img 
-                    class="object-cover h-80 w-full rounded-full hover:scale-105 duration-300" 
+                    class="object-cover h-80 w-full rounded-full hover:scale-105 duration-300 hover:shadow-lg bg-gray-200 border-8 border-white" 
                     src="/images/AQKids_logo.png"
                     >
         </div>

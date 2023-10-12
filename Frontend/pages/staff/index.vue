@@ -11,6 +11,28 @@
   import timeGridPlugin from '@fullcalendar/timegrid'
   import dayGridPlugin from '@fullcalendar/daygrid'
   
+  const event = ref({});
+
+
+  // const { data : eventData , error : eventError } = await useApiFetch("api/auth/login", {});
+
+                //  ^
+                //  | ตัวเดียวกันข้อมูลโหลดมาเลย
+                //  v
+  // mock up
+          const eventData = ref([
+    { title: 'ink bd', date: '2023-12-19', key: 123},
+    { title: 'event 1', date: '2023-12-19' },
+    { title: 'event 1', date: '2023-12-19' },
+    { title: 'event 1', date: '2023-12-19' },
+    { title: 'event 2', date: '2023-09-12' }
+    ])
+
+  
+  if (eventData.value) {
+     event.value = eventData.value 
+
+  } 
 
   const calendarOptions = ref({
           plugins: [interactionPlugin, timeGridPlugin, dayGridPlugin],
@@ -22,13 +44,7 @@
         //   initialEvents: [
         //     { title: 'nice event', start: new Date(2023,12,15) }
         //   ],
-          events: [
-          { title: 'event 1', date: '2023-12-19', key: 123},
-          { title: 'event 1', date: '2023-12-19' },
-          { title: 'event 1', date: '2023-12-19' },
-          { title: 'event 1', date: '2023-12-19' },
-          { title: 'event 2', date: '2023-09-12' }
-        ]
+          events: event.value
         })
 
     function  handleDateClick (arg) {
