@@ -60,6 +60,7 @@ CREATE TABLE IF NOT EXISTS `courses` (
     `opens_until` DATETIME NOT NULL,
     `start_datetime` DATETIME NOT NULL,
     `status` ENUM('PENDING', 'OPEN', 'FULL', 'ACTIVE', 'ENDED', 'CANCELLED') NOT NULL,
+    `price` FLOAT NOT NULL,
     `created_at` TIMESTAMP NOT NULL,
     `updated_at` TIMESTAMP NOT NULL,
     PRIMARY KEY (`id`),
@@ -111,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `timeslots` (
 CREATE TABLE IF NOT EXISTS `student_attendances` (
     `timeslot_id` INT NOT NULL,
     `student_id` INT NOT NULL,
-    `has_attended` ENUM('TRUE', 'FALSE') NOT NULL DEAULT 'FALSE',
+    `has_attended` ENUM('TRUE', 'FALSE') NOT NULL DEFAULT 'FALSE',
     FOREIGN KEY (`timeslot_id`) REFERENCES `timeslots` (`id`),
     FOREIGN KEY (`student_id`) REFERENCES `users` (`id`)
 );
@@ -146,13 +147,13 @@ SELECT * FROM `user`;
 
 
 SELECT * FROM `courses`;
-+----+------------+----------+-------+----------+---------+---------+----------+---------------------+---------------------+-----------+---------------------+---------------------+
-| id | teacher_id | title    | quota | capacity | min_age | max_age | duration | opens_until         | start_datetime      | status    | created_at          | updated_at          |
-+----+------------+----------+-------+----------+---------+---------+----------+---------------------+---------------------+-----------+---------------------+---------------------+
-|  1 |          2 | Tue 10am |    10 |        4 |       0 |       6 |       60 | 2023-01-03 10:00:00 | 2023-01-03 10:00:00 | CANCELLED | 2022-12-05 08:00:00 | 2023-01-03 10:00:00 |
-|  2 |          3 | Wed 10am |    10 |        4 |       6 |      12 |       60 | 2023-01-04 10:00:00 | 2023-01-04 10:00:00 | ENDED     | 2022-12-05 08:05:00 | 2023-03-08 11:00:00 |
-|  3 |          2 | Wed 4pm  |    10 |        4 |      12 |      24 |       60 | 2024-01-03 16:00:00 | 2024-01-03 16:00:00 | OPEN      | 2023-10-02 08:10:00 | 2023-10-02 08:10:00 |
-+----+------------+----------+-------+----------+---------+---------+----------+---------------------+---------------------+-----------+---------------------+---------------------+
++----+------------+----------+-------+----------+---------+---------+----------+---------------------+---------------------+-----------+-------+---------------------+---------------------+
+| id | teacher_id | title    | quota | capacity | min_age | max_age | duration | opens_until         | start_datetime      | status    | price | created_at          | updated_at          |
++----+------------+----------+-------+----------+---------+---------+----------+---------------------+---------------------+-----------+-------+---------------------+---------------------+
+|  1 |          2 | Tue 10am |    10 |        4 |       0 |       6 |       60 | 2023-01-03 10:00:00 | 2023-01-03 10:00:00 | CANCELLED |  7500 | 2022-12-05 08:00:00 | 2023-01-03 10:00:00 |
+|  2 |          3 | Wed 10am |    10 |        4 |       6 |      12 |       60 | 2023-01-04 10:00:00 | 2023-01-04 10:00:00 | ENDED     |  7500 | 2022-12-05 08:05:00 | 2023-03-08 11:00:00 |
+|  3 |          2 | Wed 4pm  |    10 |        4 |      12 |      24 |       60 | 2024-01-03 16:00:00 | 2024-01-03 16:00:00 | OPEN      |  7500 | 2023-10-02 08:10:00 | 2023-10-02 08:10:00 |
++----+------------+----------+-------+----------+---------+---------+----------+---------------------+---------------------+-----------+-------+---------------------+---------------------+
 
 
 SELECT * FROM `enrollments`;
@@ -257,10 +258,10 @@ INSERT INTO `users` (`username`, `password`, `role`, `first_name`, `middle_name`
     ('b.bird', 'password', 'STUDENT', 'Burden', NULL, 'Bird', '1997-01-16', '0987654321', 'b.bird@example.com', 'assets/b.bird/profile_image.png', '2022-12-07 09:55:00','2022-12-07 09:55:00');
 
 
-INSERT INTO `courses` (`teacher_id`, `title`, `quota`, `capacity`, `min_age`, `max_age`, `duration`, `opens_until`, `start_datetime`, `status`, `created_at`, `updated_at`) VALUES
-    (2, 'Tue 10am', 10, 4, 0, 6, 60, '2023-01-03 10:00:00', '2023-01-03 10:00:00', 'CANCELLED', '2022-12-05 08:00:00', '2023-01-03 10:00:00'),
-    (3, 'Wed 10am', 10, 4, 6, 12, 60, '2023-01-04 10:00:00', '2023-01-04 10:00:00', 'ENDED', '2022-12-05 08:05:00', '2023-03-08 11:00:00'),
-    (2, 'Wed 4pm', 10, 4, 12, 24, 60, '2024-01-03 16:00:00', '2024-01-03 16:00:00', 'OPEN', '2023-10-02 08:10:00', '2023-10-02 08:10:00');
+INSERT INTO `courses` (`teacher_id`, `title`, `quota`, `capacity`, `min_age`, `max_age`, `duration`, `opens_until`, `start_datetime`, `status`, `price`, `created_at`, `updated_at`) VALUES
+    (2, 'Tue 10am', 10, 4, 0, 6, 60, '2023-01-03 10:00:00', '2023-01-03 10:00:00', 'CANCELLED', 7500.00, '2022-12-05 08:00:00', '2023-01-03 10:00:00'),
+    (3, 'Wed 10am', 10, 4, 6, 12, 60, '2023-01-04 10:00:00', '2023-01-04 10:00:00', 'ENDED', 7500.00, '2022-12-05 08:05:00', '2023-03-08 11:00:00'),
+    (2, 'Wed 4pm', 10, 4, 12, 24, 60, '2024-01-03 16:00:00', '2024-01-03 16:00:00', 'OPEN', 7500.00, '2023-10-02 08:10:00', '2023-10-02 08:10:00');
 
 
 INSERT INTO `enrollments` (`course_id`, `student_id`, `status`, `created_at`, `updated_at`) VALUES

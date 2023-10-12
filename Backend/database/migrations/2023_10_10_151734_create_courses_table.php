@@ -23,6 +23,7 @@ return new class extends Migration
             $table->datetime('opens_until');
             $table->datetime('start_datetime');
             $table->enum('status', ['PENDING', 'OPEN', 'FULL', 'ACTIVE', 'ENDED', 'CANCELLED']);
+            $table->float('price');
             $table->timestamps();
 
             $table->foreign('teacher_id')->references('id')->on('users');

@@ -25,6 +25,7 @@ class CourseSeeder extends Seeder
             'opens_until' => '2023-01-03 10:00:00',
             'start_datetime' => '2023-01-03 10:00:00',
             'status' => CourseStatusEnum::CANCELLED->name,
+            'price' => 7500.00,
             'created_at' => '2022-12-05 08:00:00',
             'updated_at' => '2023-01-03 10:00:00'
         ]);
@@ -40,6 +41,7 @@ class CourseSeeder extends Seeder
             'opens_until' => '2023-01-04 10:00:00',
             'start_datetime' => '2023-01-04 10:00:00',
             'status' => CourseStatusEnum::ENDED->name,
+            'price' => 7500.00,
             'created_at' => '2022-12-05 08:05:00',
             'updated_at' => '2023-03-08 11:00:00'
         ]);
@@ -55,6 +57,7 @@ class CourseSeeder extends Seeder
             'opens_until' => '2024-01-03 16:00:00',
             'start_datetime' => '2024-01-03 16:00:00',
             'status' => CourseStatusEnum::OPEN->name,
+            'price' => 7500.00,
             'created_at' => '2023-10-02 08:10:00',
             'updated_at' => '2023-10-02 08:10:00'
         ]);
