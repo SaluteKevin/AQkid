@@ -34,7 +34,7 @@ erDiagram
         DATETIME opens_until "NOT NULL"
         DATETIME start_datetime "NOT NULL"
         ENUM status "NOT NULL"
-        DOUBLE price "NOT NULL"
+        FLOAT price "NOT NULL"
         TIMESTAMP created_at "NOT NULL"
         TIMESTAMP updated_at "NOT NULL"
     }
