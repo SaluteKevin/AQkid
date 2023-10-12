@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\StaffController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
@@ -57,6 +58,22 @@ Route::group([
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class, 'me']);
     Route::post('register', [AuthController::class, 'register']);
+
+});
+
+
+
+
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'staff'
+
+], function ($router) {
+
+    Route::get('allTeachers', [StaffController::class, 'allTeachers']);
+    Route::get('teachers/{user}', [StaffController::class, 'getTeacher']);
+   
 
 });
 

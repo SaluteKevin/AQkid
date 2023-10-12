@@ -7,6 +7,9 @@ use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\User;
+use App\Models\Course;
+
 
 
 class StaffController extends Controller
@@ -19,7 +22,7 @@ class StaffController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => []]);
+        $this->middleware('auth:api', ['except' => ['allTeachers','getTeacher']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -70,11 +73,6 @@ class StaffController extends Controller
 
     }
     
-    public function allTeachers() {
-
-        // return all Teachers
-
-    }
 
     public function createTeacher(Request $request) {
 
@@ -85,6 +83,39 @@ class StaffController extends Controller
     public function allStudents() {
 
         // return all Students
+
+    }
+
+
+
+
+
+    // Teacher Page
+
+    public function allTeachers() {
+
+        $teachers = User::where('role',"TEACHER")->get();
+
+        foreach ($teachers as $teacher) {
+
+            $courses = Course::where('teacher_id',$teacher->id)->count();
+
+            $teacher->course_count = $courses;
+
+        }
+
+        return $teachers;
+        // return all Teachers
+
+    }
+
+    public function getTeacher(User $user) {
+
+        $courses = Course::where('teacher_id',$user->id)->get();
+
+        $user->courses = $courses;
+
+        return $user;
 
     }
 
