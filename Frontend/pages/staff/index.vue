@@ -4,7 +4,7 @@
     </div>
 
 
-    <div v-if="showTooltip" class="custom-tooltip" :style="{ top: tooltipTop + 50 + 'px', left: tooltipLeft  + 'px' }">
+    <div v-if="showTooltip" class="custom-tooltip" :style="{ top: tooltipTop + 'px', left: tooltipLeft - 50  + 'px' }">
       {{ tooltipContent }}
     </div>
   </template>
@@ -85,8 +85,8 @@
     function handleEventhover (event) {
       showTooltip.value = true;
       tooltipContent.value = event.event.title; // Customize the content as needed
-      tooltipTop.value = event.jsEvent.clientY;
-      tooltipLeft.value = event.jsEvent.clientX;
+      tooltipTop.value = event.jsEvent.pageY;
+      tooltipLeft.value = event.jsEvent.pageX;
       }
 
     function handleEventLeave () {
@@ -116,6 +116,6 @@
       border: 1px solid #ccc;
       padding: 10px;
       z-index: 999;
-      transform: translate(-50%, -50%);
+    
   }
   </style>
