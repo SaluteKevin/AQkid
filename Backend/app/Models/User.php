@@ -3,12 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Enums\UserRoleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
@@ -82,4 +82,32 @@ class User extends Authenticatable implements JWTSubject
     public function teacherAttendances(): BelongsToMany {
         return $this->belongsToMany(Timeslot::class, 'teacher_attendances', 'teacher_id', 'timeslot_id');
     }
+
+    /**
+     * Checks whether a $user has the role $userRole
+     * @param User $user the user
+     * @param UserRoleEnum $userRole the user role to be checked
+     * @return bool a boolean value indicating if $user has $userRole
+     */
+    public static function checkRole(User $user, UserRoleEnum $userRole): bool {
+        return $userRole->name == $user->role;
+    }
+
+    // Overloading approach, not successfully implemented yet
+    // function __call(string $funcName, array $arguments) {
+    //     $result = false;
+    //     $argc = count($arguments);
+
+    //     switch ($funcName) {
+    //         case 'isRole':
+    //             if ($arguments[1] instanceof UserRoleEnum) {
+    //                 $result = $this->role == $arguments[1]->name;
+    //             }
+    //             break;
+    //         default:
+    //             error_log('Method not found for signature', 0);
+    //     }
+
+    //     return $result;
+    // }
 }

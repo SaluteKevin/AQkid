@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('student_id');
+            $table->string('proof_of_payment_path');
             $table->enum('status', ['PENDING', 'SUCCESS', 'FAILED']);
             $table->timestamps();
 

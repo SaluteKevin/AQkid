@@ -44,6 +44,11 @@ export const useAuthStore = defineStore('auth', {
     },
 
     async clearAuth(){
+      
+        await useApiFetch("api/auth/logout", {
+          method: "POST",
+        });
+
         this.token = ''
         this.user.value = {}
     }

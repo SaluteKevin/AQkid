@@ -85,7 +85,7 @@ class AuthController extends Controller
 
             return response()->json([
                 'message' => "Failed to create User",
-            ]);
+            ], 422);
 
         }
 
@@ -102,7 +102,7 @@ class AuthController extends Controller
 
         return response()->json([
             'message' => "Failed to create User",
-        ]);
+        ], 422);
         
     
     }

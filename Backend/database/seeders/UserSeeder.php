@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'last_name' => 'Khumyunn',
             'birthdate' => '1998-09-22',
             'phone_number' => '0988765432',
-            'profile_image_path' => 'assets/_defaults/profile_image.png',
+            'profile_image_path' => 'users/0/profile_image.jpg',
             'created_at' => '2022-11-28 08:00:00',
             'updated_at' => '2022-11-28 08:00:00'
         ]);
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             'last_name' => 'Thinkanwatthana',
             'birthdate' => '2000-01-01',
             'phone_number' => '0987654321',
-            'profile_image_path' => 'assets/teacher_01/profile_image.png',
+            'profile_image_path' => 'users/1/profile_image.jpg',
             'created_at' => '2022-11-29 08:00:00',
             'updated_at' => '2022-11-29 08:00:00'
         ]);
@@ -47,7 +47,7 @@ class UserSeeder extends Seeder
             'last_name' => 'Thinkanwatthana',
             'birthdate' => '2001-01-01',
             'phone_number' => '0897654321',
-            'profile_image_path' => 'assets/teacher_02/profile_image.png',
+            'profile_image_path' => 'users/2/profile_image.jpg',
             'created_at' => '2022-11-29 09:00:00',
             'updated_at' => '2022-11-29 09:00:00'
         ]);
@@ -61,7 +61,7 @@ class UserSeeder extends Seeder
             'last_name' => 'Doe',
             'birthdate' => '2014-05-01',
             'phone_number' => '0123456789',
-            'profile_image_path' => 'assets/j.doe/profile_image.png',
+            'profile_image_path' => 'users/4/profile_image.jpg',
             'created_at' => '2022-12-07 09:00:00',
             'updated_at' => '2022-12-07 09:00:00'
         ]);
@@ -74,7 +74,7 @@ class UserSeeder extends Seeder
             'last_name' => 'Seed',
             'birthdate' => '2014-08-21',
             'phone_number' => '0123457689',
-            'profile_image_path' => 'assets/a.seed/profile_image.png',
+            'profile_image_path' => 'users/5/profile_image.jpg',
             'created_at' => '2022-12-07 09:40:00',
             'updated_at' => '2022-12-07 09:40:00'
         ]);
@@ -87,7 +87,7 @@ class UserSeeder extends Seeder
             'last_name' => 'Bird',
             'birthdate' => '1997-01-16',
             'phone_number' => '0123457698',
-            'profile_image_path' => 'assets/b.bird/profile_image.png',
+            'profile_image_path' => 'users/6/profile_image.jpg',
             'created_at' => '2022-12-07 09:55:00',
             'updated_at' => '2022-12-07 09:55:00'
         ]);
