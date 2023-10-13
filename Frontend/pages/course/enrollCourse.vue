@@ -1,7 +1,7 @@
 <template>
 
     <div class="py-5 bg-cyan-900">
-        <p class="text-center text-6xl text-gray-900 dark:text-black">Enroll Course</p>
+        <p class="text-center text-6xl text-gray-900 dark:text-white">Enroll Course</p>
     </div>
 
     <div class="h-screen bg-orange-500 pt-5">
