@@ -46,13 +46,13 @@
                     <div>
                         <span>
                             <span class="text-green-400">
-                                431
+                                {{ teachersCount }}
                             </span>
                             teachers
                         </span>
                         <span>
                             <span class="text-green-400">
-                                22
+                                {{coursesCount }}
                             </span>
                             courses
                         </span>
@@ -62,7 +62,7 @@
 
         <!-- card -->
         
-            <div class="flex flex-col gap-2" >
+            <div class="flex flex-col gap-2 overflow-y-auto" >
 
                 <div v-for="teacher in showTeachers" :key="teacher.username"
                     class="mt-2 flex  px-4 py-4 justify-between bg-white
@@ -131,7 +131,7 @@
                 
             </div>
 
-            <Paginate class="mt-8" :from="1" :last_page="10"/>
+            <Paginate class="mt-8" @change-page="onChangePage" :from="currentpage" :last_page="last_page"/>
 			
     </div>
 
@@ -330,6 +330,7 @@
 
 
 <script setup lang="ts">
+
 definePageMeta({layout: "staff"})
 
 const Registration = ref(false)
@@ -372,18 +373,37 @@ const regisDown  = async() => {
 
 const allTeachers = ref({})
 const showTeachers = ref({})
+const coursesCount = ref<Number>(0)
+const teachersCount = ref<Number>(0)
 
-await fetchTeachers();
+// await fetchTeachers();
 
-async function fetchTeachers() {
+async function fetchTeachers(page: number) {
 
-    const {data: teacherResponse, error: teacherError } = await useApiFetch("api/staff/allTeachers", {});
+    const {data: teacherResponse, error: teacherError } = await useApiFetch("api/staff/allTeachers?page="+page, {});
 
     if (teacherResponse.value) {
         
-        allTeachers.value = teacherResponse.value;
+        last_page.value = teacherResponse.value.last_page
+
+        allTeachers.value = teacherResponse.value.data;
 
         showTeachers.value = allTeachers.value;
+
+        teachersCount.value = showTeachers.value.length;
+
+        let count = 0;
+        for (const courses in showTeachers.value) {
+
+            if (showTeachers.value.hasOwnProperty(courses)) {
+            
+                count = count + showTeachers.value[courses].course_count;
+
+            }
+
+        }
+
+        coursesCount.value = count;
 
     }
     else {
@@ -396,6 +416,25 @@ async function fetchTeachers() {
 
 
 }
+
+// paginate
+import { usePaginateStore } from '~/stores/usePaginateStore'
+const paginate = usePaginateStore();
+
+const currentpage = ref(paginate.teacher_page)
+const last_page = ref<Number>(0)
+
+async function onChangePage(page: any) {
+
+    // console.log(page.value)
+    // currentpage.value = page.value
+
+    paginate.setTeacherPage(page.value);
+    await fetchTeachers(page.value);
+}
+
+
+await fetchTeachers(paginate.teacher_page);
 
 // register Teacher
 
@@ -439,7 +478,7 @@ async function handleRegister() {
 
     if (registerResponse.value) {
 
-        await fetchTeachers();
+        await fetchTeachers(paginate.teacher_page);
 
         await regisDown();
 
@@ -474,18 +513,53 @@ async function handleRegister() {
 
 // Search Teacher
 
-function handleSearchTeacher( event ) {
+async function handleSearchTeacher( event ) {
       
-    showTeachers.value = {};
-
-    for (const teacher in allTeachers.value) {
+    // event.target.value.toLowerCase()
+    
+    if (event.target.value === '') {
         
-        if (allTeachers.value[teacher].first_name.toLowerCase().includes(event.target.value.toLowerCase())) {
-            
-            showTeachers.value[teacher] = allTeachers.value[teacher];
+        showTeachers.value = allTeachers.value;
+        
+    }
+
+    else {
+
+        const {data: teacherResponse, error: teacherError } = await useApiFetch("api/staff/searchTeacher", {
+            method: "POST",
+            body: {
+                search: event.target.value
+            },
+        });
+
+        if (teacherResponse.value) {
+
+            showTeachers.value = teacherResponse.value;
+
+            teachersCount.value = showTeachers.value.length;
+
+            let count = 0;
+            for (const courses in showTeachers.value) {
+
+                if (showTeachers.value.hasOwnProperty(courses)) {
+                
+                    count = count + showTeachers.value[courses].course_count;
+
+                }
+
+            }
+
+            coursesCount.value = count;
 
         }
-     
+        else {
+            
+            if (teacherError.value) {
+                console.log(teacherError.value);
+            }
+
+        }
+
     }
 
       

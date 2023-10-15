@@ -75,6 +75,7 @@ Route::group([
     Route::get('allTeachers', [StaffController::class, 'allTeachers']);
     Route::get('teachers/{user}', [StaffController::class, 'getTeacher']);
     Route::post('register', [StaffController::class, 'createTeacher']);
+    Route::post('searchTeacher', [StaffController::class, 'searchTeacher']);
    
 
 });
