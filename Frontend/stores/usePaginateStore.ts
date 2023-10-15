@@ -7,7 +7,7 @@ export const usePaginateStore = defineStore('paginate', {
     }
   },
   actions: {
-    setTeacherPage(page: number) {
+    async setTeacherPage(page: number) {
         this.teacher_page = page;
     }
   },

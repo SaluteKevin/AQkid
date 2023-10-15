@@ -429,8 +429,9 @@ async function onChangePage(page: any) {
     // console.log(page.value)
     // currentpage.value = page.value
 
-    paginate.setTeacherPage(page.value);
-    await fetchTeachers(page.value);
+    await paginate.setTeacherPage(page.value);
+    
+    await fetchTeachers(paginate.teacher_page);
 }
 
 
