@@ -430,8 +430,9 @@ async function onChangePage(page: any) {
     // currentpage.value = page.value
 
     await paginate.setTeacherPage(page.value);
-    
+
     await fetchTeachers(paginate.teacher_page);
+
 }
 
 
@@ -479,9 +480,11 @@ async function handleRegister() {
 
     if (registerResponse.value) {
 
-        await fetchTeachers(paginate.teacher_page);
+        // await fetchTeachers(paginate.teacher_page);
 
-        await regisDown();
+        // await regisDown();
+
+        window.location.reload();
 
     } 
 
