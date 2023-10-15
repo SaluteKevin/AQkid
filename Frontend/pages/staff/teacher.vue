@@ -5,7 +5,7 @@
             <label
                 class="relative bg-white min-w-sm max-w-2xl flex flex-col md:flex-row items-center justify-center border  px-2 rounded-2xl gap-2 shadow-2xl focus-within:border-gray-300"
                 for="search-bar">
-                <input id="search-bar" placeholder="teacher name"
+                <input id="search-bar" placeholder="teacher name" v-on:change="handleSearchTeacher"
                     class="px-6 py-2 w-full rounded-md flex-1 outline-none bg-white">
                 <button
                     class="w-full md:w-auto px-4 py-1 bg-black border-black text-white fill-white active:scale-95 duration-100 border will-change-transform overflow-hidden relative rounded-xl transition-all disabled:opacity-70">
@@ -64,7 +64,7 @@
         
             <div class="flex flex-col gap-2" >
 
-                <div v-for="teacher in allTeachers" :key="teacher.username"
+                <div v-for="teacher in showTeachers" :key="teacher.username"
                     class="mt-2 flex  px-4 py-4 justify-between bg-white
                     shadow-2xl rounded-lg cursor-pointer w-full">
                     <!-- Card -->
@@ -371,6 +371,7 @@ const regisDown  = async() => {
 // allTeachers
 
 const allTeachers = ref({})
+const showTeachers = ref({})
 
 await fetchTeachers();
 
@@ -379,7 +380,11 @@ async function fetchTeachers() {
     const {data: teacherResponse, error: teacherError } = await useApiFetch("api/staff/allTeachers", {});
 
     if (teacherResponse.value) {
+        
         allTeachers.value = teacherResponse.value;
+
+        showTeachers.value = allTeachers.value;
+
     }
     else {
         
@@ -465,6 +470,25 @@ async function handleRegister() {
     }   
 
 
+}
+
+// Search Teacher
+
+function handleSearchTeacher( event ) {
+      
+    showTeachers.value = {};
+
+    for (const teacher in allTeachers.value) {
+        
+        if (allTeachers.value[teacher].first_name.toLowerCase().includes(event.target.value.toLowerCase())) {
+            
+            showTeachers.value[teacher] = allTeachers.value[teacher];
+
+        }
+     
+    }
+
+      
 }
 
 

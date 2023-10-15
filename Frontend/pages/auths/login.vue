@@ -100,7 +100,7 @@
 
             if (auth.user.value.role === "TEACHER") {
 
-                await navigateTo(`/home`);
+                await navigateTo(`/teacher`);
 
             }
 
