@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\StaffController;
 use App\Http\Controllers\Api\TeacherController;
+use App\Http\Controllers\Api\StudentController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
@@ -97,4 +98,18 @@ Route::group([
    
 
 });
+
+
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'student'
+
+], function ($router) {
+
+    Route::get('getClasses', [StudentController::class, 'getAllClasses']);
+   
+
+});
+
 
