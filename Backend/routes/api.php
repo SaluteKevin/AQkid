@@ -72,10 +72,16 @@ Route::group([
 
 ], function ($router) {
 
+    // teacher
     Route::get('allTeachers', [StaffController::class, 'allTeachers']);
     Route::get('teachers/{user}', [StaffController::class, 'getTeacher']);
     Route::post('register', [StaffController::class, 'createTeacher']);
     Route::post('searchTeacher', [StaffController::class, 'searchTeacher']);
+
+    // student
+    Route::get('allStudents', [StaffController::class, 'allStudents']);
+    Route::get('students/{user}', [StaffController::class, 'getStudent']);
+    Route::post('searchStudent', [StaffController::class, 'searchStudent']);
    
 
 });

@@ -23,7 +23,7 @@ class StaffController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['allTeachers','getTeacher','createTeacher','searchTeacher']]);
+        $this->middleware('auth:api', ['except' => ['allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -74,12 +74,47 @@ class StaffController extends Controller
 
     }
     
-
+    // Student Page
     public function allStudents() {
 
-        // return all Students
+        $students = User::where('role',"STUDENT")->paginate(5);
+
+        return $students;
 
     }
+
+    public function getStudent(User $user) {
+
+        // $courses = Course::where('teacher_id',$user->id)->get();
+
+        $enrollments = $user->enrollments;
+        return $user;
+
+    }
+
+    public function searchStudent(Request $request) {
+
+        $search = $request->input('search');
+
+        $students = User::where('role', 'STUDENT')
+            ->when($search, function ($query) use ($search) {
+                return $query->where('first_name', 'LIKE', '%' . $search . '%');
+            })
+            ->get();
+
+        // foreach ($teachers as $teacher) {
+
+        //     $courses = Course::where('teacher_id',$teacher->id)->count();
+    
+        //     $teacher->course_count = $courses;
+    
+        // }
+
+        return $students;
+
+    }
+
+    
 
 
 

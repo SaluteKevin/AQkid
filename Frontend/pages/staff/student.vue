@@ -6,7 +6,7 @@
             <label
                 class="relative bg-white min-w-sm max-w-2xl flex flex-col md:flex-row items-center justify-center border  px-2 rounded-2xl gap-2 shadow-2xl focus-within:border-gray-300"
                 for="search-bar">
-                <input id="search-bar" placeholder="teacher name"
+                <input id="search-bar" placeholder="student name"  v-on:change="handleSearchStudent"
                     class="px-6 py-2 w-full rounded-md flex-1 outline-none bg-white">
                 <button
                     class="w-full md:w-auto px-4 py-1 bg-black border-black text-white fill-white active:scale-95 duration-100 border will-change-transform overflow-hidden relative rounded-xl transition-all disabled:opacity-70">
@@ -80,7 +80,7 @@
 
         <!-- card -->
             <div class="flex flex-col gap-2">
-                <div
+                <div v-for="student in showStudents" :key="student.username"
                     class="mt-2 flex  px-4 py-4 justify-between bg-white
                     shadow-2xl rounded-lg cursor-pointer w-full">
                     <!-- Card -->
@@ -97,7 +97,7 @@
                             class="ml-4 flex flex-col capitalize text-black">
                             <span>name</span>
                             <span class="mt-2 text-gray-600">
-                                carmen beltran
+                                {{student.username}}
                             </span>
                         </div>
 
@@ -105,7 +105,7 @@
                             class="ml-12  flex flex-col capitalize text-black">
                             <span>Phone Number</span>
                             <span class="mt-2 text-gray-600">
-                                097-232-2233
+                                {{student.phone_number}}
                             </span>
 
                         </div>
@@ -114,7 +114,7 @@
                             class="mr-16 flex flex-col text-black">
                             <span>Email</span>
                             <span class="mt-2 text-gray-600">
-                                ingfosbreak@outlook.com
+                                {{student.email}}
                             </span>
                             
                         </div>
@@ -131,67 +131,8 @@
                         <div
                             class="mr-16 flex flex-col capitalize text-gray-600">
                             <span>Profile info</span>
-                            <NuxtLink to="/staff/detail/teacher">
-                            <span class="text-gray-600">see more...</span>
-                            </NuxtLink>
-                        </div>
-
-
-
-                </div>
-
-                <div
-                    class="mt-2 flex px-4 py-4 justify-between bg-white
-                    shadow-2xl rounded-lg cursor-pointer w-full">
-                    <!-- Card -->
-
-                    
-                        <!-- Left side -->
-
-                        <img
-                            class="h-12 w-12 rounded-full object-cover"
-                            src="https://inews.gtimg.com/newsapp_match/0/8693739867/0"
-                            alt="" />
-
-                        <div
-                            class="ml-4 flex flex-col capitalize text-black">
-                            <span>name</span>
-                            <span class="mt-2 text-gray-600">
-                                carmen beltran
-                            </span>
-                        </div>
-
-                        <div
-                            class="ml-12  flex flex-col capitalize text-black">
-                            <span>Phone Number</span>
-                            <span class="mt-2 text-gray-600">
-                                097-232-2233
-                            </span>
-
-                        </div>
-
-                        <div
-                            class="mr-16 flex flex-col text-black">
-                            <span>Email</span>
-                            <span class="mt-2 text-gray-600">
-                                ingfosbreak@outlook.com
-                            </span>
                             
-                        </div>
-
-                        <div
-                            class="ml-12 flex flex-col capitalize text-black">
-                            <span>Courses</span>
-                            <span class="text-red-400">
-                                No courses
-                            </span>
-                        </div>
-
-
-                        <div
-                            class="mr-16 flex flex-col capitalize text-gray-600">
-                            <span>Profile info</span>
-                            <NuxtLink to="/staff/detail/teacher">
+                            <NuxtLink :to="`/staff/detail/student${student.id}`">
                             <span class="text-gray-600">see more...</span>
                             </NuxtLink>
                         </div>
@@ -199,9 +140,11 @@
 
 
                 </div>
+
+                
 
             </div>
-            <Paginate class="mt-8" :from="1" :last_page="10"/>
+            <Paginate class="mt-8" @change-page="onChangePage" :from="currentpage" :last_page="last_page"/>
 
 
 </div>
@@ -223,6 +166,135 @@ const filter = ref(false)
 const clickOutside = () => {
   filter.value = false;
 };
+
+
+
+// allStudents
+
+const allStudents = ref({})
+const showStudents = ref({})
+// const coursesCount = ref<Number>(0)
+// const teachersCount = ref<Number>(0)
+
+// await fetchStudents();
+
+async function fetchStudents(page: number) {
+    
+    const {data: studentResponse, error: studentError } = await useApiFetch("api/staff/allStudents?page="+page, {});
+
+    if (studentResponse.value) {
+        
+        console.log(studentResponse.value)
+
+        last_page.value = studentResponse.value.last_page
+
+        allStudents.value = studentResponse.value.data;
+
+        showStudents.value = allStudents.value;
+
+        // teachersCount.value = showTeachers.value.length;
+
+        // let count = 0;
+        // for (const courses in showTeachers.value) {
+
+        //     if (showTeachers.value.hasOwnProperty(courses)) {
+            
+        //         count = count + showTeachers.value[courses].course_count;
+
+        //     }
+
+        // }
+
+        // coursesCount.value = count;
+
+    }
+    else {
+        
+        if (studentError.value) {
+            console.log(studentError.value);
+        }
+
+    }
+
+
+}
+
+// paginate
+import { usePaginateStore } from '~/stores/usePaginateStore'
+const paginate = usePaginateStore();
+
+const currentpage = ref(paginate.student_page)
+const last_page = ref<Number>(0)
+
+async function onChangePage(page: any) {
+
+    // console.log(page.value)
+    // currentpage.value = page.value
+
+    await paginate.setTeacherPage(page.value);
+
+    await fetchStudents(paginate.student_page);
+
+}
+
+await fetchStudents(paginate.student_page);
+
+
+// Search student
+
+async function handleSearchStudent( event ) {
+      
+      // event.target.value.toLowerCase()
+      
+      if (event.target.value === '') {
+          
+          showStudents.value = allStudents.value;
+          
+      }
+  
+      else {
+  
+          const {data: studentResponse, error: studentError } = await useApiFetch("api/staff/searchStudent", {
+              method: "POST",
+              body: {
+                  search: event.target.value
+              },
+          });
+  
+          if (studentResponse.value) {
+            
+                console.log(studentResponse.value)
+              showStudents.value = studentResponse.value;
+  
+            //   teachersCount.value = showTeachers.value.length;
+  
+            //   let count = 0;
+            //   for (const courses in showTeachers.value) {
+  
+            //       if (showTeachers.value.hasOwnProperty(courses)) {
+                  
+            //           count = count + showTeachers.value[courses].course_count;
+  
+            //       }
+  
+            //   }
+  
+            //   coursesCount.value = count;
+  
+          }
+          else {
+              
+              if (studentError.value) {
+                  console.log(studentError.value);
+              }
+  
+          }
+  
+      }
+  
+        
+  }
+  
 
 
 </script>
