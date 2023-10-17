@@ -1,121 +1,305 @@
 <template>
-    <div class='app p-12 transform ease-in-out'>
-      <FullCalendar :options='calendarOptions' />
+  <div class="relative flex py-5 items-center w-full px-10 mt-4">
+    <div class="flex-grow border-t border-gray-400"></div>
+    <span class="flex-shrink mx-4 text-4xl text-gray-400">Classes Calendar</span>
+    <div class="flex-grow border-t border-gray-400"></div>
+  </div>
+
+  <div class='app p-12 transform ease-in-out m-4 shadow-2xl border rounded-2xl'>
+    <FullCalendar :options='calendarOptions' />
+  </div>
+
+  <div class="relative flex py-5 items-center w-full px-10">
+    <div class="flex-grow border-t border-gray-400"></div>
+    <span class="flex-shrink mx-4 text-gray-400">Course Section</span>
+    <div class="flex-grow border-t border-gray-400"></div>
+  </div>
+  <div class="h-screen w-full p-16 flex flex-wrap justify-center gap-10 overflow-y-auto ">
+
+    <div class="flex flex-col py-6 px-4 h-72  space-y-6 rounded-2xl bg-gray-100 transition duration-300 hover:rotate-6">
+      <div class="flex justify-end">
+        <div class="h-4 w-4 rounded-full bg-gray-900"></div>
+      </div>
+
+      <header class="text-center text-small font-extrabold text-gray-600">2021.09.01</header>
+
+      <div>
+        <p class="text-center text-2xl font-extrabold text-gray-900">Online Test (Physics)</p>
+        <p class="text-center text-2xl font-extrabold text-[#FE5401]">2 hours</p>
+      </div>
+
+      <footer class="mb-10 flex justify-center">
+        <button
+          class="flex items-baseline gap-2 rounded-lg bg-[#FE5401] px-4 py-2.5 text-xl font-bold text-white hover:bg-[#FF7308]">
+          <span>Start</span>
+          <i class="fas fa-hand-peace text-xl"></i>
+        </button>
+      </footer>
+
     </div>
 
+    <div class="flex flex-col py-6 px-4 h-72  space-y-6 rounded-2xl bg-gray-100 transition duration-300 hover:rotate-6">
+      <div class="flex justify-end">
+        <div class="h-4 w-4 rounded-full bg-gray-900"></div>
+      </div>
 
-    <div v-if="showTooltip" class="custom-tooltip" :style="{ top: tooltipTop + 'px', left: tooltipLeft - 50  + 'px' }">
-      {{ tooltipContent }}
+      <header class="text-center text-small font-extrabold text-gray-600">2021.09.01</header>
+
+      <div>
+        <p class="text-center text-2xl font-extrabold text-gray-900">Online Test (Physics)</p>
+        <p class="text-center text-2xl font-extrabold text-[#FE5401]">2 hours</p>
+      </div>
+
+      <footer class="mb-10 flex justify-center">
+        <button
+          class="flex items-baseline gap-2 rounded-lg bg-[#FE5401] px-4 py-2.5 text-xl font-bold text-white hover:bg-[#FF7308]">
+          <span>Start</span>
+          <i class="fas fa-hand-peace text-xl"></i>
+        </button>
+      </footer>
+
     </div>
-  </template>
+
+    <div class="flex flex-col py-6 px-4 h-72  space-y-6 rounded-2xl bg-gray-100 transition duration-300 hover:rotate-6">
+      <div class="flex justify-end">
+        <div class="h-4 w-4 rounded-full bg-gray-900"></div>
+      </div>
+
+      <header class="text-center text-small font-extrabold text-gray-600">2021.09.01</header>
+
+      <div>
+        <p class="text-center text-2xl font-extrabold text-gray-900">Online Test (Physics)</p>
+        <p class="text-center text-2xl font-extrabold text-[#FE5401]">2 hours</p>
+      </div>
+
+      <footer class="mb-10 flex justify-center">
+        <button
+          class="flex items-baseline gap-2 rounded-lg bg-[#FE5401] px-4 py-2.5 text-xl font-bold text-white hover:bg-[#FF7308]">
+          <span>Start</span>
+          <i class="fas fa-hand-peace text-xl"></i>
+        </button>
+      </footer>
+
+    </div>
+    <div class="flex flex-col py-6 px-4 h-72  space-y-6 rounded-2xl bg-gray-100 transition duration-300 hover:rotate-6">
+      <div class="flex justify-end">
+        <div class="h-4 w-4 rounded-full bg-gray-900"></div>
+      </div>
+
+      <header class="text-center text-small font-extrabold text-gray-600">2021.09.01</header>
+
+      <div>
+        <p class="text-center text-2xl font-extrabold text-gray-900">Online Test (Physics)</p>
+        <p class="text-center text-2xl font-extrabold text-[#FE5401]">2 hours</p>
+      </div>
+
+      <footer class="mb-10 flex justify-center">
+        <button
+          class="flex items-baseline gap-2 rounded-lg bg-[#FE5401] px-4 py-2.5 text-xl font-bold text-white hover:bg-[#FF7308]">
+          <span>Start</span>
+          <i class="fas fa-hand-peace text-xl"></i>
+        </button>
+      </footer>
+
+    </div>
+    <div class="flex flex-col py-6 px-4 h-72  space-y-6 rounded-2xl bg-gray-100 transition duration-300 hover:rotate-6">
+      <div class="flex justify-end">
+        <div class="h-4 w-4 rounded-full bg-gray-900"></div>
+      </div>
+
+      <header class="text-center text-small font-extrabold text-gray-600">2021.09.01</header>
+
+      <div>
+        <p class="text-center text-2xl font-extrabold text-gray-900">Online Test (Physics)</p>
+        <p class="text-center text-2xl font-extrabold text-[#FE5401]">2 hours</p>
+      </div>
+
+      <footer class="mb-10 flex justify-center">
+        <button
+          class="flex items-baseline gap-2 rounded-lg bg-[#FE5401] px-4 py-2.5 text-xl font-bold text-white hover:bg-[#FF7308]">
+          <span>Start</span>
+          <i class="fas fa-hand-peace text-xl"></i>
+        </button>
+      </footer>
+
+    </div>
+    <div class="flex flex-col py-6 px-4 h-72  space-y-6 rounded-2xl bg-gray-100 transition duration-300 hover:rotate-6">
+      <div class="flex justify-end">
+        <div class="h-4 w-4 rounded-full bg-gray-900"></div>
+      </div>
+
+      <header class="text-center text-small font-extrabold text-gray-600">2021.09.01</header>
+
+      <div>
+        <p class="text-center text-2xl font-extrabold text-gray-900">Online Test (Physics)</p>
+        <p class="text-center text-2xl font-extrabold text-[#FE5401]">2 hours</p>
+      </div>
+
+      <footer class="mb-10 flex justify-center">
+        <button
+          class="flex items-baseline gap-2 rounded-lg bg-[#FE5401] px-4 py-2.5 text-xl font-bold text-white hover:bg-[#FF7308]">
+          <span>Start</span>
+          <i class="fas fa-hand-peace text-xl"></i>
+        </button>
+      </footer>
+
+    </div>
+    <div class="flex flex-col py-6 px-4 h-72  space-y-6 rounded-2xl bg-gray-100 transition duration-300 hover:rotate-6">
+      <div class="flex justify-end">
+        <div class="h-4 w-4 rounded-full bg-gray-900"></div>
+      </div>
+
+      <header class="text-center text-small font-extrabold text-gray-600">2021.09.01</header>
+
+      <div>
+        <p class="text-center text-2xl font-extrabold text-gray-900">Online Test (Physics)</p>
+        <p class="text-center text-2xl font-extrabold text-[#FE5401]">2 hours</p>
+      </div>
+
+      <footer class="mb-10 flex justify-center">
+        <button
+          class="flex items-baseline gap-2 rounded-lg bg-[#FE5401] px-4 py-2.5 text-xl font-bold text-white hover:bg-[#FF7308]">
+          <span>Start</span>
+          <i class="fas fa-hand-peace text-xl"></i>
+        </button>
+      </footer>
+
+    </div>
+
+    <div class="flex flex-col py-6 px-4 h-72  space-y-6 rounded-2xl bg-gray-100 transition duration-300 hover:rotate-6">
+      <div class="flex justify-end">
+        <div class="h-4 w-4 rounded-full bg-gray-900"></div>
+      </div>
+
+      <header class="text-center text-small font-extrabold text-gray-600">2021.09.01</header>
+
+      <div>
+        <p class="text-center text-2xl font-extrabold text-gray-900">Online Test (Physics)</p>
+        <p class="text-center text-2xl font-extrabold text-[#FE5401]">1 hour</p>
+      </div>
+
+      <footer class="mb-10 flex justify-center">
+        <button
+          class="flex items-baseline gap-2 rounded-lg bg-[#FE5401] px-4 py-2.5 text-xl font-bold text-white hover:bg-[#FF7308]">
+          <span>Start</span>
+          <i class="fas fa-hand-peace text-xl"></i>
+        </button>
+      </footer>
+
+    </div>
+
+  </div>
+
+  <div class="relative flex py-5 items-center w-full px-10">
+    <div class="flex-grow border-t border-gray-400"></div>
+    <span class="flex-shrink mx-4 text-gray-400">Course Section</span>
+    <div class="flex-grow border-t border-gray-400"></div>
+  </div>
+
+
+  <!-- <div v-if="showTooltip" class="custom-tooltip" :style="{ top: tooltipTop + 'px', left: tooltipLeft - 50 + 'px' }">
+    {{ tooltipContent }}
+  </div> -->
+</template>
   
-  <script setup lang="ts">
-  definePageMeta({layout: "staff"})
-  import FullCalendar from '@fullcalendar/vue3'
-  import interactionPlugin from '@fullcalendar/interaction'
-  import timeGridPlugin from '@fullcalendar/timegrid'
-  import dayGridPlugin from '@fullcalendar/daygrid'
-  
-  
-  
+<script setup lang="ts">
+definePageMeta({ layout: "staff" })
+import FullCalendar from '@fullcalendar/vue3'
+import interactionPlugin from '@fullcalendar/interaction'
+import timeGridPlugin from '@fullcalendar/timegrid'
+import dayGridPlugin from '@fullcalendar/daygrid'
+
+const calendarOptions = ref({
+  plugins: [interactionPlugin, timeGridPlugin, dayGridPlugin],
+  initialView: 'timeGridWeek',
+  nowIndicator: true,
+  editable: true,
+  dateClick: handleDateClick,
+  eventClick: handleEventClick,
+  eventMouseEnter: handleEventhover,
+  eventMouseLeave: handleEventLeave,
+  contentHeight: 'auto',
+  events: ref([]),
+  scrollTime: '10:00:00', // Set the scrollTime to 10:00 AM (optional)
+  slotMinTime: '10:00:00', // Set the minimum time to 10:00 AM (optional)
+  slotMaxTime: '18:00:00', // 
+  slotLabelFormat: {
+    hour: 'numeric',
+    minute: '2-digit',
+    omitZeroMinute: false,
+  },
+  allDaySlot: false,
+
+})
 
 
-  // const { data : eventData , error : eventError } = await useApiFetch("api/auth/login", {});
-
-                //  ^
-                //  | ตัวเดียวกันข้อมูลโหลดมาเลย
-                //  v
-  // mock up
-
-
-  const calendarOptions = ref({
-          plugins: [interactionPlugin, timeGridPlugin, dayGridPlugin],
-          initialView: 'dayGridMonth',
-          nowIndicator: true,
-          editable: true,
-          dateClick: handleDateClick,
-          eventClick: handleEventClick,
-          eventMouseEnter: handleEventhover,
-          eventMouseLeave: handleEventLeave,
-        
-          
-
-         
-          // initialEvents: [
-          //   { title: 'nice event', start: new Date(2023,12,15) }
-          // ],
-          events: ref([]),
-          eventColor: '#378006'
-  })
-    
-  
-  const eventData = ref([
-    { title: 'ink bd', date: '2023-12-19', id:123, color: 'purple',description: 'description for Repeating Event', eventClassNames: "test"},
-    { title: 'event 1', date: '2023-12-19' },
-    { title: 'event 1', date: '2023-12-19' },
-    { title: 'event 1', date: '2023-12-19' },
-    { title: 'event 2', date: '2023-09-12' }
-    ])
-
-  
-  if (eventData.value) {
-    calendarOptions.value.events = eventData;
-
-  } 
-
- 
-
-  const showTooltip = ref(false);
-  const tooltipContent = ref('');
-  const tooltipTop = ref(0);
-  const tooltipLeft = ref(0);
+const eventData = ref([
+  { title: 'ink bd', start: '2023-11-03 10:00:00', id: 123, color: 'purple', description: 'description for Repeating Event', eventClassNames: "test" },
+  { title: 'event 1', date: '2023-12-19' },
+  { title: 'event 1', date: '2023-12-19' },
+  { title: 'event 1', date: '2023-12-19' },
+  { title: 'event 2', date: '2023-09-12' }
+])
 
 
-    function  handleDateClick (arg) {
-      // alert('date click! ' + arg.dateStr);
-      eventData.value.push({title: 'test', date: '2023-12-19'})
-      // calendarOptions.value.events.push({title: 'test', date: '2023-12-19'})
-    }
+if (eventData.value) {
+  calendarOptions.value.events = eventData;
 
-    function  handleEventClick (arg) {
-      alert(arg);
-      console.log(arg)
-    }
+}
 
-    function handleEventhover (event) {
-      showTooltip.value = true;
-      tooltipContent.value = event.event.title; // Customize the content as needed
-      tooltipTop.value = event.jsEvent.pageY;
-      tooltipLeft.value = event.jsEvent.pageX;
-      }
 
-    function handleEventLeave () {
-    showTooltip.value = false;
-  };
 
- 
-  </script>
+const showTooltip = ref(false);
+const tooltipContent = ref('');
+const tooltipTop = ref(0);
+const tooltipLeft = ref(0);
+
+
+function handleDateClick(arg) {
+  // alert('date click! ' + arg.dateStr);
+  eventData.value.push({ title: 'test', date: '2023-12-19' })
+  // calendarOptions.value.events.push({title: 'test', date: '2023-12-19'})
+}
+
+function handleEventClick(arg) {
+  alert(arg);
+  console.log(arg)
+}
+
+function handleEventhover(event) {
+  showTooltip.value = true;
+  tooltipContent.value = event.event.title; // Customize the content as needed
+  tooltipTop.value = event.jsEvent.pageY;
+  tooltipLeft.value = event.jsEvent.pageX;
+}
+
+function handleEventLeave() {
+  showTooltip.value = false;
+};
+
+
+</script>
 
 
 
 
   
-  <style scoped>
-    .app {
-      font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-      font-size: 14px;
-    }
+<style scoped>
+.app {
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 14px;
+}
 
-    .test {
-      font-size: xx-large;
-    }
+.test {
+  font-size: xx-large;
+}
 
-    .custom-tooltip {
-      position: absolute;
-      background-color: white;
-      border: 1px solid #ccc;
-      padding: 10px;
-      z-index: 999;
-    
-  }
-  </style>
+.custom-tooltip {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 999;
+
+}
+</style>
