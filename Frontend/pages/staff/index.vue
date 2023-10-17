@@ -14,179 +14,34 @@
     <span class="flex-shrink mx-4 text-gray-400">Course Section</span>
     <div class="flex-grow border-t border-gray-400"></div>
   </div>
-  <div class="h-screen w-full p-16 flex flex-wrap justify-center gap-10 overflow-y-auto ">
+  <div class="h-screen w-full px-10">
+    <div class="h-full w-full p-16 flex flex-wrap justify-center gap-8 overflow-y-auto border border-dashed shadow-2xl">
+      <div v-for="course in courseResponse" :key="course.id"
+      class="flex flex-col py-8 px-4 h-64 w-56 space-y-6 rounded-2xl bg-gray-100 transition duration-300 hover:rotate-6 hover:bg-gray-300  shadow-lg">
 
-    <div class="flex flex-col py-6 px-4 h-72  space-y-6 rounded-2xl bg-gray-100 transition duration-300 hover:rotate-6">
-      <div class="flex justify-end">
-        <div class="h-4 w-4 rounded-full bg-gray-900"></div>
+        <header class="text-center text-small font-extrabold text-gray-600">2021.09.01</header>
+
+        <div >
+          <p class="text-center text-xl font-extrabold text-gray-900">{{course.title}}</p>
+          <p class="text-center text-xl font-extrabold text-[#FE5401]">{{course.duration / 60}} Hour</p>
+        </div>
+
+        <footer class=" flex justify-center">
+          <button
+            class="flex items-baseline gap-2 rounded-lg bg-[#FE5401] px-4 py-2.5 text-xl font-bold text-white hover:bg-[#FF7308]">
+            <span>Start</span>
+            <i class="fas fa-hand-peace text-xl"></i>
+          </button>
+        </footer>
+
+
       </div>
 
-      <header class="text-center text-small font-extrabold text-gray-600">2021.09.01</header>
+  </div>
 
-      <div>
-        <p class="text-center text-2xl font-extrabold text-gray-900">Online Test (Physics)</p>
-        <p class="text-center text-2xl font-extrabold text-[#FE5401]">2 hours</p>
-      </div>
 
-      <footer class="mb-10 flex justify-center">
-        <button
-          class="flex items-baseline gap-2 rounded-lg bg-[#FE5401] px-4 py-2.5 text-xl font-bold text-white hover:bg-[#FF7308]">
-          <span>Start</span>
-          <i class="fas fa-hand-peace text-xl"></i>
-        </button>
-      </footer>
+  
 
-    </div>
-
-    <div class="flex flex-col py-6 px-4 h-72  space-y-6 rounded-2xl bg-gray-100 transition duration-300 hover:rotate-6">
-      <div class="flex justify-end">
-        <div class="h-4 w-4 rounded-full bg-gray-900"></div>
-      </div>
-
-      <header class="text-center text-small font-extrabold text-gray-600">2021.09.01</header>
-
-      <div>
-        <p class="text-center text-2xl font-extrabold text-gray-900">Online Test (Physics)</p>
-        <p class="text-center text-2xl font-extrabold text-[#FE5401]">2 hours</p>
-      </div>
-
-      <footer class="mb-10 flex justify-center">
-        <button
-          class="flex items-baseline gap-2 rounded-lg bg-[#FE5401] px-4 py-2.5 text-xl font-bold text-white hover:bg-[#FF7308]">
-          <span>Start</span>
-          <i class="fas fa-hand-peace text-xl"></i>
-        </button>
-      </footer>
-
-    </div>
-
-    <div class="flex flex-col py-6 px-4 h-72  space-y-6 rounded-2xl bg-gray-100 transition duration-300 hover:rotate-6">
-      <div class="flex justify-end">
-        <div class="h-4 w-4 rounded-full bg-gray-900"></div>
-      </div>
-
-      <header class="text-center text-small font-extrabold text-gray-600">2021.09.01</header>
-
-      <div>
-        <p class="text-center text-2xl font-extrabold text-gray-900">Online Test (Physics)</p>
-        <p class="text-center text-2xl font-extrabold text-[#FE5401]">2 hours</p>
-      </div>
-
-      <footer class="mb-10 flex justify-center">
-        <button
-          class="flex items-baseline gap-2 rounded-lg bg-[#FE5401] px-4 py-2.5 text-xl font-bold text-white hover:bg-[#FF7308]">
-          <span>Start</span>
-          <i class="fas fa-hand-peace text-xl"></i>
-        </button>
-      </footer>
-
-    </div>
-    <div class="flex flex-col py-6 px-4 h-72  space-y-6 rounded-2xl bg-gray-100 transition duration-300 hover:rotate-6">
-      <div class="flex justify-end">
-        <div class="h-4 w-4 rounded-full bg-gray-900"></div>
-      </div>
-
-      <header class="text-center text-small font-extrabold text-gray-600">2021.09.01</header>
-
-      <div>
-        <p class="text-center text-2xl font-extrabold text-gray-900">Online Test (Physics)</p>
-        <p class="text-center text-2xl font-extrabold text-[#FE5401]">2 hours</p>
-      </div>
-
-      <footer class="mb-10 flex justify-center">
-        <button
-          class="flex items-baseline gap-2 rounded-lg bg-[#FE5401] px-4 py-2.5 text-xl font-bold text-white hover:bg-[#FF7308]">
-          <span>Start</span>
-          <i class="fas fa-hand-peace text-xl"></i>
-        </button>
-      </footer>
-
-    </div>
-    <div class="flex flex-col py-6 px-4 h-72  space-y-6 rounded-2xl bg-gray-100 transition duration-300 hover:rotate-6">
-      <div class="flex justify-end">
-        <div class="h-4 w-4 rounded-full bg-gray-900"></div>
-      </div>
-
-      <header class="text-center text-small font-extrabold text-gray-600">2021.09.01</header>
-
-      <div>
-        <p class="text-center text-2xl font-extrabold text-gray-900">Online Test (Physics)</p>
-        <p class="text-center text-2xl font-extrabold text-[#FE5401]">2 hours</p>
-      </div>
-
-      <footer class="mb-10 flex justify-center">
-        <button
-          class="flex items-baseline gap-2 rounded-lg bg-[#FE5401] px-4 py-2.5 text-xl font-bold text-white hover:bg-[#FF7308]">
-          <span>Start</span>
-          <i class="fas fa-hand-peace text-xl"></i>
-        </button>
-      </footer>
-
-    </div>
-    <div class="flex flex-col py-6 px-4 h-72  space-y-6 rounded-2xl bg-gray-100 transition duration-300 hover:rotate-6">
-      <div class="flex justify-end">
-        <div class="h-4 w-4 rounded-full bg-gray-900"></div>
-      </div>
-
-      <header class="text-center text-small font-extrabold text-gray-600">2021.09.01</header>
-
-      <div>
-        <p class="text-center text-2xl font-extrabold text-gray-900">Online Test (Physics)</p>
-        <p class="text-center text-2xl font-extrabold text-[#FE5401]">2 hours</p>
-      </div>
-
-      <footer class="mb-10 flex justify-center">
-        <button
-          class="flex items-baseline gap-2 rounded-lg bg-[#FE5401] px-4 py-2.5 text-xl font-bold text-white hover:bg-[#FF7308]">
-          <span>Start</span>
-          <i class="fas fa-hand-peace text-xl"></i>
-        </button>
-      </footer>
-
-    </div>
-    <div class="flex flex-col py-6 px-4 h-72  space-y-6 rounded-2xl bg-gray-100 transition duration-300 hover:rotate-6">
-      <div class="flex justify-end">
-        <div class="h-4 w-4 rounded-full bg-gray-900"></div>
-      </div>
-
-      <header class="text-center text-small font-extrabold text-gray-600">2021.09.01</header>
-
-      <div>
-        <p class="text-center text-2xl font-extrabold text-gray-900">Online Test (Physics)</p>
-        <p class="text-center text-2xl font-extrabold text-[#FE5401]">2 hours</p>
-      </div>
-
-      <footer class="mb-10 flex justify-center">
-        <button
-          class="flex items-baseline gap-2 rounded-lg bg-[#FE5401] px-4 py-2.5 text-xl font-bold text-white hover:bg-[#FF7308]">
-          <span>Start</span>
-          <i class="fas fa-hand-peace text-xl"></i>
-        </button>
-      </footer>
-
-    </div>
-
-    <div class="flex flex-col py-6 px-4 h-72  space-y-6 rounded-2xl bg-gray-100 transition duration-300 hover:rotate-6">
-      <div class="flex justify-end">
-        <div class="h-4 w-4 rounded-full bg-gray-900"></div>
-      </div>
-
-      <header class="text-center text-small font-extrabold text-gray-600">2021.09.01</header>
-
-      <div>
-        <p class="text-center text-2xl font-extrabold text-gray-900">Online Test (Physics)</p>
-        <p class="text-center text-2xl font-extrabold text-[#FE5401]">1 hour</p>
-      </div>
-
-      <footer class="mb-10 flex justify-center">
-        <button
-          class="flex items-baseline gap-2 rounded-lg bg-[#FE5401] px-4 py-2.5 text-xl font-bold text-white hover:bg-[#FF7308]">
-          <span>Start</span>
-          <i class="fas fa-hand-peace text-xl"></i>
-        </button>
-      </footer>
-
-    </div>
 
   </div>
 
@@ -248,7 +103,7 @@ if (eventData.value) {
 }
 
 
-
+// tooltip
 const showTooltip = ref(false);
 const tooltipContent = ref('');
 const tooltipTop = ref(0);
@@ -277,6 +132,12 @@ function handleEventLeave() {
   showTooltip.value = false;
 };
 
+// all Courses
+const { data: courseResponse, error: courseError } = await useApiFetch("api/staff/allCourses", {});
+
+if (courseResponse.value) {
+  console.log(courseResponse.value)
+}
 
 </script>
 

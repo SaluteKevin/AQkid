@@ -73,6 +73,10 @@ Route::group([
 
 ], function ($router) {
 
+    // index
+    
+    Route::get('allCourses', [StaffController::class, 'getAllCourses']);
+
     // teacher
     Route::get('allTeachers', [StaffController::class, 'allTeachers']);
     Route::get('teachers/{user}', [StaffController::class, 'getTeacher']);

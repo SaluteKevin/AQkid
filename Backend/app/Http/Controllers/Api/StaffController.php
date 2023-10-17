@@ -42,6 +42,10 @@ class StaffController extends Controller
      *  course open 1 คาบ ไม่มี student (ควรจะปิด)
      */
 
+    public function getAllCourses() {
+        return Course::get();
+    }
+
      
 
     public function allEnrollmentRequests() {
@@ -87,7 +91,7 @@ class StaffController extends Controller
     public function getStudent(User $user) {
 
         // implement enrollments futhermore
-        
+
         return $user;
 
     }
