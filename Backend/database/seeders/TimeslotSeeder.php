@@ -26,7 +26,7 @@ class TimeslotSeeder extends Seeder
             for ($time = 0; $time < $courseQuota; $time++) {
                 Timeslot::create([
                     'course_id' => $courseId,
-                    'datetime' => date('Y-m-d H:i:s', $timeslotDateTime),
+                    'datetime' => date(env('APP_DATETIME_FORMAT'), $timeslotDateTime),
                     'type' => TimeslotTypeEnum::REGULAR->name,
                     'created_at' => $courseCreatedAt,
                     'updated_at' => $courseCreatedAt
@@ -35,10 +35,10 @@ class TimeslotSeeder extends Seeder
                 $timeslotDateTime = strtotime('+1 week', $timeslotDateTime);
 
                 // Make-up class for student_id = 4
-                if ($courseId == 2 && date('Y-m-d H:i:s', $timeslotDateTime) == '2023-03-15 10:00:00') {
+                if ($courseId == 2 && date(env('APP_DATETIME_FORMAT'), $timeslotDateTime) == '2023-03-15 10:00:00') {
                     Timeslot::create([
                         'course_id' => $courseId,
-                        'datetime' => date('Y-m-d H:i:s', $timeslotDateTime),
+                        'datetime' => date(env('APP_DATETIME_FORMAT'), $timeslotDateTime),
                         'type' => TimeslotTypeEnum::MAKEUP->name,
                         'created_at' => '2023-03-01 10:00:00',
                         'updated_at' => '2023-03-01 10:00:00'
