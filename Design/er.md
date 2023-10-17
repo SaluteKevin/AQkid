@@ -32,8 +32,9 @@ erDiagram
         INT min_age "DEFAULT 0"
         INT max_age
         INT duration "NOT NULL, DEFAULT 60"
+        DATETIME opens_on "NOT NULL"
         DATETIME opens_until "NOT NULL"
-        DATETIME start_datetime "NOT NULL"
+        DATETIME starts_on "NOT NULL"
         ENUM status "NOT NULL"
         FLOAT price "NOT NULL"
         TIMESTAMP created_at "NOT NULL"
