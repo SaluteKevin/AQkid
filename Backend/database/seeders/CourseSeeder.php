@@ -17,6 +17,7 @@ class CourseSeeder extends Seeder
         Course::create([
             'teacher_id' => 2,
             'title' => 'Tue 10am',
+            'description' => 'A Tuesday course at 10:00',
             'quota' => 10,
             'capacity' => 4,
             'min_age' => 0,
@@ -33,6 +34,7 @@ class CourseSeeder extends Seeder
         Course::create([
             'teacher_id' => 3,
             'title' => 'Wed 10am',
+            'description' => 'A Wednesday course at 10:00',
             'quota' => 10,
             'capacity' => 4,
             'min_age' => 6,
@@ -49,6 +51,7 @@ class CourseSeeder extends Seeder
         Course::create([
             'teacher_id' => 2,
             'title' => 'Wed 4pm',
+            'description' => 'A Wednesday course at 16:00',
             'quota' => 10,
             'capacity' => 4,
             'min_age' => 12,

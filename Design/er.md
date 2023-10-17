@@ -26,6 +26,7 @@ erDiagram
         INT id PK "NOT NULL, AUTO_INCREMENT"
         INT teacher_id FK
         VARCHAR title "NOT NULL"
+        VARCHAR description
         INT quota "NOT NULL"
         INT capacity "NOT NULL"
         INT min_age "DEFAULT 0"
@@ -43,6 +44,7 @@ erDiagram
         INT id PK "NOT NULL, AUTO_INCREMENT"
         INT course_id FK "NOT NULL"
         INT student_id FK "NOT NULL"
+        VARCHAR proof_of_payment_path "NOT NULL"
         ENUM status "NOT NULL"
         TIMESTAMP created_at "NOT NULL"
         TIMESTAMP updated_at "NOT NULL"

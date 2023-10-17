@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('teacher_id');
             $table->string('title', 128);
+            $table->string('description')->nullable();
             $table->integer('quota');
             $table->integer('capacity');
             $table->integer('min_age')->default(0);
