@@ -24,7 +24,7 @@ erDiagram
 
     courses {
         INT id PK "NOT NULL, AUTO_INCREMENT"
-        INT teacher_id FK
+        INT teacher_id FK "NOT NULL"
         VARCHAR title "NOT NULL"
         VARCHAR description
         INT quota "NOT NULL"
