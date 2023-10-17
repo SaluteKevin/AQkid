@@ -1,5 +1,10 @@
 <script setup lang="ts">
 
+const route = useRoute();
+
+console.log(`'test'`, route.params.id);
+
+
 </script>
 
 <template>
