@@ -51,9 +51,9 @@
                                 <span class="text-gray-600 font-bold">{{ course.title }}</span>
                                 <p class="flex flex-col">
                                     <span class="text-gray-600 mr-2">Start : {{ formatDateTime(new
-                                        Date(course.start_datetime)) }}</span>
+                                        Date(course.starts_on)) }}</span>
                                     <span class="text-gray-600 mr-2">End : {{ formatDateTime(new
-                                        Date(course.start_datetime)) }}</span>
+                                        Date(course.starts_on)) }}</span>
 
                                 </p>
 

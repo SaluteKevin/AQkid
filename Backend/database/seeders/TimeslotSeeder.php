@@ -21,7 +21,7 @@ class TimeslotSeeder extends Seeder
             $courseId = $course->id;
             $courseQuota = $course->quota;
             $courseCreatedAt = $course->created_at;
-            $timeslotDateTime = strtotime($course->start_datetime);
+            $timeslotDateTime = strtotime($course->starts_on);
 
             for ($time = 0; $time < $courseQuota; $time++) {
                 Timeslot::create([
