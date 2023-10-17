@@ -45,6 +45,7 @@ erDiagram
         INT course_id FK "NOT NULL"
         INT student_id FK "NOT NULL"
         VARCHAR proof_of_payment_path "NOT NULL"
+        VARCHAR review_comment
         ENUM status "NOT NULL"
         TIMESTAMP created_at "NOT NULL"
         TIMESTAMP updated_at "NOT NULL"
