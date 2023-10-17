@@ -33,50 +33,6 @@ const days = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
 const times = ['9.00', '10.00', '11.00', '12.00', '13.00', '14.00', '15.00', '16.00', '17.00']
 
 
-// const selectCourse = (day: string, time: string, id: number) => {
-//     console.log(day, time, id);
-//     dayy.value = day
-//     timee.value = time
-//     idCourse.value = id
-// }
-
-
-// const day_times = ref([])
-
-// for (let day in days) {
-//     for(let time in times){
-//         const temp = ref({
-//             day: days[day],
-//             time: times[time],
-//             status: false,
-//             id: 0,
-//         })
-//         day_times.value.push(temp.value)
-//     }
-// }
-
-// console.log(day_times.value[0].day);
-
-
-// const timeArrays = [
-//     {
-//         day: "MON",
-//         time: "123",
-//         status: false
-//     },
-//     {
-//         day: "MON",
-//         time: "123",
-//         status: false
-//     },
-//     {
-//         day: "MON",
-//         time: "123",
-//         status: false
-//     },
-
-// ]
-
 import FullCalendar from '@fullcalendar/vue3'
 import interactionPlugin from '@fullcalendar/interaction'
 import timeGridPlugin from '@fullcalendar/timegrid'
@@ -98,6 +54,7 @@ const calendarOptions = ref({
         omitZeroMinute: false,
     },
     contentHeight: 'auto',
+    allDaySlot: false,
 
     //   dateClick: handleDateClick,
     //   eventClick: handleEventClick,
@@ -110,7 +67,7 @@ const calendarOptions = ref({
 
 
 const eventData = ref([
-    { title: 'ink bd', date: '2023-12-19', id: 123, color: 'purple', description: 'description for Repeating Event', eventClassNames: "test" },
+    { title: 'ink bd', date: '2023-12-19', start: '2023-12-19T10:00:00', end: '2023-12-19T10:59:00', id: 123, color: 'purple', description: 'description for Repeating Event', eventClassNames: "test" },
     { title: 'event 1', date: '2023-12-19' },
     { title: 'event 1', date: '2023-12-19' },
     { title: 'event 1', date: '2023-12-19' },
