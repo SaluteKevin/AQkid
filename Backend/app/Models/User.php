@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Enums\UserRoleEnum;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -81,6 +82,13 @@ class User extends Authenticatable implements JWTSubject
 
     public function teacherAttendances(): BelongsToMany {
         return $this->belongsToMany(Timeslot::class, 'teacher_attendances', 'teacher_id', 'timeslot_id');
+    }
+
+    /**
+     * Get all the users in database with the specified role
+     */
+    public static function allWithRole(UserRoleEnum $userRole): Collection {
+        return User::where('role', $userRole->name)->get();
     }
 
     /**
