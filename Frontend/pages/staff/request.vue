@@ -29,14 +29,14 @@
 
 					<img
 						class="h-20 w-20 rounded-full object-cover"
-						src="https://inews.gtimg.com/newsapp_match/0/8693739867/0"
+						src="{{ enroll.user.profile_image_path }}"
 						alt="" />
 
 					<div
 						class="ml-4 flex flex-col capitalize text-black place-content-center">
 						<span>name</span>
 						<span class="mt-2 text-gray-600">
-							{{ enroll.student_id }}
+							{{ enroll.user.first_name }} {{ enroll.user.last_name }}
 						</span>
 					</div>
 
@@ -44,7 +44,7 @@
 						class="ml-12  flex flex-col capitalize text-black place-content-center">
 						<span>Phone Number</span>
 						<span class="mt-2 text-gray-600">
-							097-232-2233
+							{{ enroll.user.phone_number}}
 						</span>
 
 					</div>
