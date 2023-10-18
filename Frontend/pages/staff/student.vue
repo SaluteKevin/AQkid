@@ -37,10 +37,11 @@
                 </button>
             </label>    
             
-            <div class="relative inline-block text-left">
+            <div class="relative inline-block text-left flex gap-3 items-center">
+                <div>Filter : </div>
                 <div>
                     <button v-on:click="filter = !filter" type="button" class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" id="menu-button" aria-expanded="true" aria-haspopup="true">
-                    Filters
+                    {{filterSelect}}
                     <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
                     </svg>
@@ -51,9 +52,12 @@
                 <div v-if="filter" v-click-outside="clickOutside" class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                     <div class="py-1" role="none">
                     <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Active Students</a>
-                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Non Active Students</a>
-                    
+                        <div v-on:click="selectFilter('all')"
+                        class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300" role="menuitem" tabindex="-1" id="menu-item-0">All</div>
+                        <div v-on:click="selectFilter('active')"
+                        class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300" role="menuitem" tabindex="-1" id="menu-item-1">Active </div>
+                        <div v-on:click="selectFilter('inactive')"
+                        class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300" role="menuitem" tabindex="-1" id="menu-item-2">Non Active </div>
                     </div>
                 </div>
             </div>
@@ -145,6 +149,7 @@
 
             </div>
             <Paginate class="mt-8" @change-page="onChangePage" :from="currentpage" :last_page="last_page"/>
+            <div @click="changelast">asda</div>
 
 
 </div>
@@ -161,11 +166,37 @@
 <script setup lang="ts">
 definePageMeta({layout: "staff"})
 
+
+// fitler section
 const filter = ref(false)
+const filterSelect = ref('all')
 
 const clickOutside = () => {
   filter.value = false;
 };
+
+const selectFilter = async (select : string) => {
+
+    if (filterSelect.value === select) {
+        
+        filter.value = false;
+        
+
+    }
+    else {
+        
+        filterSelect.value = select;
+        filter.value = false;
+        await fetchStudents(paginate.student_page);
+        
+    }
+    
+    
+    
+
+}
+
+
 
 
 
@@ -180,11 +211,16 @@ const showStudents = ref({})
 
 async function fetchStudents(page: number) {
     
-    const {data: studentResponse, error: studentError } = await useApiFetch("api/staff/allStudents?page="+page, {});
+    const {data: studentResponse, error: studentError } = await useApiFetch("api/staff/allStudents?page="+page, {
+        method: "POST",
+        body: {
+            filter: filterSelect.value
+        },
+    });
 
     if (studentResponse.value) {
         
-        console.log(studentResponse.value)
+        console.log(studentResponse.value.last_page)
 
         last_page.value = studentResponse.value.last_page
 
@@ -225,6 +261,12 @@ const paginate = usePaginateStore();
 
 const currentpage = ref(paginate.student_page)
 const last_page = ref<Number>(0)
+
+const changelast = async() => {
+    last_page.value = 2;
+    console.log(last_page.value)
+    await nextTick();
+}
 
 async function onChangePage(page: any) {
 
@@ -294,7 +336,7 @@ async function handleSearchStudent( event ) {
   
         
   }
-  
+
 
 
 </script>

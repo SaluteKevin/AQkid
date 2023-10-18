@@ -4,7 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Enums\UserRoleEnum;
-use DateTime;
+use App\Models\Enums\EnrollmentStatusEnum;
+use App\Models\Enums\CourseStatusEnum;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,6 +17,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Services\FileService;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -137,8 +139,10 @@ class User extends Authenticatable implements JWTSubject
     //     return $result;
     // }
 
+
+
     /**
-     * Search Teacher by Firstname
+     * Search User by Firstname
      * 
      * @return collection
      */
@@ -152,10 +156,14 @@ class User extends Authenticatable implements JWTSubject
             ->get();
     }
 
+
+    //////////////////////////////////////// TEACHER ////////////////////////////////////////
+
+
     /**
      * query Teacher Courses
      */
-    public static function getTeacherWithCourses(User $user): User
+    public static function queryTeacherWithCourses(User $user): User
     {
 
         $courses = Course::where('teacher_id', $user->id)->get();
@@ -198,6 +206,38 @@ class User extends Authenticatable implements JWTSubject
         return $teachers;
     }
 
+
+
+
+
+    //////////////////////////////////////// STUDENT ////////////////////////////////////////
+
+    public static function queryStudentWithCoursesCountPaginate(Collection $students,int $currentPage) {
+
+
+        $filteredStudents = $students->filter(function ($student) {
+            $count = 0;
+            $enrollments = Enrollment::where('student_id', $student->id)->get();
+    
+            foreach ($enrollments as $enrollment) {
+                $course = Course::find($enrollment->course_id);
+    
+                if ($course != null && $course->status == CourseStatusEnum::ACTIVE->name) {
+                    $count += 1;
+                }
+            }
+    
+            $student->courses_count = $count;
+            
+
+            return $count > 0;
+        });
+
+        return $filteredStudents;
+
+    }
+
+ 
 
     /**
      * 

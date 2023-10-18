@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Course;
 use App\Models\Enrollment;
+use App\Models\Enums\EnrollmentStatusEnum;
 use App\Models\Enums\UserRoleEnum;
-
+use Illuminate\Pagination\LengthAwarePaginator;
 
 
 class StaffController extends Controller
@@ -85,11 +86,30 @@ class StaffController extends Controller
     }
     
     // Student Page
-    public function allStudents() {
+    public function allStudents(Request $request) {
 
-        $students = User::allWithRolePaginate(UserRoleEnum::STUDENT);
+        
+        if ($request->get('filter') == 'all') {
+            
+            $students = User::allWithRolePaginate(UserRoleEnum::STUDENT);
 
-        return $students;
+            return $students;
+         
+        }
+
+        else if ($request->get('filter') == 'active') {
+
+            $students = User::allWithRole(UserRoleEnum::STUDENT);
+
+            $activeStudents = User::queryStudentWithCoursesCountPaginate($students,request()->get('page', 1));
+
+            return $activeStudents;
+
+
+        }
+        
+
+        return $request->get('filter');
 
     }
 
@@ -139,7 +159,7 @@ class StaffController extends Controller
 
     public function getTeacher(User $user) {
 
-        return User::getTeacherWithCourses($user);
+        return User::queryTeacherWithCourses($user);
 
     }
 
