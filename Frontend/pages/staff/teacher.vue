@@ -524,6 +524,21 @@ async function handleSearchTeacher( event ) {
     if (event.target.value === '') {
         
         showTeachers.value = allTeachers.value;
+
+        teachersCount.value = showTeachers.value.length;
+
+        let count = 0;
+            for (const courses in showTeachers.value) {
+
+                if (showTeachers.value.hasOwnProperty(courses)) {
+                
+                    count = count + showTeachers.value[courses].course_count;
+
+                }
+
+            }
+
+            coursesCount.value = count;
         
     }
 

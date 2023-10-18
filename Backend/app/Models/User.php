@@ -74,9 +74,9 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function enrollments(): HasMany
+    public function enrollments()
     {
-        return $this->hasMany(Enrollment::class);
+        return $this->hasMany(Enrollment::class, 'student_id');
     }
 
     public function notis(): HasMany
@@ -211,29 +211,79 @@ class User extends Authenticatable implements JWTSubject
 
 
     //////////////////////////////////////// STUDENT ////////////////////////////////////////
+    public static function queryStudentWithCoursesCount(Paginator $students): Paginator {
 
-    public static function queryStudentWithCoursesCountPaginate(Collection $students,int $currentPage) {
 
+        foreach ($students as $student) {
 
-        $filteredStudents = $students->filter(function ($student) {
             $count = 0;
             $enrollments = Enrollment::where('student_id', $student->id)->get();
-    
+
             foreach ($enrollments as $enrollment) {
                 $course = Course::find($enrollment->course_id);
-    
+
                 if ($course != null && $course->status == CourseStatusEnum::ACTIVE->name) {
                     $count += 1;
                 }
             }
-    
+
             $student->courses_count = $count;
-            
 
-            return $count > 0;
-        });
+        }
 
-        return $filteredStudents;
+        return $students;
+
+    }
+
+    public static function queryStudentWithCoursesCountFilter(Collection $students, string $type): Collection {
+
+        if ($type == 'active') {
+            $filteredStudents = $students->filter(function ($student) {
+                $count = 0;
+                $enrollments = Enrollment::where('student_id', $student->id)->get();
+        
+                foreach ($enrollments as $enrollment) {
+                    $course = Course::find($enrollment->course_id);
+        
+                    if ($course != null && $course->status == CourseStatusEnum::ACTIVE->name) {
+                        $count += 1;
+                    }
+                }
+        
+                $student->courses_count = $count;
+                
+
+                return $count > 0;
+            });
+
+            return $filteredStudents->values();
+        }
+
+        if ($type == 'inactive') {
+
+            $filteredStudents = $students->filter(function ($student) {
+                $count = 0;
+                $enrollments = Enrollment::where('student_id', $student->id)->get();
+        
+                foreach ($enrollments as $enrollment) {
+                    $course = Course::find($enrollment->course_id);
+        
+                    if ($course != null && $course->status == CourseStatusEnum::ACTIVE->name) {
+                        $count += 1;
+                    }
+                }
+        
+                $student->courses_count = $count;
+                
+
+                return $count == 0;
+            });
+
+            return $filteredStudents->values();
+
+        }
+
+
 
     }
 

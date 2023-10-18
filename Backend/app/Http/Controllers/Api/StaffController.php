@@ -26,7 +26,7 @@ class StaffController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['allEnrollmentRequests','allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent','getAllCourses']]);
+        $this->middleware('auth:api', ['except' => ['allEnrollmentRequests','allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent','getAllCourses','filterStudent']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -86,30 +86,39 @@ class StaffController extends Controller
     }
     
     // Student Page
-    public function allStudents(Request $request) {
+    public function allStudents() {
 
+        $students = User::allWithRolePaginate(UserRoleEnum::STUDENT);
+
+        $studentsWithCoursesCount = User::queryStudentWithCoursesCount($students);
+
+        return $studentsWithCoursesCount;
         
-        if ($request->get('filter') == 'all') {
-            
-            $students = User::allWithRolePaginate(UserRoleEnum::STUDENT);
+    }
 
-            return $students;
-         
-        }
+    public function filterStudent(Request $request) {
 
-        else if ($request->get('filter') == 'active') {
+        if ($request->get('filter') == 'active') {
 
             $students = User::allWithRole(UserRoleEnum::STUDENT);
 
-            $activeStudents = User::queryStudentWithCoursesCountPaginate($students,request()->get('page', 1));
+            $activeStudents = User::queryStudentWithCoursesCountFilter($students, 'active');
 
             return $activeStudents;
 
 
         }
-        
 
-        return $request->get('filter');
+        else if ($request->get('filter') == 'inactive') {
+
+            $students = User::allWithRole(UserRoleEnum::STUDENT);
+
+            $inactiveStudents = User::queryStudentWithCoursesCountFilter($students, 'inactive');
+
+            return $inactiveStudents;
+
+
+        }
 
     }
 

@@ -85,6 +85,7 @@ Route::group([
 
     // student
     Route::get('allStudents', [StaffController::class, 'allStudents']);
+    Route::post('filterStudents', [StaffController::class, 'filterStudent']);
     Route::get('students/{user}', [StaffController::class, 'getStudent']);
     Route::post('searchStudent', [StaffController::class, 'searchStudent']);
    
