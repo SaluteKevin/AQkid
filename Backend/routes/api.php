@@ -88,7 +88,8 @@ Route::group([
     Route::get('students/{user}', [StaffController::class, 'getStudent']);
     Route::post('searchStudent', [StaffController::class, 'searchStudent']);
    
-
+    // enrollment
+    Route::get('allEnrollments', [StaffController::class, 'allEnrollmentRequests']);
 });
 
 Route::group([

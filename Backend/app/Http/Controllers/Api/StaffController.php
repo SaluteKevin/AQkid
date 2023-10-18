@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
 use App\Models\Course;
+use App\Models\Enrollment;
 use App\Models\Enums\UserRoleEnum;
 
 
@@ -24,7 +25,7 @@ class StaffController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent']]);
+        $this->middleware('auth:api', ['except' => ['allEnrollmentRequests','allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -50,8 +51,8 @@ class StaffController extends Controller
 
     public function allEnrollmentRequests() {
 
-        // return all enrollment requests
-
+        $enrollments = Enrollment::paginate(5);
+        return $enrollments;
     }
 
     public function enrollmentRequestReview(Request $request) {
