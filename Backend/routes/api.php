@@ -115,6 +115,7 @@ Route::group([
     Route::get('getClasses', [StudentController::class, 'getAllClasses']);
     Route::get('getAllCourses', [StudentController::class, 'getAllCourse']);
     Route::get('showCourse/{course}', [StudentController::class, 'showCourse']);
+    Route::post('enrollCourse/{course}/{user}', [StudentController::class, 'enrollCourse']);
     
    
 
