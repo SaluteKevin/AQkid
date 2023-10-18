@@ -4,6 +4,13 @@ const route = useRoute();
 
 console.log(`'test'`, route.params.id);
 
+const {data: eventCourse, error: loginError } = await useApiFetch("api/student/showCourse/"+route.params.id, {});
+
+if(eventCourse.value){
+    console.log(eventCourse.value);
+}
+
+
 
 </script>
 
@@ -16,7 +23,7 @@ console.log(`'test'`, route.params.id);
             <div class="flex flex-row">
                 <div class="w-1/2 p-5">
                     <p class="pl-5 text-3xl text-gray-900 dark:text-white bg-orange-500 rounded-2xl">Teacher</p>
-                    <p class="pl-5 text-xl text-gray-900 dark:text-white pt-4">Burden Bird</p>
+                    <p class="pl-5 text-xl text-gray-900 dark:text-white pt-4">{{eventCourse.value.}}</p>
                 </div>
                 <div class="w-1/2 p-5">
                     <p class="pl-5 text-3xl text-gray-900 dark:text-white bg-orange-500 rounded-2xl">Time</p>

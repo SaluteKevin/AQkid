@@ -87,7 +87,7 @@ class StaffController extends Controller
 
         // $courses = Course::where('teacher_id',$user->id)->get();
 
-        $enrollments = $user->enrollments;
+        // $enrollments = $user->enrollments;
         return $user;
 
     }

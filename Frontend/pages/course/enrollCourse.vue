@@ -1,16 +1,16 @@
 <template>
     <div class='app p-12 transform ease-in-out'>
-        <FullCalendar :options='calendarOptions' />
+        <FullCalendar v-click-outside="clickOutside" :options='calendarOptions' />
     </div>
 
-    <div class="flex justify-center">
+    <div v-if="showCard" class="flex justify-center">
         <article
             class="w-96 relative flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 max-w-sm mx-auto ">
             <img src="https://www.ecohome.net/media/articles/images/f2/9c/f29c921116e7b42501639bda77885d5051a5c8f1/thumbs/dOp8pM6ckCwo_1200x500_EE_R0wWf.jpg"
                 alt="University of Southern California" class="absolute inset-0 h-full w-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
-            <h3 id="day" class="z-10 text-3xl font-bold text-white">{{ dayy }}</h3>
-            <h3 id="time" class="z-10 text-3xl font-bold text-white">{{ timee }}</h3>
+            <h3 id="day" class="z-10 text-3xl font-bold text-white">{{ day }}</h3>
+            <h3 id="time" class="z-10 text-3xl font-bold text-white">{{ time }}</h3>
             <div class="z-10 gap-y-1 right-0 overflow-hidden text-sm leading-6 text-gray-300 p-2">
                 <NuxtLink :to="`/course/confirmCourse${idCourse}`"
                     class="rounded-r-lg group relative px-8 py-1 overflow-hidden bg-white text-xl shadow my-6">
@@ -26,11 +26,10 @@
 
 <script setup lang="ts">
 
-const dayy = ref('please select the time')
-const timee = ref('')
+const day = ref('please select the time')
+const time = ref<any>('')
 const idCourse = ref(0)
-const days = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-const times = ['9.00', '10.00', '11.00', '12.00', '13.00', '14.00', '15.00', '16.00', '17.00']
+
 
 
 import FullCalendar from '@fullcalendar/vue3'
@@ -57,7 +56,7 @@ const calendarOptions = ref({
     allDaySlot: false,
 
     //   dateClick: handleDateClick,
-    //   eventClick: handleEventClick,
+      eventClick: handleEventClick,
     //   eventMouseEnter: handleEventhover,
     //   eventMouseLeave: handleEventLeave,
 
@@ -67,12 +66,39 @@ const calendarOptions = ref({
 
 
 const eventData = ref([
-    { title: 'ink bd', date: '2023-12-19', start: '2023-12-19T10:00:00', end: '2023-12-19T10:59:00', id: 123, color: 'purple', description: 'description for Repeating Event', eventClassNames: "test" },
-    { title: 'event 1', date: '2023-12-19' },
-    { title: 'event 1', date: '2023-12-19' },
-    { title: 'event 1', date: '2023-12-19' },
-    { title: 'event 2', date: '2023-09-12' }
+    { title: 'ink bd', start: '2023-11-03 10:00:00', uid: 123, color: 'purple', description: 'description for Repeating Event', eventClassNames: "test" },
+    
 ])
+
+
+import {useAuthStore} from "~/stores/useAuthStore";
+    
+const user = useAuthStore().user;
+
+const {data: eventCourse, error: loginError } = await useApiFetch("api/student/getAllCourses", {});
+
+if(eventCourse.value){
+    console.log(eventCourse.value);
+    
+    for(const event in eventCourse.value){
+        let ageRange = `${eventCourse.value[event].max_age}-${eventCourse.value[event].min_age}`;
+        let temp = {
+            title: eventCourse.value[event].title,
+            start: eventCourse.value[event].start_datetime,
+            uid: eventCourse.value[event].id,
+            color: 'purple',
+            description: ageRange,
+            
+        }
+        console.log(temp);
+        
+        eventData.value.push(temp)
+    
+    }
+    
+}
+
+
 
 
 if (eventData.value) {
@@ -80,6 +106,40 @@ if (eventData.value) {
 
 }
 
+const showCard = ref(false);
+
+function  handleEventClick (arg) {
+
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    day.value = daysOfWeek[new Date(arg.event.start).getDay()]
+    time.value = formatTime(new Date(arg.event.start))
+    idCourse.value = arg.event.extendedProps.uid
+    showCard.value = true;
+
+}
+
+function formatTime(date) {
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const seconds = date.getSeconds();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+
+  // Convert 24-hour format to 12-hour format
+  const formattedHours = hours % 12 || 12;
+
+  // Add leading zeros to minutes and seconds if needed
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
+
+  // Combine the formatted time components
+  const formattedTime = `${formattedHours}:${formattedMinutes}:${formattedSeconds} ${ampm}`;
+
+  return formattedTime;
+}
+
+const clickOutside = () => {
+  showCard.value = false;
+};
 
 
 

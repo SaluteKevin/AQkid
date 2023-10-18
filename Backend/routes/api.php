@@ -83,8 +83,8 @@ Route::group([
     Route::get('allStudents', [StaffController::class, 'allStudents']);
     Route::get('students/{user}', [StaffController::class, 'getStudent']);
     Route::post('searchStudent', [StaffController::class, 'searchStudent']);
-   
-
+    
+    
 });
 
 Route::group([
@@ -95,19 +95,22 @@ Route::group([
 ], function ($router) {
 
     Route::get('getEvent', [TeacherController::class, 'getEvent']);
-   
-
+    
+    
 });
 
 
 Route::group([
-
+    
     'middleware' => 'api',
     'prefix' => 'student'
-
+    
 ], function ($router) {
-
+    
     Route::get('getClasses', [StudentController::class, 'getAllClasses']);
+    Route::get('getAllCourses', [StudentController::class, 'getAllCourse']);
+    Route::get('showCourse/{course}', [StudentController::class, 'showCourse']);
+    
    
 
 });
