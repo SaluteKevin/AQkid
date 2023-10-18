@@ -23,7 +23,7 @@ if(eventCourse.value){
             <div class="flex flex-row">
                 <div class="w-1/2 p-5">
                     <p class="pl-5 text-3xl text-gray-900 dark:text-white bg-orange-500 rounded-2xl">Teacher</p>
-                    <p class="pl-5 text-xl text-gray-900 dark:text-white pt-4">{{eventCourse.value.}}</p>
+                    <p class="pl-5 text-xl text-gray-900 dark:text-white pt-4">{{eventCourse.value}}</p>
                 </div>
                 <div class="w-1/2 p-5">
                     <p class="pl-5 text-3xl text-gray-900 dark:text-white bg-orange-500 rounded-2xl">Time</p>

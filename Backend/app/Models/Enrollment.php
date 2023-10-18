@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Enums\EnrollmentStatusEnum;
 use App\Models\Enums\ReceiptDescriptionEnum;
 use App\Models\Enums\UserRoleEnum;
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -138,5 +139,24 @@ class Enrollment extends Model
         $statusOk = $this->save();
 
         return $statusOk;
+    }
+
+    /***
+     * 
+     * Enrollment query with user
+     */
+
+    public static function getEnrollemtWithUser(Paginator $enrollments): Paginator 
+    {
+
+        foreach ($enrollments as $enrollment) {
+
+            $user = User::find($enrollment->student_id);
+
+            $enrollment->user = $user;
+        }
+
+        return $enrollments;
+
     }
 }
