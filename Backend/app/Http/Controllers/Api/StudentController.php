@@ -38,7 +38,7 @@ class StudentController extends Controller
     }
 
     public function showCourse(Course $course){
-        
-        return $course;
+        $teacher = User::find($course->teacher_id);
+        return [$course, $teacher];
     }
 }
