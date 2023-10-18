@@ -4,11 +4,16 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Enums\UserRoleEnum;
+use DateTime;
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
+use App\Services\FileService;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
@@ -67,20 +72,40 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function enrollments(): HasMany {
+    public function enrollments(): HasMany
+    {
         return $this->hasMany(Enrollment::class);
     }
 
-    public function notis(): HasMany {
+    public function notis(): HasMany
+    {
         return $this->hasMany(UserNoti::class);
     }
 
-    public function studentAttendances(): BelongsToMany {
+    public function studentAttendances(): BelongsToMany
+    {
         return $this->belongsToMany(Timeslot::class, 'student_attendances', 'student_id', 'timeslot_id')->withPivot('has_attended');
     }
 
-    public function teacherAttendances(): BelongsToMany {
+    public function teacherAttendances(): BelongsToMany
+    {
         return $this->belongsToMany(Timeslot::class, 'teacher_attendances', 'teacher_id', 'timeslot_id');
+    }
+
+    /**
+     * Get all the users in database with the specified role
+     */
+    public static function allWithRole(UserRoleEnum $userRole): Collection
+    {
+        return User::where('role', $userRole->name)->get();
+    }
+
+    /**
+     * Get all the users in database with the specified role
+     */
+    public static function allWithRolePaginate(UserRoleEnum $userRole): Paginator
+    {
+        return User::where('role', $userRole->name)->paginate(5);
     }
 
     /**
@@ -89,7 +114,8 @@ class User extends Authenticatable implements JWTSubject
      * @param UserRoleEnum $userRole the user role to be checked
      * @return bool a boolean value indicating if $user has $userRole
      */
-    public static function checkRole(User $user, UserRoleEnum $userRole): bool {
+    public static function checkRole(User $user, UserRoleEnum $userRole): bool
+    {
         return $userRole->name == $user->role;
     }
 
@@ -110,4 +136,104 @@ class User extends Authenticatable implements JWTSubject
 
     //     return $result;
     // }
+
+    /**
+     * Search Teacher by Firstname
+     * 
+     * @return collection
+     */
+    public static function searchUser(string $search, UserRoleEnum $userRole): Collection
+    {
+
+        return User::where('role', $userRole->name)
+            ->when($search, function ($query) use ($search) {
+                return $query->where('first_name', 'LIKE', '%' . $search . '%');
+            })
+            ->get();
+    }
+
+    /**
+     * query Teacher Courses
+     */
+    public static function getTeacherWithCourses(User $user): User
+    {
+
+        $courses = Course::where('teacher_id', $user->id)->get();
+
+        $user->courses = $courses;
+
+        return $user;
+    }
+
+    /**
+     * Take Collection of Teacher and queryCourseCount then return Collection Type
+     */
+
+    public static function queryWithCoursesCountCollection(Collection $teachers): Collection
+    {
+
+        foreach ($teachers as $teacher) {
+
+            $courses = Course::where('teacher_id', $teacher->id)->count();
+
+            $teacher->course_count = $courses;
+        }
+
+        return $teachers;
+    }
+
+    /**
+     * Take Collection of Teacher and queryCourseCount then return Paginator Type
+     */
+    public static function queryWithCoursesCountPaginate(Paginator $teachers): Paginator
+    {
+
+        foreach ($teachers as $teacher) {
+
+            $courses = Course::where('teacher_id', $teacher->id)->count();
+
+            $teacher->course_count = $courses;
+        }
+
+        return $teachers;
+    }
+
+
+    /**
+     * 
+     * Create User ['STAFF','STUDENT']
+     */
+    public static function createUser(string $username, string $password, UserRoleEnum $userRole,
+                                      string $firstname, string $middlename = null , string $lastname,
+                                      string $birthdate, string $phone_number, string $email = null,
+                                      UploadedFile $imagefile = null): bool {
+
+        $statusOk = false;
+
+        $user = new User();
+        $user->username = $username;
+        $user->password = $password;
+        $user->role = $userRole->name;
+        $user->first_name = $firstname;
+        $user->middle_name = $middlename;
+        $user->last_name = $lastname;
+        $user->birthdate = $birthdate;
+        $user->phone_number = $phone_number;
+        $user->email = $email;
+        $user->profile_image_path = "DEFAULT";
+
+        $statusOk = $user->save();
+
+        $image_path = FileService::getFileManager()->uploadFile('users/' . $user->id . "/" ."profile.jpg",$imagefile);
+
+        if ($image_path != false ) {
+
+            $user->profile_image_path = $image_path;
+
+            $statusOk = $user->save();
+
+        }
+
+        return $statusOk;
+    }
 }

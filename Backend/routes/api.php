@@ -73,6 +73,10 @@ Route::group([
 
 ], function ($router) {
 
+    // index
+    
+    Route::get('allCourses', [StaffController::class, 'getAllCourses']);
+
     // teacher
     Route::get('allTeachers', [StaffController::class, 'allTeachers']);
     Route::get('teachers/{user}', [StaffController::class, 'getTeacher']);
@@ -83,8 +87,9 @@ Route::group([
     Route::get('allStudents', [StaffController::class, 'allStudents']);
     Route::get('students/{user}', [StaffController::class, 'getStudent']);
     Route::post('searchStudent', [StaffController::class, 'searchStudent']);
-    
-    
+   
+    // enrollment
+    Route::get('allEnrollments', [StaffController::class, 'allEnrollmentRequests']);
 });
 
 Route::group([

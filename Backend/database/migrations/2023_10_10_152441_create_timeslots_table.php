@@ -17,6 +17,7 @@ return new class extends Migration
             $table->datetime('datetime');
             $table->enum('type', ['REGULAR', 'MAKEUP', 'UNDEFINED']);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('course_id')->references('id')->on('courses');
         });

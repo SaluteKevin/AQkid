@@ -24,15 +24,17 @@ erDiagram
 
     courses {
         INT id PK "NOT NULL, AUTO_INCREMENT"
-        INT teacher_id FK
+        INT teacher_id FK "NOT NULL"
         VARCHAR title "NOT NULL"
+        VARCHAR description
         INT quota "NOT NULL"
         INT capacity "NOT NULL"
         INT min_age "DEFAULT 0"
         INT max_age
         INT duration "NOT NULL, DEFAULT 60"
+        DATETIME opens_on "NOT NULL"
         DATETIME opens_until "NOT NULL"
-        DATETIME start_datetime "NOT NULL"
+        DATETIME starts_on "NOT NULL"
         ENUM status "NOT NULL"
         FLOAT price "NOT NULL"
         TIMESTAMP created_at "NOT NULL"
@@ -43,6 +45,8 @@ erDiagram
         INT id PK "NOT NULL, AUTO_INCREMENT"
         INT course_id FK "NOT NULL"
         INT student_id FK "NOT NULL"
+        VARCHAR proof_of_payment_path "NOT NULL"
+        VARCHAR review_comment
         ENUM status "NOT NULL"
         TIMESTAMP created_at "NOT NULL"
         TIMESTAMP updated_at "NOT NULL"

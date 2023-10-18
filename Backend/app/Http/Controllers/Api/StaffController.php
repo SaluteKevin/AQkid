@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
 use App\Models\Course;
+use App\Models\Enrollment;
+use App\Models\Enums\UserRoleEnum;
 
 
 
@@ -23,7 +25,7 @@ class StaffController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent']]);
+        $this->middleware('auth:api', ['except' => ['allEnrollmentRequests','allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -41,12 +43,16 @@ class StaffController extends Controller
      *  course open 1 คาบ ไม่มี student (ควรจะปิด)
      */
 
+    public function getAllCourses() {
+        return Course::get();
+    }
+
      
 
     public function allEnrollmentRequests() {
 
-        // return all enrollment requests
-
+        $enrollments = Enrollment::paginate(5);
+        return $enrollments;
     }
 
     public function enrollmentRequestReview(Request $request) {
@@ -77,7 +83,7 @@ class StaffController extends Controller
     // Student Page
     public function allStudents() {
 
-        $students = User::where('role',"STUDENT")->paginate(5);
+        $students = User::allWithRolePaginate(UserRoleEnum::STUDENT);
 
         return $students;
 
@@ -85,9 +91,8 @@ class StaffController extends Controller
 
     public function getStudent(User $user) {
 
-        // $courses = Course::where('teacher_id',$user->id)->get();
+        // implement enrollments futhermore
 
-        // $enrollments = $user->enrollments;
         return $user;
 
     }
@@ -96,45 +101,22 @@ class StaffController extends Controller
 
         $search = $request->input('search');
 
-        $students = User::where('role', 'STUDENT')
-            ->when($search, function ($query) use ($search) {
-                return $query->where('first_name', 'LIKE', '%' . $search . '%');
-            })
-            ->get();
-
-        // foreach ($teachers as $teacher) {
-
-        //     $courses = Course::where('teacher_id',$teacher->id)->count();
-    
-        //     $teacher->course_count = $courses;
-    
-        // }
+        $students = User::searchUser($search, UserRoleEnum::STUDENT);
 
         return $students;
 
     }
-
-    
-
-
-
 
 
     // Teacher Page
 
     public function allTeachers() {
 
-        $teachers = User::where('role',"TEACHER")->paginate(5);
+        $teachers = User::allWithRolePaginate(UserRoleEnum::TEACHER);
 
-        foreach ($teachers as $teacher) {
+        $teachersWithCourses = User::queryWithCoursesCountPaginate($teachers);
 
-            $courses = Course::where('teacher_id',$teacher->id)->count();
-
-            $teacher->course_count = $courses;
-
-        }
-
-        return $teachers;
+        return $teachersWithCourses;
         // return all Teachers
 
     }
@@ -143,31 +125,17 @@ class StaffController extends Controller
 
         $search = $request->input('search');
 
-        $teachers = User::where('role', 'TEACHER')
-            ->when($search, function ($query) use ($search) {
-                return $query->where('first_name', 'LIKE', '%' . $search . '%');
-            })
-            ->get();
+        $teachers = User::searchUser($search, UserRoleEnum::TEACHER);
 
-        foreach ($teachers as $teacher) {
+        $teachersWithCourses = User::queryWithCoursesCountCollection($teachers);
 
-            $courses = Course::where('teacher_id',$teacher->id)->count();
-    
-            $teacher->course_count = $courses;
-    
-        }
-
-        return $teachers;
+        return $teachersWithCourses;
 
     }
 
     public function getTeacher(User $user) {
 
-        $courses = Course::where('teacher_id',$user->id)->get();
-
-        $user->courses = $courses;
-
-        return $user;
+        return User::getTeacherWithCourses($user);
 
     }
 
@@ -183,44 +151,15 @@ class StaffController extends Controller
             'phone_number' => 'required',
             'email' => 'nullable',
         ]);
-
-        $user = new User();
-        $user->username = $request->get('username');
-        $user->password = $request->get('password');
-        $user->role = 'TEACHER';
-        $user->first_name = $request->get('firstname');
-        $user->middle_name = $request->get('middlename');
-        $user->last_name = $request->get('lastname');
-        $user->birthdate = $request->get('birthdate');
-        $user->phone_number = $request->get('phone_number');
-        $user->email = $request->get('email');
-
-        $file = $request->file('profile_image_path');
-
-        $image_path = FileService::getFileManager()->uploadFile('users/' . $user->username . "/" ."profile.jpg",$file);
-
-        if ( $image_path != false ) {
-
-            $user->profile_image_path = $image_path;
-
-            if ( $user->save() ) {
-
-                return response()->json([
-                    'message' => "Successfully created User",
-                ]);
-
-            }
-
-            return response()->json([
-                'message' => "Failed to create User",
-            ],422);
-
-        }
-
-        $image_path = "default";
-        $user->profile_image_path = $image_path;
         
-        if ( $user->save() ) {
+        $statusOk = User::createUser($request->get('username'), $request->get('password'), UserRoleEnum::TEACHER,
+                                     $request->get('firstname'), $request->get('middlename'), $request->get('lastname'),
+                                     $request->get('birthdate'), $request->get('phone_number'), $request->get('email'),
+                                     $request->file('profile_image_path'));
+
+        
+
+        if ( $statusOk != false ) {
 
             return response()->json([
                 'message' => "Successfully created User",
@@ -231,6 +170,7 @@ class StaffController extends Controller
         return response()->json([
             'message' => "Failed to create User",
         ],422);
+
         
     }
 

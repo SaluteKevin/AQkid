@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Models\User;
+use App\Models\Enums\UserRoleEnum;
 
 
 
@@ -55,44 +56,15 @@ class AuthController extends Controller
             'phone_number' => 'required',
             'email' => 'nullable',
         ]);
-
-        $user = new User();
-        $user->username = $request->get('username');
-        $user->password = $request->get('password');
-        $user->role = 'STUDENT';
-        $user->first_name = $request->get('firstname');
-        $user->middle_name = $request->get('middlename');
-        $user->last_name = $request->get('lastname');
-        $user->birthdate = $request->get('birthdate');
-        $user->phone_number = $request->get('phone_number');
-        $user->email = $request->get('email');
-
-        $file = $request->file('profile_image_path');
-
-        $image_path = FileService::getFileManager()->uploadFile('users/' . $user->username . "/" ."profile.jpg",$file);
-
-        if ( $image_path != false ) {
-
-            $user->profile_image_path = $image_path;
-
-            if ( $user->save() ) {
-
-                return response()->json([
-                    'message' => "Successfully created User",
-                ]);
-
-            }
-
-            return response()->json([
-                'message' => "Failed to create User",
-            ], 422);
-
-        }
-
-        $image_path = "default";
-        $user->profile_image_path = $image_path;
         
-        if ( $user->save() ) {
+        $statusOk = User::createUser($request->get('username'), $request->get('password'), UserRoleEnum::STUDENT,
+                                     $request->get('firstname'), $request->get('middlename'), $request->get('lastname'),
+                                     $request->get('birthdate'), $request->get('phone_number'), $request->get('email'),
+                                     $request->file('profile_image_path'));
+
+        
+
+        if ( $statusOk != false ) {
 
             return response()->json([
                 'message' => "Successfully created User",
@@ -102,7 +74,7 @@ class AuthController extends Controller
 
         return response()->json([
             'message' => "Failed to create User",
-        ], 422);
+        ],422);
         
     
     }
