@@ -75,6 +75,25 @@
             <FullCalendar :options='calendarOptions' />
         </div>
 
+
+        <div v-click-outside="clickOutside" v-if="timeslotShow" ref="scrollCourse" class=" p-6  border border-gray-200 rounded-lg shadow-2xl mb-8">
+            
+            <h5 class="mb-2 text-2xl font-bold  text-gray-900">{{timeslotSelected.title}}</h5>
+            
+            <p class="mb-3 font-normal text-gray-700 ">Date: {{ timeslotSelected.start }}</p>
+            <NuxtLink :to="`/staff/detail/timeslot${timeslotSelected.uid}`" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                See Timeslot Information
+                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </NuxtLink>
+        </div>
+
+
+        
+
+
+
     </div>
 </template>
 
@@ -118,16 +137,57 @@ const eventData = ref([])
 //     { title: 'event 1', date: '2023-12-19' },
 //     { title: 'event 2', date: '2023-09-12' }
 
-if (eventData.value) {
-    calendarOptions.value.events = eventData;
 
-}
+calendarOptions.value.events = eventData;
+
+
 
 async function handleEventClick(arg) {
 
-    await navigateTo(`/staff/detail/timeslot${arg.event.extendedProps.uid}`);
+    let temp = {
+        title: arg.event.title,
+        start: arg.event.extendedProps.datestore,
+        uid: arg.event.extendedProps.uid,
+        type: arg.event.extendedProps.type,
+
+    };
+
+    timeslotSelected.value = temp;
+    await scrollToCourse();
+
 
 }
+
+// timeslot select
+
+const timeslotSelected = ref();
+const timeslotShow = ref(false);
+const scrollCourse = ref();
+
+function clickOutside() {
+    timeslotShow.value = false;
+}
+
+async function scrollToCourse() {
+
+    await setTimeslotToShow();
+
+    if (scrollCourse.value) {
+        const element = scrollCourse.value.getBoundingClientRect();
+
+        // Scroll to the element with smooth animation
+        window.scrollTo({
+            top: element.top + window.scrollY,
+            behavior: 'smooth',
+        });
+    }
+
+};
+
+async function setTimeslotToShow() {
+    timeslotShow.value = !timeslotShow.value;
+}
+
 
 
 // course info 
@@ -158,13 +218,68 @@ if (courseResponse.value) {
             title: courseResponse.value.title,
             start: courseResponse.value.timeslots[event].datetime,
             uid: courseResponse.value.timeslots[event].id,
-            color: 'green',
+            datestore: courseResponse.value.timeslots[event].datetime,
+            type: courseResponse.value.timeslots[event].type,
             
+        }
+
+        if (courseResponse.value.timeslots[event].type === "REGULAR") {
+            temp["color"] = 'green';
+        }
+
+        if (courseResponse.value.timeslots[event].type === "MAKEUP") {
+            temp["color"] = 'purple';
         }
         
         eventData.value.push(temp);
     
     }
+
+    const { data: timeslotResponse, error: timeslotError } = await useApiFetch(`api/staff/allTimeslots`, {});
+
+    if (timeslotResponse.value) {
+
+        for(const event in timeslotResponse.value){
+
+            // console.log(timeslotResponse.value[event].id)
+
+            for (const eventinner in eventData.value) {
+                
+                if (timeslotResponse.value[event].id == eventData.value[eventinner].uid) {
+
+                    continue;
+
+                }
+
+
+
+            }
+
+            let temp = {
+                title: timeslotResponse.value.title,
+                start: courseResponse.value.timeslots[event].datetime,
+                uid: courseResponse.value.timeslots[event].id,
+                datestore: courseResponse.value.timeslots[event].datetime,
+                type: courseResponse.value.timeslots[event].type,
+            }
+            
+            eventData.value.push(temp);
+        }
+
+
+
+
+        }
+
+    else {
+        if (timeslotError.value) {
+
+        }
+    }
+
+    
+
+    
     
 }
 

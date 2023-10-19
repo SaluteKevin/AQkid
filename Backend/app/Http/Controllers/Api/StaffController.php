@@ -13,6 +13,7 @@ use App\Models\Course;
 use App\Models\Enrollment;
 use App\Models\Enums\EnrollmentStatusEnum;
 use App\Models\Enums\UserRoleEnum;
+use App\Models\Timeslot;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 
@@ -26,7 +27,7 @@ class StaffController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['enrollmentRequestReview','allEnrollmentRequests','allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent','getAllCourses','filterStudent','getCourse']]);
+        $this->middleware('auth:api', ['except' => ['enrollmentRequestReview','allEnrollmentRequests','allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent','getAllCourses','filterStudent','getCourse','allTimeslots']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -50,11 +51,18 @@ class StaffController extends Controller
 
 
     public function getCourse(Course $course) {
-        $timeslots = $course->timeslots;
 
-        $course->enroll_count = Course::studentsIn($course->id)->count();
+        // $timeslots = $course->timeslots;
+        $courseWithAllTimeslots = Course::allTimeslotsWithAuthor($course);
+
+        // $courseWithAllTimeslots->enroll_count = Course::studentsIn($courseWithAllTimeslots->id)->count();
         
-        return $course;
+        return $courseWithAllTimeslots;
+    }
+
+    public function allTimeslots() {
+        $timeslots = Timeslot::get();
+        return $timeslots;
     }
      
 
