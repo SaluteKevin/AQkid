@@ -209,6 +209,10 @@
                                     <img ref="imagePreview" :src="imagePreviewSrc" alt="">
                             </div>
 
+                        <p class="text-red-500" v-for="error in RegistrationError['profile_image_path']" :key="error">
+                                    {{ error }}
+                        </p>
+
             
 
                         

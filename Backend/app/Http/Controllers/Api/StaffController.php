@@ -175,7 +175,7 @@ class StaffController extends Controller
     public function createTeacher(Request $request) {
 
         $request->validate([
-            'username' => 'required|max:255',
+            'username' => 'required|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
             'firstname' => 'required',
             'middlename' => 'nullable',
@@ -183,6 +183,7 @@ class StaffController extends Controller
             'birthdate' => 'required',
             'phone_number' => 'required',
             'email' => 'nullable',
+            'profile_image_path' => 'nullable|image|mimes:png,gif,jpg,jpeg,bmp|max:2048'
         ]);
         
         $statusOk = User::createUser($request->get('username'), $request->get('password'), UserRoleEnum::TEACHER,
