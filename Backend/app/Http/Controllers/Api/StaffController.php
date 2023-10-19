@@ -52,9 +52,9 @@ class StaffController extends Controller
 
     public function allEnrollmentRequests() {
 
-        $enrollments = Enrollment::paginate(5);
+        $enrollments = Enrollment::enrollmentsWithStatus(EnrollmentStatusEnum::PENDING);
         
-        $enrollmentsWithUser = Enrollment::getEnrollemtWithUser($enrollments);
+        $enrollmentsWithUser = Enrollment::getEnrollmetWithUser($enrollments);
         
         return $enrollmentsWithUser;
 
