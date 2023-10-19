@@ -1,0 +1,315 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{aqdocs}
+
+%% Draft
+\RequirePackage{blindtext}
+% \RequirePackage{showframe}
+
+%% Packages
+\RequirePackage{geometry}
+\RequirePackage[fulladjust]{marginnote}
+\RequirePackage{tabularx}
+\RequirePackage{calc}
+\RequirePackage{xcolor}
+\RequirePackage{xparse}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+\RequirePackage{multicol}
+\RequirePackage[verbose]{wrapfig}
+\RequirePackage{anyfontsize}
+\RequirePackage{xunicode}
+\RequirePackage{xltxtra}
+\RequirePackage{fontspec}
+\RequirePackage{amsmath}
+\RequirePackage{amstext}
+\RequirePackage{amssymb}
+\RequirePackage{polyglossia}
+\RequirePackage{enumitem}
+\RequirePackage{setspace}
+\RequirePackage{titlesec}
+\RequirePackage{listings}
+\RequirePackage{caption}
+\RequirePackage{makeidx}
+\RequirePackage{fancyhdr}
+% \RequirePackage{nameref}
+\RequirePackage{titleref}
+\RequirePackage{hyperref}
+
+\RequirePackage[document]{ragged2e}
+
+
+%% Consts
+\DeclareRobustCommand{\ourTeam}{AQKids}
+\DeclareRobustCommand{\appName}{\ourTeam}
+\DeclareRobustCommand{\docsname}{เว็บแอปพลิเคชันจัดการตารางเวลาโรงเรียนสอนว่ายน้ำ}
+
+\def\testimage{./images/test/ice.jpg}
+\def\testimagei{./images/test/cat.jpg}
+
+\DeclareRobustCommand{\niirulecolor}{\color{black}}
+\definecolor{niigrey}{RGB}{245,245,245}
+
+
+%% Text
+\disablehyphenation
+
+\setdefaultlanguage{english}                    % setting default lang to thai is causing toc error
+\setotherlanguage[numerals=arabic]{thai}
+
+\addto\captionsenglish{%
+\renewcommand{\contentsname}{สารบัญ}}        % setting default lang to thai is causing toc error
+
+\addto\captionsenglish{%
+    \renewcommand{\listtablename}{สารบัญตาราง}}
+
+\addto\captionsenglish{%
+    \renewcommand{\tablename}{ตารางที่}}
+
+\addto\captionsenglish{%
+    \renewcommand{\listfigurename}{สารบัญรูป}}
+
+\addto\captionsenglish{%
+    \renewcommand{\figurename}{รูปที่}}
+
+\renewcommand{\lstlistlistingname}{สารบัญลิสต์}
+
+\renewcommand{\lstlistingname}{ลิสต์ที่}
+
+
+\XeTeXlinebreaklocale "th"
+
+\setmainfont{TH Sarabun New}
+\newfontfamily\thaifont{TH Sarabun New}[Script=Default]
+
+
+\sloppy
+
+
+%% Graphical things
+\geometry{%
+paper=a4paper,
+twoside=false,
+hmargin={0.86in,0.86in},
+vmargin={1in,1.3in},
+marginparwidth=110pt,
+marginparsep=30pt,
+includemp=true,
+reversemarginpar=true}
+
+
+%% Page Head/Foot
+\pagestyle{fancy}
+\addtolength{\headsep}{24pt}
+\setlength{\headheight}{14pt}
+\addtolength{\headwidth}{\marginparsep + \marginparwidth}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\fancyhf{}
+\fancyhead[R]{\leftmark}
+\fancyfoot[L]{\textbf{\docsname}}
+\fancyfoot[R]{\thepage}
+
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\renewcommand{\subsectionmark}[1]{\markright{#1}}
+
+\DeclareRobustCommand{\niiheader}[3]{%
+    \fancypagestyle{custom}{%
+        \fancyhead[L]{#1}
+        \fancyhead[C]{#2}
+        \fancyhead[R]{#3}}
+    \thispagestyle{custom}}
+
+
+%% PDF
+\hypersetup{%
+pdftitle={\docsname},
+pdfsubject={niiCoding},
+pdfauthor={\ourTeam},
+pdfkeywords={{System Analysis and Design}, 01418321, \appName}}
+
+
+%% Sections and Paragraphs
+\renewcommand*{\raggedleftmarginnote}{}
+\renewcommand{\marginfont}{\footnotesize}
+
+\setlength{\parindent}{0em}
+\renewcommand{\baselinestretch}{1.3}
+
+% Tables
+\let\oldtabular\tabular
+\let\oldendtabular\endtabular
+\renewenvironment{tabular}{%
+\vspace{\baselineskip}
+\oldtabular}{%
+\oldendtabular
+\vspace{\baselineskip}}
+
+% CSV gists
+\setcounter{secnumdepth}{4}
+
+\titleformat{\section}
+{\Huge\bfseries}                % format
+{\thesection}                   % label
+{26pt}                          % sep: length between 'label' and 'title body'
+{}
+{}
+
+\titleformat{\subsection}
+{\Large\bfseries}               % format
+{\thesubsection}                % label
+{22pt}                          % sep: length between 'label' and 'title body'
+{}
+{}
+
+\titleformat{\subsubsection}
+{\large\bfseries}               % format
+{\thesubsubsection}             % label
+{22pt}                          % sep: length between 'label' and 'title body'
+{}
+{}
+
+\titlespacing{\section}
+{0pt}
+{2ex}
+{10ex}
+
+\titlespacing{\subsection}
+{0pt}
+{6ex}
+{2ex}
+
+\titlespacing{\subsubsection}
+{0pt}
+{3ex}
+{1.6ex}
+
+
+%% Items
+\setlist[description, 1]{%
+align=left,
+listparindent=0pt,
+labelwidth=10em,
+itemsep=1.5ex}
+
+\setlist[enumerate, 1]{%
+align=left,
+leftmargin=*,
+itemsep=1ex}
+
+\setlist[itemize, 1]{%
+align=left,
+leftmargin=*,
+itemsep=1ex}
+
+
+%% Listings
+\lstset{%
+escapechar=\%,
+breakatwhitespace=true,
+breakautoindent=true,
+breaklines=true,
+basicstyle=\ttfamilylatin,
+commentstyle=\color{olive},
+keywordstyle=\color{magenta},
+numbers=left,
+captionpos=b,
+belowcaptionskip=1ex,
+tabsize=4,
+frame=single,
+% frameround=tttt,
+framexleftmargin=0mm,
+framexrightmargin=0mm,
+rulecolor=\color{white},
+% backgroundcolor=\color{niigrey},
+aboveskip=1.5ex,
+belowskip=1.5ex}
+
+% from <https://tex.stackexchange.com/questions/215697/skip-line-numbers-and-resume-from-specific-number>
+\let\origthelstnumber\thelstnumber
+\makeatletter
+
+\newcommand*{\lstrestorenumbers}[1]{%
+    \setcounter{lstnumber}{\numexpr#1-1\relax}
+    \lst@AddToHook{OnNewLine}{%
+    \let\thelstnumber\origthelstnumber%
+    \refstepcounter{lstnumber}
+    }%
+}
+
+\newcommand*{\lstsuppressnumbers}{%
+\lst@AddToHook{OnNewLine}{%
+    \let\thelstnumber\relax%
+    \advance\c@lstnumber-\@ne\relax%
+    }%
+}
+\makeatother
+
+
+%% Custom Commands
+\reversemarginpar
+\DeclareRobustCommand{\niimarginpar}[1]{%
+\marginnote[#1]}
+
+\DeclareRobustCommand{\niisimsec}[1]{%
+\vspace{2.4\parsep}
+\textbf{#1}
+\vspace{1.6\parsep}\newline}
+
+\DeclareRobustCommand{\niisecref}[1]{%
+%% \hypersetup{hidelinks}
+\textbf{\hyperref[#1]{%
+% \if\getrefnumber{#1}\relax%
+% \else
+\ref{#1}~%
+% \fi
+\nameref{#1}}}}
+
+% Images
+\DeclareRobustCommand{\niiparimagehere}[2][\relax]{%
+\vspace{\baselineskip}
+\begin{figure}[!htb]
+    \includegraphics[
+        width=0.7\textwidth,
+        height=0.7\textwidth,
+        keepaspectratio]{#2}
+    \ifx#1\relax
+    \else
+    \caption{\protect#1}
+    \fi
+\end{figure}
+\vspace{\baselineskip}}
+
+\DeclareRobustCommand{\thebestimage}[1]{%
+\niiparimagehere[{\textcolor{red}{\textbf{DO REPLACE ME WITH}}: #1}]{\testimage}}
+
+%%
+\newcommand{\editlater}{%
+\subsection*{edit later}
+\addcontentsline{toc}{sec}{{\color{red}\textbf{Editing Mark}}}
+\phantomsection}
+
+
+%% Custom Environments
+\newenvironment{niinohead}{%
+\niiheader{}{}{}}{}
+
+\newenvironment{niitable}[2][t]{%
+\begin{tabular}[#1]{#2}}{%
+\end{tabular}}
+
+
+%% Hooks
+\AtBeginDocument{%
+\edef\marginnotetextwidth{\the\textwidth}}
+
+
+%% Init
+\def\arraystretch{1}
+\setlength{\parskip}{1.3ex}
+
+\captionsetup{%
+justification=raggedright,
+singlelinecheck=false}
+
+\makeindex
