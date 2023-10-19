@@ -125,8 +125,9 @@ class StaffController extends Controller
     public function getStudent(User $user) {
 
         // implement enrollments futhermore
+        $userWithCourses = User::getStudentWithCourses($user);
 
-        return $user;
+        return $userWithCourses;
 
     }
 

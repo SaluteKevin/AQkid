@@ -76,7 +76,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function enrollments()
     {
-        return $this->hasMany(Enrollment::class, 'student_id');
+        return $this->hasMany(Enrollment::class);
     }
 
     public function notis(): HasMany
@@ -211,6 +211,28 @@ class User extends Authenticatable implements JWTSubject
 
 
     //////////////////////////////////////// STUDENT ////////////////////////////////////////
+
+    public static function getStudentWithCourses(User $student): User {
+
+        $enrollments = Enrollment::where('student_id', $student->id)->where('status', EnrollmentStatusEnum::SUCCESS->name)->get();
+
+        $coursesArray = [];
+
+        foreach ($enrollments as $enrollment) {
+
+            $course = Course::find($enrollment->course_id);
+
+            if ($course != null) {
+                $coursesArray[] = $course; 
+            }
+        }
+
+        $student->courses = $coursesArray;
+        
+        return $student;
+
+    }
+
     public static function queryStudentWithCoursesCount(Paginator $students): Paginator {
 
 
