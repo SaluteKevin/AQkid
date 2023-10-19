@@ -26,7 +26,7 @@ class StaffController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['allEnrollmentRequests','allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent','getAllCourses','filterStudent']]);
+        $this->middleware('auth:api', ['except' => ['allEnrollmentRequests','allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent','getAllCourses','filterStudent','getCourse']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -48,6 +48,14 @@ class StaffController extends Controller
         return Course::get();
     }
 
+
+    public function getCourse(Course $course) {
+        $timeslots = $course->timeslots;
+
+        $course->enroll_count = Course::studentsIn($course->id)->count();
+        
+        return $course;
+    }
      
 
     public function allEnrollmentRequests() {

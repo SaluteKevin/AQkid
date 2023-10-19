@@ -76,6 +76,7 @@ Route::group([
     // index
     
     Route::get('allCourses', [StaffController::class, 'getAllCourses']);
+    Route::get('courses/{course}', [StaffController::class, 'getCourse']);
 
     // teacher
     Route::get('allTeachers', [StaffController::class, 'allTeachers']);

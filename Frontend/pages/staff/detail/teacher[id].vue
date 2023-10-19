@@ -44,21 +44,20 @@
 
                         <h2 class="text-xl font-bold mt-6 mb-4">Courses</h2>
 
-
-                        <div class="mb-3 shadow-xl border rounded-2xl p-4" v-for="course in teacher.courses"
-                            :key="course.id">
+                        <NuxtLink :to="`/staff/detail/course${course.id}`" v-for="course in teacher.courses" :key="course.id">
+                        <div class="mb-3 shadow-xl border rounded-2xl p-4" >
+                            
                             <div class="flex justify-between  p-4 rounded-lg">
                                 <span class="text-gray-600 font-bold">{{ course.title }}</span>
                                 <p class="flex flex-col">
-                                    <span class="text-gray-600 mr-2">Start : {{ formatDateTime(new
-                                        Date(course.starts_on)) }}</span>
-                                    <span class="text-gray-600 mr-2">End : {{ formatDateTime(new
-                                        Date(course.starts_on)) }}</span>
-
+                                    <span class="text-gray-600 mr-2">Start : {{formatDateTime(new Date(course.starts_on))}}</span>
+                                    <span class="text-gray-600 mr-2">End : {{formatDateTime(new Date(course.starts_on))}}</span>
+                                    
                                 </p>
-
+                            
                             </div>
                         </div>
+                        </NuxtLink>
 
 
 
