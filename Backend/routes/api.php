@@ -93,7 +93,9 @@ Route::group([
    
     // enrollment
     Route::get('allEnrollments', [StaffController::class, 'allEnrollmentRequests']);
-    Route::get('enrolls/{enroll}', [StaffController::class, 'enrollmentRequestReview']);
+    Route::get('enrolls/{enrollment}', [StaffController::class, 'enrollmentRequestReview']);
+    Route::post('acceptEnroll/{enrollment}', [StaffController::class,'acceptEnrollment']);
+    Route::post('rejectEnroll/{enrollment}', [StaffController::class,'rejectEnrollment']);
 });
 
 Route::group([
