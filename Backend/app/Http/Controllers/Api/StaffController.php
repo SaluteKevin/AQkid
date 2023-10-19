@@ -52,10 +52,9 @@ class StaffController extends Controller
 
     public function getCourse(Course $course) {
 
-        // $timeslots = $course->timeslots;
         $courseWithAllTimeslots = Course::allTimeslotsWithAuthor($course);
 
-        // $courseWithAllTimeslots->enroll_count = Course::studentsIn($courseWithAllTimeslots->id)->count();
+        $courseWithAllTimeslots->enroll_count = Course::studentsIn($courseWithAllTimeslots->id)->count();
         
         return $courseWithAllTimeslots;
     }

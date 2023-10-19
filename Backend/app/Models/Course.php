@@ -74,9 +74,14 @@ class Course extends Model
         return Course::find($courseId)->capacity - Course::studentsIn($courseId)->count();
     }
 
-    public static function allTimeslotsWithAuthor(Course $course) {
+    public static function allTimeslotsWithAuthor(Course $course): Course {
 
         $timeslots = Timeslot::get();
+
+        foreach ($timeslots as $time ) {
+            $time->author = false;
+            $time->title = Course::find($time->course_id)->title;
+        }
 
         foreach ($course->timeslots as $courseTimeslot) {
             $timeslots = $timeslots->filter(function ($timeslot) use ($courseTimeslot) {
@@ -84,8 +89,15 @@ class Course extends Model
             });
         }
 
+        foreach ($course->timeslots as $time) {
+            $time->author = true;
+            $time->title = Course::find($time->course_id)->title;
+            $timeslots->push($time);
+        }
 
-        return $timeslots->values();
+        $course->alltimeslots = $timeslots->values();       
+
+        return $course;
 
     }
 }

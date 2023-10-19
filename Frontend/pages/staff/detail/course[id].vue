@@ -2,7 +2,7 @@
     <div class="flex flex-col justify-center items-center min-h-screen ">
         <div class="relative flex py-5 items-center w-full px-10 mt-8">
             <div class="flex-grow border-t border-gray-400"></div>
-            <span class="flex-shrink mx-4 text-6xl text-gray-400">{{course.title}}</span>
+            <span class="flex-shrink mx-4 text-6xl text-gray-400">{{ course.title }}</span>
             <div class="flex-grow border-t border-gray-400"></div>
         </div>
 
@@ -13,7 +13,7 @@
                     Course Information
                 </h4>
                 <p class="mt-2 px-2 text-base text-gray-600">
-                    {{course.description}}
+                    {{ course.description }}
                 </p>
             </div>
             <div class="grid grid-cols-2 gap-4 px-2 w-full ">
@@ -21,14 +21,14 @@
                     class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-lg ">
                     <p class="text-sm text-gray-600">Quota</p>
                     <p class="text-base font-medium text-navy-700 ">
-                        {{course.quota}} classes
+                        {{ course.quota }} classes
                     </p>
                 </div>
 
                 <div class="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-lg">
                     <p class="text-sm text-gray-600">Capacity</p>
                     <p class="text-base font-medium text-navy-700">
-                       {{ course.enroll_count }} / {{course.capacity}} people 
+                        {{ course.enroll_count }} / {{ course.capacity }} people
                     </p>
                 </div>
 
@@ -43,7 +43,7 @@
                 <div class="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-lg ">
                     <p class="text-sm text-gray-600">Class duration</p>
                     <p class="text-base font-medium text-navy-700">
-                        {{course.duration}} Minutes
+                        {{ course.duration }} Minutes
                     </p>
                 </div>
 
@@ -51,14 +51,14 @@
                     class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-lg ">
                     <p class="text-sm text-gray-600">Status</p>
                     <p class="text-base font-medium text-navy-700 ">
-                        {{course.status}}
+                        {{ course.status }}
                     </p>
                 </div>
 
                 <div class="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-lg ">
                     <p class="text-sm text-gray-600">Course price</p>
                     <p class="text-base font-medium text-navy-700 ">
-                        {{course.price}}
+                        {{ course.price }}
                     </p>
                 </div>
             </div>
@@ -76,21 +76,25 @@
         </div>
 
 
-        <div v-click-outside="clickOutside" v-if="timeslotShow" ref="scrollCourse" class=" p-6  border border-gray-200 rounded-lg shadow-2xl mb-8">
-            
-            <h5 class="mb-2 text-2xl font-bold  text-gray-900">{{timeslotSelected.title}}</h5>
-            
+        <div v-click-outside="clickOutside" v-if="timeslotShow" ref="scrollCourse"
+            class=" p-6  border border-gray-200 rounded-lg shadow-2xl mb-8">
+
+            <h5 class="mb-2 text-2xl font-bold  text-gray-900">{{ timeslotSelected.title }}</h5>
+
             <p class="mb-3 font-normal text-gray-700 ">Date: {{ timeslotSelected.start }}</p>
-            <NuxtLink :to="`/staff/detail/timeslot${timeslotSelected.uid}`" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <NuxtLink :to="`/staff/detail/timeslot${timeslotSelected.uid}`"
+                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 See Timeslot Information
-                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 5h12m0 0L9 1m4 4L9 9" />
                 </svg>
             </NuxtLink>
         </div>
 
 
-        
+
 
 
 
@@ -205,82 +209,56 @@ if (courseResponse.value) {
 
     let first = 1;
 
-    for(const event in courseResponse.value.timeslots){
+    for (const event in courseResponse.value.timeslots) {
 
-        if (first != 0){
+        if (first != 0) {
 
             calendarOptions.value.initialDate = courseResponse.value.timeslots[event].datetime
 
             first = 0;
         }
 
+        break;
+
+    }
+
+
+    for (const event in courseResponse.value.alltimeslots) {
+
+        // console.log(courseResponse.value.alltimeslots[event].datetime)
+
         let temp = {
-            title: courseResponse.value.title,
-            start: courseResponse.value.timeslots[event].datetime,
-            uid: courseResponse.value.timeslots[event].id,
-            datestore: courseResponse.value.timeslots[event].datetime,
-            type: courseResponse.value.timeslots[event].type,
-            
+            title: courseResponse.value.alltimeslots[event].title,
+            start: courseResponse.value.alltimeslots[event].datetime,
+            uid: courseResponse.value.alltimeslots[event].id,
+            datestore: courseResponse.value.alltimeslots[event].datetime,
+            type: courseResponse.value.alltimeslots[event].type,
+
         }
 
-        if (courseResponse.value.timeslots[event].type === "REGULAR") {
-            temp["color"] = 'green';
+        if (courseResponse.value.alltimeslots[event].author == false) {
+            temp["color"] = 'gray';
+            console.log('gray');
+        }
+        else {
+            if (courseResponse.value.alltimeslots[event].type === "REGULAR") {
+                temp["color"] = 'green';
+            }
+
+            if (courseResponse.value.alltimeslots[event].type === "MAKEUP") {
+                temp["color"] = 'purple';
+            }
+
+            console.log('else')
         }
 
-        if (courseResponse.value.timeslots[event].type === "MAKEUP") {
-            temp["color"] = 'purple';
-        }
-        
         eventData.value.push(temp);
-    
+
     }
 
-    const { data: timeslotResponse, error: timeslotError } = await useApiFetch(`api/staff/allTimeslots`, {});
-
-    if (timeslotResponse.value) {
-
-        for(const event in timeslotResponse.value){
-
-            // console.log(timeslotResponse.value[event].id)
-
-            for (const eventinner in eventData.value) {
-                
-                if (timeslotResponse.value[event].id == eventData.value[eventinner].uid) {
-
-                    continue;
-
-                }
 
 
 
-            }
-
-            let temp = {
-                title: timeslotResponse.value.title,
-                start: courseResponse.value.timeslots[event].datetime,
-                uid: courseResponse.value.timeslots[event].id,
-                datestore: courseResponse.value.timeslots[event].datetime,
-                type: courseResponse.value.timeslots[event].type,
-            }
-            
-            eventData.value.push(temp);
-        }
-
-
-
-
-        }
-
-    else {
-        if (timeslotError.value) {
-
-        }
-    }
-
-    
-
-    
-    
 }
 
 else {
