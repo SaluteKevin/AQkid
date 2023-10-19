@@ -53,7 +53,7 @@
 						class="mr-16 flex flex-col text-black place-content-center">
 						<span>Request time</span>
 						<span class="mt-2 text-gray-600">
-							{{ enroll.created_at }}
+							{{formatDateTime(new Date(enroll.created_at))}}
 						</span>
 						
 					</div>
@@ -109,6 +109,8 @@ async function fetchEnrolls(page: number) {
         allEnroll.value = enrollResponse.value.data;
 
         showEnrolls.value = allEnroll.value;
+
+		enrollCount.value = showEnrolls.value.length;
 
     }
     else {

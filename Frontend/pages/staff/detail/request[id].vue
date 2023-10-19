@@ -43,10 +43,10 @@
             
 
             <div class="mb-3">
-                <button v-on:click="AcceptEnroll" type="submit" class="mb-1.5 block w-full text-center text-white bg-green-600 hover:bg-green-700 px-2 py-1.5 rounded-md">
+                <button v-on:click="AcceptEnroll" class="mb-1.5 block w-full text-center text-white bg-green-600 hover:bg-green-700 px-2 py-1.5 rounded-md">
                     Accept
                 </button>
-                <button class="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
+                <button v-on:click="RejectEnroll" class="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
                     Reject
                 </button>
             </div>
@@ -107,6 +107,25 @@ function formatDateTime(date) {
     return formattedDateTime;
 }
 
-const AcceptEnroll = () =>{
+async function AcceptEnroll(){
+    const{ data: enrollResponse, error: enrollError} = await useApiFetch("api/staff/acceptEnroll/"+enroll.value.id,{
+        method: "POST",
+    });
+
+    if(enrollResponse){
+        await navigateTo(`/staff/request/`);
+    }
+
+    console.log(enrollResponse);
 }
+
+async function RejectEnroll(){
+    const{ data: enrollResponse, error: enrollError} = await useApiFetch("api/staff/rejectEnroll/"+enroll.value.id,{
+        method: "POST",
+    });
+        await navigateTo(`/staff/request/`);
+
+    console.log(enrollResponse);
+}
+
 </script>
