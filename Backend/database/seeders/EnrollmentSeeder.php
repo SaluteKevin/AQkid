@@ -18,7 +18,7 @@ class EnrollmentSeeder extends Seeder
             'course_id' => 2,
             'student_id' => 4,
             'proof_of_payment_path' => 'users/4/payments/hashed-slip-file-name.jpg',
-            'status' => EnrollmentStatusEnum::SUCCESS->name,
+            'status' => EnrollmentStatusEnum::PENDING->name,
             'created_at' => '2022-12-07 09:10:00',
             'updated_at' => '2022-12-08 09:00:00'
         ]);
@@ -27,7 +27,7 @@ class EnrollmentSeeder extends Seeder
             'course_id' => 2,
             'student_id' => 6,
             'proof_of_payment_path' => 'users/6/payments/hashed-slip-file-name.jpg',
-            'status' => EnrollmentStatusEnum::SUCCESS->name,
+            'status' => EnrollmentStatusEnum::PENDING->name,
             'created_at' => '2022-12-07 10:05:00',
             'updated_at' => '2022-12-08 09:02:00'
         ]);
