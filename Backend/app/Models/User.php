@@ -257,55 +257,67 @@ class User extends Authenticatable implements JWTSubject
 
     }
 
-    public static function queryStudentWithCoursesCountFilter(Collection $students, string $type): Collection {
+    public static function queryStudentWithCoursesCountFilter(string $type) {
+
+        $students = User::select('users.*')
+        ->leftJoin('enrollments', 'users.id', '=', 'enrollments.student_id')
+        ->leftJoin('courses', 'enrollments.course_id', '=', 'courses.id')
+        ->where('enrollments.status', EnrollmentStatusEnum::SUCCESS->name)
+        ->where('courses.status', CourseStatusEnum::ACTIVE->name)
+        ->groupBy('users.id')
+        ->havingRaw('COUNT(courses.id) > 0')
+        ->pluck('id');
 
         if ($type == 'active') {
-            $filteredStudents = $students->filter(function ($student) {
+            
+            $filteredUsers = User::whereIn('id', $students)->paginate(5);
+
+            foreach ($filteredUsers as $student) {
+
                 $count = 0;
                 $enrollments = Enrollment::where('student_id', $student->id)->get();
-        
+
                 foreach ($enrollments as $enrollment) {
                     $course = Course::find($enrollment->course_id);
-        
+
                     if ($course != null && $course->status == CourseStatusEnum::ACTIVE->name) {
                         $count += 1;
                     }
                 }
-        
+
                 $student->courses_count = $count;
-                
 
-                return $count > 0;
-            });
+            }
 
-            return $filteredStudents->values();
+            return $filteredUsers;
+
         }
 
         if ($type == 'inactive') {
 
-            $filteredStudents = $students->filter(function ($student) {
+            $usersNotInQuery = User::whereNotIn('id', $students)->where('role',UserRoleEnum::STUDENT->name)->paginate(5);
+
+            foreach ($usersNotInQuery as $student) {
+
                 $count = 0;
                 $enrollments = Enrollment::where('student_id', $student->id)->get();
-        
+
                 foreach ($enrollments as $enrollment) {
                     $course = Course::find($enrollment->course_id);
-        
+
                     if ($course != null && $course->status == CourseStatusEnum::ACTIVE->name) {
                         $count += 1;
                     }
                 }
-        
+
                 $student->courses_count = $count;
-                
 
-                return $count == 0;
-            });
+            }
 
-            return $filteredStudents->values();
+            return $usersNotInQuery;
+
 
         }
-
-
 
     }
 
@@ -348,4 +360,6 @@ class User extends Authenticatable implements JWTSubject
 
         return $statusOk;
     }
+
+
 }

@@ -147,7 +147,7 @@
 
 
         </div>
-        <Paginate v-if="paginateShow" class="mt-8" @change-page="onChangePage" :from="currentpage" :last_page="last_page" />
+        <Paginate class="mt-8" @change-page="onChangePage" :from="currentpage" :last_page="last_page" />
 
 
 
@@ -156,12 +156,13 @@
 
 <script setup lang="ts">
 definePageMeta({ layout: "staff" })
+import { usePaginateStore } from '~/stores/usePaginateStore'
+const paginate = usePaginateStore();
 
 
 // fitler section
 const filter = ref(false)
-const filterSelect = ref('all')
-const paginateShow = ref(true)
+const filterSelect = ref(paginate.student_filter)
 
 const clickOutside = () => {
     filter.value = false;
@@ -175,55 +176,25 @@ const selectFilter = async (select: string) => {
 
 
     }
-    else if (select === 'all') {
-
-        await fetchStudents(paginate.student_page);
-
-        filterSelect.value = select;
-        filter.value = false;
-        paginateShow.value = true;
-
-    }
     else {
 
         filterSelect.value = select;
         filter.value = false;
-        paginateShow.value = false;
 
-        await filterStudents();
+        await paginate.setStudentPage(1);
 
+        await paginate.setStudentFilter(select);
+
+        // await fetchStudents(paginate.student_page);
+        
+        window.location.reload();
 
     }
-
-
+    
 
 
 }
 
-async function filterStudents() {
-    const { data: studentResponse, error: studentError } = await useApiFetch("api/staff/filterStudents", {
-        method: "POST",
-        body: {
-            filter: filterSelect.value
-        }
-    });
-
-    if (studentResponse.value) {
-
-        showStudents.value = studentResponse.value;
-
-        studentsCount.value = showStudents.value.length;
-
-    }
-    else {
-
-        if (studentError.value) {
-            console.log(studentError.value);
-        }
-
-    }
-
-}
 
 // allStudents
 
@@ -235,7 +206,12 @@ const studentsCount = ref<Number>(0)
 
 async function fetchStudents(page: number) {
 
-    const { data: studentResponse, error: studentError } = await useApiFetch("api/staff/allStudents?page=" + page, {});
+    const { data: studentResponse, error: studentError } = await useApiFetch("api/staff/filterStudents?page=" + page, {
+        method: "POST",
+        body: {
+            filter: filterSelect.value
+        }
+    });
 
     if (studentResponse.value) {
 
@@ -261,8 +237,7 @@ async function fetchStudents(page: number) {
 }
 
 // paginate
-import { usePaginateStore } from '~/stores/usePaginateStore'
-const paginate = usePaginateStore();
+
 
 const currentpage = ref(paginate.student_page)
 const last_page = ref<Number>(0)
@@ -272,7 +247,7 @@ async function onChangePage(page: any) {
     // console.log(page.value)
     // currentpage.value = page.value
 
-    await paginate.setTeacherPage(page.value);
+    await paginate.setStudentPage(page.value);
 
     await fetchStudents(paginate.student_page);
 
@@ -289,12 +264,7 @@ async function handleSearchStudent(event) {
 
     if (event.target.value === '') {
 
-        showStudents.value = allStudents.value;
-
-        filterSelect.value = 'all';
-        filter.value = false;
-        paginateShow.value = true;
-        studentsCount.value = showStudents.value.length;
+        window.location.reload();
 
     }
 

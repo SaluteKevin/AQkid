@@ -5,6 +5,7 @@ export const usePaginateStore = defineStore('paginate', {
     return { count: 1,
             teacher_page: 1,
             student_page: 1,
+            student_filter: 'all',
             enroll_page:1      
     }
   },
@@ -12,9 +13,16 @@ export const usePaginateStore = defineStore('paginate', {
     async setTeacherPage(page: number) {
         this.teacher_page = page;
     },
+    
     async setStudentPage(page: number) {
       this.student_page = page;
-    },async setEnrollPage(page: number) {
+    },
+
+    async setStudentFilter(filter: string) {
+      this.student_filter = filter;
+    },
+    
+    async setEnrollPage(page: number) {
       this.enroll_page = page;
     }
   },

@@ -82,11 +82,36 @@ class StaffController extends Controller
 
     }
 
-    public function acceptEnrollment(Enrollment $enrollment) {
-        $enrollment->updateStatus(EnrollmentStatusEnum::SUCCESS,"none");
+    public function acceptEnrollment(Enrollment $enrollment,Request $request) {
+       
+        if ($enrollment->updateStatus(EnrollmentStatusEnum::SUCCESS,$request->get('comment'))) {
+        
+            return response()->json([
+                'message' => "Successfully Reject Enrollment",
+            ]);
+
+       }
+
+       return response()->json([
+        'message' => "Failed to Reject Enrollment",
+        ],422);
+
     }
-    public function rejectEnrollment(Enrollment $enrollment) {
-        $enrollment->updateStatus(EnrollmentStatusEnum::FAILED,"none");
+
+    public function rejectEnrollment(Enrollment $enrollment,Request $request) {
+        
+        if ($enrollment->updateStatus(EnrollmentStatusEnum::FAILED,$request->get('comment'))) {
+
+            return response()->json([
+                'message' => "Successfully Reject Enrollment",
+            ]);
+        
+        }
+
+        return response()->json([
+            'message' => "Failed to Reject Enrollment",
+        ],422);
+
     }
 
     public function addTimeslot() {
@@ -109,23 +134,12 @@ class StaffController extends Controller
     }
     
     // Student Page
-    public function allStudents() {
-
-        $students = User::allWithRolePaginate(UserRoleEnum::STUDENT);
-
-        $studentsWithCoursesCount = User::queryStudentWithCoursesCount($students);
-
-        return $studentsWithCoursesCount;
-        
-    }
-
+ 
     public function filterStudent(Request $request) {
 
         if ($request->get('filter') == 'active') {
 
-            $students = User::allWithRole(UserRoleEnum::STUDENT);
-
-            $activeStudents = User::queryStudentWithCoursesCountFilter($students, 'active');
+            $activeStudents = User::queryStudentWithCoursesCountFilter('active');
 
             return $activeStudents;
 
@@ -134,12 +148,20 @@ class StaffController extends Controller
 
         else if ($request->get('filter') == 'inactive') {
 
-            $students = User::allWithRole(UserRoleEnum::STUDENT);
-
-            $inactiveStudents = User::queryStudentWithCoursesCountFilter($students, 'inactive');
+            $inactiveStudents = User::queryStudentWithCoursesCountFilter('inactive');
 
             return $inactiveStudents;
 
+
+        }
+
+        else {
+
+            $students = User::allWithRolePaginate(UserRoleEnum::STUDENT);
+
+            $studentsWithCoursesCount = User::queryStudentWithCoursesCount($students);
+
+            return $studentsWithCoursesCount;
 
         }
 
