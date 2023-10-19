@@ -59,7 +59,7 @@
 					</div>
                     
                     <div class="mr-16 flex place-content-center flex-col">
-						<NuxtLink to="/staff/detail/request_id/">
+						<NuxtLink :to="`/staff/detail/request${enroll.id}`">
 						<div class="text-white bg-orange-500 hover:bg-orange-700 py-2 px-10 rounded-md mb-1">View detail</div>
                         </NuxtLink>
 					</div>
@@ -120,6 +120,18 @@ async function fetchEnrolls(page: number) {
     }
 	
 
+}
+
+function formatDateTime(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-based
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours() % 12 || 12).padStart(2, '0'); // Convert to 12-hour format
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const amOrPm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+    const formattedDateTime = `${day}/${month}/${year} ${hours}:${minutes} ${amOrPm}`;
+    return formattedDateTime;
 }
 
 // paginate
