@@ -29,7 +29,7 @@
 
 					<img
 						class="h-20 w-20 rounded-full object-cover"
-						src="{{ enroll.user.profile_image_path }}"
+						src="/images/AQKids_logo.png"
 						alt="" />
 
 					<div
@@ -110,7 +110,6 @@ async function fetchEnrolls(page: number) {
 
         showEnrolls.value = allEnroll.value;
 
-		enrollCount.value = showEnrolls.value.length;
     }
     else {
         
@@ -119,7 +118,7 @@ async function fetchEnrolls(page: number) {
         }
 
     }
-
+	
 
 }
 

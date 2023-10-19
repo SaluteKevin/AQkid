@@ -14,13 +14,19 @@ export default defineNuxtConfig({
     '@pinia-plugin-persistedstate/nuxt',
     '@vueuse/nuxt',
     '@nuxtjs/tailwindcss',
+    'dayjs-nuxt'
   ],
 
   tailwindcss: {
     // Options
   },
 
-  
+  dayjs: {
+    locales: ['th'],
+    plugins: ['relativeTime', 'utc', 'timezone'],
+    defaultLocale: 'th',
+    defaultTimezone: 'Asia/Bangkok',
+  }
 
 })
 
