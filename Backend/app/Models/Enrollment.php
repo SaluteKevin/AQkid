@@ -64,9 +64,9 @@ class Enrollment extends Model
      * Get a Collection of Enrollments with the EnrollmentStatusEnum.
      * @return Collection
      */
-    public static function enrollmentsWithStatus(EnrollmentStatusEnum $enrollmentStatus): Collection
+    public static function enrollmentsWithStatus(EnrollmentStatusEnum $enrollmentStatus): Paginator
     {
-        return Enrollment::where('status', $enrollmentStatus->name);
+        return Enrollment::where('status', $enrollmentStatus->name)->paginate(5);
     }
 
     /**
@@ -146,7 +146,7 @@ class Enrollment extends Model
      * Enrollment query with user
      */
 
-    public static function getEnrollemtWithUser(Paginator $enrollments): Paginator 
+    public static function getEnrollmetWithUser(Paginator $enrollments): Paginator 
     {
 
         foreach ($enrollments as $enrollment) {
