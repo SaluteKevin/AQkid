@@ -8,13 +8,14 @@
             <div class="grid grid-flow-col grid-cols-2 w-full my-6">
                 <div>
                         <!-- Heading -->
-                <h1 class="text-4xl font-semibold">Student_Username</h1>
-                <div class="text-gray-500 text-3xl mb-3">Student_name</div>
+                <h1 class="text-4xl font-semibold">{{ enroll.user.username }}</h1>
+                <div class="text-gray-500 text-3xl mb-3">{{ enroll.user.first_name }} {{ enroll.user.last_name }}</div>
 
                 <!-- Form -->
                 <div class="mb-3">
-                    <label class="mb-2 block text-xl font-semibold">Email<br>
-                        <span class="text-xl text-gray-500">Student_email</span>
+                    <label  class="mb-2 block text-xl font-semibold">Email<br>
+                        <span v-if="enroll.user.email"  class="text-xl text-gray-500">{{ enroll.user.email }}</span>
+                        <span v-else  class="text-xl text-gray-500">none</span>
                     </label>
                     
                 </div>
@@ -23,7 +24,7 @@
 
                 <div class="mb-3">
                     <label class="mb-2 block text-xl font-semibold">Phone number<br>
-                        <span class="text-xl text-gray-500">student_phone_number</span>
+                        <span class="text-xl text-gray-500">{{ enroll.user.phone_number }}</span>
                     </label>
                 </div>
 
@@ -42,7 +43,7 @@
             
 
             <div class="mb-3">
-                <button class="mb-1.5 block w-full text-center text-white bg-green-600 hover:bg-green-700 px-2 py-1.5 rounded-md">
+                <button v-on:click="AcceptEnroll" type="submit" class="mb-1.5 block w-full text-center text-white bg-green-600 hover:bg-green-700 px-2 py-1.5 rounded-md">
                     Accept
                 </button>
                 <button class="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
@@ -90,7 +91,7 @@ if (enrollResponse.value) {
 
 else {
     if (enrollError.value) {
-        
+
     }
 }
 
@@ -104,5 +105,8 @@ function formatDateTime(date) {
 
     const formattedDateTime = `${day}/${month}/${year} ${hours}:${minutes} ${amOrPm}`;
     return formattedDateTime;
+}
+
+const AcceptEnroll = () =>{
 }
 </script>
