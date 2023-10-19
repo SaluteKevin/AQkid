@@ -26,7 +26,7 @@ class StaffController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['enrollmentRequestReview','allEnrollmentRequests','allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent','getAllCourses','filterStudent','getCourse']]);
+        $this->middleware('auth:api', ['except' => ['rejectEnrollment','acceptEnrollment','enrollmentRequestReview','allEnrollmentRequests','allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent','getAllCourses','filterStudent','getCourse']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -73,6 +73,13 @@ class StaffController extends Controller
         return $enrollment;
         // return specific enrollment request
 
+    }
+
+    public function acceptEnrollment(Enrollment $enrollment) {
+        $enrollment->updateStatus(EnrollmentStatusEnum::SUCCESS,"none");
+    }
+    public function rejectEnrollment(Enrollment $enrollment) {
+        $enrollment->updateStatus(EnrollmentStatusEnum::FAILED,"none");
     }
 
     public function addTimeslot() {
