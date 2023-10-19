@@ -146,7 +146,7 @@ class Enrollment extends Model
      * Enrollment query with user
      */
 
-    public static function getEnrollmetWithUser(Paginator $enrollments): Paginator 
+    public static function getEnrollmentWithUserPaginate(Paginator $enrollments): Paginator 
     {
 
         foreach ($enrollments as $enrollment) {
@@ -158,5 +158,12 @@ class Enrollment extends Model
 
         return $enrollments;
 
+    }
+
+    public static function getEnrollmentWithUser(Enrollment $enrollment): Enrollment
+    {
+        $user = User::find($enrollment->student_id);
+        $enrollment->user = $user;
+        return $enrollment;
     }
 }
