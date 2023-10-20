@@ -38,6 +38,9 @@
 [a-z].out   -text -diff
 *.[ot]tf    -text -diff
 *.7z        -text -diff
+*.afdesign  -text -diff
+*.afphoto   -text -diff
+*.afpub     -text -diff
 *.bmp       -text -diff
 *.class     -text -diff
 *.dvi       -text -diff
