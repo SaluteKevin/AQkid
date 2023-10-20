@@ -119,8 +119,6 @@ class StaffController extends Controller
 
         $dateTime = $request->get('datetime');
 
-        return $dateTime;
-
         $statusOk = Timeslot::createTimeslot($course->id, strtotime($dateTime), TimeslotTypeEnum::MAKEUP);
 
         if ($statusOk) {

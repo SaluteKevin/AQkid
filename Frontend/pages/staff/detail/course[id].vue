@@ -121,29 +121,16 @@
 
                             <div class="text-2xl mb-4">Create Timeslot form</div>
 
-                            <div class="mb-6">
-                                <input v-model="selectedDate" type="date" class=" w-full
-                        rounded
-                        py-3
-                        px-[14px]
-                        text-body-color text-base
-                        border border-[f0f0f0]
-                        outline-none
-                        focus-visible:shadow-none
-                        focus:border-primary
-                        ">  
-
-                            </div>
-                            <button v-on:click="timeShow = !timeShow">Select time</button>
-                            <div v-if="timeShow" class="flex flex-col gap-3">
-                                <div v-for="time in timeData">
-                                    {{ time }}
-                                </div>
-                            </div>
-                            
-
+                            <VueDatePicker class="text-black mb-4" v-model="date" :is-24="true" enable-seconds
+                                hours-increment="1" minutes-increment="0" seconds-increment="0"
+                                placeholder="Select Date" no-minutes-overlay no-seconds-overlay
+                                :min-time="{ hours: 10, minutes: 0, seconds: 0 }"
+                                :max-time="{ hours: 17, minutes: 0, seconds: 0 }"
+                                :start-time="{ hours: 10, minutes: 0, seconds: 0 }"></VueDatePicker>
 
                             
+
+
 
 
                             <div>
@@ -580,33 +567,24 @@ else {
 
 // add timeslot
 
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
+import dayjs from 'dayjs';
 
-const selectedDate = ref(null);
-const selectedTime = ref<any>(null);
-const timeShow = ref(false);
-
-const timeData = ref(['10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00']);
-
-function setSelectedTime(time: string) {
-
-    selectedTime.value = time;
-
-}
-
+const date = ref();
 
 async function submitCreateTimeslot() {
 
     const { data: createResponse, error: createError } = await useApiFetch(`api/staff/createTimeslot/${route.params.id}`, {
         method: "POST",
         body: {
-            datetime: selectedDate.value
+            datetime: dayjs(date.value).format('YYYY-MM-DD HH:mm:ss')
         }
-
     });
 
     if (createResponse.value) {
 
-        console.log(createResponse.value);
+        window.location.reload();
 
 
     } else {
