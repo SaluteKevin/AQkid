@@ -14,6 +14,7 @@ use App\Models\Enrollment;
 use App\Models\Enums\EnrollmentStatusEnum;
 use App\Models\Enums\UserRoleEnum;
 use App\Models\Timeslot;
+use App\Models\Enums\TimeslotTypeEnum;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 
@@ -27,7 +28,7 @@ class StaffController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['rejectEnrollment','acceptEnrollment','enrollmentRequestReview','allEnrollmentRequests','allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent','getAllCourses','filterStudent','getCourse','allTimeslots']]);
+        $this->middleware('auth:api', ['except' => ['rejectEnrollment','acceptEnrollment','enrollmentRequestReview','allEnrollmentRequests','allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent','getAllCourses','filterStudent','getCourse','allTimeslots','createTimeslot']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -114,8 +115,25 @@ class StaffController extends Controller
 
     }
 
-    public function addTimeslot() {
+    public function createTimeslot(Course $course, Request $request) {
 
+        $dateTime = $request->get('datetime');
+
+        return $dateTime;
+
+        $statusOk = Timeslot::createTimeslot($course->id, strtotime($dateTime), TimeslotTypeEnum::MAKEUP);
+
+        if ($statusOk) {
+
+            return response()->json([
+                'message' => "Successfully Created Timeslot",
+            ]);
+
+        }
+        
+        return response()->json([
+            'message' => "Failed to Created Timeslot",
+        ],422);
         
     }
 

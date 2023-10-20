@@ -96,7 +96,7 @@
                 <div class="flex flex-wrap lg:justify-between -mx-4">
                     <div class="w-full lg:w-1/2 xl:w-6/12 px-4">
                         <div class="max-w-[570px] mb-12 lg:mb-0">
-                            
+
                             <h2 class="
                   text-dark
                   mb-6
@@ -110,27 +110,19 @@
                                 Create Timeslot
                             </h2>
                             <p class="text-base text-body-color leading-relaxed mb-9">
-                                <span>> Select How you gonna create new timeslot <br>Append / Specify</span><br>
-                                <span> <span class="text-red-400">**</span> Append will automatically add a new timeslot after the last class.</span><br>
-                                <span> <span class="text-red-400">**</span> You can choose a specific date, but it must have the same time and day.</span>
+                                <span> <span class="text-red-400">**</span> You can choose a specific date, but it must have
+                                    the same time and day.</span>
                             </p>
 
                         </div>
                     </div>
-                    <div class="w-full lg:w-1/2 xl:w-5/12 px-4">
+                    <div class="w-full lg:w-1/2 xl:w-5/12 px-4 mb-8">
                         <div class="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg">
-                            <form>
-                                <div class="text-2xl mb-4">Create Timeslot form</div>
-                                <div class="mb-6">
-                                    <input v-model="isAppend" v-on:change="handleAppend" type="checkbox" id="choice1" name="choice1">
-                                    <label for="choice1"> Append</label><br>
-                                    <input v-model="isSpecify" v-on:change="handleSpecify" type="checkbox" id="choice2" name="vehicle2">
-                                    <label for="choice2"> Specify</label><br>
-                                </div>
-                                <div v-if="showSpecifyDate" class="mb-6">
-                                    <input 
-                                type="date" 
-                        class=" w-full
+
+                            <div class="text-2xl mb-4">Create Timeslot form</div>
+
+                            <div class="mb-6">
+                                <input v-model="selectedDate" type="date" class=" w-full
                         rounded
                         py-3
                         px-[14px]
@@ -139,12 +131,23 @@
                         outline-none
                         focus-visible:shadow-none
                         focus:border-primary
-                        " >
-                                   
+                        ">  
+
+                            </div>
+                            <button v-on:click="timeShow = !timeShow">Select time</button>
+                            <div v-if="timeShow" class="flex flex-col gap-3">
+                                <div v-for="time in timeData">
+                                    {{ time }}
                                 </div>
-                                
-                                <div>
-                                    <button v-if="showSubmitTimeslot" type="submit" class="
+                            </div>
+                            
+
+
+                            
+
+
+                            <div>
+                                <button v-on:click="submitCreateTimeslot" class="
                         w-full
                         
                         bg-primary
@@ -152,12 +155,12 @@
                         border border-primary
                         p-3
                         transition
-                        hover:bg-opacity-90
+                        hover:bg-gray-300
                         ">
-                                        Create Timeslot
-                                    </button>
-                                </div>
-                            </form>
+                                    Create Timeslot
+                                </button>
+                            </div>
+
                             <div>
                                 <span class="absolute -top-10 -right-9 z-[-1]">
                                     <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
@@ -577,53 +580,43 @@ else {
 
 // add timeslot
 
-const showSpecifyDate = ref(false);
-const showSubmitTimeslot = ref(false);
-const selectedSpecify = ref('Append');
 
-const isAppend = ref(false);
-const isSpecify = ref(false);
+const selectedDate = ref(null);
+const selectedTime = ref<any>(null);
+const timeShow = ref(false);
 
-function handleAppend() {
+const timeData = ref(['10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00']);
 
-    // ถ้าเปลี่ยนเป็น true
-    if (isAppend.value == true) {
-    
-        isSpecify.value = false;
+function setSelectedTime(time: string) {
 
-        selectedSpecify.value = "Append";
-
-        showSpecifyDate.value = false;
-
-        showSubmitTimeslot.value = true;
-
-    } else {
-
-        showSubmitTimeslot.value = false;
-
-    }
+    selectedTime.value = time;
 
 }
 
-function handleSpecify() {
 
-    // ถ้าเปลี่ยนเป็น true
-    if (isSpecify.value == true) {
-    
-        isAppend.value = false;
+async function submitCreateTimeslot() {
 
-        selectedSpecify.value = "Specify";
+    const { data: createResponse, error: createError } = await useApiFetch(`api/staff/createTimeslot/${route.params.id}`, {
+        method: "POST",
+        body: {
+            datetime: selectedDate.value
+        }
 
-        showSpecifyDate.value = true;
+    });
+
+    if (createResponse.value) {
+
+        console.log(createResponse.value);
+
 
     } else {
 
-        showSpecifyDate.value = false;
+        if (createError.value) {
 
-        showSubmitTimeslot.value = false;
+
+        }
 
     }
-
 
 }
 
