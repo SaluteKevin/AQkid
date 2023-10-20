@@ -105,7 +105,7 @@
 
                         <div
                             class="ml-12 flex flex-col capitalize text-black">
-                            <span>Courses</span>
+                            <span>All Courses</span>
                             <span class="text-red-400" v-if="teacher.course_count == 0">
                                 No courses
                             </span>

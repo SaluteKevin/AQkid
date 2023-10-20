@@ -76,26 +76,30 @@ class Course extends Model
 
     public static function allTimeslotsWithAuthor(Course $course): Course {
 
-        $timeslots = Timeslot::get();
+        // $timeslots = Timeslot::get();
 
-        foreach ($timeslots as $time ) {
-            $time->author = false;
-            $time->title = Course::find($time->course_id)->title;
-        }
+        $timeslotIds = Timeslot::where('course_id', $course->id)
+        ->pluck('id');
 
-        foreach ($course->timeslots as $courseTimeslot) {
-            $timeslots = $timeslots->filter(function ($timeslot) use ($courseTimeslot) {
-                return $timeslot->id !== $courseTimeslot->id;
-            });
-        }
+        $filteredTimeslots = Timeslot::whereIn('id', $timeslotIds)->get()->sortBy('datetime');;
 
-        foreach ($course->timeslots as $time) {
+        foreach ($filteredTimeslots as $time ) {
             $time->author = true;
             $time->title = Course::find($time->course_id)->title;
-            $timeslots->push($time);
         }
 
-        $course->alltimeslots = $timeslots->values();       
+        $timeslotsNotInQuery = Timeslot::whereNotIn('id', $timeslotIds)->get()->sortBy('datetime');;
+
+      
+        foreach ($timeslotsNotInQuery as $time) {
+            $time->author = false;
+            $time->title = Course::find($time->course_id)->title;
+            
+        }
+
+        $mergedTimeslots = $filteredTimeslots->concat($timeslotsNotInQuery);
+
+        $course->timeslots = $mergedTimeslots;
 
         return $course;
 

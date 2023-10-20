@@ -218,45 +218,35 @@ if (courseResponse.value) {
             first = 0;
         }
 
-        break;
-
-    }
-
-
-    for (const event in courseResponse.value.alltimeslots) {
-
-        // console.log(courseResponse.value.alltimeslots[event].datetime)
-
         let temp = {
-            title: courseResponse.value.alltimeslots[event].title,
-            start: courseResponse.value.alltimeslots[event].datetime,
-            uid: courseResponse.value.alltimeslots[event].id,
-            datestore: courseResponse.value.alltimeslots[event].datetime,
-            type: courseResponse.value.alltimeslots[event].type,
+            title: courseResponse.value.timeslots[event].title,
+            start: courseResponse.value.timeslots[event].datetime,
+            uid: courseResponse.value.timeslots[event].id,
+            datestore: courseResponse.value.timeslots[event].datetime,
+            type: courseResponse.value.timeslots[event].type,
 
         }
 
-        if (courseResponse.value.alltimeslots[event].author == false) {
+        if (courseResponse.value.timeslots[event].author == false) {
             temp["color"] = 'gray';
-            console.log('gray');
+            
         }
         else {
-            if (courseResponse.value.alltimeslots[event].type === "REGULAR") {
+            if (courseResponse.value.timeslots[event].type === "REGULAR") {
                 temp["color"] = 'green';
             }
 
-            if (courseResponse.value.alltimeslots[event].type === "MAKEUP") {
+            if (courseResponse.value.timeslots[event].type === "MAKEUP") {
                 temp["color"] = 'purple';
             }
 
-            console.log('else')
+            
         }
 
         eventData.value.push(temp);
+        
 
     }
-
-
 
 
 }

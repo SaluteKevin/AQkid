@@ -122,7 +122,7 @@
                 </div>
 
                 <div class="ml-12 flex flex-col capitalize text-black">
-                    <span>Courses</span>
+                    <span>Active Courses</span>
                     <span class="text-red-400" v-if="student.courses_count == 0">
                                 No courses
                      </span>

@@ -42,11 +42,23 @@
                         <hr class="my-6 border-t border-gray-300">
 
 
-                        <h2 class="text-xl font-bold mt-6 mb-4">Courses</h2>
+                        <h2 class="text-xl font-bold mt-6 mb-4">All Courses</h2>
 
                         <NuxtLink :to="`/staff/detail/course${course.id}`" v-for="course in student.courses" :key="course.id">
-                        <div class="mb-3 shadow-xl border rounded-2xl p-4" >
+                        
+                        <div v-if="course.status === 'ACTIVE'" class="mb-3 shadow-xl border bg-green-100 rounded-2xl p-4" >
+                            <div class="flex justify-between  p-4 rounded-lg">
+                                <span class="text-gray-600 font-bold">{{ course.title }}</span>
+                                <p class="flex flex-col">
+                                    <span class="text-gray-600 mr-2">Start : {{formatDateTime(new Date(course.starts_on))}}</span>
+                                    <span class="text-gray-600 mr-2">End : {{formatDateTime(new Date(course.starts_on))}}</span>
+                                    
+                                </p>
                             
+                            </div>
+                        </div>
+
+                        <div v-if="course.status !== 'ACTIVE'" class="mb-3 shadow-xl border  rounded-2xl p-4" >
                             <div class="flex justify-between  p-4 rounded-lg">
                                 <span class="text-gray-600 font-bold">{{ course.title }}</span>
                                 <p class="flex flex-col">

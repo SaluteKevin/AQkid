@@ -239,7 +239,7 @@ class User extends Authenticatable implements JWTSubject
         foreach ($students as $student) {
 
             $count = 0;
-            $enrollments = Enrollment::where('student_id', $student->id)->get();
+            $enrollments = Enrollment::where('student_id', $student->id)->where('status', EnrollmentStatusEnum::SUCCESS->name)->get();
 
             foreach ($enrollments as $enrollment) {
                 $course = Course::find($enrollment->course_id);
@@ -275,7 +275,7 @@ class User extends Authenticatable implements JWTSubject
             foreach ($filteredUsers as $student) {
 
                 $count = 0;
-                $enrollments = Enrollment::where('student_id', $student->id)->get();
+                $enrollments = Enrollment::where('student_id', $student->id)->where('status', EnrollmentStatusEnum::SUCCESS->name)->get();
 
                 foreach ($enrollments as $enrollment) {
                     $course = Course::find($enrollment->course_id);
@@ -300,7 +300,7 @@ class User extends Authenticatable implements JWTSubject
             foreach ($usersNotInQuery as $student) {
 
                 $count = 0;
-                $enrollments = Enrollment::where('student_id', $student->id)->get();
+                $enrollments = Enrollment::where('student_id', $student->id)->where('status', EnrollmentStatusEnum::SUCCESS->name)->get();
 
                 foreach ($enrollments as $enrollment) {
                     $course = Course::find($enrollment->course_id);
