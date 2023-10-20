@@ -27,7 +27,7 @@ class StudentController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getAllClasses','getAllCourse','showCourse','enrollCourse']]);
+        $this->middleware('auth:api', ['except' => ['getAllClasses','getAllCourse','showCourse','enrollCourse','updateProfile']]);
     }
 
     public function getAllClasses(){
@@ -76,7 +76,6 @@ class StudentController extends Controller
     public function updateProfile(Request $request, User $user){
         
         $request->validate([
-            'password' => 'required|confirmed|min:6',
             'firstname' => 'required',
             'middlename' => 'nullable',
             'lastname' => 'required',
@@ -85,12 +84,23 @@ class StudentController extends Controller
             'email' => 'nullable',
         ]);
         
+
+        // User $user, string $firstname, string $middlename = null, string $lastname,
+        //                                    string $birthdate, string $phone_number, string $email = null)
+
+        $statusOk = User::updateUserInfo($user, $request->get('firstname'), $request->get('middlename'), $request->get('lastname'),
+                                        $request->get('birthdate'), $request->get('phone_number'), $request->get('email'));
+
+        if ($statusOk) {
+            return response()->json([
+                'message' => "Successfully Updated User",
+            ]);
+        }
         
-        $user->firstname = $request->get('firstname');
-        $user->middlename = $request->get('lastname');
-        $user->lastname = $request->get('lastname');
-        $user->phone_number = $request->get('phone_number');
-        $user->email = $request->get('email');
+        return response()->json([
+            'message' => "Failed to Update User",
+        ],422);
+        
 
         
         // $statusOk = User::updateProfile($request->get('password'),
@@ -98,8 +108,7 @@ class StudentController extends Controller
         //                              $request->get('birthdate'), $request->get('phone_number'), $request->get('email'),
         //                              $request->file('profile_image_path'));
                                      
-        $user->save();
-        return "ok";
+      
     }
 
 

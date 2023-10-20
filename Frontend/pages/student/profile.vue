@@ -1,4 +1,5 @@
 <template>
+    <!-- <AppHeaderStudent /> -->
     <div class="min-h-screen bg-gradient-to-l to-purple-50 to-60% from-[#bce1ff] from-10%">
         <div class="container mx-auto py-8">
             <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
@@ -10,7 +11,7 @@
                             
                             <h1 class="text-xl font-bold">{{ user.value.username }}</h1>
                             <div class="mt-6 flex flex-wrap gap-4 justify-center">
-                                <NuxtLink href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Edit Profile</NuxtLink>
+                                <NuxtLink href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" to="/student/editprofile">Edit Profile</NuxtLink>
                             </div>
                         </div>
                         <hr class="my-6 border-t border-gray-300">
@@ -89,7 +90,7 @@
 import {useAuthStore} from "~/stores/useAuthStore";
 
 const user = useAuthStore().user;
-
+definePageMeta({ layout: "student" })
 console.log(user.value.id);
 
 
