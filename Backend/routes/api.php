@@ -78,6 +78,7 @@ Route::group([
     Route::get('allCourses', [StaffController::class, 'getAllCourses']);
     Route::get('courses/{course}', [StaffController::class, 'getCourse']);
     Route::get('allTimeslots', [StaffController::class, 'allTimeslots']);
+    Route::post('createTimeslot/{course}', [StaffController::class, 'createTimeslot']);
 
     // teacher
     Route::get('allTeachers', [StaffController::class, 'allTeachers']);
