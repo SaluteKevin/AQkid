@@ -101,4 +101,9 @@ class StudentController extends Controller
         $user->save();
         return "ok";
     }
+
+
+    public function profile(User $user){
+        return User::where('role', 'STUDENT')::find($user);
+    }
 }
