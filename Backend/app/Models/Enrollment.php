@@ -129,7 +129,7 @@ class Enrollment extends Model
             $statusOk = Receipt::createReceipt($this->id, ReceiptDescriptionEnum::PAY_COURSE_FEE->value);
         }
 
-        if (!$statusOk) {
+        if ($enrollmentStatusEnum == EnrollmentStatusEnum::SUCCESS && !$statusOk) {
             error_log('Error creating Receipt');
             return false;
         }
@@ -142,11 +142,11 @@ class Enrollment extends Model
     }
 
     /***
-     * 
+     *
      * Enrollment query with user
      */
 
-    public static function getEnrollmentWithUserPaginate(Paginator $enrollments): Paginator 
+    public static function getEnrollmentWithUserPaginate(Paginator $enrollments): Paginator
     {
 
         foreach ($enrollments as $enrollment) {
