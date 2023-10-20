@@ -68,4 +68,37 @@ class StudentController extends Controller
 
 
     }
+
+    public function editProfile(User $user){
+        return User::where('role', 'STUDENT')::find($user);
+    }
+
+    public function updateProfile(Request $request, User $user){
+        
+        $request->validate([
+            'password' => 'required|confirmed|min:6',
+            'firstname' => 'required',
+            'middlename' => 'nullable',
+            'lastname' => 'required',
+            'birthdate' => 'required',
+            'phone_number' => 'required',
+            'email' => 'nullable',
+        ]);
+        
+        
+        $user->firstname = $request->get('firstname');
+        $user->middlename = $request->get('lastname');
+        $user->lastname = $request->get('lastname');
+        $user->phone_number = $request->get('phone_number');
+        $user->email = $request->get('email');
+
+        
+        // $statusOk = User::updateProfile($request->get('password'),
+        //                              $request->get('firstname'), $request->get('middlename'), $request->get('lastname'),
+        //                              $request->get('birthdate'), $request->get('phone_number'), $request->get('email'),
+        //                              $request->file('profile_image_path'));
+                                     
+        $user->save();
+        return "ok";
+    }
 }

@@ -361,5 +361,43 @@ class User extends Authenticatable implements JWTSubject
         return $statusOk;
     }
 
+    public static function updateUserInfo (User $user, string $firstname, string $middlename = null, string $lastname,
+                                           string $birthdate, string $phone_number, string $email = null) {
+        
+                                            
+        $statusOk = false;
+
+        $user->first_name = $firstname;
+        $user->middle_name = $middlename;
+        $user->last_name = $lastname;
+        $user->birthdate = $birthdate;
+        $user->phone_number = $phone_number;
+        $user->email = $email;
+
+        
+        $statusOk = $user->save();
+
+        return $statusOk;
+
+    }
+
+    public static function changeProfileImage (User $user, UploadedFile $imagefile = null) {
+
+        $statusOk = false;
+
+        $image_path = FileService::getFileManager()->uploadFile('users/' . $user->id . "/" ."profile.jpg",$imagefile);
+        
+        if ($image_path != false ){
+
+            $user->profile_image_path = $image_path;
+
+            $statusOk = $user->save();
+
+        }
+
+        return $statusOk;
+
+    }
+
 
 }

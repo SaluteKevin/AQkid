@@ -122,6 +122,7 @@ Route::group([
     Route::get('showCourse/{course}', [StudentController::class, 'showCourse']);
     Route::post('enrollCourse/{course}/{user}', [StudentController::class, 'enrollCourse']);
     
+    Route::get('editprofile/[user]', [StudentController::class, 'editProfile']);
    
 
 });
