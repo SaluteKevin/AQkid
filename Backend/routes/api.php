@@ -79,6 +79,9 @@ Route::group([
     Route::get('courses/{course}', [StaffController::class, 'getCourse']);
     Route::get('allTimeslots', [StaffController::class, 'allTimeslots']);
     Route::get('timeslots/{timeslot}', [StaffController::class, 'getTimeslot']);
+    Route::get('timeslotStudent/{timeslot}',[StaffController::class, 'getTimeslotStudents']);
+    Route::post('addStudent/{timeslot}/{student}', [StaffController::class, 'addStudentAttendance']);
+    Route::post('removeStudent/{timeslot}/{student}', [StaffController::class, 'removeStudentAttendance']);
     Route::post('createTimeslot/{course}', [StaffController::class, 'createTimeslot']);
 
     // teacher

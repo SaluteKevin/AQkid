@@ -122,14 +122,13 @@
                             <div class="text-2xl mb-4">Create Timeslot form</div>
 
                             <VueDatePicker class="text-black mb-4" v-model="date" :is-24="true" enable-seconds
-                                hours-increment="1" minutes-increment="0" seconds-increment="0"
-                                placeholder="Select Date" no-minutes-overlay no-seconds-overlay
-                                :min-time="{ hours: 10, minutes: 0, seconds: 0 }"
+                                hours-increment="1" minutes-increment="0" seconds-increment="0" placeholder="Select Date"
+                                no-minutes-overlay no-seconds-overlay :min-time="{ hours: 10, minutes: 0, seconds: 0 }"
                                 :max-time="{ hours: 17, minutes: 0, seconds: 0 }"
-                                :start-time="{ hours: 10, minutes: 0, seconds: 0 }"
-                                :state="datePickerState"></VueDatePicker>
+                                :start-time="{ hours: 10, minutes: 0, seconds: 0 }" :state="datePickerState"
+                                :disabled-week-days="[1]"></VueDatePicker>
 
-                            
+
 
 
 
@@ -439,6 +438,7 @@ const calendarOptions = ref({
         right: 'dayGridMonth,timeGridWeek,timeGridDay',
     },
 
+
 })
 
 const eventData = ref([])
@@ -518,9 +518,11 @@ if (courseResponse.value) {
 
     let first = 1;
 
+    console.log(course.value);
+
     for (const event in courseResponse.value.timeslots) {
 
-        if (first != 0) {
+        if (first != 0 && (courseResponse.value.timeslots[event].author == true)) {
 
             calendarOptions.value.initialDate = courseResponse.value.timeslots[event].datetime
 

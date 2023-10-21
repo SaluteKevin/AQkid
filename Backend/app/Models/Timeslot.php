@@ -119,4 +119,24 @@ class Timeslot extends Model
 
         return true;
     }
+
+    public static function getTimeslotStudents(Timeslot $timeslot) {
+
+        $studentsId = $timeslot->studentAttendances->pluck('id');
+
+
+        $mergedTimeslots = User::where('role', UserRoleEnum::STUDENT->name)->get();
+
+
+        $mergedTimeslots->each(function ($student) use ($studentsId) {
+            $student->expect = in_array($student->id, $studentsId->toArray());
+        });
+
+        return $mergedTimeslots;
+
+
+
+    }
+
+
 }

@@ -74,32 +74,46 @@ class Course extends Model
         return Course::find($courseId)->capacity - Course::studentsIn($courseId)->count();
     }
 
-    public static function allTimeslotsWithAuthor(Course $course): Course {
+    public static function allTimeslotsWithAuthor(Course $course): Course{
 
         // $timeslots = Timeslot::get();
 
         $timeslotIds = Timeslot::where('course_id', $course->id)
         ->pluck('id');
+        
+        $allTimeslots =  Timeslot::get()->sortBy('datetime');
 
-        $filteredTimeslots = Timeslot::whereIn('id', $timeslotIds)->get()->sortBy('datetime');;
+        $allTimeslots->each(function ($time) use ($timeslotIds) {
+            if (in_array($time->id, $timeslotIds->toArray())) {
+                $time->author = true;
+                $time->title = Course::find($time->course_id)->title;
+            } else {
+                $time->author = false;
+                $time->title = Course::find($time->course_id)->title;
 
-        foreach ($filteredTimeslots as $time ) {
-            $time->author = true;
-            $time->title = Course::find($time->course_id)->title;
-        }
+            }
+        });
+    
 
-        $timeslotsNotInQuery = Timeslot::whereNotIn('id', $timeslotIds)->get()->sortBy('datetime');;
+        // $filteredTimeslots = Timeslot::whereIn('id', $timeslotIds)->get()->sortBy('datetime');;
+
+        // foreach ($filteredTimeslots as $time ) {
+        //     $time->author = true;
+        //     $time->title = Course::find($time->course_id)->title;
+        // }
+
+        // $timeslotsNotInQuery = Timeslot::whereNotIn('id', $timeslotIds)->get()->sortBy('datetime');;
 
       
-        foreach ($timeslotsNotInQuery as $time) {
-            $time->author = false;
-            $time->title = Course::find($time->course_id)->title;
+        // foreach ($timeslotsNotInQuery as $time) {
+        //     $time->author = false;
+        //     $time->title = Course::find($time->course_id)->title;
             
-        }
+        // }
 
-        $mergedTimeslots = $filteredTimeslots->concat($timeslotsNotInQuery);
-
-        $course->timeslots = $mergedTimeslots;
+        // $mergedTimeslots = $filteredTimeslots->concat($timeslotsNotInQuery);       
+        
+        $course->timeslots = $allTimeslots;
 
         return $course;
 
