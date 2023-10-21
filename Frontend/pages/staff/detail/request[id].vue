@@ -51,20 +51,20 @@
                             Accept
                         </button>
 
-                        <div v-if="showAcceptInput" class="border border-1 flex gap-8">
-                            <input class="bg-gray-400" type="text" v-model="acceptComment">
-                            <button v-on:click="AcceptEnroll">Submit</button>
+                        <div v-if="showAcceptInput" class="flex gap-8 mb-8">
+                            <input class="bg-gray-200 py-1.5 px-4 border-1 border w-4/5" type="text" placeholder="Comment (Optional)"  v-model="acceptComment">
+                            <button v-on:click="AcceptEnroll" class="w-1/5 h-16 bg-orange-500 text-white rounded-md hover:bg-orange-700 mr-4">Submit</button>
                         </div>
 
 
                         <button v-on:click="showReject"
-                            class="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
+                            class="mb-1.5 flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
                             Reject
                         </button>
 
-                        <div v-if="showRejectInput" class="border border-1 flex gap-8">
-                            <input class="bg-gray-400" type="text" v-model="rejectComment">
-                            <button v-on:click="RejectEnroll">Submit</button>
+                        <div v-if="showRejectInput" class="flex gap-8 mb-8">
+                            <input class="bg-gray-200 py-1.5 px-4 border-1 border w-4/5" type="text" placeholder="Comment (Optional)" v-model="rejectComment">
+                            <button v-on:click="RejectEnroll" class="w-1/5 h-16 bg-orange-500 text-white rounded-md hover:bg-orange-700 mr-4">Submit</button>
                         </div>
                     </div>
 
@@ -133,6 +133,7 @@ const acceptComment = ref(null);
 
 async function showAccept() {
     showAcceptInput.value = !showAcceptInput.value;
+    showRejectInput.value = false;
 }
 
 async function AcceptEnroll() {
@@ -159,6 +160,7 @@ const rejectComment = ref(null);
 
 async function showReject() {
     showRejectInput.value = !showRejectInput.value;
+    showAcceptInput.value = false;
 }
 
 async function RejectEnroll() {
