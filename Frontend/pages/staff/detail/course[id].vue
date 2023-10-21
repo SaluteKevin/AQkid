@@ -126,7 +126,8 @@
                                 placeholder="Select Date" no-minutes-overlay no-seconds-overlay
                                 :min-time="{ hours: 10, minutes: 0, seconds: 0 }"
                                 :max-time="{ hours: 17, minutes: 0, seconds: 0 }"
-                                :start-time="{ hours: 10, minutes: 0, seconds: 0 }"></VueDatePicker>
+                                :start-time="{ hours: 10, minutes: 0, seconds: 0 }"
+                                :state="datePickerState"></VueDatePicker>
 
                             
 
@@ -572,6 +573,7 @@ import '@vuepic/vue-datepicker/dist/main.css'
 import dayjs from 'dayjs';
 
 const date = ref();
+const datePickerState = ref<any>(null);
 
 async function submitCreateTimeslot() {
 
@@ -591,6 +593,7 @@ async function submitCreateTimeslot() {
 
         if (createError.value) {
 
+            datePickerState.value = false
 
         }
 

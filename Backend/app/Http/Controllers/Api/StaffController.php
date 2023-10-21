@@ -28,7 +28,7 @@ class StaffController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['rejectEnrollment','acceptEnrollment','enrollmentRequestReview','allEnrollmentRequests','allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent','getAllCourses','filterStudent','getCourse','allTimeslots','createTimeslot']]);
+        $this->middleware('auth:api', ['except' => ['rejectEnrollment','acceptEnrollment','enrollmentRequestReview','allEnrollmentRequests','allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent','getAllCourses','filterStudent','getCourse','allTimeslots','createTimeslot','getTimeslot']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -112,6 +112,14 @@ class StaffController extends Controller
         return response()->json([
             'message' => "Failed to Reject Enrollment",
         ],422);
+
+    }
+
+    public function getTimeslot(Timeslot $timeslot) {
+
+        $timeslot->title = Course::find($timeslot->course_id)->title;
+
+        return $timeslot;
 
     }
 

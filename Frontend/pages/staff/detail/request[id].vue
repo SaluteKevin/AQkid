@@ -63,7 +63,7 @@
                         </button>
 
                         <div v-if="showRejectInput" class="flex gap-8 mb-8">
-                            <input class="bg-gray-200 py-1.5 px-4 border-1 border w-4/5" type="text" placeholder="Comment (Optional)" v-model="rejectComment">
+                            <input class="bg-gray-200 py-1.5 px-4 border-1 border w-4/5" type="text" placeholder="** Please provide a reason for rejecting this enrollment." v-model="rejectComment">
                             <button v-on:click="RejectEnroll" class="w-1/5 h-16 bg-orange-500 text-white rounded-md hover:bg-orange-700 mr-4">Submit</button>
                         </div>
                     </div>
