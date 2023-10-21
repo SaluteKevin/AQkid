@@ -91,5 +91,19 @@ class UserSeeder extends Seeder
             'created_at' => '2022-12-07 09:55:00',
             'updated_at' => '2022-12-07 09:55:00'
         ]);
+
+        User::create([
+            'username' => 'Mikali99008',
+            'password' => 'password',
+            'role' => 'STUDENT',
+            'first_name' => 'Mikali',
+            'last_name' => 'Hetian',
+            'birthdate' => '2020-10-17',
+            'phone_number' => '0878133545',
+            'profile_image_path' => 'users/7/profile_image.jpg',
+            // `email` => `mikali@gmail.com`,
+            'created_at' => '2022-10-17 09:55:00',
+            'updated_at' => '2022-10-17 09:55:00'
+        ]);
     }
 }
