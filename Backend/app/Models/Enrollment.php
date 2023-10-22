@@ -166,4 +166,14 @@ class Enrollment extends Model
         $enrollment->user = $user;
         return $enrollment;
     }
+
+    public static function getEnrollmentNotPending() {
+
+        $enrollmentIds = Enrollment::where('status',EnrollmentStatusEnum::PENDING->name)->pluck('id');
+
+        $enrollmentsNotInQuery = Enrollment::whereNotIn('id', $enrollmentIds)->get();
+
+        return $enrollmentsNotInQuery;
+
+    }
 }
