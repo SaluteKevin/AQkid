@@ -68,8 +68,10 @@ class StaffController extends Controller
     }
 
     public function allTimeslots() {
+        
         $timeslots = Timeslot::get();
-        return $timeslots;
+
+        return Timeslot::queryTimeslotCourseTitle($timeslots);
     }
      
 
