@@ -12,6 +12,7 @@
                     
                 </div>
                 <p class="text-gray-700">This class start at {{classes.start_datetime}}</p>
+                <button type="button">info</button>
             </li>
             
         </ul>
