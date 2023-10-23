@@ -69,7 +69,7 @@
   // my classes
 
   const {data: classResponse, error: classError } = await useApiFetch("api/student/getClasses", {});
-
+  definePageMeta({ layout: "student" })
   console.log(classResponse)
 
 

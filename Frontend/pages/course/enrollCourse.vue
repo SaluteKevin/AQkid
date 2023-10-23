@@ -1,187 +1,145 @@
 <template>
-
-    <div class="py-5 bg-cyan-900">
-        <p class="text-center text-6xl text-gray-900 dark:text-white">Enroll Course</p>
+    <div class='app p-12 transform ease-in-out'>
+        <FullCalendar v-click-outside="clickOutside" :options='calendarOptions' />
     </div>
 
-    <div class="h-screen bg-orange-500 pt-5">
-        <div class="grid grid-rows-8 grid-cols-10 gap-1 px-80">
-            <div class="content-center justify-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    time
-                </h5>
+    <div v-if="showCard" class="flex justify-center">
+        <article
+            class="w-96 relative flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 max-w-sm mx-auto ">
+            <img src="https://www.ecohome.net/media/articles/images/f2/9c/f29c921116e7b42501639bda77885d5051a5c8f1/thumbs/dOp8pM6ckCwo_1200x500_EE_R0wWf.jpg"
+                alt="University of Southern California" class="absolute inset-0 h-full w-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
+            <h3 id="day" class="z-10 text-3xl font-bold text-white">{{ day }}</h3>
+            <h3 id="time" class="z-10 text-3xl font-bold text-white">{{ time }}</h3>
+            <div class="z-10 gap-y-1 right-0 overflow-hidden text-sm leading-6 text-gray-300 p-2">
+                <NuxtLink :to="`/course/confirmCourse${idCourse}`"
+                    class="rounded-r-lg group relative px-8 py-1 overflow-hidden bg-white text-xl shadow my-6">
+                    <div
+                        class="absolute inset-0 w-3 bg-lime-600 transition-all duration-[250ms] ease-out group-hover:w-full rounded-r-lg">
+                    </div>
+                    <span class="relative text-black group-hover:text-white ">Confirm</span>
+                </NuxtLink>
             </div>
-            <div class="content-center justify-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    9.00
-                </h5>
-            </div>
-            <div class="content-center justify-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    10.00
-                </h5>
-            </div>
-            <div class="content-center justify-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    11.00
-                </h5>
-            </div>
-            <div class="content-center justify-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    12.00
-                </h5>
-            </div>
-            <div class="content-center justify-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    13.00
-                </h5>
-            </div>
-            <div class="content-center justify-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    14.00
-                </h5>
-            </div>
-            <div class="content-center justify-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    15.00
-                </h5>
-            </div>
-            <div class="content-center justify-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    16.00
-                </h5>
-            </div>
-            <div class="content-center justify-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    17.00
-                </h5>
-            </div>
-        </div>
-        
-        
-        <div class="grid grid-rows-7 grid-cols-10 py-4 gap-1 px-80 ">
-            
-            
-            
-            
-            
-            
-            <div class="content-center justify-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Monday
-                </h5>
-            </div>
-            <div class="col-span-9 w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Close
-                </h5>
-            </div>
-            
-
-            
-            
-            
-            <div class="content-center justify-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Tuesday
-                </h5>
-            </div>
-            <div class="col-span-9"></div>
-            
-            
-            
-            
-            
-            
-            <div class="content-center justify-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Wednesday
-                </h5>
-            </div>
-            <div class="col-span-9"></div>
-            
-            
-            
-            
-            
-            
-            <div class="content-center justify-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Thursday
-                </h5>
-            </div>
-            <div class="col-span-4"></div>
-
-            <button type="button" @click="select('Thursday','10.00')" class="w-full text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Select</button>
-            <button type="button" @click="select('Thursday','11.00')" class="w-full text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Select</button>
-            <div class="col-span-3"></div>
-            
-            
-            
-            
-            
-            <div class="content-center justify-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Friday
-                </h5>
-            </div>
-            <div class="col-span-7"></div>
-            
-            <button type="button" @click="select('Friday','17.00')" class="w-full text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Select</button>
-            <div></div>
-            
-            
-            
-            
-            
-            <div class="content-center justify-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Saturday
-                </h5>
-            </div>
-            <div class="col-span-9"></div>
-            
-
-
-
-            <div class="items-center justify-items-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Sunday
-                </h5>
-            </div>
-            <div id="addtest" class=""></div>
-        </div>
-        <div class="flex justify-center">
-            <article class="w-96 relative flex flex-col justify-end overflow-hidden rounded-2xl px-8 pb-8 pt-40 max-w-sm mx-auto ">
-                <img src="https://www.ecohome.net/media/articles/images/f2/9c/f29c921116e7b42501639bda77885d5051a5c8f1/thumbs/dOp8pM6ckCwo_1200x500_EE_R0wWf.jpg" alt="University of Southern California" class="absolute inset-0 h-full w-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
-                <h3 id="day" class="z-10 text-3xl font-bold text-white">please select the time</h3>
-                <h3 id="time" class="z-10 text-3xl font-bold text-white"></h3>
-                <div class="z-10 gap-y-1 right-0 overflow-hidden text-sm leading-6 text-gray-300 p-2">
-                    <a href="/course/confirmCourse" class="rounded-r-lg group relative px-8 py-1 overflow-hidden bg-white text-xl shadow my-6">
-                            <div class="absolute inset-0 w-3 bg-lime-600 transition-all duration-[250ms] ease-out group-hover:w-full rounded-r-lg"></div>
-                            <span class="relative text-black group-hover:text-white ">Confirm</span>
-                        </a>
-                </div>
-            </article>
-            </div>
-        </div>
-        
-        
-        
-        
-        
-    </template>
+        </article>
+    </div>
+</template>
 
 <script setup lang="ts">
 
-function select(day,time) {
-    document.getElementById("day").innerHTML = day;
-    document.getElementById("time").innerHTML = time;
+const day = ref('please select the time')
+const time = ref<any>('')
+const idCourse = ref(0)
+
+
+
+import FullCalendar from '@fullcalendar/vue3'
+import interactionPlugin from '@fullcalendar/interaction'
+import timeGridPlugin from '@fullcalendar/timegrid'
+import dayGridPlugin from '@fullcalendar/daygrid'
+
+
+const calendarOptions = ref({
+    plugins: [interactionPlugin, timeGridPlugin, dayGridPlugin],
+    initialView: 'timeGridWeek',
+    nowIndicator: false,
+    editable: true,
+    dayHeaderFormat: { weekday: 'long' },
+    scrollTime: '10:00:00', // Set the scrollTime to 10:00 AM (optional)
+    slotMinTime: '10:00:00', // Set the minimum time to 10:00 AM (optional)
+    slotMaxTime: '18:00:00', // 
+    slotLabelFormat: {
+        hour: 'numeric',
+        minute: '2-digit',
+        omitZeroMinute: false,
+    },
+    contentHeight: 'auto',
+    allDaySlot: false,
+
+    //   dateClick: handleDateClick,
+      eventClick: handleEventClick,
+    //   eventMouseEnter: handleEventhover,
+    //   eventMouseLeave: handleEventLeave,
+
+    events: ref([]),
+    eventColor: '#378006'
+})
+
+
+const eventData = ref([
+    { title: 'ink bd', start: '2023-11-03 10:00:00', uid: 123, color: 'purple', description: 'description for Repeating Event', eventClassNames: "test" },
+    
+])
+
+
+import {useAuthStore} from "~/stores/useAuthStore";
+    
+const user = useAuthStore().user;
+
+const {data: eventCourse, error: loginError } = await useApiFetch("api/student/getAllCourses", {});
+
+if(eventCourse.value){
+    console.log(eventCourse.value);
+    
+    for(const event in eventCourse.value){
+        let ageRange = `${eventCourse.value[event].max_age}-${eventCourse.value[event].min_age}`;
+        let temp = {
+            title: eventCourse.value[event].title,
+            start: eventCourse.value[event].start_datetime,
+            uid: eventCourse.value[event].id,
+            color: 'purple',
+            description: ageRange,
+            
+        }
+        console.log(temp);
+        
+        eventData.value.push(temp)
+    
+    }
+    
 }
-function addtest(){
-    document.getElementById('addtest').innerHTML = `<button type="button" @click="select('Saturday','17.00')" class="w-full text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Select</button>`;
+
+
+
+
+if (eventData.value) {
+    calendarOptions.value.events = eventData;
+
 }
+
+const showCard = ref(false);
+
+function  handleEventClick (arg) {
+
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    day.value = daysOfWeek[new Date(arg.event.start).getDay()]
+    time.value = formatTime(new Date(arg.event.start))
+    idCourse.value = arg.event.extendedProps.uid
+    showCard.value = true;
+
+}
+
+function formatTime(date) {
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const seconds = date.getSeconds();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+
+  // Convert 24-hour format to 12-hour format
+  const formattedHours = hours % 12 || 12;
+
+  // Add leading zeros to minutes and seconds if needed
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
+
+  // Combine the formatted time components
+  const formattedTime = `${formattedHours}:${formattedMinutes}:${formattedSeconds} ${ampm}`;
+
+  return formattedTime;
+}
+
+const clickOutside = () => {
+  showCard.value = false;
+};
 
 
 

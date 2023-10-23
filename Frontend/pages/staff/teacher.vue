@@ -105,7 +105,7 @@
 
                         <div
                             class="ml-12 flex flex-col capitalize text-black">
-                            <span>Courses</span>
+                            <span>All Courses</span>
                             <span class="text-red-400" v-if="teacher.course_count == 0">
                                 No courses
                             </span>
@@ -286,6 +286,10 @@
                                     
                                     <img ref="imagePreview" :src="imagePreviewSrc" alt="">
                             </div>
+
+                            <p class="text-red-500" v-for="error in RegistrationError['profile_image_path']" :key="error">
+                                    {{ error }}
+                            </p>
 
             
 
@@ -524,6 +528,21 @@ async function handleSearchTeacher( event ) {
     if (event.target.value === '') {
         
         showTeachers.value = allTeachers.value;
+
+        teachersCount.value = showTeachers.value.length;
+
+        let count = 0;
+            for (const courses in showTeachers.value) {
+
+                if (showTeachers.value.hasOwnProperty(courses)) {
+                
+                    count = count + showTeachers.value[courses].course_count;
+
+                }
+
+            }
+
+            coursesCount.value = count;
         
     }
 

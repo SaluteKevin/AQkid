@@ -46,7 +46,7 @@
 
         let eventLoop = {}
         eventLoop["title"] = eventData.value[event].title
-        eventLoop["date"] = eventData.value[event].start_datetime
+        eventLoop["date"] = eventData.value[event].starts_on
         eventArray.push(eventLoop)
         
       }
@@ -86,7 +86,7 @@
       console.log(selectDate)
       for(const event in eventData.value){
 
-        if (eventData.value[event].start_datetime.split(" ")[0] === selectDate) {
+        if (eventData.value[event].starts_on.split(" ")[0] === selectDate) {
           showAgenda.value.push(eventData.value[event])
         }
         

@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -15,13 +14,15 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('teacher_id');
             $table->string('title', 128);
+            $table->string('description')->nullable();
             $table->integer('quota');
             $table->integer('capacity');
             $table->integer('min_age')->default(0);
             $table->integer('max_age');
             $table->integer('duration')->default(60);
+            $table->datetime('opens_on');
             $table->datetime('opens_until');
-            $table->datetime('start_datetime');
+            $table->datetime('starts_on');
             $table->enum('status', ['PENDING', 'OPEN', 'FULL', 'ACTIVE', 'ENDED', 'CANCELLED']);
             $table->float('price');
             $table->timestamps();

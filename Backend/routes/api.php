@@ -73,6 +73,17 @@ Route::group([
 
 ], function ($router) {
 
+    // index
+    
+    Route::get('allCourses', [StaffController::class, 'getAllCourses']);
+    Route::get('courses/{course}', [StaffController::class, 'getCourse']);
+    Route::get('allTimeslots', [StaffController::class, 'allTimeslots']);
+    Route::get('timeslots/{timeslot}', [StaffController::class, 'getTimeslot']);
+    Route::get('timeslotStudent/{timeslot}',[StaffController::class, 'getTimeslotStudents']);
+    Route::post('addStudent/{timeslot}/{student}', [StaffController::class, 'addStudentAttendance']);
+    Route::post('removeStudent/{timeslot}/{student}', [StaffController::class, 'removeStudentAttendance']);
+    Route::post('createTimeslot/{course}', [StaffController::class, 'createTimeslot']);
+
     // teacher
     Route::get('allTeachers', [StaffController::class, 'allTeachers']);
     Route::get('teachers/{user}', [StaffController::class, 'getTeacher']);
@@ -80,11 +91,16 @@ Route::group([
     Route::post('searchTeacher', [StaffController::class, 'searchTeacher']);
 
     // student
-    Route::get('allStudents', [StaffController::class, 'allStudents']);
+    Route::post('filterStudents', [StaffController::class, 'filterStudent']);
     Route::get('students/{user}', [StaffController::class, 'getStudent']);
     Route::post('searchStudent', [StaffController::class, 'searchStudent']);
    
-
+    // enrollment
+    Route::get('allEnrollments', [StaffController::class, 'allEnrollmentRequests']);
+    Route::get('allEnrollmentHistorys', [StaffController::class, 'enrollmentNotPending']);
+    Route::get('enrolls/{enrollment}', [StaffController::class, 'enrollmentRequestReview']);
+    Route::post('acceptEnroll/{enrollment}', [StaffController::class,'acceptEnrollment']);
+    Route::post('rejectEnroll/{enrollment}', [StaffController::class,'rejectEnrollment']);
 });
 
 Route::group([
@@ -95,20 +111,26 @@ Route::group([
 ], function ($router) {
 
     Route::get('getEvent', [TeacherController::class, 'getEvent']);
-   
-
+    
+    
 });
 
 
 Route::group([
-
+    
     'middleware' => 'api',
     'prefix' => 'student'
-
+    
 ], function ($router) {
-
+    
     Route::get('getClasses', [StudentController::class, 'getAllClasses']);
-   
+    Route::get('getAllCourses', [StudentController::class, 'getAllCourse']);
+    Route::get('showCourse/{course}', [StudentController::class, 'showCourse']);
+    Route::post('enrollCourse/{course}/{user}', [StudentController::class, 'enrollCourse']);
+    
+    
+    Route::get('profile/{user}', [StudentController::class, 'profile']);
+    Route::post('editprofile/{user}', [StudentController::class, 'updateProfile']);
 
 });
 

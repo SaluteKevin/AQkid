@@ -1,6 +1,7 @@
 <template>
     <div>
         <LayoutAppHeader class="sticky top-0 z-50" />
+        
         <section>
             <slot />
         </section>

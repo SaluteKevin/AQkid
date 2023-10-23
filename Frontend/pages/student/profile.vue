@@ -1,4 +1,5 @@
 <template>
+    <!-- <AppHeaderStudent /> -->
     <div class="min-h-screen bg-gradient-to-l to-purple-50 to-60% from-[#bce1ff] from-10%">
         <div class="container mx-auto py-8">
             <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
@@ -8,21 +9,20 @@
                             <img src="https://randomuser.me/api/portraits/men/94.jpg" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
     
                             
-                            <h1 class="text-xl font-bold">John Doe</h1>
-                            <p class="text-gray-600">Software Developer</p>
+                            <h1 class="text-xl font-bold">{{ user.value.username }}</h1>
                             <div class="mt-6 flex flex-wrap gap-4 justify-center">
-                                <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Edit Profile</a>
+                                <NuxtLink href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" to="/student/editprofile">Edit Profile</NuxtLink>
                             </div>
                         </div>
                         <hr class="my-6 border-t border-gray-300">
                         <div class="flex flex-col">
-                            <span class="text-gray-600 uppercase font-bold tracking-wider mb-2">Skills</span>
+                            <span class="text-gray-600 uppercase font-bold tracking-wider mb-2">Student Profile</span>
                             <ul>
-                                <li class="mb-2"></li>
-                                <li class="mb-2">React</li>
-                                <li class="mb-2">Node.js</li>
-                                <li class="mb-2">HTML/CSS</li>
-                                <li class="mb-2">Tailwind Css</li>
+                                <p>Firstname : {{ user.value.first_name }}</p>
+                                <p>Middlename : {{ user.value.middle_name }}</p>
+                                <p>Lastname : {{ user.value.last_name }}</p>
+                                <p>Email : {{ user.value.email }}</p>
+                                <p>birthdate : {{ user.value.birthdate }}</p>
                             </ul>
                         </div>
                     </div>
@@ -85,3 +85,13 @@
         </div>
     </div>
 </template>
+<script setup lang="ts">
+
+import {useAuthStore} from "~/stores/useAuthStore";
+
+const user = useAuthStore().user;
+definePageMeta({ layout: "student" })
+console.log(user.value.id);
+
+
+</script>
