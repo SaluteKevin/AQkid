@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Enrollment;
+use App\Models\Enums\EnrollmentStatusEnum;
 use App\Models\Timeslot;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class StudentAttendanceSeeder extends Seeder
@@ -14,24 +15,25 @@ class StudentAttendanceSeeder extends Seeder
      */
     public function run(): void
     {
-        $students = [
-            User::find(4),
-            User::find(6)
-        ];
+        $timeslots = Timeslot::all();
+        $course2student1 = User::where('username', 'std1')->first();
+        $course2student1Id = $course2student1->id;
 
-        $timeslotIds = range(1, 10);
+        foreach ($timeslots as $timeslot) {
+            if ($timeslot->id == 11) {
+                $timeslot->studentAttendances()->attach($course2student1, ['has_attended' => 'TRUE']);
+                continue;
+            }
 
-        foreach ($timeslotIds as $timeslotId) {
-            $timeslot = Timeslot::find($timeslotId);
+            $studentIds = Enrollment::where('course_id', $timeslot->course_id)
+                ->where('status', EnrollmentStatusEnum::SUCCESS->name)
+                ->get()->map(function ($e) {
+                    return $e['student_id'];
+                });
 
-            foreach ($students as $student) {
-                $student->studentAttendances()->attach($timeslot, ['has_attended' => ($timeslotId == 10 && $student->id == 4) ? 'FALSE' : 'TRUE']);
+            foreach ($studentIds as $studentId) {
+                $timeslot->studentAttendances()->attach($studentId, ['has_attended' => ($timeslot->id == 10 && $studentId == $course2student1Id) ? 'FALSE' : 'TRUE']);
             }
         }
-
-        // Make-up class for student_id = 4
-        $student = User::find(4);
-        $timeslot = Timeslot::find(11);
-        $student->studentAttendances()->attach($timeslot, ['has_attended' => 'TRUE']);
     }
 }

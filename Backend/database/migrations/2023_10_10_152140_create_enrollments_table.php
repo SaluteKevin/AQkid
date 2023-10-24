@@ -15,8 +15,8 @@ return new class extends Migration {
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('student_id');
             $table->string('proof_of_payment_path');
-            $table->string('review_comment')->nullable();
             $table->enum('status', ['PENDING', 'SUCCESS', 'FAILED']);
+            $table->string('review_comment')->nullable();
             $table->timestamps();
 
             $table->foreign('course_id')->references('id')->on('courses');

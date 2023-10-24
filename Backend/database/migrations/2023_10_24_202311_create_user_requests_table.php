@@ -11,17 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('requests', function (Blueprint $table) {
+        Schema::create('user_requests', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('originator_id');
+            $table->unsignedBigInteger('course_id')->nullable()->comment('This is nullable since this is a generic user request table');
             $table->enum('type', ['REFUND', 'GENERAL']);
             $table->string('title');
             $table->string('description')->nullable();
             $table->enum('status', ['PENDING', 'APPROVED', 'REJECTED', 'OTHER']);
-            $table->string('comments')->nullable();
+            $table->string('review_comment')->nullable();
             $table->timestamps();
 
             $table->foreign('originator_id')->references('id')->on('users');
+            $table->foreign('course_id')->references('id')->on('courses');
         });
     }
 
