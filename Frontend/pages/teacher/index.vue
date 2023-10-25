@@ -1,4 +1,5 @@
 <template>
+
     <div class="container mx-auto grid grid-cols-4 gap-10">
         <div class='app p-12 col-span-3'>
             <FullCalendar :options='calendarOptions' />
@@ -11,14 +12,15 @@
                     <span class="font-semibold text-lg">{{classes.title}}</span>
                     
                 </div>
-                <p class="text-gray-700">This class start at {{classes.start_datetime}}</p>
-                <button type="button">info</button>
+                <p class="text-gray-700">This class start at {{classes.starts_on}}</p>
+                <NuxtLink to="/teacher/classDetail">
+                  Detail
+                </NuxtLink>
             </li>
             
         </ul>
     </div>
     </div>
-
 
   </template>
   
@@ -77,7 +79,6 @@
 
 
     async function  handleDateClick (arg) {
-      alert('date click! '+ arg.dateStr);
 
       const selectDate = arg.dateStr
 
@@ -89,14 +90,7 @@
         if (eventData.value[event].starts_on.split(" ")[0] === selectDate) {
           showAgenda.value.push(eventData.value[event])
         }
-        
-
-        
-
       }
-     
-      
-      
     }
 
     function  handleEventClick (arg) {
