@@ -1,25 +1,15 @@
 <template>
     <div class="p-16 min-h-screen bg-gradient-to-b to-purple-100 to-60% from-[#bce1ff] from-10%">
-    <h2 class="my-4 text-4xl font-semibold text-gray-600">Requests</h2>
+    <h2 class="my-4 text-4xl font-semibold text-gray-600">Enrollment History</h2>
 			<div class="pb-2 flex items-center justify-between text-gray-600">
 				<!-- Header -->
-				<div>
-					<span>
-						<span>
-                            <span class="text-green-400">
-                                {{ enrollCount }}
-                            </span>
-                            Request(s)
-                        </span>
-					</span>
-				</div>
 
 			</div>
 
     <!-- card -->
         <div class="flex flex-col gap-2 ">
             <div
-				v-for="enroll in showEnrolls" :key="enroll.number"
+				v-for="enroll in showEnrollsHistory" :key="enroll.number"
 				class="mt-2 flex  px-4 py-4 justify-between bg-white
 				 shadow-2xl rounded-lg w-full">
 				<!-- Card -->
@@ -92,31 +82,28 @@ definePageMeta({layout: "staff"})
 
 // allTeachers
 
-const allEnroll = ref({})
-const showEnrolls = ref({})
-const enrollCount = ref<Number>(0)
+const allEnrollHistory = ref({})
+const showEnrollsHistory = ref({})
 
 // await fetchEnrolls();
 
 async function fetchEnrolls(page: number) {
 
-    const {data: enrollResponse, error: enrollError } = await useApiFetch("api/staff/allEnrollments?page="+page, {});
+    const {data: enrollHistoryResponse, error: enrollHistoryError } = await useApiFetch("api/staff/historyEnrollment?page="+page, {});
 
-    if (enrollResponse.value) {
+    if (enrollHistoryResponse.value) {
         
-        last_page.value = enrollResponse.value.last_page
+        last_page.value = enrollHistoryResponse.value.last_page
 
-        allEnroll.value = enrollResponse.value.data;
+        allEnrollHistory.value = enrollHistoryResponse.value.data;
 
-        showEnrolls.value = allEnroll.value;
-
-		enrollCount.value = showEnrolls.value.length;
+        showEnrollsHistory.value = allEnrollHistory.value;
 
     }
     else {
         
-        if (enrollError.value) {
-            console.log(enrollError.value);
+        if (enrollHistoryError.value) {
+            console.log(enrollHistoryError.value);
         }
 
     }
@@ -140,7 +127,7 @@ function formatDateTime(date) {
 import { usePaginateStore } from '~/stores/usePaginateStore'
 const paginate = usePaginateStore();
 
-const currentpage = ref(paginate.enroll_page)
+const currentpage = ref(paginate.enrollHistory_page)
 const last_page = ref<Number>(0)
 
 async function onChangePage(page: any) {
@@ -148,14 +135,14 @@ async function onChangePage(page: any) {
     // console.log(page.value)
     // currentpage.value = page.value
 
-    await paginate.setEnrollPage(page.value);
+    await paginate.setEnrollHistoryPage(page.value);
 
-    await fetchEnrolls(paginate.enroll_page);
+    await fetchEnrolls(paginate.enrollHistory_page);
 
 }
 
 
-await fetchEnrolls(paginate.enroll_page);
+await fetchEnrolls(paginate.enrollHistory_page);
 
 
 </script>

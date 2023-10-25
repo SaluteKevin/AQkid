@@ -1,56 +1,72 @@
 <template>
-  <div class="relative flex py-5 items-center w-full px-10 mt-4">
-    <div class="flex-grow border-t border-gray-400"></div>
-    <span class="flex-shrink mx-4 text-4xl text-gray-400">Classes Calendar</span>
-    <div class="flex-grow border-t border-gray-400"></div>
-  </div>
 
-  <div class='app p-12 transform ease-in-out m-4 shadow-2xl border rounded-2xl'>
+
+  <div class='app p-12 transform ease-in-out m-4 shadow-xl border rounded-2xl'>
     <FullCalendar :options='calendarOptions' />
   </div>
 
-  <div class="relative flex py-5 items-center w-full px-10">
+  <div class="px-12 transform ease-in-out m-4 mt-8 shadow-2xl border rounded-xl pb-10">
+    <div class="relative flex py-5 items-center w-full px-10 mt-4">
     <div class="flex-grow border-t border-gray-400"></div>
-    <span class="flex-shrink mx-4 text-gray-400">Course Section</span>
+    <span class="flex-shrink mx-4 text-4xl text-gray-400">Create Course</span>
     <div class="flex-grow border-t border-gray-400"></div>
   </div>
-
-  <div class="w-full flex ml-12">
-    <NuxtLink class="px-3 py-2 bg-white font-medium text-gray-800 rounded-lg shadow-md border border-gray-300 hover:bg-gray-200" :to="`/staff/create_course`">Create Course</NuxtLink>
-  </div>
-
-
-  <div class="h-fit w-full px-10 mt-10 mb-16">
-    <div class="h-full w-full p-16 flex flex-wrap gap-8  border border-dashed shadow-2xl">
-
-      <div class="flex items-center justify-center h-full" v-for="course in courseResponse" :key="course.id">
-        <div class="bg-white shadow-2xl p-6 rounded-2xl border-2 border-gray-50">
-          <div class="flex flex-col">
-            <div>
-              <h2 class="font-bold text-gray-600 text-center">{{ course.title }}</h2>
-            </div>
-            <p class="text-xs text-gray-500 text-center">{{ course.duration / 60 }} Hour</p>
-            <div class="w-full place-items-end text-right border-t-2 border-gray-100 mt-2">
-              <NuxtLink class="text-indigo-600 text-xs font-medium" :to="`/staff/detail/course${course.id}`">View Course
-              </NuxtLink>
-
-            </div>
-          </div>
+    <div class="text-2xl font-semibold flex">
+        <span class="mr-4">Title</span> 
+        <input 
+                                class="w-full px-8 py-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-300 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                type="text" name="title" placeholder="" />
+    </div>
+    <div class="text-2xl font-semibold mt-4">
+        <span>Description</span> 
+        <input 
+                                class="mt-2 w-full px-8 py-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-300 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                type="text" name="description" placeholder="" />
+    </div>
+    <div class="flex font-semibold mt-2"> 
+        <div class="mr-24">
+            <span class="text-xl">Quota</span>
+            <div class="bg-orange-300 rounded-md px-4 py-1 mt-2">dropdown</div>
+        </div>
+        <div class="mr-24">
+            <span class="text-xl">Capacity</span>
+            <div class="bg-orange-300 rounded-md px-4 py-1 mt-2">dropdown</div>
+        </div>
+        <div>
+            <span class="text-xl">Age</span>
+            <div class="bg-orange-300 rounded-md px-4 py-1 mt-2">dropdown</div>
+        </div>
+    </div>
+    
+    <div class="flex font-semibold mt-6 bg-orange-100 px-4 pb-6 pt-2">
+        <div class="mr-24">
+            Start on
+            <div class="bg-gray-300 rounded-md px-4 py-1 mt-2">dropdown</div>
+        </div>
+        <div class="mr-24">
+            Until
+            <div class="bg-gray-300 rounded-md px-4 py-1 mt-2">dropdown</div>
+        </div>
+    </div>
+    <div>
+        <div class="mt-4 font-semibold">Select Teacher
+            <div class="bg-orange-300 rounded-md">dropdown</div>
         </div>
 
-      </div>
-
+        <div class="mt-4 font-semibold">
+        Select Timeslot
+        <div class="bg-orange-300 rounded-md">select time</div>
+        </div>
     </div>
-
+    
+    
+    <div class="bg-orange-500 text-white px-2 py-4 mt-8"><span>Create</span></div>
   </div>
 
-  <!-- <div v-if="showTooltip" class="custom-tooltip" :style="{ top: tooltipTop + 'px', left: tooltipLeft + 'px', width: tooltipWidth }">
-    {{ tooltipContent }}
-  </div> -->
 </template>
-  
+
 <script setup lang="ts">
-definePageMeta({ layout: "staff" })
+definePageMeta({layout:"staff"})
 import FullCalendar from '@fullcalendar/vue3'
 import interactionPlugin from '@fullcalendar/interaction'
 import timeGridPlugin from '@fullcalendar/timegrid'
@@ -199,39 +215,4 @@ async function handleEventClick(arg) {
 //   showTooltip.value = false;
 // };
 
-// all Courses
-const { data: courseResponse, error: courseError } = await useApiFetch("api/staff/allCourses", {});
-
-if (courseResponse.value) {
-  console.log(courseResponse.value)
-}
-
-
-// Create Course
-const showCreateCourse = ref(false)
-
 </script>
-
-
-
-
-  
-<style scoped>
-.app {
-  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-  font-size: 14px;
-}
-
-.test {
-  font-size: xx-large;
-}
-
-.custom-tooltip {
-  position: absolute;
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 10px;
-  z-index: 999;
-
-}
-</style>
