@@ -15,7 +15,8 @@ use App\Models\Enums\EnrollmentStatusEnum;
 use App\Models\Enums\UserRoleEnum;
 use App\Models\Timeslot;
 use App\Models\Enums\TimeslotTypeEnum;
-use Illuminate\Pagination\LengthAwarePaginator;
+use App\Models\Enums\StudentAttendanceEnum;
+
 
 
 class StaffController extends Controller
@@ -28,7 +29,14 @@ class StaffController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['rejectEnrollment','acceptEnrollment','enrollmentRequestReview','allEnrollmentRequests','allTeachers','getTeacher','createTeacher','searchTeacher','allStudents','getStudent','searchStudent','getAllCourses','filterStudent','getCourse','allTimeslots','createTimeslot']]);
+        $this->middleware('auth:api', ['except' => ['rejectEnrollment','acceptEnrollment','enrollmentRequestReview'
+        ,'allEnrollmentRequests','allTeachers'
+        ,'getTeacher','createTeacher','searchTeacher'
+        ,'allStudents','getStudent','searchStudent'
+        ,'getAllCourses','filterStudent','getCourse'
+        ,'allTimeslots','createTimeslot','getTimeslot'
+        ,'getTimeslotStudents','addStudentAttendance','removeStudentAttendance'
+        ,'enrollmentNotPending','removeTimeslot']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -61,8 +69,10 @@ class StaffController extends Controller
     }
 
     public function allTimeslots() {
+        
         $timeslots = Timeslot::get();
-        return $timeslots;
+
+        return Timeslot::queryTimeslotCourseTitle($timeslots);
     }
      
 
@@ -83,18 +93,25 @@ class StaffController extends Controller
 
     }
 
+    public function enrollmentNotPending() {
+
+        $enrollments = Enrollment::getEnrollmentNotPending();
+        $enrollmentsWithUser = Enrollment::getEnrollmentWithUserPaginate($enrollments);
+        return $enrollmentsWithUser;
+    }
+
     public function acceptEnrollment(Enrollment $enrollment,Request $request) {
        
         if ($enrollment->updateStatus(EnrollmentStatusEnum::SUCCESS,$request->get('comment'))) {
         
             return response()->json([
-                'message' => "Successfully Reject Enrollment",
+                'message' => "Successfully Accept Enrollment",
             ]);
 
        }
 
        return response()->json([
-        'message' => "Failed to Reject Enrollment",
+        'message' => "Failed to Accept Enrollment",
         ],422);
 
     }
@@ -112,6 +129,14 @@ class StaffController extends Controller
         return response()->json([
             'message' => "Failed to Reject Enrollment",
         ],422);
+
+    }
+
+    public function getTimeslot(Timeslot $timeslot) {
+
+        $timeslot->title = Course::find($timeslot->course_id)->title;
+
+        return $timeslot;
 
     }
 
@@ -135,18 +160,65 @@ class StaffController extends Controller
         
     }
 
-    public function removeTimeslot() {
+    public function removeTimeslot(Timeslot $timeslot) {
+
+        $courseId = $timeslot->course_id;
         
+        $statusOk = Timeslot::deleteTimeslot($timeslot->id);
+
+        if ($statusOk) {
+
+            return response()->json([
+                'message' => "Successfully Delete Timeslot",
+                'course_id' => $courseId
+            ]);
+
+        }
+        
+        return response()->json([
+            'message' => "Failed to Deleted Timeslot",
+        ],422);
+        
+
+    }
+
+    public function getTimeslotStudents(Timeslot $timeslot) {
+
+        return Timeslot::getTimeslotStudents($timeslot);
+
     }
 
 
-    public function addStudentAttendance() {
+    public function addStudentAttendance(Timeslot $timeslot, User $student) {
+
+        if ($timeslot->attachStudents(StudentAttendanceEnum::FALSE, $student->id)) {
+
+            return response()->json([
+                'message' => "Successfully Added Student",
+            ]);
+
+        }
+
+        return response()->json([
+            'message' => "Failed to Add Student",
+        ],422);
 
         
     }
 
-    public function removeStudentAttendance() {
+    public function removeStudentAttendance(Timeslot $timeslot, User $student) {
 
+        if ($timeslot->detachStudents($student->id)) {
+
+            return response()->json([
+                'message' => "Successfully Removed Student",
+            ]);
+
+        }
+
+        return response()->json([
+            'message' => "Failed to Remove Student",
+        ],422);
 
     }
     

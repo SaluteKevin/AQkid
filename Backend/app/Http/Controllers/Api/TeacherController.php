@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
 use App\Models\Course;
+use App\Models\Timeslot;
 
 
 
@@ -23,10 +24,40 @@ class TeacherController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getEvent']]);
+        $this->middleware('auth:api', ['except' => ['getEvent','getTimeslot','getStudentAttends']]);
     }
 
-    public function getEvent(){
-        return Course::get();
+    public function getEvent(User $teacher){
+        
+        $teacherCourses = Course::where('teacher_id',$teacher->id)->get();
+
+
+        $alltimeslots =  [];
+
+        foreach($teacherCourses as $course) {
+
+            foreach($course->timeslots as $timeslot) {
+
+                $timeslot->title = Course::find($timeslot->course_id)->title;
+                $alltimeslots[] = $timeslot; 
+
+            }
+
+        }
+
+
+        return $alltimeslots;
     }
+
+    public function getTimeslot(Timeslot $timeslot){
+      
+        return $timeslot;
+    }
+
+    public function getStudentAttends(Timeslot $timeslot){
+      
+        return $timeslot->studentAttendances;
+    }
+
+
 }

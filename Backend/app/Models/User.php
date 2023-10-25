@@ -3,9 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Enums\UserRoleEnum;
-use App\Models\Enums\EnrollmentStatusEnum;
 use App\Models\Enums\CourseStatusEnum;
+use App\Models\Enums\EnrollmentStatusEnum;
+use App\Models\Enums\UserRoleEnum;
+use App\Services\FileService;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,10 +15,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
-use App\Services\FileService;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -143,7 +142,7 @@ class User extends Authenticatable implements JWTSubject
 
     /**
      * Search User by Firstname
-     * 
+     *
      * @return collection
      */
     public static function searchUser(string $search, UserRoleEnum $userRole): Collection
@@ -223,12 +222,12 @@ class User extends Authenticatable implements JWTSubject
             $course = Course::find($enrollment->course_id);
 
             if ($course != null) {
-                $coursesArray[] = $course; 
+                $coursesArray[] = $course;
             }
         }
 
         $student->courses = $coursesArray;
-        
+
         return $student;
 
     }
@@ -269,7 +268,7 @@ class User extends Authenticatable implements JWTSubject
         ->pluck('id');
 
         if ($type == 'active') {
-            
+
             $filteredUsers = User::whereIn('id', $students)->paginate(5);
 
             foreach ($filteredUsers as $student) {
@@ -321,10 +320,10 @@ class User extends Authenticatable implements JWTSubject
 
     }
 
- 
+
 
     /**
-     * 
+     *
      * Create User ['STAFF','STUDENT']
      */
     public static function createUser(string $username, string $password, UserRoleEnum $userRole,
@@ -363,8 +362,8 @@ class User extends Authenticatable implements JWTSubject
 
     public static function updateUserInfo (User $user, string $firstname, string $middlename = null, string $lastname,
                                            string $birthdate, string $phone_number, string $email = null) {
-        
-                                            
+
+
         $statusOk = false;
 
         $user->first_name = $firstname;
@@ -374,7 +373,7 @@ class User extends Authenticatable implements JWTSubject
         $user->phone_number = $phone_number;
         $user->email = $email;
 
-        
+
         $statusOk = $user->save();
 
         return $statusOk;
@@ -386,7 +385,7 @@ class User extends Authenticatable implements JWTSubject
         $statusOk = false;
 
         $image_path = FileService::getFileManager()->uploadFile('users/' . $user->id . "/" ."profile.jpg",$imagefile);
-        
+
         if ($image_path != false ){
 
             $user->profile_image_path = $image_path;

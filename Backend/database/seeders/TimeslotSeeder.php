@@ -15,7 +15,12 @@ class TimeslotSeeder extends Seeder
      */
     public function run(): void
     {
-        $courses = Course::where('status', CourseStatusEnum::ENDED->name)->orWhere('status', CourseStatusEnum::OPEN->name)->get();
+        $courses = Course::whereIn('status', [
+            CourseStatusEnum::OPEN->name,
+            CourseStatusEnum::FULL->name,
+            CourseStatusEnum::ACTIVE->name,
+            CourseStatusEnum::ENDED->name
+        ])->get();
 
         foreach ($courses as $course) {
             $courseId = $course->id;
@@ -34,7 +39,7 @@ class TimeslotSeeder extends Seeder
 
                 $timeslotDateTime = strtotime('+1 week', $timeslotDateTime);
 
-                // Make-up class for student_id = 4
+                // Make-up class for Course 2, Student std1
                 if ($courseId == 2 && date(env('APP_DATETIME_FORMAT'), $timeslotDateTime) == '2023-03-15 10:00:00') {
                     Timeslot::create([
                         'course_id' => $courseId,

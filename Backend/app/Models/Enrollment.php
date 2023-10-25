@@ -5,12 +5,14 @@ namespace App\Models;
 use App\Models\Enums\EnrollmentStatusEnum;
 use App\Models\Enums\ReceiptDescriptionEnum;
 use App\Models\Enums\UserRoleEnum;
+use DateTime;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Facades\Date;
 
 /**
  * Course Enrollments
@@ -165,5 +167,16 @@ class Enrollment extends Model
         $user = User::find($enrollment->student_id);
         $enrollment->user = $user;
         return $enrollment;
+    }
+
+    public static function getEnrollmentNotPending(): Paginator 
+    {
+
+        $enrollmentIds = Enrollment::where('status',EnrollmentStatusEnum::PENDING->name)->pluck('id');
+
+        $enrollmentsNotInQuery = Enrollment::whereNotIn('id', $enrollmentIds)->orderBy('created_at', 'desc')->paginate(5);
+
+        return $enrollmentsNotInQuery;
+
     }
 }

@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Collection;
 
 class Timeslot extends Model
 {
@@ -119,4 +120,34 @@ class Timeslot extends Model
 
         return true;
     }
+
+    public static function getTimeslotStudents(Timeslot $timeslot) {
+
+        $studentsId = $timeslot->studentAttendances->pluck('id');
+
+
+        $mergedTimeslots = User::where('role', UserRoleEnum::STUDENT->name)->get();
+
+
+        $mergedTimeslots->each(function ($student) use ($studentsId) {
+            $student->expect = in_array($student->id, $studentsId->toArray());
+        });
+
+        return $mergedTimeslots;
+
+    }
+
+    public static function queryTimeslotCourseTitle(Collection $timeslots) {
+
+        foreach ($timeslots as $timeslot) {
+
+            $timeslot->title = Course::find($timeslot->course_id)->title;
+
+        }
+
+        return $timeslots;
+
+    }
+
+
 }

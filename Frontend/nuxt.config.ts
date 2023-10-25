@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     '@pinia-plugin-persistedstate/nuxt',
     '@vueuse/nuxt',
     '@nuxtjs/tailwindcss',
-    'dayjs-nuxt'
+    'dayjs-nuxt',
   ],
 
   tailwindcss: {

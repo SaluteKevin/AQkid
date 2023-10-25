@@ -78,7 +78,12 @@ Route::group([
     Route::get('allCourses', [StaffController::class, 'getAllCourses']);
     Route::get('courses/{course}', [StaffController::class, 'getCourse']);
     Route::get('allTimeslots', [StaffController::class, 'allTimeslots']);
+    Route::get('timeslots/{timeslot}', [StaffController::class, 'getTimeslot']);
+    Route::get('timeslotStudent/{timeslot}',[StaffController::class, 'getTimeslotStudents']);
+    Route::post('addStudent/{timeslot}/{student}', [StaffController::class, 'addStudentAttendance']);
+    Route::post('removeStudent/{timeslot}/{student}', [StaffController::class, 'removeStudentAttendance']);
     Route::post('createTimeslot/{course}', [StaffController::class, 'createTimeslot']);
+    Route::post('removeTimeslot/{timeslot}', [StaffController::class, 'removeTimeslot']);
 
     // teacher
     Route::get('allTeachers', [StaffController::class, 'allTeachers']);
@@ -93,9 +98,11 @@ Route::group([
    
     // enrollment
     Route::get('allEnrollments', [StaffController::class, 'allEnrollmentRequests']);
+    Route::get('allEnrollmentHistorys', [StaffController::class, 'enrollmentNotPending']);
     Route::get('enrolls/{enrollment}', [StaffController::class, 'enrollmentRequestReview']);
     Route::post('acceptEnroll/{enrollment}', [StaffController::class,'acceptEnrollment']);
     Route::post('rejectEnroll/{enrollment}', [StaffController::class,'rejectEnrollment']);
+    Route::get('historyEnrollment', [StaffController::class, 'enrollmentNotPending']);
 });
 
 Route::group([
@@ -105,8 +112,9 @@ Route::group([
 
 ], function ($router) {
 
-    Route::get('getEvent', [TeacherController::class, 'getEvent']);
-    
+    Route::get('getEvent/{teacher}', [TeacherController::class, 'getEvent']);
+    Route::get('getTimeslot/{timeslot}', [TeacherController::class, 'getTimeslot']);
+    Route::get('getStudentAttend/{timeslot}', [TeacherController::class, 'getStudentAttends']);
     
 });
 

@@ -73,7 +73,7 @@ class StudentController extends Controller
         return User::where('role', 'STUDENT')::find($user);
     }
 
-    public function updateProfile( User $user, Request $request){
+    public function updateProfile(User $user,Request $request){
         
         $request->validate([
             'firstname' => 'required',
