@@ -170,8 +170,6 @@ const removeImagePreview = () => {
 
 const EditForm = ref({
     email: "",
-    password: "",
-    password_confirmation: "",
     firstname: "",
     middlename: "",
     lastname: "",
