@@ -398,5 +398,18 @@ class User extends Authenticatable implements JWTSubject
 
     }
 
+    public static function changeUserPassword (User $user, string $newpassword) {
+
+        $statusOk = false;
+
+        $user->password = $newpassword;
+
+        $statusOk = $user->save();
+
+        return $statusOk;
+
+    }
+
+
 
 }

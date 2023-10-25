@@ -74,7 +74,7 @@ class StudentController extends Controller
     }
 
     public function updateProfile(User $user,Request $request){
-        
+
         $request->validate([
             'firstname' => 'required',
             'middlename' => 'nullable',
@@ -82,9 +82,8 @@ class StudentController extends Controller
             'birthdate' => 'required',
             'phone_number' => 'required',
             'email' => 'nullable',
-        ]);
+        ]);        
         
-
         // User $user, string $firstname, string $middlename = null, string $lastname,
         //                                    string $birthdate, string $phone_number, string $email = null)
 
@@ -100,15 +99,48 @@ class StudentController extends Controller
         return response()->json([
             'message' => "Failed to Update User",
         ],422);
+                                          
+      
+    }
+
+    public function updatePassword(User $user, Request $request) {
+
+        $request->validate(['password' => 'required|confirmed|min:6']);
+
+        $statusOk = User::changeUserPassword($user, $request->get('password'));
+
+        if ($statusOk) {
+            return response()->json([
+                'message' => "Successfully Updated Password",
+            ]);
+        }
+        
+        return response()->json([
+            'message' => "Failed to Update Password",
+        ],422);
         
 
+    }
+
+    public function updateImage(User $user, Request $request) {
+
+        $request->validate(['profile_image_path' => 'nullable|image|mimes:png,gif,jpg,jpeg,bmp|max:2048']);
+
+        $statusOk = User::changeProfileImage($user, $request->file('profile_image_path'));
+
+        if ($statusOk) {
+            return response()->json([
+                'message' => "Successfully Updated Profile Image",
+            ]);
+        }
         
-        // $statusOk = User::updateProfile($request->get('password'),
-        //                              $request->get('firstname'), $request->get('middlename'), $request->get('lastname'),
-        //                              $request->get('birthdate'), $request->get('phone_number'), $request->get('email'),
-        //                              $request->file('profile_image_path'));
-                                     
-      
+        return response()->json([
+            'message' => "Failed to Update Profile Image",
+        ],422);
+
+
+
+
     }
 
 

@@ -134,6 +134,8 @@ Route::group([
     
     Route::get('profile/{user}', [StudentController::class, 'profile']);
     Route::post('editprofile/{user}', [StudentController::class, 'updateProfile']);
+    Route::post('editpassword/{user}', [StudentController::class, 'updatePassword']);
+    Route::post('editimage/{user}', [StudentController::class, 'updateImage']);    
 
 });
 
