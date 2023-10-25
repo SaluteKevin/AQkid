@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Course;
 use App\Models\Timeslot;
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class TeacherAttendanceSeeder extends Seeder
@@ -14,12 +13,11 @@ class TeacherAttendanceSeeder extends Seeder
      */
     public function run(): void
     {
-        $teacher = User::find(2);
-        $timeslotIds = range(1, 11);
+        $timeslots = Timeslot::all();
 
-        foreach ($timeslotIds as $timeslotId) {
-            $timeslot = Timeslot::find($timeslotId);
-            $teacher->teacherAttendances()->attach($timeslot);
+        foreach ($timeslots as $timeslot) {
+            $teacherId = Course::find($timeslot->course_id)->teacher_id;
+            $timeslot->teacherAttendances()->attach($teacherId);
         }
     }
 }

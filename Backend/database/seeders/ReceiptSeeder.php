@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Course;
+use App\Models\Enrollment;
+use App\Models\Enums\EnrollmentStatusEnum;
 use App\Models\Receipt;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ReceiptSeeder extends Seeder
@@ -13,28 +15,25 @@ class ReceiptSeeder extends Seeder
      */
     public function run(): void
     {
-        Receipt::create([
-            'enrollment_id' => 1,
-            'payment_timestamp' => '2022-12-07 09:10:00',
-            'receipt_timestamp' => '2022-12-08 09:00:00',
-            'description' => 'Course fee',
-            'amount' => 7500.00,
-            'subtotal' => 7500.00,
-            'total' => 7500.00,
-            'created_at' => '2022-12-08 09:00:00',
-            'updated_at' => '2022-12-08 09:00:00'
-        ]);
+        $enrollments = Enrollment::all();
 
-        Receipt::create([
-            'enrollment_id' => 2,
-            'payment_timestamp' => '2022-12-07 10:05:00',
-            'receipt_timestamp' => '2022-12-08 09:02:00',
-            'description' => 'Course fee',
-            'amount' => 7500.00,
-            'subtotal' => 7500.00,
-            'total' => 7500.00,
-            'created_at' => '2022-12-08 09:02:00',
-            'updated_at' => '2022-12-08 09:02:00'
-        ]);
+        foreach ($enrollments as $enrollment) {
+            if ($enrollment->status != EnrollmentStatusEnum::SUCCESS->name) {
+                continue;
+            }
+
+            $coursePrice = Course::find($enrollment->course_id)->price;
+            Receipt::create([
+                'enrollment_id' => $enrollment->id,
+                'payment_timestamp' => $enrollment->created_at,
+                'receipt_timestamp' => $enrollment->updated_at,
+                'description' => 'Course fee',
+                'amount' => $coursePrice,
+                'subtotal' => $coursePrice,
+                'total' => $coursePrice,
+                'created_at' => $enrollment->updated_at,
+                'updated_at' => $enrollment->updated_at
+            ]);
+        }
     }
 }
