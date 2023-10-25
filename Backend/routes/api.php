@@ -112,8 +112,9 @@ Route::group([
 
 ], function ($router) {
 
-    Route::get('getEvent', [TeacherController::class, 'getEvent']);
-    
+    Route::get('getEvent/{teacher}', [TeacherController::class, 'getEvent']);
+    Route::get('getTimeslot/{timeslot}', [TeacherController::class, 'getTimeslot']);
+    Route::get('getStudentAttend/{timeslot}', [TeacherController::class, 'getStudentAttends']);
     
 });
 
