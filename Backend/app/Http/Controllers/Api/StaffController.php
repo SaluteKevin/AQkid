@@ -36,7 +36,7 @@ class StaffController extends Controller
         ,'getAllCourses','filterStudent','getCourse'
         ,'allTimeslots','createTimeslot','getTimeslot'
         ,'getTimeslotStudents','addStudentAttendance','removeStudentAttendance'
-        ,'enrollmentNotPending']]);
+        ,'enrollmentNotPending','removeTimeslot']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -158,8 +158,26 @@ class StaffController extends Controller
         
     }
 
-    public function removeTimeslot() {
+    public function removeTimeslot(Timeslot $timeslot) {
+
+        $courseId = $timeslot->course_id;
         
+        $statusOk = Timeslot::deleteTimeslot($timeslot->id);
+
+        if ($statusOk) {
+
+            return response()->json([
+                'message' => "Successfully Delete Timeslot",
+                'course_id' => $courseId
+            ]);
+
+        }
+        
+        return response()->json([
+            'message' => "Failed to Deleted Timeslot",
+        ],422);
+        
+
     }
 
     public function getTimeslotStudents(Timeslot $timeslot) {
