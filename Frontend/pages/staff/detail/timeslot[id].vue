@@ -37,6 +37,29 @@
 
                 </dl>
             </div>
+            <div class="px-4 py-5 flex flex-col">
+                <div class="w-64">
+                    <button v-on:click="showRemove = !showRemove"
+                        class="w-full bg-gray-500 text-white hover:bg-red-500 active:bg-red-600 font-bold uppercase text-base px-8 py-3 rounded shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+                        Remove Timeslot
+                    </button>
+
+                    <div v-if="showRemove" class="w-full flex">
+                        <button v-on:click="removeTimeslot"
+                            class="bg-red-500 w-1/2 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+                            Confirm
+                        </button>
+                        <button v-on:click="showRemove = false"
+                            class="bg-gray-500 w-1/2 text-white active:bg-green-500 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            type="button">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+
+
+
+            </div>
         </div>
     </div>
 
@@ -117,6 +140,30 @@ if (timeslotResponse.value) {
     if (timeslotError.value) {
         console.log(timeslotError.value)
     }
+}
+
+
+// remove timeslot
+
+const showRemove = ref(false);
+
+async function removeTimeslot() {
+
+    const { data: removeResponse, error: removeError } = await useApiFetch(`api/staff/removeTimeslot/${route.params.id}`, {
+        method: "POST"
+    });
+
+    if (removeResponse.value) {
+
+        await navigateTo(`/staff/detail/course${removeResponse.value.course_id}`);
+
+    } else {
+
+        if (removeError.value) {
+            console.log(removeError.value)
+        }
+    }
+
 }
 
 
