@@ -101,6 +101,7 @@ Route::group([
     Route::get('enrolls/{enrollment}', [StaffController::class, 'enrollmentRequestReview']);
     Route::post('acceptEnroll/{enrollment}', [StaffController::class,'acceptEnrollment']);
     Route::post('rejectEnroll/{enrollment}', [StaffController::class,'rejectEnrollment']);
+    Route::get('historyEnrollment', [StaffController::class, 'enrollmentNotPending']);
 });
 
 Route::group([

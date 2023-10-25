@@ -167,11 +167,12 @@ class Enrollment extends Model
         return $enrollment;
     }
 
-    public static function getEnrollmentNotPending() {
+    public static function getEnrollmentNotPending(): Paginator 
+    {
 
         $enrollmentIds = Enrollment::where('status',EnrollmentStatusEnum::PENDING->name)->pluck('id');
 
-        $enrollmentsNotInQuery = Enrollment::whereNotIn('id', $enrollmentIds)->get();
+        $enrollmentsNotInQuery = Enrollment::whereNotIn('id', $enrollmentIds)->paginate(5);
 
         return $enrollmentsNotInQuery;
 

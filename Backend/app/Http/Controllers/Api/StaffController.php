@@ -95,7 +95,9 @@ class StaffController extends Controller
 
     public function enrollmentNotPending() {
 
-        return Enrollment::getEnrollmentNotPending();
+        $enrollments = Enrollment::getEnrollmentNotPending();
+        $enrollmentsWithUser = Enrollment::getEnrollmentWithUserPaginate($enrollments);
+        return $enrollmentsWithUser;
     }
 
     public function acceptEnrollment(Enrollment $enrollment,Request $request) {
