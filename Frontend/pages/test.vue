@@ -43,6 +43,7 @@ onUnmounted(() => {
 
 
 <template>
+  <img :src="`http://localhost:80/storage/users/21/profile.jpg`" alt="">
   <section class="section flex-center column blue">
     <h1>Basic ScrollTrigger in Nuxt 3</h1>
     <h2>Scroll down to see the magic happen!!</h2>

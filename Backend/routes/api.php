@@ -103,6 +103,9 @@ Route::group([
     Route::post('acceptEnroll/{enrollment}', [StaffController::class,'acceptEnrollment']);
     Route::post('rejectEnroll/{enrollment}', [StaffController::class,'rejectEnrollment']);
     Route::get('historyEnrollment', [StaffController::class, 'enrollmentNotPending']);
+
+    // refund
+    Route::get('allUserRequests', [StaffController::class, 'allUserRequests']);
 });
 
 Route::group([

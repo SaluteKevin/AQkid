@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Course;
 use App\Models\Enrollment;
+use App\Models\UserRequest;
 use App\Models\Enums\EnrollmentStatusEnum;
 use App\Models\Enums\UserRoleEnum;
 use App\Models\Timeslot;
@@ -36,7 +37,7 @@ class StaffController extends Controller
         ,'getAllCourses','filterStudent','getCourse'
         ,'allTimeslots','createTimeslot','getTimeslot'
         ,'getTimeslotStudents','addStudentAttendance','removeStudentAttendance'
-        ,'enrollmentNotPending','removeTimeslot']]);
+        ,'enrollmentNotPending','removeTimeslot','allUserRequests']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -343,4 +344,13 @@ class StaffController extends Controller
         
     }
 
+
+
+
+    // refund
+
+    public function allUserRequests() {
+
+        return UserRequest::get();
+    }
 }
