@@ -6,7 +6,8 @@ export const usePaginateStore = defineStore('paginate', {
             teacher_page: 1,
             student_page: 1,
             student_filter: 'all',
-            enroll_page:1      
+            enroll_page:1 ,
+            enrollHistory_page: 1     
     }
   },
   actions: {
@@ -24,6 +25,10 @@ export const usePaginateStore = defineStore('paginate', {
     
     async setEnrollPage(page: number) {
       this.enroll_page = page;
+    },
+
+    async setEnrollHistoryPage(page: number){
+      this.enrollHistory_page = page;
     }
   },
 	persist: true
