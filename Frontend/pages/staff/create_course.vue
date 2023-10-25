@@ -26,17 +26,56 @@
     <div class="flex font-semibold mt-2"> 
         <div class="mr-24">
             <span class="text-xl">Quota</span>
-            <div class="bg-orange-300 rounded-md px-4 py-1 mt-2">dropdown</div>
+            <div class="relative group">
+        
+                <div v-click-outside="clickOutside" class="relative">
+                        <button v-on:click="open = !open" class="bg-orange-300 rounded-md px-4 py-1 mt-2">
+                        <span>Amount: 1</span>
+                        <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div v-if="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute left-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
+                        <div v-on:click="open = !open" class="cursor-pointer px-2 py-2 bg-white hover:bg-gray-200">
+                            <button class="px-1 py-2">
+                                1
+                            </button>
+                        </div>
+                        <div v-on:click="open = !open" class="cursor-pointer px-2 py-2 bg-white hover:bg-gray-200">
+                            <button class="px-1 py-2">
+                                2
+                            </button>
+                        </div>
+                        <div v-on:click="open = !open" class="cursor-pointer px-2 py-2 bg-white hover:bg-gray-200">
+                            <button class="px-1 py-2">
+                                3
+                            </button>
+                        </div>
+                        <div v-on:click="open = !open" class="cursor-pointer px-2 py-2 bg-white hover:bg-gray-200">
+                            <button class="px-1 py-2">
+                                4
+                            </button>
+                        </div>
+                        <div v-on:click="open = !open" class="cursor-pointer px-2 py-2 bg-white hover:bg-gray-200">
+                            <button class="px-1 py-2">
+                                5
+                            </button>
+                        </div>
+                        </div>
+                </div>  
+
+            </div>
         </div>
+
+
         <div class="mr-24">
             <span class="text-xl">Capacity</span>
-            <div class="bg-orange-300 rounded-md px-4 py-1 mt-2">dropdown</div>
+            
         </div>
         <div>
             <span class="text-xl">Age</span>
             <div class="bg-orange-300 rounded-md px-4 py-1 mt-2">dropdown</div>
         </div>
     </div>
+    
     
     <div class="flex font-semibold mt-6 bg-orange-100 px-4 pb-6 pt-2">
         <div class="mr-24">
@@ -72,6 +111,12 @@ import interactionPlugin from '@fullcalendar/interaction'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import dayjs from 'dayjs';
+
+const open = ref(false);
+
+const clickOutside = () => {
+  open.value = false;
+};
 
 const calendarOptions = ref({
   plugins: [interactionPlugin, timeGridPlugin, dayGridPlugin],
