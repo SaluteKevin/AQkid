@@ -32,6 +32,11 @@
                 <div>
                 </div>
                 </p>
+                <label class="my-4 block text-xl font-semibold">Request Status<br>
+                                    <span v-if="refund.status == 'PENDING'" class="text-xl text-yellow-500">{{refund.status}}</span>
+                                    <span v-if="refund.status == 'APPROVED'" class="text-xl text-green-500">{{refund.status}}</span>
+                                    <span v-if="refund.status == 'REJECTED'" class="text-xl text-red-500">{{refund.status}}</span>
+                </label>
                 <div v-if="refund.status == 'PENDING'" class="mt-8">
                     <span class="title-font font-medium text-2xl text-gray-900">Refund amount : ${{ refund.course_price }}
                         BAHT</span>

@@ -36,6 +36,14 @@
                                         Date(enroll.created_at)) }}</span>
                                 </label>
                             </div>
+
+                            <div class="mb-3">
+                                <label class="mb-2 block text-xl font-semibold">Request Status<br>
+                                    <span v-if="enroll.status == 'PENDING'" class="text-xl text-yellow-500">{{enroll.status}}</span>
+                                    <span v-if="enroll.status == 'SUCCESS'" class="text-xl text-green-500">{{enroll.status}}</span>
+                                    <span v-if="enroll.status == 'FAILED'" class="text-xl text-red-500">{{enroll.status}}</span>
+                                </label>
+                            </div>
                         </div>
                         <div class="h-auto w-full justify-center grid">
                             <img src="/images/AQKids_logo.png" class="object-contain h-72 w-72 place-self-end">
@@ -45,7 +53,7 @@
 
 
 
-                    <div class="mb-3">
+                    <div class="mb-3" v-if="enroll.status == 'PENDING'">
                         <button v-on:click="showAccept"
                             class="mb-1.5 block w-full text-center text-white bg-green-600 hover:bg-green-700 px-2 py-1.5 rounded-md">
                             Accept
@@ -69,10 +77,12 @@
                     </div>
 
                 </div>
+                <a :href="`${config.public.apiBaseURL}storage/users/21/profile_image.jpg`" target="_blank">
                 <div class="flex flex-wrap shadow-xl">
                     <img class="w-full h-full object-contain rounded-r-md"
                         src="https://media.discordapp.net/attachments/711217095681245235/1163756633248256020/screenshot_20231017_153305.png?ex=6540bbd2&is=652e46d2&hm=ed685f35d47d877d7d50a69b0352335448310412b882c321fe23a09c0316768b&=&width=324&height=560">
                 </div>
+                </a>
             </div>
 
 
@@ -93,26 +103,31 @@
 </template>
 
 <script setup lang="ts">
-
+const config = useRuntimeConfig();
 definePageMeta({ layout: "staff" })
 
 const route = useRoute();
 
 const enroll = ref({})
 
-const { data: enrollResponse, error: enrollError } = await useApiFetch(`api/staff/enrolls/${route.params.id}`, {});
+async function fetchEnroll() {
+    const { data: enrollResponse, error: enrollError } = await useApiFetch(`api/staff/enrolls/${route.params.id}`, {});
 
-if (enrollResponse.value) {
-    enroll.value = enrollResponse.value;
+    if (enrollResponse.value) {
+        enroll.value = enrollResponse.value;
 
-    console.log(enroll.value)
-}
-
-else {
-    if (enrollError.value) {
-
+        console.log(enroll.value)
     }
+
+    else {
+        if (enrollError.value) {
+
+        }
+    }
+
 }
+
+await fetchEnroll();
 
 function formatDateTime(date) {
     const year = date.getFullYear();
@@ -145,7 +160,7 @@ async function AcceptEnroll() {
     });
 
     if (enrollResponse) {
-        await navigateTo(`/staff/request/`);
+        await fetchEnroll();
     }
 
     else {
@@ -173,7 +188,7 @@ async function RejectEnroll() {
     });
 
     if(enrollResponse){
-        await navigateTo(`/staff/request/`);
+        await fetchEnroll();
     }
 
     else {
