@@ -174,7 +174,7 @@ class Enrollment extends Model
 
         $enrollmentIds = Enrollment::where('status',EnrollmentStatusEnum::PENDING->name)->pluck('id');
 
-        $enrollmentsNotInQuery = Enrollment::whereNotIn('id', $enrollmentIds)->orderBy('created_at', 'desc')->paginate(5);
+        $enrollmentsNotInQuery = Enrollment::whereNotIn('id', $enrollmentIds)->orderBy('created_at', 'desc')->paginate(10);
 
         return $enrollmentsNotInQuery;
 
