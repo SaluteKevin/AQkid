@@ -1,18 +1,7 @@
 <template>
-    <div class="p-16 min-h-screen bg-gradient-to-b to-purple-100 to-60% from-[#bce1ff] from-10%">
+    <div class="p-16 min-h-screen bg-gradient-to-b to-emerald-200 to-60% from-[#bce1ff] from-10%">
     <h2 class="my-4 text-4xl font-semibold text-gray-600">Requests</h2>
 			<div class="pb-2 flex items-center justify-between text-gray-600">
-				<!-- Header -->
-				<div>
-					<span>
-						<span>
-                            <span class="text-green-400">
-                                {{ enrollCount }}
-                            </span>
-                            Request(s)
-                        </span>
-					</span>
-				</div>
 
 			</div>
 
@@ -20,8 +9,8 @@
         <div class="flex flex-col gap-2 ">
             <div
 				v-for="enroll in showEnrolls" :key="enroll.number"
-				class="mt-2 flex  px-4 py-4 justify-between bg-white
-				 shadow-2xl rounded-lg w-full">
+				class="flex  px-4 py-4 justify-between bg-white
+				 shadow-lg w-full">
 				<!-- Card -->
 
 				
@@ -33,7 +22,7 @@
 						alt="" />
 
 					<div
-						class="ml-4 flex flex-col capitalize text-black place-content-center">
+						class="ml-4 flex flex-col capitalize text-black place-content-center w-1/2">
 						<span>name</span>
 						<span class="mt-2 text-gray-600">
 							{{ enroll.user.first_name }} {{ enroll.user.last_name }}

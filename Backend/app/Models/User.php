@@ -106,7 +106,7 @@ class User extends Authenticatable implements JWTSubject
      */
     public static function allWithRolePaginate(UserRoleEnum $userRole): Paginator
     {
-        return User::where('role', $userRole->name)->paginate(5);
+        return User::where('role', $userRole->name)->paginate(10);
     }
 
     /**
@@ -269,7 +269,7 @@ class User extends Authenticatable implements JWTSubject
 
         if ($type == 'active') {
 
-            $filteredUsers = User::whereIn('id', $students)->paginate(5);
+            $filteredUsers = User::whereIn('id', $students)->paginate(10);
 
             foreach ($filteredUsers as $student) {
 
@@ -294,7 +294,7 @@ class User extends Authenticatable implements JWTSubject
 
         if ($type == 'inactive') {
 
-            $usersNotInQuery = User::whereNotIn('id', $students)->where('role',UserRoleEnum::STUDENT->name)->paginate(5);
+            $usersNotInQuery = User::whereNotIn('id', $students)->where('role',UserRoleEnum::STUDENT->name)->paginate(10);
 
             foreach ($usersNotInQuery as $student) {
 

@@ -1,9 +1,10 @@
 <template>
-    <div class="p-16 min-h-screen bg-gradient-to-b to-purple-100 to-60% from-[#bce1ff] from-10%">
+
+    <div class="p-16 min-h-screen bg-gradient-to-b to-orange-200 to-60% from-[#bce1ff] from-10%">
         <div class="flex justify-between items-center">
-            <h2 class="my-4 text-4xl font-semibold text-gray-600">Teacher List</h2>
+            <h2 class="my-4 text-4xl font-semibold text-gray-600 w-1/3">Teacher List</h2>
             <label
-                class="relative bg-white min-w-sm max-w-2xl flex flex-col md:flex-row items-center justify-center border  px-2 rounded-2xl gap-2 shadow-2xl focus-within:border-gray-300"
+                class="relative bg-white min-w-sm max-w-2xl flex flex-col md:flex-row items-center justify-center border  px-2 rounded-2xl gap-2 shadow-2xl focus-within:border-gray-300 w-1/2 ml-6"
                 for="search-bar">
                 <input id="search-bar" placeholder="teacher name" v-on:change="handleSearchTeacher"
                     class="px-6 py-2 w-full rounded-md flex-1 outline-none bg-white">
