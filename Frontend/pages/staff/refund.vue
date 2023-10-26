@@ -11,7 +11,7 @@
             <div
 				v-for="refund in showRequests" :key="refund.id"
 				class="flex  px-4 py-4 justify-between bg-white
-				 shadow-lg rounded-lg w-full">
+				 shadow-lg rounded-lg w-full hover:scale-105 duration-150">
 				<!-- Card -->
 
 				

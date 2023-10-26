@@ -63,23 +63,23 @@
 
         <!-- card -->
         
-            <div class="flex flex-col gap-2 overflow-y-auto" >
+            <div class="flex flex-col gap-2" >
 
                 <div v-for="teacher in showTeachers" :key="teacher.username"
-                    class="mt-2 flex  px-4 py-4 justify-between bg-white
-                    shadow-2xl rounded-lg cursor-pointer w-full">
+                    class="flex  px-4 py-4 justify-between bg-white
+                    shadow-lg rounded-lg w-full hover:scale-105 duration-150">
                     <!-- Card -->
 
                     
                         <!-- Left side -->
 
                         <img
-                            class="h-12 w-12 rounded-full object-cover"
+                            class="h-24 w-24 rounded-full object-cover"
                             src="https://inews.gtimg.com/newsapp_match/0/8693739867/0"
                             alt="" />
 
                         <div
-                            class="ml-4 flex flex-col capitalize text-black">
+                            class="ml-4 mt-4 flex flex-col capitalize text-black w-1/5">
                             <span>name</span>
                             <span class="mt-2 text-gray-600">
                                 {{teacher.first_name}} {{ teacher.middle_name }} {{teacher.last_name }}
@@ -87,7 +87,7 @@
                         </div>
 
                         <div
-                            class="ml-12  flex flex-col capitalize text-black">
+                            class="ml-12 mt-4 flex flex-col capitalize text-black w-1/5">
                             <span>Phone Number</span>
                             <span class="mt-2 text-gray-600">
                                 {{teacher.phone_number}}
@@ -95,17 +95,18 @@
 
                         </div>
 
-                        <div
-                            class="mr-16 flex flex-col text-black">
-                            <span>Email</span>
-                            <span class="mt-2 text-gray-600">
-                                {{teacher.email}}
+                        <div class="w-1/5 mt-4">
+                            <span>Email: </span>
+                            <span v-if="teacher.email" class="mr-2 text-gray-600">
+                                {{ teacher.email }}
                             </span>
-                            
+                            <span v-else="student.email" class="mr-2 text-gray-600">
+                                none
+                            </span>
                         </div>
 
                         <div
-                            class="ml-12 flex flex-col capitalize text-black">
+                            class="ml-12 mt-4 flex flex-col capitalize text-black w-1/5">
                             <span>All Courses</span>
                             <span class="text-red-400" v-if="teacher.course_count == 0">
                                 No courses
@@ -117,11 +118,10 @@
 
 
                         <div
-                            class="mr-16 flex flex-col capitalize text-gray-600">
-                            <span>Profile info</span>
+                            class="flex flex-col capitalize text-gray-600 w-1/6 m-auto">
                             
                             <nuxt-link :to="`/staff/detail/teacher${teacher.id}`">
-                                <span class="text-gray-600">see more...</span>
+                                <button class="text-white rounded-md bg-orange-500 w-full p-2">view profile</button>
                             </nuxt-link>
                         </div>
 

@@ -11,7 +11,7 @@
             <div
 				v-for="enroll in showEnrollsHistory" :key="enroll.number"
 				class="flex  px-2 py-2 justify-between bg-white
-				 shadow-lg w-full">
+				 shadow-lg w-full hover:scale-105 duration-150">
 				<!-- Card -->
 
 				
