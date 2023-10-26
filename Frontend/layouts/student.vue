@@ -70,7 +70,7 @@
     </div>
     
 <div>
-    <slot />>
+    <slot />
 </div>
     <!-- Slider Component Container -->
 

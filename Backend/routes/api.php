@@ -123,6 +123,9 @@ Route::group([
     Route::get('getEvent/{teacher}', [TeacherController::class, 'getEvent']);
     Route::get('getTimeslot/{timeslot}', [TeacherController::class, 'getTimeslot']);
     Route::get('getStudentAttend/{timeslot}', [TeacherController::class, 'getStudentAttends']);
+    Route::post('attendStudent/{timeslot}/{student}', [TeacherController::class, 'studentAttend']);
+    Route::post('absentStudent/{timeslot}/{student}', [TeacherController::class, 'studentAbsent']);
+   
     
 });
 
