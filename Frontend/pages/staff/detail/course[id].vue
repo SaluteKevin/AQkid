@@ -518,8 +518,6 @@ if (courseResponse.value) {
 
     let first = 1;
 
-    console.log(course.value);
-
     for (const event in courseResponse.value.timeslots) {
 
         if (first != 0 && (courseResponse.value.timeslots[event].author == true)) {

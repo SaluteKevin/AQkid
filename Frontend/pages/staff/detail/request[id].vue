@@ -64,16 +64,24 @@
                             <button v-on:click="AcceptEnroll" class="w-1/5 h-16 bg-orange-500 text-white rounded-md hover:bg-orange-700 mr-4">Submit</button>
                         </div>
 
+                        <p class="text-red-500" >
+                                    {{ formError.accept }}
+                        </p>
+
 
                         <button v-on:click="showReject"
                             class="mb-1.5 flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
                             Reject
                         </button>
 
-                        <div v-if="showRejectInput" class="flex gap-8 mb-8">
+                        <div v-if="showRejectInput" class="flex gap-8 mb-4">
                             <input class="bg-gray-200 py-1.5 px-4 border-1 border w-4/5" type="text" placeholder="** Please provide a reason for rejecting this enrollment." v-model="rejectComment">
                             <button v-on:click="RejectEnroll" class="w-1/5 h-16 bg-orange-500 text-white rounded-md hover:bg-orange-700 mr-4">Submit</button>
                         </div>
+
+                        <p class="text-red-500" >
+                                    {{ formError.reject }}
+                        </p>
                     </div>
 
                 </div>
@@ -116,7 +124,6 @@ async function fetchEnroll() {
     if (enrollResponse.value) {
         enroll.value = enrollResponse.value;
 
-        console.log(enroll.value)
     }
 
     else {
@@ -142,6 +149,12 @@ function formatDateTime(date) {
 }
 
 
+//
+const formError = ref({
+    accept: "",
+    reject: ""
+})
+
 
 const showAcceptInput = ref(false);
 const acceptComment = ref(null);
@@ -159,11 +172,13 @@ async function AcceptEnroll() {
         }
     });
 
-    if (enrollResponse) {
+    if (enrollResponse.value) {
         await fetchEnroll();
     }
 
     else {
+
+        formError.value.accept = enrollError.value?.data.message;
 
     }
 
@@ -172,6 +187,7 @@ async function AcceptEnroll() {
 
 const showRejectInput = ref(false);
 const rejectComment = ref(null);
+
 
 async function showReject() {
     showRejectInput.value = !showRejectInput.value;
@@ -187,11 +203,13 @@ async function RejectEnroll() {
         }
     });
 
-    if(enrollResponse){
+    if(enrollResponse.value){
         await fetchEnroll();
     }
 
     else {
+        
+        formError.value.reject = enrollError.value?.data.message;
 
     }
 }

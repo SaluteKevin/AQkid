@@ -118,8 +118,6 @@ if (timeslotResponse.value) {
 
     }
 
-    console.log(dayjs(allTimeslots.value[event].datetime).day())
-
     if (dayjs(allTimeslots.value[event].datetime).day() == 0) {
       temp["color"] = 'red';
     }
@@ -203,7 +201,7 @@ async function handleEventClick(arg) {
 const { data: courseResponse, error: courseError } = await useApiFetch("api/staff/allCourses", {});
 
 if (courseResponse.value) {
-  console.log(courseResponse.value)
+  
 }
 
 
