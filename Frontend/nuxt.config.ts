@@ -5,7 +5,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBaseURL: "http://localhost/"
+      apiBaseURL: "http://localhost/",
+      imageBaseURL: "http://localhost/storage/"
     }
   },
   modules: [
