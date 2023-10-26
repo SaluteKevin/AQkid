@@ -109,6 +109,7 @@ Route::group([
     Route::get('allUserRequestHistories', [StaffController::class, 'allUserRequestHistories']);
     Route::post('acceptUserRequest/{userRequest}', [StaffController::class,'acceptRequest']);
     Route::post('rejectUserRequest/{userRequest}', [StaffController::class,'rejectRequest']);
+    Route::get('getUserRequest/{userRequest}',[StaffController::class, 'userRequestReview']);
   
 });
 

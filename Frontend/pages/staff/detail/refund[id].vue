@@ -1,0 +1,167 @@
+<template>
+    <div class="container px-5 py-24 mx-auto">
+        <div class="lg:w-4/5 mx-auto flex flex-wrap">
+            <a :href="`${config.public.apiBaseURL}storage/users/21/profile_image.jpg`" target="_blank"
+                class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200">
+                <img alt="ecommerce" src="https://www.whitmorerarebooks.com/pictures/medium/2465.jpg">
+            </a>
+
+            <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                <h2 class="text-sm title-font text-gray-500 tracking-widest">Refund Title</h2>
+                <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ refund.title }}</h1>
+
+                <p class="leading-relaxed mt-4">
+                <div class="card">
+                    <h2><span class="text-gray-500">username :</span> {{ refund.user.username }}</h2>
+                    <div class="title title--epic"><span class="text-gray-500">Fullname :</span> {{ refund.user.first_name }}
+                        {{ refund.user.last_name }}</div>
+                    <div class="title title--epic"><span class="text-gray-500">Email :</span>
+                        <span v-if="refund.user.email">{{ refund.user.email }}</span>
+                        <span v-else>none</span>
+                    </div>
+                    <div class="title title--epic"><span class="text-gray-500">Phone No. :</span>
+                        {{ refund.user.phone_number }}
+                    </div>
+                    <div class="title title--epic"><span class="text-gray-500">Requested at :</span>
+                        {{ formatDateTime(new
+                            Date(refund.created_at)) }}
+                    </div>
+
+
+                </div>
+                <div>
+                </div>
+                </p>
+                <div v-if="refund.status == 'PENDING'" class="mt-8">
+                    <span class="title-font font-medium text-2xl text-gray-900">Refund amount : ${{ refund.course_price }}
+                        BAHT</span>
+                    <button v-on:click="showAccept"
+                        class="mb-1.5 block w-full text-center text-white bg-green-600 hover:bg-green-700 px-2 py-1.5 rounded-md">
+                        Accept
+                    </button>
+
+                    <div v-if="showAcceptInput" class="flex gap-8 mb-8">
+                        <input class="bg-gray-200 py-1.5 px-4 border-1 border w-4/5" type="text"
+                            placeholder="Comment (Optional)" v-model="acceptComment">
+                        <button v-on:click="acceptRefund"
+                            class="w-1/5 h-16 bg-orange-500 text-white rounded-md hover:bg-orange-700 mr-4">Submit</button>
+                    </div>
+
+
+                    <button v-on:click="showReject"
+                        class="mb-1.5 flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
+                        Reject
+                    </button>
+
+                    <div v-if="showRejectInput" class="flex gap-8 mb-8">
+                        <input class="bg-gray-200 py-1.5 px-4 border-1 border w-4/5" type="text"
+                            placeholder="** Please provide a reason for rejecting this enrollment." v-model="rejectComment">
+                        <button v-on:click="rejectRefund"
+                            class="w-1/5 h-16 bg-orange-500 text-white rounded-md hover:bg-orange-700 mr-4">Submit</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script setup lang="ts">
+
+definePageMeta({ layout: "staff" })
+const config = useRuntimeConfig();
+
+const route = useRoute();
+
+const refund = ref({})
+
+async function fetchRefund() {
+    const { data: refundResponse, error: refundError } = await useApiFetch(`api/staff/getUserRequest/${route.params.id}`, {});
+
+    if (refundResponse.value) {
+        refund.value = refundResponse.value;
+
+    }
+
+    else {
+        if (refundError.value) {
+
+        }
+    }
+}
+
+await fetchRefund();
+
+function formatDateTime(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-based
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours() % 12 || 12).padStart(2, '0'); // Convert to 12-hour format
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const amOrPm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+    const formattedDateTime = `${day}/${month}/${year} ${hours}:${minutes} ${amOrPm}`;
+    return formattedDateTime;
+}
+
+
+// accept
+
+const showAcceptInput = ref(false);
+const acceptComment = ref(null);
+
+async function showAccept() {
+    showAcceptInput.value = !showAcceptInput.value;
+    showRejectInput.value = false;
+}
+
+async function acceptRefund() {
+    const { data: refundResponse, error: refundError } = await useApiFetch("api/staff/acceptUserRequest/" + refund.value.id, {
+        method: "POST",
+        body: {
+            comment: acceptComment.value
+        }
+    });
+
+    if (refundResponse) {
+        await fetchRefund();
+    }
+
+    else {
+
+    }
+
+
+}
+
+
+// reject
+
+const showRejectInput = ref(false);
+const rejectComment = ref(null);
+
+async function showReject() {
+    showRejectInput.value = !showRejectInput.value;
+    showAcceptInput.value = false;
+}
+
+
+async function rejectRefund() {
+
+    const { data: refundResponse, error: refundError } = await useApiFetch("api/staff/rejectUserRequest/" + refund.value.id, {
+        method: "POST",
+        body: {
+            comment: rejectComment.value
+        }
+    });
+
+    if (refundResponse) {
+        await fetchRefund();
+    }
+
+    else {
+
+    }
+}
+
+</script>

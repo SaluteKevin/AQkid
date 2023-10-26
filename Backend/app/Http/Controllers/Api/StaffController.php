@@ -38,7 +38,8 @@ class StaffController extends Controller
         ,'allTimeslots','createTimeslot','getTimeslot'
         ,'getTimeslotStudents','addStudentAttendance','removeStudentAttendance'
         ,'enrollmentNotPending','removeTimeslot','allUserRequests'
-        ,'allUserRequests','allUserRequestHistories']]);
+        ,'allUserRequestHistories','userRequestReview'
+        ,'acceptRequest','rejectRequest']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -349,6 +350,14 @@ class StaffController extends Controller
 
 
     // refund
+
+    public function userRequestReview(UserRequest $userRequest) {
+
+        $userRequestWithUser = UserRequest::getUserRequestWithUser($userRequest);
+
+        return $userRequestWithUser;
+
+    }
 
     public function allUserRequests() {
 

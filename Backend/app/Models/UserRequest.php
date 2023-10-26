@@ -23,6 +23,15 @@ class UserRequest extends Model
         return $this->belongsTo(Course::class);
     }
 
+    public static function getUserRequestWithUser(UserRequest $userRequest): UserRequest
+    {
+        $user = User::find($userRequest->originator_id);
+        $userRequest->user = $user;
+
+        $userRequest->course_price = Course::find($userRequest->course_id)->price;
+        return $userRequest;
+    }
+
     public static function getUserRequestsWithUserPaginate(Paginator $userRequests): Paginator
     {
 
@@ -72,7 +81,7 @@ class UserRequest extends Model
 
         $this->status = $userRequestStatusEnum->name;
         $this->review_comment = $reviewComment;
-        
+
         $statusOk = $this->save();
 
         return $statusOk;

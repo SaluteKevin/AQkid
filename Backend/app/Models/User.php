@@ -347,7 +347,7 @@ class User extends Authenticatable implements JWTSubject
 
         $statusOk = $user->save();
 
-        $image_path = FileService::getFileManager()->uploadFile('users/' . $user->id . "/" ."profile.jpg",$imagefile);
+        $image_path = FileService::getFileManager()->uploadFile('users/' . $user->id . "/" ."profile_image.jpg",$imagefile);
 
         if ($image_path != false ) {
 
@@ -384,7 +384,7 @@ class User extends Authenticatable implements JWTSubject
 
         $statusOk = false;
 
-        $image_path = FileService::getFileManager()->uploadFile('users/' . $user->id . "/" ."profile.jpg",$imagefile);
+        $image_path = FileService::getFileManager()->uploadFile('users/' . $user->id . "/" ."profile_image.jpg",$imagefile);
 
         if ($image_path != false ){
 

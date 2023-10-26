@@ -49,7 +49,7 @@
 					</div>
                     
                     <div class="mr-16 flex place-content-center flex-col">
-						<NuxtLink :to="`/staff/detail/request${refund.id}`">
+						<NuxtLink :to="`/staff/detail/refund${refund.id}`">
 						<div class="text-white bg-orange-500 hover:bg-orange-700 py-2 px-10 rounded-md mb-1">View detail</div>
                         </NuxtLink>
 					</div>
@@ -143,6 +143,8 @@ async function onChangePage(page: any) {
 
 
 await fetchRequests(paginate.refund_page);
+
+
 
 
 </script>
