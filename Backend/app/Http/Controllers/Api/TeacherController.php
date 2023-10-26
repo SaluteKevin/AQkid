@@ -25,7 +25,8 @@ class TeacherController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getEvent','getTimeslot','getStudentAttends','studentAttend','studentAbsent']]);
+        $this->middleware('auth:api', ['except' => ['getEvent','getTimeslot','getStudentAttends','studentAttend','studentAbsent',
+        'getTeacherCourses']]);
     }
 
     public function getEvent(User $teacher){
@@ -90,6 +91,12 @@ class TeacherController extends Controller
         return response()->json([
             'message' => "Failed to Absent Student",
         ],422);
+
+    }
+
+    public function getTeacherCourses(User $teacher) {
+
+        return Course::where('teacher_id',$teacher->id)->get()->sortby('created_at');
 
     }
 
