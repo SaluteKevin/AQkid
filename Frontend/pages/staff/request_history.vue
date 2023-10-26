@@ -10,8 +10,8 @@
         <div class="flex flex-col gap-2 ">
             <div
 				v-for="enroll in showEnrollsHistory" :key="enroll.number"
-				class="mt-2 flex  px-4 py-4 justify-between bg-white
-				 shadow-2xl rounded-lg w-full">
+				class="flex  px-4 py-4 justify-between bg-white
+				 shadow-lg w-full">
 				<!-- Card -->
 
 				
@@ -23,7 +23,7 @@
 						alt="" />
 
 					<div
-						class="ml-4 flex flex-col capitalize text-black place-content-center">
+						class="ml-4 flex flex-col capitalize text-black place-content-center w-1/2">
 						<span>name</span>
 						<span class="mt-2 text-gray-600">
 							{{ enroll.user.first_name }} {{ enroll.user.last_name }}

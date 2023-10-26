@@ -98,14 +98,14 @@
                 <img class="h-12 w-12 rounded-full object-cover" src="https://inews.gtimg.com/newsapp_match/0/8693739867/0"
                     alt="" />
 
-                <div class="ml-4 flex flex-col capitalize text-black">
+                <div class="ml-4 flex flex-col capitalize text-black w-1/5">
                     <span>name</span>
                     <span class="mt-2 text-gray-600">
                         {{ student.username }}
                     </span>
                 </div>
 
-                <div class="ml-12  flex flex-col capitalize text-black">
+                <div class="ml-12  flex flex-col capitalize text-black w-1/5">
                     <span>Phone Number</span>
                     <span class="mt-2 text-gray-600">
                         {{ student.phone_number }}
@@ -113,7 +113,7 @@
 
                 </div>
 
-                <div class="mr-16 flex flex-col text-black">
+                <div class="mr-16 flex flex-col text-black w-1/5">
                     <span>Email</span>
                     <span class="mt-2 text-gray-600">
                         {{ student.email }}

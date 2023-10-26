@@ -23,7 +23,7 @@
 						alt="" />
 
 					<div
-						class="ml-4 flex flex-col capitalize text-black place-content-center">
+						class="ml-4 flex flex-col capitalize text-black place-content-center w-1/2">
 						<span>name</span>
 						<span class="mt-2 text-gray-600">
 							{{ refund.user.first_name }} {{ refund.user.last_name }}
