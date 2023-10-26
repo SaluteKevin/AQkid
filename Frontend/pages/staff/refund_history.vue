@@ -10,8 +10,8 @@
         <div class="flex flex-col gap-2 ">
             <div
 				v-for="refund in showRequests" :key="refund.id"
-				class="mt-2 flex  px-4 py-4 justify-between bg-white
-				 shadow-2xl rounded-lg w-full">
+				class="flex  px-4 py-4 justify-between bg-white
+				 shadow-lg rounded-lg w-full">
 				<!-- Card -->
 
 				

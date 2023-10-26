@@ -88,40 +88,40 @@
 
         <!-- card -->
         <div class="flex flex-col gap-2">
-            <div v-for="student in showStudents" :key="student.username" class="mt-2 flex  px-4 py-4 justify-between bg-white
-                    shadow-2xl rounded-lg cursor-pointer w-full">
+            <div v-for="student in showStudents" :key="student.username" class="flex  px-2 py-2 justify-between bg-white
+                    shadow-lg cursor-pointer w-full">
                 <!-- Card -->
 
 
                 <!-- Left side -->
 
-                <img class="h-12 w-12 rounded-full object-cover" src="https://inews.gtimg.com/newsapp_match/0/8693739867/0"
+                <img class="h-14 w-14 rounded-full object-cover" src="https://inews.gtimg.com/newsapp_match/0/8693739867/0"
                     alt="" />
 
-                <div class="ml-4 flex flex-col capitalize text-black w-1/5">
-                    <span>name</span>
-                    <span class="mt-2 text-gray-600">
+                <div class="ml-4 mt-4 flex capitalize text-black w-1/4">
+                    <span class="mr-2">name:</span>
+                    <span class="text-gray-600">
                         {{ student.username }}
                     </span>
                 </div>
 
-                <div class="ml-12  flex flex-col capitalize text-black w-1/5">
-                    <span>Phone Number</span>
-                    <span class="mt-2 text-gray-600">
+                <div class="ml-12 mt-1 capitalize text-black w-1/4">
+                    <span class="mr-2">Phone Number: </span>
+                    <span class="text-gray-600">
                         {{ student.phone_number }}
-                    </span>
-
-                </div>
-
-                <div class="mr-16 flex flex-col text-black w-1/5">
-                    <span>Email</span>
-                    <span class="mt-2 text-gray-600">
+                    </span><br>
+                    <div>
+                        <span>Email: </span>
+                    <span v-if="student.email" class="mr-2 text-gray-600">
                         {{ student.email }}
                     </span>
-
+                    <span v-else="student.email" class="mr-2 text-gray-600">
+                        none
+                    </span>
+                    </div>
                 </div>
 
-                <div class="ml-12 flex flex-col capitalize text-black">
+                <div class="ml-12 flex flex-col capitalize text-black w-1/4">
                     <span>Active Courses</span>
                     <span class="text-red-400" v-if="student.courses_count == 0">
                                 No courses
