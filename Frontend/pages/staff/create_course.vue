@@ -108,27 +108,40 @@
         </div>
     </div>
     
-    
-    <div class="font-semibold mt-6 px-4 pb-6 pt-2 space-y-6">
-        <div class="grid grid-flow-col grid-cols-5">
-            <div class="pt-2">Start on</div>
-            <button class="bg-gray-300 rounded-md px-4 py-1 mt-2">dropdown</button>
+    <div class="flex-grow border-t border-gray-400 mt-6"></div>
+    <div class="font-semibold px-4 pb-6 pt-2 flex">
+        <div class="w-1/2">
+          <div class="grid grid-flow-col">
+            <div class="pt-2">Start on:
+            <button class="bg-gray-300 rounded-md px-4 py-1 mt-2 ml-5">
+              <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': openMinAge, 'rotate-0': !openMinAge}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </button>
+            </div>
+          </div>
+          <div class="grid grid-flow-col">
+              <div class="pt-2">Until:
+              <button class="bg-gray-300 rounded-md px-4 py-1 mt-2 ml-10">
+                <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': openMinAge, 'rotate-0': !openMinAge}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </button>
+              </div>
+          </div>
         </div>
-        <div class="grid grid-flow-col grid-cols-5">
-            <div class="pt-2">Until</div>
-            <button class="bg-gray-300 rounded-md px-4 py-1 mt-2">dropdown</button>
-        </div>
-    </div>
-    <div>
-        <div class="font-semibold">
-            Select Teacher
-            <button class="bg-orange-300 rounded-md px-2 py-1">dropdown</button>
-        </div>
+        <div class="w-1/2">
+          <div class="font-semibold">
+            Select Teacher: 
+            <button class="bg-gray-300 rounded-md px-4 py-1 mt-2 ml-10">
+              <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': openMinAge, 'rotate-0': !openMinAge}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </button>
+          </div>
 
-        <div class="mt-4 font-semibold">
-        Select Timeslot
-            <button class="bg-orange-300 rounded-md px-2 py-1">select time</button>
+          <div class="mt-4 font-semibold">
+          Select Timeslot:
+              <button class="bg-gray-300 rounded-md px-4 py-1 mt-2 ml-8">
+                <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': openMinAge, 'rotate-0': !openMinAge}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </button>
+          </div>
         </div>
+        
     </div>
     
     
