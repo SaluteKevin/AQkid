@@ -11,7 +11,7 @@
                             
                             <h1 class="text-xl font-bold">{{ user.value.username }}</h1>
                             <div class="mt-6 flex flex-wrap gap-4 justify-center">
-                                <NuxtLink href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" to="/auths/editprofile">Edit Profile</NuxtLink>
+                                <NuxtLink class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" to="/auths/editprofile">Edit Profile</NuxtLink>
                             </div>
                         </div>
                         <hr class="my-6 border-t border-gray-300">
