@@ -45,23 +45,30 @@ class StudentController extends Controller
     }
 
     public function enrollCourse(Course $course, User $user , Request $request){
-        
+
+        if( Course::availableSpotCount($course->id) == 0 ) {
+            return response()->json([
+                'message' => "Course is Fully pls call the admin",
+            ]);
+        }
+        if( Course::availableSpotCount($course->id) < 0 ) {
+            return response()->json([
+                'message' => "Course is Closed",
+            ]);
+        }
+
         if ($request->file('image_path')) {
 
             $path = $request->file('image_path')->store('uploads', 'public');
             $statusOk =  Enrollment::createEnrollment($user->id, $course->id, $path, EnrollmentStatusEnum::SUCCESS);
             if ($statusOk) {
                 return response()->json([
-                    'message' => "Successfully created User",
+                    'message' => "Successfully Register course",
                 ]);
             }
-
-            return response()->json([
-                'message' => "Failed to create User",
-            ],422);
         }
         return response()->json([
-            'message' => "Failed to Enroll Course",
+            'message' => "Failed to Register Course",
         ],422);
         
 
