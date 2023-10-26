@@ -9,7 +9,7 @@
     <!-- card -->
         <div class="flex flex-col gap-2 ">
             <div
-				v-for="enroll in showEnrollsHistory" :key="enroll.number"
+				v-for="refund in showRequests" :key="refund.id"
 				class="mt-2 flex  px-4 py-4 justify-between bg-white
 				 shadow-2xl rounded-lg w-full">
 				<!-- Card -->
@@ -26,7 +26,7 @@
 						class="ml-4 flex flex-col capitalize text-black place-content-center">
 						<span>name</span>
 						<span class="mt-2 text-gray-600">
-							{{ enroll.user.first_name }} {{ enroll.user.last_name }}
+							{{ refund.user.first_name }} {{ refund.user.last_name }}
 						</span>
 					</div>
 
@@ -34,7 +34,7 @@
 						class="ml-12  flex flex-col capitalize text-black place-content-center">
 						<span>Phone Number</span>
 						<span class="mt-2 text-gray-600">
-							{{ enroll.user.phone_number}}
+							{{ refund.user.phone_number}}
 						</span>
 
 					</div>
@@ -43,13 +43,13 @@
 						class="mr-16 flex flex-col text-black place-content-center">
 						<span>Request time</span>
 						<span class="mt-2 text-gray-600">
-							{{formatDateTime(new Date(enroll.created_at))}}
+							{{formatDateTime(new Date(refund.created_at))}}
 						</span>
 						
 					</div>
                     
                     <div class="mr-16 flex place-content-center flex-col">
-						<NuxtLink :to="`/staff/detail/request${enroll.id}`">
+						<NuxtLink :to="`/staff/detail/request${refund.id}`">
 						<div class="text-white bg-orange-500 hover:bg-orange-700 py-2 px-10 rounded-md mb-1">View detail</div>
                         </NuxtLink>
 					</div>
@@ -82,28 +82,28 @@ definePageMeta({layout: "staff"})
 
 // allTeachers
 
-const allEnrollHistory = ref({})
-const showEnrollsHistory = ref({})
+const allRequests = ref({})
+const showRequests = ref({})
 
-// await fetchEnrolls();
+// await fetchRequests();
 
-async function fetchEnrolls(page: number) {
+async function fetchRequests(page: number) {
 
-    const {data: enrollHistoryResponse, error: enrollHistoryError } = await useApiFetch("api/staff/historyEnrollment?page="+page, {});
+    const {data: requestsResponse, error: requestsError } = await useApiFetch("api/staff/allUserRequests?page="+page, {});
 
-    if (enrollHistoryResponse.value) {
+    if (requestsResponse.value) {
         
-        last_page.value = enrollHistoryResponse.value.last_page
+        last_page.value = requestsResponse.value.last_page
 
-        allEnrollHistory.value = enrollHistoryResponse.value.data;
+        allRequests.value = requestsResponse.value.data;
 
-        showEnrollsHistory.value = allEnrollHistory.value;
+        showRequests.value = allRequests.value;
 
     }
     else {
         
-        if (enrollHistoryError.value) {
-            console.log(enrollHistoryError.value);
+        if (requestsError.value) {
+            console.log(requestsError.value);
         }
 
     }
@@ -127,7 +127,7 @@ function formatDateTime(date) {
 import { usePaginateStore } from '~/stores/usePaginateStore'
 const paginate = usePaginateStore();
 
-const currentpage = ref(paginate.enrollHistory_page)
+const currentpage = ref(paginate.refund_page)
 const last_page = ref<Number>(0)
 
 async function onChangePage(page: any) {
@@ -135,14 +135,14 @@ async function onChangePage(page: any) {
     // console.log(page.value)
     // currentpage.value = page.value
 
-    await paginate.setEnrollHistoryPage(page.value);
+    await paginate.setRefundPage(page.value);
 
-    await fetchEnrolls(paginate.enrollHistory_page);
+    await fetchRequests(paginate.refund_page);
 
 }
 
 
-await fetchEnrolls(paginate.enrollHistory_page);
+await fetchRequests(paginate.refund_page);
 
 
 </script>

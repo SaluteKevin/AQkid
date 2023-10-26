@@ -17,8 +17,8 @@ use App\Models\Enums\UserRoleEnum;
 use App\Models\Timeslot;
 use App\Models\Enums\TimeslotTypeEnum;
 use App\Models\Enums\StudentAttendanceEnum;
-
-
+use App\Models\Enums\UserRequestStatusEnum;
+use App\Models\Enums\UserRequestTypeEnum;
 
 class StaffController extends Controller
 {
@@ -37,7 +37,8 @@ class StaffController extends Controller
         ,'getAllCourses','filterStudent','getCourse'
         ,'allTimeslots','createTimeslot','getTimeslot'
         ,'getTimeslotStudents','addStudentAttendance','removeStudentAttendance'
-        ,'enrollmentNotPending','removeTimeslot','allUserRequests']]);
+        ,'enrollmentNotPending','removeTimeslot','allUserRequests'
+        ,'allUserRequests','allUserRequestHistories']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -351,6 +352,53 @@ class StaffController extends Controller
 
     public function allUserRequests() {
 
-        return UserRequest::get();
+        $allUserRequests = UserRequest::getUserRequests();
+
+        $allUserRequestsWithUser = UserRequest::getUserRequestsWithUserPaginate($allUserRequests);
+
+        return $allUserRequestsWithUser;
+
+    }
+
+    public function allUserRequestHistories() {
+
+        $allUserRequests = UserRequest::getUserRequestHistories();
+
+        $allUserRequestsWithUser = UserRequest::getUserRequestsWithUserPaginate($allUserRequests);
+
+        return $allUserRequestsWithUser;
+
+    }
+
+    public function acceptRequest(UserRequest $userRequest,Request $request) {
+       
+        if ($userRequest->updateStatus(UserRequestStatusEnum::APPROVED,$request->get('comment'))) {
+        
+            return response()->json([
+                'message' => "Successfully Approved UserRequest",
+            ]);
+
+       }
+
+       return response()->json([
+        'message' => "Failed to Approve UserRequest",
+        ],422);
+
+    }
+
+    public function rejectRequest(UserRequest $userRequest,Request $request) {
+        
+        if ($userRequest->updateStatus(UserRequestStatusEnum::REJECTED,$request->get('comment'))) {
+
+            return response()->json([
+                'message' => "Successfully Rejected UserRequest",
+            ]);
+        
+        }
+
+        return response()->json([
+            'message' => "Failed to Reject UserRequest",
+        ],422);
+
     }
 }

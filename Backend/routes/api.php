@@ -106,6 +106,10 @@ Route::group([
 
     // refund
     Route::get('allUserRequests', [StaffController::class, 'allUserRequests']);
+    Route::get('allUserRequestHistories', [StaffController::class, 'allUserRequestHistories']);
+    Route::post('acceptUserRequest/{userRequest}', [StaffController::class,'acceptRequest']);
+    Route::post('rejectUserRequest/{userRequest}', [StaffController::class,'rejectRequest']);
+  
 });
 
 Route::group([
