@@ -6,7 +6,7 @@
                 <div class="col-span-4 sm:col-span-3">
                     <div class="bg-white shadow rounded-lg p-6">
                         <div class="flex flex-col items-center">
-                            <img src="https://randomuser.me/api/portraits/men/94.jpg" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
+                            <img :src="`${config.public.imageBaseURL}${user.value.profile_image_path}`" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
     
                             
                             <h1 class="text-xl font-bold">{{ user.value.username }}</h1>
@@ -71,6 +71,7 @@
 <script setup lang="ts">
 
 definePageMeta({ layout: "teacher" })
+const config = useRuntimeConfig();
 import {useAuthStore} from "~/stores/useAuthStore";
 
 const user = useAuthStore().user;

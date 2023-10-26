@@ -95,7 +95,7 @@
 
                 <!-- Left side -->
 
-                <img class="h-14 w-14 rounded-full object-cover" src="https://inews.gtimg.com/newsapp_match/0/8693739867/0"
+                <img class="h-14 w-14 rounded-full object-cover" :src="`${config.public.imageBaseURL}${student.profile_image_path}`"
                     alt="" />
 
                 <div class="ml-4 mt-4 flex capitalize text-black w-1/4">
@@ -155,6 +155,7 @@
 
 <script setup lang="ts">
 definePageMeta({ layout: "staff" })
+const config = useRuntimeConfig();
 import { usePaginateStore } from '~/stores/usePaginateStore'
 const paginate = usePaginateStore();
 

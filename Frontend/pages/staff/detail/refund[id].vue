@@ -1,9 +1,9 @@
 <template>
     <div class="container px-5 py-24 mx-auto">
         <div class="lg:w-4/5 mx-auto flex flex-wrap">
-            <a :href="`${config.public.apiBaseURL}storage/users/21/profile_image.jpg`" target="_blank"
+            <a :href="`${config.public.imageBaseURL}/users/21/profile_image.jpg`" target="_blank"
                 class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200">
-                <img alt="ecommerce" src="https://www.whitmorerarebooks.com/pictures/medium/2465.jpg">
+                <img alt="ecommerce" :src="`${config.public.imageBaseURL}/users/21/profile_image.jpg`">
             </a>
 
             <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">

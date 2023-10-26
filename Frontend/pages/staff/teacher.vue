@@ -75,7 +75,7 @@
 
                         <img
                             class="h-24 w-24 rounded-full object-cover"
-                            src="https://inews.gtimg.com/newsapp_match/0/8693739867/0"
+                            :src="`${config.public.imageBaseURL}${teacher.profile_image_path}`"
                             alt="" />
 
                         <div
@@ -424,6 +424,7 @@ async function fetchTeachers(page: number) {
 
 // paginate
 import { usePaginateStore } from '~/stores/usePaginateStore'
+const config = useRuntimeConfig();
 const paginate = usePaginateStore();
 
 const currentpage = ref(paginate.teacher_page)
