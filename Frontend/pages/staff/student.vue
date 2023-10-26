@@ -132,11 +132,10 @@
                 </div>
 
 
-                <div class="mr-16 flex flex-col capitalize text-gray-600">
-                    <span>Profile info</span>
+                <div class="mr-16 flex flex-col capitalize text-gray-600 mt-2">
 
                     <NuxtLink :to="`/staff/detail/student${student.id}`">
-                        <span class="text-gray-600">see more...</span>
+                        <button class="text-white rounded-md bg-orange-500 w-full p-2 hover:bg-orange-700">view profile</button>
                     </NuxtLink>
                 </div>
 

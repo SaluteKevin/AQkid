@@ -121,7 +121,7 @@
                             class="flex flex-col capitalize text-gray-600 w-1/6 m-auto">
                             
                             <nuxt-link :to="`/staff/detail/teacher${teacher.id}`">
-                                <button class="text-white rounded-md bg-orange-500 w-full p-2">view profile</button>
+                                <button class="text-white rounded-md bg-orange-500 w-full p-2 hover:bg-orange-700">view profile</button>
                             </nuxt-link>
                         </div>
 
