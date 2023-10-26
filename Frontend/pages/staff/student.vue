@@ -1,6 +1,6 @@
 <template>
     <!-- active user  -->
-    <div class="p-16 min-h-screen bg-gradient-to-b to-purple-100 to-60% from-[#bce1ff] from-10%">
+    <div class="p-16 min-h-screen bg-gradient-to-b to-orange-200 to-60% from-[#bce1ff] from-10%">
         <div class="flex justify-between items-center">
             <h2 class="my-4 text-4xl font-semibold text-gray-600">Student List</h2>
             <label
