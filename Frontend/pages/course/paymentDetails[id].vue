@@ -17,6 +17,7 @@ await useTimeStore().updateTime();
 const counter = await useTimeStore().time;
 const nowTime = new Date();
 const countDown = ref(300);
+
 if(counter && nowTime){
     const timeDifferenceInMilliseconds = counter - nowTime;
     console.log(`time ${{ counter }} nowTime ${{ nowTime }}` );

@@ -2,26 +2,48 @@ import { defineStore } from 'pinia'
 
 export const useTimeStore = defineStore('timeRegister', {
   state: () => {
-    return { time: new Date,
+    return { time: null,
+            time_semaphore: false,
              
     }
   },
   actions: {
-    async setTime() {
-      const currentTime = new Date();
-      const newTime = new Date(currentTime.getTime() + 5 * 60 * 1000); // เพิ่ม 5 นาที
-  
-      this.time = newTime;
-    },
-    async updateTime() {
-      if (this.time == null){
-        this.time = new Date();
-      }
-    }
+    setTime() {
 
-    
-    
-    
+      if (this.time_semaphore == true ) {
+        return false;
+      }
+
+      const five_minutes_timer = new Date(new Date().getTime() + 0.1 * 60 * 1000); // เพิ่ม 5 นาที
+  
+      this.time = five_minutes_timer;
+      this.time_semaphore = true;
+
+      return true;
+
+    },
+
+    clearTime() {
+
+      this.time = null;
+      this.time_semaphore = false;
+
+    },
+
+    timer() { 
+
+      const localDate = new Date(this.time);
+
+      const currentDate = new Date();
+
+      const timeDifferenceMs = localDate.getTime() - currentDate.getTime();
+
+      const secondsBefore = Math.floor(timeDifferenceMs / 1000);
+
+      return secondsBefore;
+
+    },
+   
     
   },
 	persist: true
