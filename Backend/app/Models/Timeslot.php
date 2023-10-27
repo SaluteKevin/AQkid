@@ -6,6 +6,8 @@ use App\Models\Enums\CourseStatusEnum;
 use App\Models\Enums\StudentAttendanceEnum;
 use App\Models\Enums\TimeslotTypeEnum;
 use App\Models\Enums\UserRoleEnum;
+use App\Models\Enums\EnrollmentStatusEnum;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -146,6 +148,27 @@ class Timeslot extends Model
         }
 
         return $timeslots;
+
+    }
+
+    public static function getStudentClasses(User $user) {
+
+        $classes = Timeslot::whereIn(
+            'course_id',
+            Course::whereIn('id', Enrollment::where('student_id', $user->id)
+                ->where('status', EnrollmentStatusEnum::SUCCESS->name)
+                ->pluck('course_id'))
+            ->where('status', CourseStatusEnum::ACTIVE->name)
+            ->pluck('id')
+        )->where('datetime', '>=', Carbon::now())
+        ->get()->sortby('datetime');
+
+        foreach($classes as $class) {
+            $class->title = Course::find($class->course_id)->title;
+            $class->duration = Course::find($class->course_id)->duration;
+        }
+
+        return $classes;
 
     }
 

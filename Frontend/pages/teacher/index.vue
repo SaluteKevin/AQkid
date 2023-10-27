@@ -26,6 +26,7 @@
   </template>
   
   <script setup lang="ts">
+  definePageMeta({ layout: "teacher" })
   import FullCalendar from '@fullcalendar/vue3'
   import interactionPlugin from '@fullcalendar/interaction'
   import timeGridPlugin from '@fullcalendar/timegrid'
@@ -129,7 +130,8 @@ if(eventData.value) {
     }
 
     async function  handleEventClick (arg) {
-     await navigateTo("/teacher/classDetail");
+     await navigateTo(`/teacher/classDetail${arg.event.extendedProps.uid}`);
+     
     }
     
     

@@ -123,6 +123,10 @@ Route::group([
     Route::get('getEvent/{teacher}', [TeacherController::class, 'getEvent']);
     Route::get('getTimeslot/{timeslot}', [TeacherController::class, 'getTimeslot']);
     Route::get('getStudentAttend/{timeslot}', [TeacherController::class, 'getStudentAttends']);
+    Route::post('attendStudent/{timeslot}/{student}', [TeacherController::class, 'studentAttend']);
+    Route::post('absentStudent/{timeslot}/{student}', [TeacherController::class, 'studentAbsent']);
+    Route::get('getTeacherCourses/{teacher}', [TeacherController::class, 'getTeacherCourses']);
+   
     
 });
 
@@ -134,13 +138,14 @@ Route::group([
     
 ], function ($router) {
     
-    Route::get('getClasses', [StudentController::class, 'getAllClasses']);
+    Route::get('getClasses/{user}', [StudentController::class, 'getAllClasses']);
     Route::get('getAllCourses', [StudentController::class, 'getAllCourse']);
     Route::get('showCourse/{course}', [StudentController::class, 'showCourse']);
     Route::post('enrollCourse/{course}/{user}', [StudentController::class, 'enrollCourse']);
     
     
     Route::get('profile/{user}', [StudentController::class, 'profile']);
+    Route::get('userStat/{user}', [StudentController::class, 'userStat']);
     Route::post('editprofile/{user}', [StudentController::class, 'updateProfile']);
     Route::post('editpassword/{user}', [StudentController::class, 'updatePassword']);
     Route::post('editimage/{user}', [StudentController::class, 'updateImage']);    

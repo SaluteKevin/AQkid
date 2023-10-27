@@ -47,7 +47,7 @@
                 </NuxtLink>
 
                 <!-- Login -->
-                <NuxtLink v-if="isStudent()" class="flex text-gray-600 
+                <button v-if="isStudent()" v-on:click="logout" class="flex text-gray-600 
                     cursor-pointer transition-colors duration-300
                     font-semibold hover:text-blue-600" to="/auths/login">
 
@@ -59,7 +59,7 @@
                     </svg>
 
                     Logout
-                </NuxtLink>
+                </button>
 
 
 
@@ -70,7 +70,7 @@
     </div>
     
 <div>
-    <slot />>
+    <slot />
 </div>
     <!-- Slider Component Container -->
 
@@ -91,14 +91,21 @@ onMounted(() => {
   
 });
 
-
-import isTeacher from "~/middleware/isTeacher";
 import {useAuthStore} from "~/stores/useAuthStore";
-    const auth = useAuthStore();
 
-    const user = auth.user.value;
+const auth = useAuthStore();
 
-    console.log(auth.user.value)
+const user = auth.user.value;
+
+await auth.setCSRFCookie();
+
+async function logout() {
+
+    await auth.clearAuth();
+
+    await navigateTo(`/`);
+}
+    
 
 function isStudent() {
 

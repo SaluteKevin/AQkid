@@ -106,7 +106,7 @@
 
             if (auth.user.value.role === "STUDENT") {
 
-                await navigateTo(`/course/enrollCourse`);
+                await navigateTo(`/student`);
 
             }
              

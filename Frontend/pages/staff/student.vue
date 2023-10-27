@@ -2,9 +2,9 @@
     <!-- active user  -->
     <div class="p-16 min-h-screen bg-gradient-to-b to-orange-200 to-60% from-[#bce1ff] from-10%">
         <div class="flex justify-between items-center">
-            <h2 class="my-4 text-4xl font-semibold text-gray-600">Student List</h2>
+            <h2 class="my-4 text-4xl font-semibold text-gray-600 w-1/3">Student List</h2>
             <label
-                class="relative bg-white min-w-sm max-w-2xl flex flex-col md:flex-row items-center justify-center border  px-2 rounded-2xl gap-2 shadow-2xl focus-within:border-gray-300"
+                class="relative bg-white min-w-sm max-w-2xl flex flex-col md:flex-row items-center justify-center border  px-2 rounded-2xl shadow-2xl focus-within:border-gray-300 w-1/2"
                 for="search-bar">
                 <input id="search-bar" placeholder="student name" v-on:change="handleSearchStudent"
                     class="px-6 py-2 w-full rounded-md flex-1 outline-none bg-white">
@@ -88,40 +88,40 @@
 
         <!-- card -->
         <div class="flex flex-col gap-2">
-            <div v-for="student in showStudents" :key="student.username" class="mt-2 flex  px-4 py-4 justify-between bg-white
-                    shadow-2xl rounded-lg cursor-pointer w-full">
+            <div v-for="student in showStudents" :key="student.username" class="flex  px-2 py-2 justify-between bg-white
+                    shadow-lg hover:scale-105 duration-150 w-full">
                 <!-- Card -->
 
 
                 <!-- Left side -->
 
-                <img class="h-12 w-12 rounded-full object-cover" src="https://inews.gtimg.com/newsapp_match/0/8693739867/0"
+                <img class="h-14 w-14 rounded-full object-cover" :src="`${config.public.imageBaseURL}${student.profile_image_path}`"
                     alt="" />
 
-                <div class="ml-4 flex flex-col capitalize text-black">
-                    <span>name</span>
-                    <span class="mt-2 text-gray-600">
+                <div class="ml-4 mt-4 flex capitalize text-black w-1/4">
+                    <span class="mr-2">name:</span>
+                    <span class="text-gray-600">
                         {{ student.username }}
                     </span>
                 </div>
 
-                <div class="ml-12  flex flex-col capitalize text-black">
-                    <span>Phone Number</span>
-                    <span class="mt-2 text-gray-600">
+                <div class="ml-12 mt-1 capitalize text-black w-1/4">
+                    <span class="mr-2">Phone Number: </span>
+                    <span class="text-gray-600">
                         {{ student.phone_number }}
-                    </span>
-
-                </div>
-
-                <div class="mr-16 flex flex-col text-black">
-                    <span>Email</span>
-                    <span class="mt-2 text-gray-600">
+                    </span><br>
+                    <div>
+                        <span>Email: </span>
+                    <span v-if="student.email" class="mr-2 text-gray-600">
                         {{ student.email }}
                     </span>
-
+                    <span v-else="student.email" class="mr-2 text-gray-600">
+                        none
+                    </span>
+                    </div>
                 </div>
 
-                <div class="ml-12 flex flex-col capitalize text-black">
+                <div class="ml-12 flex flex-col capitalize text-black w-1/4">
                     <span>Active Courses</span>
                     <span class="text-red-400" v-if="student.courses_count == 0">
                                 No courses
@@ -132,11 +132,10 @@
                 </div>
 
 
-                <div class="mr-16 flex flex-col capitalize text-gray-600">
-                    <span>Profile info</span>
+                <div class="mr-16 flex flex-col capitalize text-gray-600 mt-2">
 
                     <NuxtLink :to="`/staff/detail/student${student.id}`">
-                        <span class="text-gray-600">see more...</span>
+                        <button class="text-white rounded-md bg-orange-500 w-full p-2 hover:bg-orange-700">view profile</button>
                     </NuxtLink>
                 </div>
 
@@ -156,6 +155,7 @@
 
 <script setup lang="ts">
 definePageMeta({ layout: "staff" })
+const config = useRuntimeConfig();
 import { usePaginateStore } from '~/stores/usePaginateStore'
 const paginate = usePaginateStore();
 

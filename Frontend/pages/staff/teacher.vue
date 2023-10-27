@@ -1,9 +1,10 @@
 <template>
+
     <div class="p-16 min-h-screen bg-gradient-to-b to-orange-200 to-60% from-[#bce1ff] from-10%">
         <div class="flex justify-between items-center">
-            <h2 class="my-4 text-4xl font-semibold text-gray-600">Teacher List</h2>
+            <h2 class="my-4 text-4xl font-semibold text-gray-600 w-1/3">Teacher List</h2>
             <label
-                class="relative bg-white min-w-sm max-w-2xl flex flex-col md:flex-row items-center justify-center border  px-2 rounded-2xl gap-2 shadow-2xl focus-within:border-gray-300"
+                class="relative bg-white min-w-sm max-w-2xl flex flex-col md:flex-row items-center justify-center border  px-2 rounded-2xl gap-2 shadow-2xl focus-within:border-gray-300 w-1/2 ml-6"
                 for="search-bar">
                 <input id="search-bar" placeholder="teacher name" v-on:change="handleSearchTeacher"
                     class="px-6 py-2 w-full rounded-md flex-1 outline-none bg-white">
@@ -62,23 +63,23 @@
 
         <!-- card -->
         
-            <div class="flex flex-col gap-2 overflow-y-auto" >
+            <div class="flex flex-col gap-2" >
 
                 <div v-for="teacher in showTeachers" :key="teacher.username"
-                    class="mt-2 flex  px-4 py-4 justify-between bg-white
-                    shadow-2xl rounded-lg cursor-pointer w-full">
+                    class="flex  px-4 py-4 justify-between bg-white
+                    shadow-lg rounded-lg w-full hover:scale-105 duration-150">
                     <!-- Card -->
 
                     
                         <!-- Left side -->
 
                         <img
-                            class="h-12 w-12 rounded-full object-cover"
-                            src="https://inews.gtimg.com/newsapp_match/0/8693739867/0"
+                            class="h-24 w-24 rounded-full object-cover"
+                            :src="`${config.public.imageBaseURL}${teacher.profile_image_path}`"
                             alt="" />
 
                         <div
-                            class="ml-4 flex flex-col capitalize text-black">
+                            class="ml-4 mt-4 flex flex-col capitalize text-black w-1/5">
                             <span>name</span>
                             <span class="mt-2 text-gray-600">
                                 {{teacher.first_name}} {{ teacher.middle_name }} {{teacher.last_name }}
@@ -86,7 +87,7 @@
                         </div>
 
                         <div
-                            class="ml-12  flex flex-col capitalize text-black">
+                            class="ml-12 mt-4 flex flex-col capitalize text-black w-1/5">
                             <span>Phone Number</span>
                             <span class="mt-2 text-gray-600">
                                 {{teacher.phone_number}}
@@ -94,17 +95,18 @@
 
                         </div>
 
-                        <div
-                            class="mr-16 flex flex-col text-black">
-                            <span>Email</span>
-                            <span class="mt-2 text-gray-600">
-                                {{teacher.email}}
+                        <div class="w-1/5 mt-4">
+                            <span>Email: </span>
+                            <span v-if="teacher.email" class="mr-2 text-gray-600">
+                                {{ teacher.email }}
                             </span>
-                            
+                            <span v-else="student.email" class="mr-2 text-gray-600">
+                                none
+                            </span>
                         </div>
 
                         <div
-                            class="ml-12 flex flex-col capitalize text-black">
+                            class="ml-12 mt-4 flex flex-col capitalize text-black w-1/5">
                             <span>All Courses</span>
                             <span class="text-red-400" v-if="teacher.course_count == 0">
                                 No courses
@@ -116,11 +118,10 @@
 
 
                         <div
-                            class="mr-16 flex flex-col capitalize text-gray-600">
-                            <span>Profile info</span>
+                            class="flex flex-col capitalize text-gray-600 w-1/6 m-auto">
                             
                             <nuxt-link :to="`/staff/detail/teacher${teacher.id}`">
-                                <span class="text-gray-600">see more...</span>
+                                <button class="text-white rounded-md bg-orange-500 w-full p-2 hover:bg-orange-700">view profile</button>
                             </nuxt-link>
                         </div>
 
@@ -423,6 +424,7 @@ async function fetchTeachers(page: number) {
 
 // paginate
 import { usePaginateStore } from '~/stores/usePaginateStore'
+const config = useRuntimeConfig();
 const paginate = usePaginateStore();
 
 const currentpage = ref(paginate.teacher_page)

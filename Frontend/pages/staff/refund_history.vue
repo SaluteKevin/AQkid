@@ -10,8 +10,8 @@
         <div class="flex flex-col gap-2 ">
             <div
 				v-for="refund in showRequests" :key="refund.id"
-				class="mt-2 flex  px-4 py-4 justify-between bg-white
-				 shadow-2xl rounded-lg w-full">
+				class="flex  px-4 py-4 justify-between bg-white
+				 shadow-lg rounded-lg w-full hover:scale-105 duration-150">
 				<!-- Card -->
 
 				
@@ -23,7 +23,7 @@
 						alt="" />
 
 					<div
-						class="ml-4 flex flex-col capitalize text-black place-content-center">
+						class="ml-4 flex flex-col capitalize text-black place-content-center w-1/2">
 						<span>name</span>
 						<span class="mt-2 text-gray-600">
 							{{ refund.user.first_name }} {{ refund.user.last_name }}

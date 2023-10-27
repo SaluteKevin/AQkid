@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
 use App\Models\Course;
+use App\Models\Enums\StudentAttendanceEnum;
 use App\Models\Timeslot;
 
 
@@ -24,7 +25,8 @@ class TeacherController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getEvent','getTimeslot','getStudentAttends']]);
+        $this->middleware('auth:api', ['except' => ['getEvent','getTimeslot','getStudentAttends','studentAttend','studentAbsent',
+        'getTeacherCourses']]);
     }
 
     public function getEvent(User $teacher){
@@ -50,13 +52,52 @@ class TeacherController extends Controller
     }
 
     public function getTimeslot(Timeslot $timeslot){
-      
+        
+        $timeslot->title = Course::find($timeslot->course_id)->title;
+
         return $timeslot;
     }
 
     public function getStudentAttends(Timeslot $timeslot){
       
         return $timeslot->studentAttendances;
+    }
+
+    public function studentAttend(Timeslot $timeslot, User $student) {
+
+        if ($timeslot->updateAttendance($student->id, StudentAttendanceEnum::TRUE)) {
+
+            return response()->json([
+                'message' => "Successfully Attend Student",
+            ]);
+
+        }
+
+        return response()->json([
+            'message' => "Failed to Attend Student",
+        ],422);
+    }
+
+    public function studentAbsent(Timeslot $timeslot, User $student) {
+
+        if ($timeslot->updateAttendance($student->id, StudentAttendanceEnum::FALSE)) {
+
+            return response()->json([
+                'message' => "Successfully Absent Student",
+            ]);
+            
+        }
+
+        return response()->json([
+            'message' => "Failed to Absent Student",
+        ],422);
+
+    }
+
+    public function getTeacherCourses(User $teacher) {
+
+        return Course::where('teacher_id',$teacher->id)->get()->sortby('created_at');
+
     }
 
 
