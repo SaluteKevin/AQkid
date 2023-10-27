@@ -5,42 +5,11 @@ import { defineStore } from 'pinia'
 import {useAuthStore} from "~/stores/useAuthStore";
 import {useTimeStore} from "~/stores/useTimeStore";
 
+const modal = ref(false);
 
-function CustomAlert(){
-  this.alert = function(message,title){
-    document.body.innerHTML = document.body.innerHTML + '<div id="dialogoverlay"></div><div id="dialogbox" class="slit-in-vertical"><div><div id="dialogboxhead"></div><div id="dialogboxbody"></div><div id="dialogboxfoot"></div></div></div>';
-    
-    let dialogoverlay = document.getElementById('dialogoverlay');
-    let dialogbox = document.getElementById('dialogbox');
-    
-    let winH = window.innerHeight;
-    dialogoverlay.style.height = winH+"px";
-
-    dialogbox.style.top = "100px";
-
-    dialogoverlay.style.display = "block";
-    dialogbox.style.display = "block";
-    
-    document.getElementById('dialogboxhead').style.display = 'block';
-
-    if(typeof title === 'undefined') {
-      document.getElementById('dialogboxhead').style.display = 'none';
-    } else {
-      document.getElementById('dialogboxhead').innerHTML = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> '+ title;
-    }
-    
-    document.getElementById('dialogboxbody').innerHTML = message;
-    document.getElementById('dialogboxfoot').innerHTML = '<button class="pure-material-button-contained active" onclick="customAlert.ok()">OK</button>';
-  }
-  
-  this.ok = function(){
-    document.getElementById('dialogbox').style.display = "none";
-    document.getElementById('dialogoverlay').style.display = "none";
-  }
+function closeModal(){
+    modal.value = false;
 }
-
-let customAlert = new CustomAlert();
-
 
 const route = useRoute();
 const counter = useTimeStore();
@@ -54,7 +23,7 @@ async function startTimer() {
     if (useTimeStore().time === 0) {
       // ทำงานเมื่อครบ 5 นาที
         navigateTo(`/`);
-        customAlert.alert('Over Time');
+        modal.value = true;
         clearInterval(timer);
     }
     else{
@@ -68,6 +37,10 @@ async function startTimer() {
 if (useTimeStore().time > 0){
     startTimer();
 }
+else{
+    modal.value = true;
+}
+
 const course = reactive({});
 const {data: eventCourse, error: loginError } = await useApiFetch("api/student/showCourse/"+route.params.id, {});
 if(eventCourse.value){
@@ -230,31 +203,43 @@ const removeImagePreview = () => {
         </div>
     </div>
 
+    <div v-if="modal">
+        <div id="modelConfirm" class="fixed z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4 ">
+            <div class="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md">
+            
+                <div class="flex justify-end p-2">
+                    <button @click="closeModal()" type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+            
+                <div class="p-6 pt-0 text-center">
+                    <svg class="w-20 h-20 text-red-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h3 class="text-xl font-normal text-gray-500 mt-5 mb-6">Are you sure you want to delete this user?</h3>
+                    <a href="#"  onclick=""
+                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2">
+                        Go to refund
+                    </a>
+                    <a href="#" @click="closeModal()"
+                        class="text-gray-900 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-cyan-200 border border-gray-200 font-medium inline-flex items-center rounded-lg text-base px-3 py-2.5 text-center"
+                        data-modal-toggle="delete-user-modal">
+                        No, cancel
+                    </a>
+                </div>
+            
+            </div>
+        </div>
 
-    <div class="absolute max-w-md border rounded-lg">
-  <div class="flex flex-col p-5 rounded-lg shadow bg-white">
-	<div class="flex">
-	  <div>
-		<svg class="w-6 h-6 fill-current text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-	  </div>
-
-	  <div class="ml-3">
-		<h2 class="font-semibold text-gray-800">Alert Component</h2>
-		<p class="mt-2 text-sm text-gray-600 leading-relaxed">Etiam finibus velit vel lacus cursus porttitor ac rhoncus leo. Ut gravida justo est, sit amet vulputate felis vestibulum eleifend. Vivamus faucibus augue a scelerisque rutrum. Donec faucibus nibh ex, in condimentum quam viverra in.</p>
-	  </div>
-	</div>
-
-	<div class="flex justify-end items-center mt-3">
-	  <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md">
-		Cancel
-	  </button>
-
-	  <button class="px-4 py-2 ml-2 bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium rounded-md">
-		Continue
-	  </button>
-	</div>
-  </div>
-</div>
+    </div>
 
 
 </template>
