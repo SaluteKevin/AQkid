@@ -101,4 +101,11 @@ class StudentController extends Controller
     {
         return User::where('role', 'STUDENT')::find($user);
     }
+
+
+    public function allEnrollCourses(User $user) {
+        // Course::allTimeslotsWithAuthor($course);
+        return Course::getAllEnrollmentCourses($user);
+
+    }
 }

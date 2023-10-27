@@ -118,4 +118,10 @@ class Course extends Model
         return $course;
 
     }
+
+    public static function getAllEnrollmentCourses(User $user) {
+
+        
+
+    }
 }
