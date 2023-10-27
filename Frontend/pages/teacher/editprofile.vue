@@ -43,18 +43,22 @@
                                     </button>
                                 </div>
 
-
-
                             </div>
+
 
 
                         </div>
                         <div class="flex justify-end gap-2">
                             <button v-on:click="handleChangeImage"
                                 class="text-white bg-indigo-700  hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Save</button>
-                            <button type="submit"
+                            <button v-on:click="cancel" 
                                 class="text-white bg-[#202142] hover:bg-indigo-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Cancle</button>
+                                
                         </div>
+                        <p class="text-red-500" v-for="error in imageError['profile_image_path']" :key="error">
+                                    {{ error }}
+                                    </p>
+                                    <p class="text-green-500">{{ imageSuccess }}</p>
 
                         <div class="relative flex py-5 items-center w-full px-10">
                             <div class="flex-grow border-t border-gray-400"></div>
@@ -75,13 +79,19 @@
                                     <input v-model="EditForm.firstname" type="text" id="first_name"
                                         class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
                                         required>
+                                    <p class="text-red-500" v-for="error in RegistrationError['firstname']" :key="error">
+                                    {{ error }}
+                                    </p>
                                 </div>
                                 <div class="w-full">
-                                    <label for="first_name" class="block mb-2 text-sm font-medium text-indigo-900 ">
+                                    <label for="middle_name" class="block mb-2 text-sm font-medium text-indigo-900 ">
                                         Middle name</label>
-                                    <input v-model="EditForm.middlename" type="text" id="first_name"
+                                    <input v-model="EditForm.middlename" type="text" id="middle_name"
                                         class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
                                         required>
+                                        <p class="text-red-500" v-for="error in RegistrationError['middlename']" :key="error">
+                                        {{ error }}
+                                        </p>
                                 </div>
 
                                 <div class="w-full">
@@ -90,6 +100,9 @@
                                     <input v-model="EditForm.lastname" type="text" id="last_name"
                                         class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
                                         required>
+                                    <p class="text-red-500" v-for="error in RegistrationError['lastname']" :key="error">
+                                    {{ error }}
+                                    </p>
                                 </div>
 
                             </div>
@@ -100,6 +113,9 @@
                                 <input v-model="EditForm.birthdate" id="birthdate" type="date"
                                     class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
                                     required>
+                                    <p class="text-red-500" v-for="error in RegistrationError['birthdate']" :key="error">
+                                    {{ error }}
+                                    </p>
                             </div>
 
                             <div class="mb-2 sm:mb-6">
@@ -108,6 +124,9 @@
                                 <input v-model="EditForm.email" type="email" id="email"
                                     class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
                                     required>
+                                    <p class="text-red-500" v-for="error in RegistrationError['email']" :key="error">
+                                    {{ error }}
+                                    </p>
                             </div>
 
                             <div class="mb-2 sm:mb-6">
@@ -116,13 +135,16 @@
                                 <input v-model="EditForm.phone_number" type="text" id="profession"
                                     class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
                                     required>
+                                    <p class="text-red-500" v-for="error in RegistrationError['phone_number']" :key="error">
+                                    {{ error }}
+                                    </p>
                             </div>
-
+                            <p class="text-green-500">{{ profileSuccess }}</p>
 
                             <div class="flex justify-end gap-2">
                                 <button v-on:click="handleEditProfile"
                                     class="text-white bg-indigo-700  hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Save</button>
-                                <button type="submit"
+                                <button  v-on:click="cancel" 
                                     class="text-white bg-[#202142] hover:bg-indigo-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Cancle</button>
                             </div>
 
@@ -139,20 +161,27 @@
                             <input v-model="passwordForm.password" type="text" id="password"
                                 class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
                                 required placeholder="Enter New Password">
+                                <p class="text-red-500" v-for="error in passwordError['password']" :key="error">
+                                    {{ error }}
+                                    </p>
                             <label for="password" class="block my-2 text-sm font-medium text-indigo-900 ">Confirm
                                 Password</label>
                             <input v-model="passwordForm.password_confirmation" type="text" id="confirm_password"
                                 class="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
                                 required placeholder="Confirm New Password">
+                                <p class="text-red-500" v-for="error in passwordError['password_confirmation']" :key="error">
+                                    {{ error }}
+                                </p>
                         </div>
 
-
+                        <p class="text-green-500">{{ passwordSuccess }}</p>
                         <div class="flex justify-end gap-2">
                             <button v-on:click="handleChangePassword"
                                 class="text-white bg-indigo-700  hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Save</button>
-                            <button type="submit"
+                            <button  v-on:click="cancel" 
                                 class="text-white bg-[#202142] hover:bg-indigo-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Cancle</button>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -162,11 +191,13 @@
     
     
 <script setup lang="ts">
-definePageMeta({ layout: "student" })
+definePageMeta({ layout: "teacher" })
 import { useAuthStore } from "~/stores/useAuthStore";
 const auth = useAuthStore();
 
-console.log(auth.user.value)
+
+const RegistrationError = ref<{ [k: string]: any }>({})
+const profileSuccess = ref("");
 
 // image preview
 const profileImageInput = ref<HTMLInputElement | null>(null);
@@ -225,7 +256,7 @@ const EditForm = ref({
 
 async function handleEditProfile() {
 
-    const { data: updateResponse, error: updateError } = await useApiFetch("api/student/editprofile/" + auth.user.value.id, {
+    const { data: updateResponse, error: updateError } = await useApiFetch("api/auth/editprofile/" + auth.user.value.id, {
         method: "POST",
         body: EditForm.value,
     });
@@ -234,6 +265,10 @@ async function handleEditProfile() {
 
         // console.log(updateResponse.value)
         await fetchAuthUser();
+
+        RegistrationError.value = {};
+
+        profileSuccess.value = "Successfully, Update Profile";
         // await navigateTo(`/student/profile`);
 
     }
@@ -245,7 +280,9 @@ async function handleEditProfile() {
 
             const errors = updateError.value.data.errors;
 
-            updateError.value = {};
+            RegistrationError.value = {};
+
+            profileSuccess.value = "";
 
             for (const key in errors) {
 
@@ -253,7 +290,7 @@ async function handleEditProfile() {
 
                     const errorMessages = errors[key];
 
-                    updateError.value[key] = errorMessages;
+                    RegistrationError.value[key] = errorMessages;
 
                 }
             }
@@ -269,15 +306,23 @@ const passwordForm = ref({
     password_confirmation: "",
 });
 
+const passwordSuccess = ref("");
+
+const passwordError = ref<{ [k: string]: any }>({})
+
 async function handleChangePassword() {
 
-    const { data: updateResponse, error: updateError } = await useApiFetch("api/student/editpassword/" + auth.user.value.id, {
+    const { data: updateResponse, error: updateError } = await useApiFetch("api/auth/editpassword/" + auth.user.value.id, {
         method: "POST",
         body: passwordForm.value,
     });
     if (updateResponse.value) {
 
         await fetchAuthUser();
+
+        passwordError.value = {};
+
+        passwordSuccess.value = "Successfully, Update Password";
     }
     else {
 
@@ -286,7 +331,9 @@ async function handleChangePassword() {
 
             const errors = updateError.value.data.errors;
 
-            updateError.value = {};
+            passwordError.value = {};
+
+            passwordSuccess.value = "";
 
             for (const key in errors) {
 
@@ -294,7 +341,7 @@ async function handleChangePassword() {
 
                     const errorMessages = errors[key];
 
-                    updateError.value[key] = errorMessages;
+                    passwordError.value[key] = errorMessages;
 
                 }
             }
@@ -306,6 +353,8 @@ async function handleChangePassword() {
 
 
 const profile_image_path = ref<File | null>(null);
+const imageError = ref<{ [k: string]: any }>({})
+const imageSuccess = ref();
 
 async function handleChangeImage() {
 
@@ -315,7 +364,7 @@ async function handleChangeImage() {
         formData.append('profile_image_path', profile_image_path.value)
     }
 
-    const { data: updateResponse, error: updateError } = await useApiFetch("api/student/editimage/" + auth.user.value.id, {
+    const { data: updateResponse, error: updateError } = await useApiFetch("api/auth/editimage/" + auth.user.value.id, {
         method: "POST",
         body: formData,
     });
@@ -323,6 +372,10 @@ async function handleChangeImage() {
     if (updateResponse.value) {
 
         await fetchAuthUser();
+
+        imageError.value = {};
+
+        imageSuccess.value = "Successfully, Change Profile Image";
 
     }
     else {
@@ -332,7 +385,9 @@ async function handleChangeImage() {
 
             const errors = updateError.value.data.errors;
 
-            updateError.value = {};
+            imageError.value = {};
+
+            imageSuccess.value = "";
 
             for (const key in errors) {
 
@@ -340,13 +395,18 @@ async function handleChangeImage() {
 
                     const errorMessages = errors[key];
 
-                    updateError.value[key] = errorMessages;
+                    imageError.value[key] = errorMessages;
 
                 }
             }
         }
 
     }
+
+}
+
+function cancel() {
+    window.location.reload();
 
 }
 

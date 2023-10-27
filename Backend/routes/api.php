@@ -60,6 +60,10 @@ Route::group([
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class, 'me']);
     Route::post('register', [AuthController::class, 'register']);
+    Route::post('editprofile/{user}', [AuthController::class, 'updateProfile']);
+    Route::post('editpassword/{user}', [AuthController::class, 'updatePassword']);
+    Route::post('editimage/{user}', [AuthController::class, 'updateImage']);    
+
 
 });
 
@@ -148,10 +152,7 @@ Route::group([
     
     Route::get('profile/{user}', [StudentController::class, 'profile']);
     Route::get('userStat/{user}', [StudentController::class, 'userStat']);
-    Route::post('editprofile/{user}', [StudentController::class, 'updateProfile']);
-    Route::post('editpassword/{user}', [StudentController::class, 'updatePassword']);
-    Route::post('editimage/{user}', [StudentController::class, 'updateImage']);    
-
+  
 });
 
 
