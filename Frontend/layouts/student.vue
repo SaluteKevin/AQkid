@@ -84,8 +84,10 @@ onMounted(() => {
 });
 
 import {useAuthStore} from "~/stores/useAuthStore";
+import { useTimeStore } from "~/stores/useTimeStore";
 
 const auth = useAuthStore();
+const timer = useTimeStore();
 
 const user = auth.user.value;
 
@@ -93,6 +95,8 @@ await auth.setCSRFCookie();
 
 async function logout() {
 
+    timer.clearTime();
+    
     await auth.clearAuth();
 
     await navigateTo(`/`);

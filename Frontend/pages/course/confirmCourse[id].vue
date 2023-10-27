@@ -29,11 +29,9 @@ async function paymentConfirm() {
 
     } else {
 
-        confirmError.value = "Can't enroll to this course right now!";
+        confirmError.value = "You are currently unable to enroll in this course. Please log out and log in again to reset the enrollment process.";
 
     }
-
-
 
 }
 
