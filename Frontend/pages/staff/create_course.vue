@@ -28,7 +28,7 @@
     <div class="font-semibold px-4 pb-6 pt-2 flex mt-4">
         <div class="w-1/2 mt-4">
           <div class="flex mb-16">
-            <div class="mr-24">
+            <div class="w-1/2">
               <span class="text-xl">Type</span>
               <div class="relative group">
           
@@ -38,9 +38,9 @@
                           <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': openQuota, 'rotate-0': !openQuota}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                           </button>
                           <div v-if="openQuota" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute left-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
-                          <div v-for="number in quotaNumber" :key="number.name" @click="changeQuota" v-on:click="openQuota = !openQuota" class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
+                          <div v-for="quota in quotaType" :key="quota.name" @click="changeQuota(quota)" v-on:click="openQuota = !openQuota" class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
                               <button class="px-2">
-                                  {{number}}
+                                  {{quota}}
                               </button>
                           </div>
                           </div>
@@ -50,17 +50,17 @@
             </div>
   
   
-            <div class="mr-24">
+            <div class="w-1/2">
               <span class="text-xl">Capacity</span>
               <div class="relative group">
           
                 <div v-click-outside="clickOutsideCap" class="relative">
                         <button v-on:click="openCapacity = !openCapacity" class="bg-orange-300 rounded-md px-4 py-1 mt-2">
-                        <span>Amount: {{ currentCapacity }}</span>
+                        <span>{{ currentCapacity }}</span>
                         <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': openCapacity, 'rotate-0': !openCapacity}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                         </button>
                         <div v-if="openCapacity" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute left-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
-                        <div v-for="number in capacityNumber" :key="number.name" @click="changeCapacity" v-on:click="openCapacity = !openCapacity" class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
+                        <div v-for="number in capacityNumber" :key="number.name" @click="changeCapacity(number)" v-on:click="openCapacity = !openCapacity" class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
                             <button class="px-2">
                                 {{number}}
                             </button>
@@ -74,17 +74,17 @@
           <div class="flex-grow border-t border-gray-400 w-5/6"></div>
           <div class="flex mt-10">
             
-            <div class="mr-24">
+            <div class="w-1/2">
               <span class="text-xl">Min Age</span>
               <div class="relative group">
           
                   <div v-click-outside="clickOutsideMin" class="relative">
                           <button v-on:click="openMinAge = !openMinAge" class="bg-orange-300 rounded-md px-4 py-1 mt-2">
-                          <span>Amount: {{ currentMinAge }}</span>
+                          <span>{{ currentMinAge }}</span>
                           <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': openMinAge, 'rotate-0': !openMinAge}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                           </button>
                           <div v-if="openMinAge" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute left-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
-                          <div v-for="number in minAgeNumber" :key="number.name" @click="changeMinAge" v-on:click="openMinAge = !openMinAge" class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
+                          <div v-for="number in minAgeNumber" :key="number.name" @click="changeMinAge(number)" v-on:click="openMinAge = !openMinAge" class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
                               <button class="px-2">
                                   {{number}}
                               </button>
@@ -94,17 +94,17 @@
     
               </div>
             </div>
-            <div>
+            <div class="w-1/2">
               <span class="text-xl">Max Age</span>
               <div class="relative group">
           
                   <div v-click-outside="clickOutsideMax" class="relative">
                           <button v-on:click="openMaxAge = !openMaxAge" class="bg-orange-300 rounded-md px-4 py-1 mt-2">
-                          <span>Amount: {{ currentMaxAge }}</span>
+                          <span>{{ currentMaxAge }}</span>
                           <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': openMaxAge, 'rotate-0': !openMaxAge}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                           </button>
                           <div v-if="openMaxAge" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute left-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
-                          <div v-for="number in maxAgeNumber" :key="number.name" @click="changeMaxAge" v-on:click="openMaxAge = !openMaxAge" class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
+                          <div v-for="number in maxAgeNumber" :key="number.name" @click="changeMaxAge(number)" v-on:click="openMaxAge = !openMaxAge" class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
                               <button class="px-2">
                                   {{number}}
                               </button>
@@ -158,9 +158,9 @@
               <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': openTeacher, 'rotate-0': !openTeacher}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </button>
             <div v-if="openTeacher" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute left-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
-              <div v-for="teacher in teachers" :key="teacher.name" @click="changeTeacher" v-on:click="openTeacher = !openTeacher" class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
+              <div v-for="teacher in teachers" :key="teacher.name" @click="changeTeacher(teacher.first_name)" v-on:click="openTeacher = !openTeacher" class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
                 <button class="px-2 z-50">
-                  {{teacher}}
+                  {{teacher.first_name}}
                 </button>
               </div>
             </div>
@@ -194,35 +194,58 @@ const openMinAge = ref(false);
 const openMaxAge = ref(false);
 const openTeacher = ref(false);
 
-var currentQuota = "Full Course";
-const quotaNumber = ["Half Course","Full Course"];
-const changeQuota = () =>{
-    currentQuota = "not assign";
+const currentQuota = ref('Not Assign');
+const quotaType = ["Half Course","Full Course"];
+const quotaAmount = ref(0);
+function changeQuota(type: string){
+    currentQuota.value = type;
+    if(currentQuota.value=="Full Course"){
+      quotaAmount.value = 10;
+    }
+    if(currentQuota.value=="Half Course"){
+      quotaAmount.value = 5;
+    }
 }
 
-var currentCapacity = 4;
+const currentCapacity = ref('Not Assign');
 const capacityNumber = [4,6];
-const changeCapacity = () =>{
-    currentCapacity = 0;
+function changeCapacity(amount: number){
+    currentCapacity.value = "Amount: " + amount;
 }
 
-var currentMinAge = 0;
+const currentMinAge = ref('Not Assign');
 const minAgeNumber = [0,6,12,24,36,48,60];
-const changeMinAge = () =>{
-    currentMinAge = 1;
+function changeMinAge(minAge: number){
+    currentMinAge.value = minAge + " Month ("+ minAge/12+ " year)" ;
 }
 
-var currentMaxAge = 0;
+const currentMaxAge = ref('Not Assign');
 const maxAgeNumber = [6,12,24,36,48,60,120];
-const changeMaxAge = () =>{
-    currentMaxAge = 1;
+function changeMaxAge(maxAge: number){
+    currentMaxAge.value = maxAge + " Month ("+ maxAge/12+ " year)" ;
 }
 
-var currentTeacher = "";
-const teachers = ["KKK","NNN"];
-const changeTeacher = () =>{
-    currentTeacher = "Ricado Milos"
+const currentTeacher = ref("Not Assign");
+const currentTeacherNo = ref(0);
+const teachers = ref({});
+function changeTeacher(name: string, id: number) {
+    currentTeacher.value = name;
+    currentTeacherNo.value = id;
 }
+const route = useRoute();
+async function getTeacher(){
+  const {data: teacherData, error: teacherError} = await useApiFetch(`api/staff/getTeacherList`,{});
+  if(teacherData.value){
+    
+    teachers.value = teacherData.value;
+  }
+  else{
+
+  }
+  
+}
+
+await getTeacher();
 
 const clickOutside = () => {
   open.value = false;
