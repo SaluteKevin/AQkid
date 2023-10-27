@@ -9,7 +9,7 @@ const confirm = ref(true);
 const message = ref('Time out!!!');
 
 async function refundRequest() {
-    await navigateTo(`/course/refund`);
+    await navigateTo(`/student/refund`);
 }
 
 async function closeModal() {

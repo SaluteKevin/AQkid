@@ -52,7 +52,7 @@
                             <button v-on:click="handleChangeImage"
                                 class="text-white bg-indigo-700  hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Save</button>
                             <button v-on:click="cancel" 
-                                class="text-white bg-[#202142] hover:bg-indigo-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Cancle</button>
+                                class="text-white bg-[#202142] hover:bg-indigo-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Cancel</button>
                                 
                         </div>
                         <p class="text-red-500" v-for="error in imageError['profile_image_path']" :key="error">
@@ -145,7 +145,7 @@
                                 <button v-on:click="handleEditProfile"
                                     class="text-white bg-indigo-700  hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Save</button>
                                 <button  v-on:click="cancel" 
-                                    class="text-white bg-[#202142] hover:bg-indigo-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Cancle</button>
+                                    class="text-white bg-[#202142] hover:bg-indigo-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Cancel</button>
                             </div>
 
 
@@ -179,7 +179,7 @@
                             <button v-on:click="handleChangePassword"
                                 class="text-white bg-indigo-700  hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Save</button>
                             <button  v-on:click="cancel" 
-                                class="text-white bg-[#202142] hover:bg-indigo-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Cancle</button>
+                                class="text-white bg-[#202142] hover:bg-indigo-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Cancel</button>
                         </div>
 
                     </div>
