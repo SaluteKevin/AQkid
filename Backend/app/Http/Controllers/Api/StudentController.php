@@ -38,9 +38,13 @@ class StudentController extends Controller
     }
 
 
-    public function getAllCourse()
+    public function getAllCourse(User $user)
     {
-        return Course::where('status', "OPEN")->get();
+        return Course::whereIn('id', Enrollment::where('student_id', $user->id)
+        ->where('status', EnrollmentStatusEnum::SUCCESS->name)
+        ->pluck('course_id'))
+        ->get();
+
     }
 
     public function showCourse(Course $course)

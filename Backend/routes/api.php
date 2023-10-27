@@ -139,7 +139,7 @@ Route::group([
 ], function ($router) {
     
     Route::get('getClasses/{user}', [StudentController::class, 'getAllClasses']);
-    Route::get('getAllCourses', [StudentController::class, 'getAllCourse']);
+    Route::get('getAllCourses/{user}', [StudentController::class, 'getAllCourse']);
     Route::get('showCourse/{course}', [StudentController::class, 'showCourse']);
     Route::post('enrollCourse/{course}/{user}', [StudentController::class, 'enrollCourse']);
     
