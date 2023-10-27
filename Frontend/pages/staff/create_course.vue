@@ -15,15 +15,21 @@
         <span class="mr-4">Title</span> 
         <input 
                                 class="w-full px-2 py-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-300 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                type="text" name="title" placeholder="Title" />
+                                type="text" name="title" v-model="title" placeholder="Title" />
+                                
     </div>
+    <p class="text-red-500" v-for="error in createError['title']" :key="error">
+                                    {{ error }}
+                                </p>
     <div class="text-2xl font-semibold mt-4">
         <span>Description</span> 
         <input 
                                 class="mt-2 w-full px-2 py-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-300 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                type="text" name="description" placeholder="description" />
+                                type="text" name="description" v-model="description" placeholder="description" />
     </div>
-    
+    <p class="text-red-500" v-for="error in createError['description']" :key="error">
+                                    {{ error }}
+                                </p>
     <!-- <div class="flex-grow border-t border-gray-400 mt-6"></div> -->
     <div class="font-semibold px-4 pb-6 pt-2 flex mt-4">
         <div class="w-1/2 mt-4">
@@ -47,6 +53,9 @@
                   </div>  
   
               </div>
+              <p class="text-red-500 font-normal" v-for="error in createError['quota']" :key="error">
+                                    {{ error }}
+                                </p>
             </div>
   
   
@@ -69,6 +78,9 @@
                 </div>  
   
               </div>
+              <p class="text-red-500 font-normal" v-for="error in createError['capacity']" :key="error">
+                                    {{ error }}
+                                </p>
             </div>
           </div>
           <div class="flex-grow border-t border-gray-400 w-5/6"></div>
@@ -93,6 +105,9 @@
                   </div>  
     
               </div>
+              <p class="text-red-500 font-normal" v-for="error in createError['min_age']" :key="error">
+                                    {{ error }}
+                                </p>
             </div>
             <div class="w-1/2">
               <span class="text-xl">Max Age</span>
@@ -113,6 +128,9 @@
                   </div>  
       
               </div>
+              <p class="text-red-500 font-normal" v-for="error in createError['max_age']" :key="error">
+                                    {{ error }}
+                                </p>
             </div>
           </div>
         </div>
@@ -120,9 +138,9 @@
 
 
         <div class="w-1/2 border-l border-gray-400 pl-16 mt-4 space-y-2">
-          <div class="flex h-1/4">
-            <div class="pt-2">Start on
-            <VueDatePicker class="text-black" v-model="dateStart" :is-24="true" enable-seconds
+          <div class="flex h-1/4 ">
+            <div class="pt-2 w-full">Open Enroll date
+            <VueDatePicker class="text-black" v-model="dateOpen" :is-24="true" enable-seconds
                                 hours-increment="1" minutes-increment="0" seconds-increment="0" placeholder="Select Date"
                                 no-minutes-overlay no-seconds-overlay :min-time="{ hours: 10, minutes: 0, seconds: 0 }"
                                 :max-time="{ hours: 17, minutes: 0, seconds: 0 }"
@@ -131,24 +149,30 @@
             </div>
           </div>
           <div class="flex h-1/4">
-              <div class="pt-2">Until
+              <div class="pt-2 w-full">End Enroll date
                 <VueDatePicker class="text-black" v-model="dateUntil" :is-24="true" enable-seconds
                                 hours-increment="1" minutes-increment="0" seconds-increment="0" placeholder="Select Date"
                                 no-minutes-overlay no-seconds-overlay :min-time="{ hours: 10, minutes: 0, seconds: 0 }"
                                 :max-time="{ hours: 17, minutes: 0, seconds: 0 }"
                                 :start-time="{ hours: 10, minutes: 0, seconds: 0 }" :state="datePickerState"
                                 :disabled-week-days="[1]"></VueDatePicker>
+                                <p class="text-red-500 font-normal" v-for="error in createError['opens_until']" :key="error">
+                                    {{ error }}
+                                </p>
               </div>
           </div>
           <div class="flex h-1/4">
-            <div class="pt-2 font-semibold">
-            Select Timeslot
-            <VueDatePicker class="text-black z-0" v-model="date" :is-24="true" enable-seconds
+            <div class="pt-2 w-full">
+            Course Start at
+            <VueDatePicker class="text-black z-0" v-model="dateStart" :is-24="true" enable-seconds
                                 hours-increment="1" minutes-increment="0" seconds-increment="0" placeholder="Select Date"
                                 no-minutes-overlay no-seconds-overlay :min-time="{ hours: 10, minutes: 0, seconds: 0 }"
                                 :max-time="{ hours: 17, minutes: 0, seconds: 0 }"
                                 :start-time="{ hours: 10, minutes: 0, seconds: 0 }" :state="datePickerState"
                                 :disabled-week-days="[1]"></VueDatePicker>
+                                <p class="text-red-500 font-normal" v-for="error in createError['starts_on']" :key="error">
+                                    {{ error }}
+                                </p>
             </div>
           </div>
           <div class="font-semibold relative group h-1/4">
@@ -158,19 +182,22 @@
               <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': openTeacher, 'rotate-0': !openTeacher}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </button>
             <div v-if="openTeacher" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute left-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
-              <div v-for="teacher in teachers" :key="teacher.name" @click="changeTeacher(teacher.first_name)" v-on:click="openTeacher = !openTeacher" class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
+              <div v-for="teacher in teachers" :key="teacher.name" @click="changeTeacher(teacher.first_name, teacher.id)" v-on:click="openTeacher = !openTeacher" class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
                 <button class="px-2 z-50">
                   {{teacher.first_name}}
                 </button>
               </div>
             </div>
+            <p class="text-red-500 font-normal" v-for="error in createError['teacher_id']" :key="error">
+                                    {{ error }}
+                                </p>
           </div>
         </div>
         
     </div>
     
     <div class="flex justify-end">
-      <button class="bg-orange-500 text-white px-4 py-2  flex rounded-md hover:bg-orange-700 duration-200">
+      <button @click="createCourse()" class="bg-orange-500 text-white px-4 py-2  flex rounded-md hover:bg-orange-700 duration-200">
           <span class="text-xl">Create</span>
           <svg width="24px" height="24px" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12.2929 4.29289C12.6834 3.90237 13.3166 3.90237 13.7071 4.29289L20.7071 11.2929C21.0976 11.6834 21.0976 12.3166 20.7071 12.7071L13.7071 19.7071C13.3166 20.0976 12.6834 20.0976 12.2929 19.7071C11.9024 19.3166 11.9024 18.6834 12.2929 18.2929L17.5858 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H17.5858L12.2929 5.70711C11.9024 5.31658 11.9024 4.68342 12.2929 4.29289Z" fill="#ffffff"></path> </g></svg>
       </button>
@@ -193,10 +220,12 @@ const openCapacity = ref(false);
 const openMinAge = ref(false);
 const openMaxAge = ref(false);
 const openTeacher = ref(false);
+const title = ref('');
+const description = ref('');
 
 const currentQuota = ref('Not Assign');
 const quotaType = ["Half Course","Full Course"];
-const quotaAmount = ref(0);
+const quotaAmount = ref();
 function changeQuota(type: string){
     currentQuota.value = type;
     if(currentQuota.value=="Full Course"){
@@ -209,7 +238,7 @@ function changeQuota(type: string){
 
 const currentCapacity = ref('Not Assign');
 const capacityNumber = [4,6];
-const capacityAmount = ref(0);
+const capacityAmount = ref();
 function changeCapacity(amount: number){
     currentCapacity.value = "Amount: " + amount;
     capacityAmount.value = amount;
@@ -217,7 +246,7 @@ function changeCapacity(amount: number){
 
 const currentMinAge = ref('Not Assign');
 const minAgeNumber = [0,6,12,24,36,48,60];
-const minAgeAmount = ref(0);
+const minAgeAmount = ref();
 function changeMinAge(minAge: number){
     currentMinAge.value = minAge + " Month ("+ minAge/12+ " year)" ;
     minAgeAmount.value = minAge;
@@ -225,14 +254,14 @@ function changeMinAge(minAge: number){
 
 const currentMaxAge = ref('Not Assign');
 const maxAgeNumber = [6,12,24,36,48,60,120];
-const maxAgeAmount = ref(0);
+const maxAgeAmount = ref();
 function changeMaxAge(maxAge: number){
     currentMaxAge.value = maxAge + " Month ("+ maxAge/12+ " year)" ;
     maxAgeAmount.value = maxAge;
 }
 
 const currentTeacher = ref("Not Assign");
-const currentTeacherNo = ref(0);
+const currentTeacherNo = ref();
 const teachers = ref({});
 function changeTeacher(name: string, id: number) {
     currentTeacher.value = name;
@@ -249,6 +278,56 @@ async function getTeacher(){
 
   }
   
+}
+
+const createError = ref<{ [k: string]: any }>({})
+
+async function createCourse(){
+  const {data: courseData, error: courseError} = await useApiFetch(`api/staff/createCourse`,{
+    method: "POST",
+    body: {
+      teacher_id: currentTeacherNo.value,
+      title: title.value,
+      description: description.value,
+      quota: quotaAmount.value,
+      capacity: capacityAmount.value,
+      min_age: minAgeAmount,
+      max_age: maxAgeAmount,
+      opens_on: dayjs(dateOpen.value).format('YYYY-MM-DD HH:mm:ss'),
+      opens_until: dayjs(dateUntil.value).format('YYYY-MM-DD HH:mm:ss'),
+      starts_on: dayjs(dateStart.value).format('YYYY-MM-DD HH:mm:ss'),
+    }
+  });
+
+  if (courseData.value) {
+
+        // window.location.reload();
+
+
+    } else {
+
+        if (courseError.value) {
+
+            datePickerState.value = false
+
+            const errors = courseError.value.data.errors;
+
+            createError.value = {};
+
+            for (const key in errors) {
+
+                if (errors.hasOwnProperty(key)) {
+
+                    const errorMessages = errors[key];
+
+                    createError.value[key] = errorMessages;
+
+                }
+            }
+        }
+
+    }
+ 
 }
 
 await getTeacher();
@@ -420,9 +499,9 @@ async function handleEventClick(arg) {
 
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
-const dateStart = ref();
+const dateOpen = ref();
 const dateUntil = ref();
-const date = ref();
+const dateStart = ref();
 const datePickerState = ref<any>(null);
 
 
