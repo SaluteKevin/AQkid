@@ -6,38 +6,54 @@ import {useAuthStore} from "~/stores/useAuthStore";
 import {useTimeStore} from "~/stores/useTimeStore";
 
 const modal = ref(false);
+const message = ref('time out');
 
 function closeModal(){
-    modal.value = false;
+    navigateTo(`/student`);
 }
 
 const route = useRoute();
-const counter = useTimeStore();
+await useTimeStore().updateTime();
+const counter = await useTimeStore().time;
+const nowTime = new Date();
+const countDown = ref(300);
+if(counter && nowTime){
+    const timeDifferenceInMilliseconds = counter - nowTime;
+    console.log(`time ${{ counter }} nowTime ${{ nowTime }}` );
+    const timeDifferenceInSeconds = Math.floor(timeDifferenceInMilliseconds / 1000);
+    if (0<=timeDifferenceInSeconds && timeDifferenceInSeconds<= 300 ){
+        countDown.value = Math.floor(timeDifferenceInSeconds % 301);
+    }
+    else {
+        countDown.value = 0;
+    }
+    console.log(countDown.value);
+    
+}
+
 var time = ref({
-    minute: useTimeStore().time/60,
-    second: useTimeStore().time%60
+    minute: 5,
+    second: 0
 })
 async function startTimer() {
   const timer = setInterval(() => {
-    counter.timeDown();
-    if (useTimeStore().time === 0) {
+    if (--countDown.value <= 0) {
       // ทำงานเมื่อครบ 5 นาที
-        navigateTo(`/`);
         modal.value = true;
         clearInterval(timer);
     }
-    else{
-        time.value.minute = useTimeStore().time/60 | 0;
-        time.value.second = useTimeStore().time%60;
-        // console.log(counter.value);
+    else {
+        time.value.minute = countDown.value/60 | 0;
+        time.value.second = countDown.value%60;
     }
+
   }, 1000);
 
 }
-if (useTimeStore().time > 0){
+if (countDown.value > 0){
     startTimer();
 }
-else{
+else {
     modal.value = true;
 }
 
@@ -56,7 +72,7 @@ async function handleRegister() {
     const formData = new FormData()
     if (profile_image_path.value) {
         formData.append('image_path', profile_image_path.value)
-        console.log(formData.get('image_path'));
+        
         
         const {data: registerResponse, error: registerError } = await useApiFetch("api/student/enrollCourse/"+route.params.id+'/'+user.value.id, {
             method: "POST",
@@ -64,12 +80,17 @@ async function handleRegister() {
         });
         if (registerResponse.value) {
             console.log(registerResponse.value.message);
-            
+            navigateTo(`/student`);
+
             //route go home page user
             // await navigateTo(`/student`);
         }
-        if (registerError.value){
-            console.log(registerError.value);
+        else {
+            if (registerError.value) {
+              console.log(registerError.value?.data.message);
+              message.value = registerError.value?.data.message;
+              modal.value = true;
+            }
         }
         
     }
@@ -224,7 +245,7 @@ const removeImagePreview = () => {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                    <h3 class="text-xl font-normal text-gray-500 mt-5 mb-6">Are you sure you want to delete this user?</h3>
+                    <h3 class="text-xl font-normal text-gray-500 mt-5 mb-6">{{ message }}</h3>
                     <a href="#"  onclick=""
                         class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2">
                         Go to refund

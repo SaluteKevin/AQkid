@@ -20,7 +20,7 @@ if(eventCourse.value){
     console.log(course);
 }
 const time = useTimeStore();
-await time.setTime(300);
+await time.setTime();
 
 
 
