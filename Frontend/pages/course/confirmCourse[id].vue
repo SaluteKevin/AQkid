@@ -4,7 +4,7 @@ import {useTimeStore} from "~/stores/useTimeStore";
 definePageMeta({layout: "student"})
 const route = useRoute();
 const teacher = reactive({});
-const course = reactive({});
+const course = ref({});
 
 const idCourse = ref(route.params.id);
 console.log(`'test'`, route.params.id);
@@ -12,12 +12,10 @@ console.log(`'test'`, route.params.id);
 const {data: eventCourse, error: loginError } = await useApiFetch("api/student/showCourse/"+route.params.id, {});
 
 if(eventCourse.value){
-    console.log(eventCourse.value);
-    teacher.value = eventCourse.value[1];
-    console.log(teacher.value.first_name);
+    console.log(eventCourse.value)
 
-    course.value = eventCourse.value[0];
-    console.log(course);
+    course.value = eventCourse.value;
+
 }
 const time = useTimeStore();
 await time.setTime();
@@ -28,52 +26,75 @@ await time.setTime();
 </script>
 
 <template>
-    <div class="bg-gradient-to-b flex justify-center items-center pt-20 pb-36">
-        <div class="w-3/4 p-12 rounded-2xl bg-black-300 border border-gray-200 shadow">
-            <div class="p-2 bg-gradient-to-r animate-pulse from-cyan-300 via-cyan-800 to-cyan-300 rounded-2xl mx-5">
-                <p class="py-5 text-center text-4xl font-bold text-black dark:text-black">Enroll Course</p>
+    <div class="bg-gradient-to-b justify-center items-center pt-20 pb-36">
+        <div
+            class="mt-8 relative flex flex-col items-center rounded-[20px] w-[700px] max-w-[95%] mx-auto bg-white shadow-2xl p-3 border broder-gray-400">
+            <div class="mt-2 mb-8 w-full ">
+                <h4 class="px-2 text-xl font-bold text-navy-700 ">
+                    Course Information
+                </h4>
+                <p class="mt-2 px-2 text-base text-gray-600">
+                    {{ course.description }}
+                </p>
             </div>
-            <div class="flex flex-row">
-                <div class="w-1/2 p-5">
-                    <p class="pl-5 text-3xl text-black dark:text-black bg-cyan-300 rounded-2xl">Teacher</p>
-                    <p v-if="teacher.value" class="pl-5 text-xl text-black dark:text-black pt-4">{{teacher.value.first_name}} {{teacher.value.last_name}}</p>
+            <div class="grid grid-cols-3 gap-4 px-2 w-full ">
+                <div
+                    class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-lg ">
+                    <p class="text-sm text-gray-600">Quota</p>
+                    <p class="text-base font-medium text-navy-700 ">
+                        {{ course.quota }} classes
+                    </p>
                 </div>
-                <div class="w-1/2 p-5">
-                    <p class="pl-5 text-3xl text-black dark:text-black bg-cyan-300 rounded-2xl">Date Time</p>
-                    <p v-if="course.value" class="pl-5 text-xl text-black dark:text-black pt-4">{{ course.value.title }}</p>
+
+                <div class="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-lg">
+                    <p class="text-sm text-gray-600">Capacity</p>
+                    <p class="text-base font-medium text-navy-700">
+                        {{ course.enroll_count }} / {{ course.capacity }} people
+                    </p>
                 </div>
+
+                <div
+                    class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-lg ">
+                    <p class="text-sm text-gray-600">Age-restricted</p>
+                    <p class="text-base font-medium text-navy-700 ">
+                        {{ course.min_age }} to {{ course.max_age }} years old
+                    </p>
+                </div>
+
+                <div class="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-lg ">
+                    <p class="text-sm text-gray-600">Class duration</p>
+                    <p class="text-base font-medium text-navy-700">
+                        {{ course.duration }} Minutes
+                    </p>
+                </div>
+
+                <div
+                    class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-lg ">
+                    <p class="text-sm text-gray-600">Status</p>
+                    <p class="text-base font-medium text-navy-700 ">
+                        {{ course.status }}
+                    </p>
+                </div>
+
+                <div class="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-lg ">
+                    <p class="text-sm text-gray-600">Course price</p>
+                    <p class="text-base font-medium text-navy-700 ">
+                        {{ course.price }}
+                    </p>
+                </div>
+
             </div>
-            <div class="flex flex-row">
-                <div class="w-1/2 p-5">
-                    <p class="pl-5 text-3xl text-black dark:text-black bg-cyan-300 rounded-2xl">Range age</p>
-                    <p v-if="course.value" class="pl-5 text-xl text-black dark:text-black pt-4">{{ course.value.min_age }}-{{ course.value.max_age }}</p>
-                </div>
-                <div class="w-1/2 p-5">
-                    <p class="pl-5 text-3xl text-black dark:text-black bg-cyan-300 rounded-2xl">Capacity</p>
-                    <p v-if="course.value" class="pl-5 text-xl text-black dark:text-black pt-4">{{ course.value.capacity }}</p>
-                </div>
-            </div>
-            <div class="flex flex-row">
-                <div class="w-1/2 p-5">
-                    <p class="pl-5 text-3xl text-black dark:text-black bg-cyan-300 rounded-2xl">Duration</p>
-                    <p v-if="course.value" class="pl-5 text-xl text-black dark:text-black pt-4">{{ course.value.duration }}</p>
-                </div>
-                <div class="w-1/2 p-5">
-                    <p class="pl-5 text-3xl text-black dark:text-black bg-cyan-300 rounded-2xl">Quota</p>
-                    <p v-if="course.value" class="pl-5 text-xl text-black dark:text-black pt-4">{{ course.value.quota }}</p>
-                </div>
-            </div>
-            <div class="relative p-5">
-                <div class="absolute right-0 pr-4">
-                    <NuxtLink :to="`/course/paymentDetails${idCourse}`"
-                        class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-black rounded-lg group bg-gradient-to-br from-teal-300 to-teal-300 group-hover:from-blue-300 group-hover:to-blue-300 dark:text-black dark:hover:text-black focus:ring-4 focus:outline-none focus:ring-blue-400 dark:focus:ring-blue-500">
-                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 text-black dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                            Confirm
-                        </span>
-                    </NuxtLink>
-                </div>
-            </div>
+            <NuxtLink :to="`/course/paymentDetails${idCourse}`">
+                <button class="bg-orange-500 text-white px-6 py-2 text-2xl relative mt-6 rounded-md hover:bg-orange-700 duration-150">
+                    Confirm
+                </button>
+            </NuxtLink>
+
         </div>
+
+
+
+
     </div>
 
 </template>
