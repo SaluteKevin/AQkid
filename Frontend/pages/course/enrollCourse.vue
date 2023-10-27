@@ -39,13 +39,44 @@
                             <div v-if="!author">No</div>
                         </dd>
                     </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">
+                            Age-restricted
+                        </dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            
+                            <div>min_age : 
+                                <span v-if="min_age < 12">{{min_age}} 
+                                    <span v-if="min_age == 1">month</span> 
+                                    <span v-if="min_age > 1">months</span>
+                                </span>
+                                <span v-if="min_age >= 12">{{min_age / 12}} 
+                                    <span v-if="min_age / 12 == 1">year</span> 
+                                    <span v-if="min_age / 12 > 1">years</span>
+                                </span>
+                            </div>
+                            <div>max_age : 
+                                <span v-if="max_age < 12">{{max_age}} 
+                                    <span v-if="max_age == 1">month</span> 
+                                    <span v-if="max_age > 1">months</span>
+                                </span>
+                                <span v-if="max_age >= 12">{{max_age / 12}} 
+                                    <span v-if="max_age / 12 == 1">year</span> 
+                                    <span v-if="max_age / 12 > 1">years</span>
+                                </span>
+                                
+                            </div>
+                        </dd>
+                    </div>
 
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         
-                        <NuxtLink v-if="!author" :to="`/course/confirmCourse${idCourse}`"
+                        
+                        <NuxtLink v-if="!author && myAge >= min_age && myAge <= max_age" :to="`/course/confirmCourse${idCourse}`"
                             class="rounded-lg group relative px-8 py-1 overflow-hidden bg-green-300 hover:bg-green-400 focus:bg-green-500 text-xl shadow my-6">
                             Confirm
                         </NuxtLink>
+                        
 
                         <button v-on:click="clickOutside" class="rounded-lg group relative px-8 py-1 overflow-hidden bg-red-300 hover:bg-red-400 focus:bg-red-500 text-xl shadow my-6">Cancel</button>
                     </div>
@@ -104,13 +135,13 @@ const eventData = ref([])
 import { useAuthStore } from "~/stores/useAuthStore";
 const user = useAuthStore().user;
 
+const myAge = ref(dayjs().diff(dayjs(user.value.birthdate), 'month'));
+
 
 // all courses
 const { data: eventCourse, error: eventError } = await useApiFetch(`api/student/allEnrollCourse/${user.value.id}`, {});
 
 if (eventCourse.value) {
-    console.log(eventCourse.value);
-
 
 
     for (const event in eventCourse.value) {
@@ -121,6 +152,8 @@ if (eventCourse.value) {
             uid: eventCourse.value[event].id,
             datestore: eventCourse.value[event].starts_on,
             author: eventCourse.value[event].author,
+            max_age: eventCourse.value[event].max_age,
+            min_age: eventCourse.value[event].min_age,
 
         }
 
@@ -180,8 +213,8 @@ const day = ref('please select the time')
 const time = ref<any>('')
 const author = ref(false)
 const idCourse = ref(0)
-
-
+const max_age = ref(0)
+const min_age = ref(0)
 
 
 async function handleEventClick(arg) {
@@ -191,6 +224,8 @@ async function handleEventClick(arg) {
     time.value = formatTime(new Date(arg.event.start))
     idCourse.value = arg.event.extendedProps.uid
     author.value = arg.event.extendedProps.author;
+    max_age.value = arg.event.extendedProps.max_age;
+    min_age.value = arg.event.extendedProps.min_age;
     
     await showCardtrue();
 
