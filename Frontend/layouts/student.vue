@@ -27,15 +27,14 @@
             </div>
 
             <!-- Icon Menu Section -->
-            <div class="flex items-center space-x-5">
+            <div class="flex items-center justify-center space-x-6">
                 <!-- Register -->
-                <NuxtLink v-if="isStudent()" class="flex text-gray-600 hover:text-blue-500
+                <NuxtLink v-if="isStudent()" class="h-full flex text-gray-600 hover:text-blue-500
                     cursor-pointer transition-colors duration-300" to="/student/profile">
-               
-
+                    <div class="h-full flex place-items-center mr-1">
+                        {{ user.username }}
+                    </div>
                     <img :src="`${config.public.imageBaseURL}${user.profile_image_path}`" class="bg-gray-700 h-12 w-12 rounded-full">
-
-                    {{ user.username }}
                 </NuxtLink>
 
                 <!-- Login -->
