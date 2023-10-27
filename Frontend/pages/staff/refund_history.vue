@@ -10,7 +10,7 @@
         <div class="flex flex-col gap-2 ">
             <div
 				v-for="refund in showRequests" :key="refund.id"
-				class="flex  px-4 py-4 justify-between bg-white
+				class="flex px-2 py-2 justify-between bg-white
 				 shadow-lg rounded-lg w-full hover:scale-105 duration-150">
 				<!-- Card -->
 
@@ -18,37 +18,37 @@
 					<!-- Left side -->
 
 					<img
-						class="h-20 w-20 rounded-full object-cover"
+						class="h-12 w-12 rounded-full object-cover"
 						src="/images/AQKids_logo.png"
 						alt="" />
 
 					<div
-						class="ml-4 flex flex-col capitalize text-black place-content-center w-1/2">
-						<span>name</span>
-						<span class="mt-2 text-gray-600">
+						class="p-3 flex capitalize text-black place-content-center w-1/4">
+						<span class="mr-1">name:</span>
+						<span class="text-gray-600">
 							{{ refund.user.first_name }} {{ refund.user.last_name }}
 						</span>
 					</div>
 
 					<div
-						class="ml-12  flex flex-col capitalize text-black place-content-center">
+						class="p-3  flex capitalize text-black place-content-center w-1/4">
 						<span>Phone Number</span>
-						<span class="mt-2 text-gray-600">
+						<span class="text-gray-600">
 							{{ refund.user.phone_number}}
 						</span>
 
 					</div>
 
                     <div
-						class="mr-16 flex flex-col text-black place-content-center">
+						class="p-3 flex text-black place-content-center w-1/4">
 						<span>Request time</span>
-						<span class="mt-2 text-gray-600">
+						<span class="text-gray-600">
 							{{formatDateTime(new Date(refund.created_at))}}
 						</span>
 						
 					</div>
                     
-                    <div class="mr-16 flex place-content-center flex-col">
+                    <div class="flex place-content-center flex-col">
 						<NuxtLink :to="`/staff/detail/refund${refund.id}`">
 						<div class="text-white bg-orange-500 hover:bg-orange-700 py-2 px-10 rounded-md mb-1">View detail</div>
                         </NuxtLink>

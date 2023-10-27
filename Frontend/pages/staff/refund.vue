@@ -23,7 +23,7 @@
 						alt="" />
 
 					<div
-						class="ml-4 flex flex-col capitalize text-black place-content-center w-1/2">
+						class="p-2 flex flex-col capitalize text-black place-content-center w-1/5">
 						<span>name</span>
 						<span class="mt-2 text-gray-600">
 							{{ refund.user.first_name }} {{ refund.user.last_name }}
@@ -31,7 +31,7 @@
 					</div>
 
 					<div
-						class="ml-12  flex flex-col capitalize text-black place-content-center">
+						class="p-2  flex flex-col capitalize text-black place-content-center w-1/5">
 						<span>Phone Number</span>
 						<span class="mt-2 text-gray-600">
 							{{ refund.user.phone_number}}
@@ -40,7 +40,7 @@
 					</div>
 
                     <div
-						class="mr-16 flex flex-col text-black place-content-center">
+						class="p-2 flex flex-col text-black place-content-center w-1/5">
 						<span>Request time</span>
 						<span class="mt-2 text-gray-600">
 							{{formatDateTime(new Date(refund.created_at))}}
@@ -48,7 +48,7 @@
 						
 					</div>
                     
-                    <div class="mr-16 flex place-content-center flex-col">
+                    <div class="flex place-content-center flex-col">
 						<NuxtLink :to="`/staff/detail/refund${refund.id}`">
 						<div class="text-white bg-orange-500 hover:bg-orange-700 py-2 px-10 rounded-md mb-1">View detail</div>
                         </NuxtLink>

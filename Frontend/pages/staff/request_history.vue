@@ -10,7 +10,7 @@
         <div class="flex flex-col gap-2 ">
             <div
 				v-for="enroll in showEnrollsHistory" :key="enroll.number"
-				class="flex  px-2 py-2 justify-between bg-white
+				class="flex px-2 py-2 justify-between bg-white
 				 shadow-lg w-full hover:scale-105 duration-150">
 				<!-- Card -->
 
@@ -23,16 +23,16 @@
 						alt="" />
 
 					<div
-						class="ml-4 mt-3 flex capitalize text-black w-1/4">
-						<span class="mr-2">name:</span>
+						class="p-3 flex capitalize text-black w-1/4">
+						<span class="mr-1">name:</span>
 						<span class="text-gray-600">
 							{{ enroll.user.first_name }} {{ enroll.user.last_name }}
 						</span>
 					</div>
 
 					<div
-						class="ml-12 mt-3 flex capitalize text-black w-1/4">
-						<span class="mr-2">Phone Number:</span>
+						class="p-3 flex capitalize text-black w-1/4">
+						<span class="mr-1">Phone Number:</span>
 						<span class="text-gray-600">
 							{{ enroll.user.phone_number}}
 						</span>
@@ -40,15 +40,15 @@
 					</div>
 
                     <div
-						class="mr-16 mt-3 flex text-black w-1/4">
-						<span class="mr-2">Request time:</span>
+						class="p-3 flex text-black w-1/4">
+						<span class="mr-1">Request time:</span>
 						<span class=" text-gray-600">
 							{{formatDateTime(new Date(enroll.created_at))}}
 						</span>
 						
 					</div>
                     
-                    <div class="mr-16 flex place-content-center flex-col">
+                    <div class="flex place-content-center flex-col">
 						<NuxtLink :to="`/staff/detail/request${enroll.id}`">
 						<div class="text-white bg-orange-500 hover:bg-orange-700 py-2 px-10 rounded-md mb-1">View detail</div>
                         </NuxtLink>

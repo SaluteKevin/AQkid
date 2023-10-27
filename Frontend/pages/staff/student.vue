@@ -37,7 +37,7 @@
                 </button>
             </label>
 
-            <div class="relative inline-block text-left flex gap-3 items-center">
+            <div class="relative text-left flex gap-3 items-center">
                 <div>Filter : </div>
                 <div>
                     <button v-on:click="filter = !filter" type="button"
@@ -98,14 +98,14 @@
                 <img class="h-14 w-14 rounded-full object-cover" :src="`${config.public.imageBaseURL}${student.profile_image_path}`"
                     alt="" />
 
-                <div class="ml-4 mt-4 flex capitalize text-black w-1/4">
+                <div class="ml-4 mt-4 flex capitalize text-black w-1/5">
                     <span class="mr-2">name:</span>
                     <span class="text-gray-600">
                         {{ student.username }}
                     </span>
                 </div>
 
-                <div class="ml-12 mt-1 capitalize text-black w-1/4">
+                <div class="ml-12 mt-1 capitalize text-black w-1/5">
                     <span class="mr-2">Phone Number: </span>
                     <span class="text-gray-600">
                         {{ student.phone_number }}
@@ -121,7 +121,7 @@
                     </div>
                 </div>
 
-                <div class="ml-12 flex flex-col capitalize text-black w-1/4">
+                <div class="ml-12 flex flex-col capitalize text-black w-1/5">
                     <span>Active Courses</span>
                     <span class="text-red-400" v-if="student.courses_count == 0">
                                 No courses

@@ -138,7 +138,7 @@
 
     
 
-    <div v-if="Registration" class="min-h-screen bg-gradient-to-t to-purple-100 to-60% from-[#bce1ff] from-10% flex flex-col items-center justify-center">
+    <div v-if="Registration" class="min-h-screen bg-gradient-to-t to-orange-200 to-95% via-purple-200 from-[#bce1ff] from-10% flex flex-col items-center justify-center">
 
         <div class="relative flex py-5 items-center w-full px-10">
             <div class="flex-grow border-t border-gray-400"></div>
