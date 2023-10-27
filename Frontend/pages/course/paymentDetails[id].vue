@@ -13,7 +13,6 @@ function closeModal(){
 }
 
 const route = useRoute();
-await useTimeStore().updateTime();
 const counter = await useTimeStore().time;
 const nowTime = new Date();
 const countDown = ref(300);

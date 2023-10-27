@@ -1,24 +1,41 @@
 <script setup lang="ts">
+definePageMeta({ layout: "student" })
 
-import {useTimeStore} from "~/stores/useTimeStore";
-definePageMeta({layout: "student"})
+import { useTimeStore } from "~/stores/useTimeStore";
 const route = useRoute();
-const teacher = reactive({});
+
 const course = ref({});
 
-const idCourse = ref(route.params.id);
-console.log(`'test'`, route.params.id);
+// route.params.id
 
-const {data: eventCourse, error: loginError } = await useApiFetch("api/student/showCourse/"+route.params.id, {});
 
-if(eventCourse.value){
+const { data: eventCourse, error: loginError } = await useApiFetch("api/student/showCourse/" + route.params.id, {});
+
+if (eventCourse.value) {
     console.log(eventCourse.value)
 
     course.value = eventCourse.value;
 
 }
-const time = useTimeStore();
-await time.setTime();
+
+const timer = useTimeStore();
+
+const confirmError = ref('');
+async function paymentConfirm() {
+
+    if (timer.setTime()) {
+
+        await navigateTo(`/course/paymentDetails${route.params.id}`);
+
+    } else {
+
+        confirmError.value = "Can't enroll to this course right now!";
+
+    }
+
+
+
+}
 
 
 
@@ -84,17 +101,17 @@ await time.setTime();
                 </div>
 
             </div>
-            <NuxtLink :to="`/course/paymentDetails${idCourse}`">
-                <button class="bg-orange-500 text-white px-6 py-2 text-2xl relative mt-6 rounded-md hover:bg-orange-700 duration-150">
-                    Confirm
-                </button>
-            </NuxtLink>
+            <p class="text-red-500 mt-8" >
+                {{ confirmError }}
+            </p>
+            <button v-if="course.enroll_count < course.capacity" v-on:click="paymentConfirm"
+                class="bg-orange-500 text-white px-6 py-2 text-2xl relative mt-6 rounded-md hover:bg-orange-700 duration-150">
+                Confirm
+            </button>
+
 
         </div>
 
 
-
-
     </div>
-
 </template>
