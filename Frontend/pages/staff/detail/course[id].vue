@@ -581,7 +581,7 @@ async function submitCreateTimeslot() {
         method: "POST",
         body: {
             datetime: dayjs(date.value).format('YYYY-MM-DD HH:mm:ss')
-        }
+        } 
     });
 
     if (createResponse.value) {
