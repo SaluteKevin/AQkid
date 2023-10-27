@@ -4,15 +4,12 @@
         <div class="px-4">
             <div class="flex items-center justify-between">
                 <div class="flex shrink-0">
-                    <NuxtLink aria-current="page" class="flex items-center" to="/">
+                    <NuxtLink  to="/teacher" aria-current="page" class="flex items-center">
                         <img class="h-7 w-auto" src="/images/AQKids_logo.png" alt="">
                     </NuxtLink>
                 </div>
                 <div class="hidden md:flex md:items-center md:justify-center md:gap-5">
-                    <NuxtLink class="flex text-gray-600 hover:text-blue-500
-                    cursor-pointer transition-colors duration-300" to="/teacher">
-                    Home
-                </NuxtLink>
+                   
                     
                 </div>
                 <div class="flex items-center justify-end gap-3">

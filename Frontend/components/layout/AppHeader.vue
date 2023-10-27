@@ -15,47 +15,18 @@
             <!-- Logo Container -->
             <div class="flex items-center">
                 <!-- Logo -->
-                <NuxtLink class="flex items-center space-x-2" to="/">
+                <div class="flex items-center space-x-2">
                         
                         <div aria-hidden="true" class="flex space-x-1">
                             <img src="/images/AQKids_logo.png" class="h-12">
                         </div>
                         <span class="text-4xl font-bold text-cyan-900">AQKids</span>
-                </NuxtLink>
+                    </div>
             </div>
 
             <!-- Links Section -->
             <div class="items-center hidden space-x-8 lg:flex">
-                <a class="flex text-gray-600 hover:text-blue-500
-                    cursor-pointer transition-colors duration-300">
-                    Home
-                </a>
-
-                <a class="flex text-gray-600 
-                    cursor-pointer transition-colors duration-300
-                    font-semibold hover:text-blue-600">
-                    Themes
-                </a>
-
-                <a class="flex text-gray-600 hover:text-blue-500
-                    cursor-pointer transition-colors duration-300">
-                    Developers
-                </a>
-
-                <a class="flex text-gray-600 hover:text-blue-500
-                    cursor-pointer transition-colors duration-300">
-                    Pricing
-                </a>
-
-                <a class="flex text-gray-600 hover:text-blue-500
-                    cursor-pointer transition-colors duration-300">
-                    Blog
-                </a>
-
-                <a class="flex text-gray-600 hover:text-blue-500
-                    cursor-pointer transition-colors duration-300">
-                    About Us
-                </a>
+                
             </div>
 
             <!-- Icon Menu Section -->
