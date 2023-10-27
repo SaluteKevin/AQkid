@@ -33,38 +33,40 @@ const time = ref<any>('')
 const idCourse = ref(0)
 
 
-
 import FullCalendar from '@fullcalendar/vue3'
 import interactionPlugin from '@fullcalendar/interaction'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import dayGridPlugin from '@fullcalendar/daygrid'
-
+import dayjs from 'dayjs';
 
 const calendarOptions = ref({
-    plugins: [interactionPlugin, timeGridPlugin, dayGridPlugin],
-    initialView: 'timeGridWeek',
-    nowIndicator: false,
-    editable: true,
-    dayHeaderFormat: { weekday: 'long' },
-    scrollTime: '10:00:00', // Set the scrollTime to 10:00 AM (optional)
-    slotMinTime: '10:00:00', // Set the minimum time to 10:00 AM (optional)
-    slotMaxTime: '18:00:00', // 
-    slotLabelFormat: {
-        hour: 'numeric',
-        minute: '2-digit',
-        omitZeroMinute: false,
-    },
-    contentHeight: 'auto',
-    allDaySlot: false,
-
-    //   dateClick: handleDateClick,
-      eventClick: handleEventClick,
-    //   eventMouseEnter: handleEventhover,
-    //   eventMouseLeave: handleEventLeave,
-
-    events: ref([]),
-    eventColor: '#378006'
+  plugins: [interactionPlugin, timeGridPlugin, dayGridPlugin],
+  initialView: 'timeGridWeek',
+  nowIndicator: true,
+  editable: false,
+//   dateClick: handleDateClick,
+  eventClick: handleEventClick,
+  // eventMouseEnter: handleEventhover,
+  // eventMouseLeave: handleEventLeave,
+  contentHeight: 'auto',
+  events: ref([]),
+  scrollTime: '10:00:00', // Set the scrollTime to 10:00 AM (optional)
+  slotMinTime: '10:00:00', // Set the minimum time to 10:00 AM (optional)
+  slotMaxTime: '18:00:00', // 
+  slotLabelFormat: {
+    hour: 'numeric',
+    minute: '2-digit',
+    omitZeroMinute: false,
+  },
+  allDaySlot: false,
+  initialDate: ref(),
+  headerToolbar: {
+    left: 'prev,next today',
+    center: 'title',
+    right: 'dayGridMonth,timeGridWeek,timeGridDay',
+  },
 })
+
 
 
 const eventData = ref([
@@ -73,9 +75,10 @@ const eventData = ref([
 
 
 import {useAuthStore} from "~/stores/useAuthStore";
-    
 const user = useAuthStore().user;
 
+
+// all courses
 const {data: eventCourse, error: loginError } = await useApiFetch("api/student/getAllCourses", {});
 
 if(eventCourse.value){

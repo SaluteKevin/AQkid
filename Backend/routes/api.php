@@ -60,6 +60,10 @@ Route::group([
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class, 'me']);
     Route::post('register', [AuthController::class, 'register']);
+    Route::post('editprofile/{user}', [AuthController::class, 'updateProfile']);
+    Route::post('editpassword/{user}', [AuthController::class, 'updatePassword']);
+    Route::post('editimage/{user}', [AuthController::class, 'updateImage']);    
+
 
 });
 
@@ -111,6 +115,8 @@ Route::group([
     Route::post('rejectUserRequest/{userRequest}', [StaffController::class,'rejectRequest']);
     Route::get('getUserRequest/{userRequest}',[StaffController::class, 'userRequestReview']);
   
+    // create course
+    Route::get('getTeacherList', [StaffController::class,'getTeacherList']);
 });
 
 Route::group([
@@ -139,16 +145,17 @@ Route::group([
 ], function ($router) {
     
     Route::get('getClasses/{user}', [StudentController::class, 'getAllClasses']);
-    Route::get('getAllCourses', [StudentController::class, 'getAllCourse']);
+    Route::get('getAllCourses/{user}', [StudentController::class, 'getAllCourse']);
     Route::get('showCourse/{course}', [StudentController::class, 'showCourse']);
     Route::post('enrollCourse/{course}/{user}', [StudentController::class, 'enrollCourse']);
     
     
     Route::get('profile/{user}', [StudentController::class, 'profile']);
     Route::get('userStat/{user}', [StudentController::class, 'userStat']);
-    Route::post('editprofile/{user}', [StudentController::class, 'updateProfile']);
-    Route::post('editpassword/{user}', [StudentController::class, 'updatePassword']);
-    Route::post('editimage/{user}', [StudentController::class, 'updateImage']);    
+
+    // enroll course
+
+    Route::get('allEnrollCourse/{user}', [StudentController::class, 'allEnrollCourses']);
 
 });
 
