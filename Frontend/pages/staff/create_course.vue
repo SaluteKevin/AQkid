@@ -25,16 +25,16 @@
     </div>
     
     <!-- <div class="flex-grow border-t border-gray-400 mt-6"></div> -->
-    <div class="font-semibold px-4 pb-6 pt-2 flex">
+    <div class="font-semibold px-4 pb-6 pt-2 flex mt-4">
         <div class="w-1/2 mt-4">
-          <div class="flex">
+          <div class="flex mb-16">
             <div class="mr-24">
-              <span class="text-xl">Quota</span>
+              <span class="text-xl">Type</span>
               <div class="relative group">
           
                   <div v-click-outside="clickOutsideQuo" class="relative">
                           <button v-on:click="openQuota = !openQuota" class="bg-orange-300 rounded-md px-4 py-1 mt-2">
-                          <span>Amount: {{ currentQuota }}</span>
+                          <span>{{ currentQuota }}</span>
                           <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': openQuota, 'rotate-0': !openQuota}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                           </button>
                           <div v-if="openQuota" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute left-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
@@ -71,7 +71,9 @@
               </div>
             </div>
           </div>
-          <div class="flex mt-16">
+          <div class="flex-grow border-t border-gray-400 w-5/6"></div>
+          <div class="flex mt-10">
+            
             <div class="mr-24">
               <span class="text-xl">Min Age</span>
               <div class="relative group">
@@ -117,7 +119,7 @@
 
 
 
-        <div class="w-1/2">
+        <div class="w-2/3 border-l border-gray-400 pl-16 mt-4">
           <div class="flex">
             <div class="pt-2">Start on
             <VueDatePicker class="text-black" v-model="dateStart" :is-24="true" enable-seconds
@@ -150,7 +152,7 @@
             </div>
           </div>
           <div class="font-semibold relative group mt-4">
-            Select Teacher
+            Select Teacher: 
             <button v-click-outside="clickOutsideTeacher" v-on:click="openTeacher = !openTeacher" class="bg-gray-300 rounded-md px-4 py-1 mt-2">
               {{ currentTeacher }}
               <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': openTeacher, 'rotate-0': !openTeacher}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
@@ -168,7 +170,7 @@
     </div>
     
     <div class="flex justify-end">
-      <button class="bg-orange-500 text-white px-4 py-2 mt-8 flex rounded-md hover:bg-orange-700 duration-200">
+      <button class="bg-orange-500 text-white px-4 py-2  flex rounded-md hover:bg-orange-700 duration-200">
           <span class="text-xl">Create</span>
           <svg width="24px" height="24px" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12.2929 4.29289C12.6834 3.90237 13.3166 3.90237 13.7071 4.29289L20.7071 11.2929C21.0976 11.6834 21.0976 12.3166 20.7071 12.7071L13.7071 19.7071C13.3166 20.0976 12.6834 20.0976 12.2929 19.7071C11.9024 19.3166 11.9024 18.6834 12.2929 18.2929L17.5858 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H17.5858L12.2929 5.70711C11.9024 5.31658 11.9024 4.68342 12.2929 4.29289Z" fill="#ffffff"></path> </g></svg>
       </button>
@@ -192,10 +194,10 @@ const openMinAge = ref(false);
 const openMaxAge = ref(false);
 const openTeacher = ref(false);
 
-var currentQuota = 1;
-const quotaNumber = [5,10];
+var currentQuota = "Full Course";
+const quotaNumber = ["Half Course","Full Course"];
 const changeQuota = () =>{
-    currentQuota = 0;
+    currentQuota = "not assign";
 }
 
 var currentCapacity = 4;
