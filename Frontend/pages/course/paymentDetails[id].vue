@@ -178,7 +178,7 @@ const removeImagePreview = () => {
               
             
 
-            <div class="h-2/3">
+            <div class="h-full overflow-hidden">
                 <div  class="flex justify-center items-center">
                     <div 
                         class="w-full object-cover relative order-first md:order-last h-1/3 md:h-auto flex justify-center items-center border border-dashed border-gray-400 col-span-2 m-2 rounded-lg bg-no-repeat bg-center bg-origin-padding bg-cover">
@@ -204,13 +204,18 @@ const removeImagePreview = () => {
                     remove image
                 </button>
                 </div>
-                <div class="flex justify-center space-x-10 mt-6">
-                    <p class="text-2xl font-medium text-black w-2/5">Please confirm in
-                    <span class="text-2xl font-medium text-red-700">{{ time.minute }}:{{ time.second }}</span>
-                    </p>
-                    <button @click="handleRegister()" class="px-2 py-2 text-2xl bg-orange-500 hover:bg-orange-700 text-white rounded-lg">
-                        Confirm
-                    </button>
+                <div class="flex justify-end h-full">
+
+                    <div class="flex justify-center mt-10 w-2/3">
+                        <div class="text-2xl font-medium text-black w-2/3">Please confirm in
+                        <span class="text-2xl font-medium text-red-700">{{ time.minute }}:{{ time.second }}</span>
+                        </div>
+                        <div class="w-1/5">
+                            <button @click="handleRegister()" class="px-2 py-2 text-xl bg-orange-500 hover:bg-orange-700 text-white rounded-lg">
+                                Confirm
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
             
