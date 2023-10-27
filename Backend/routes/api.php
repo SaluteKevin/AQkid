@@ -111,6 +111,8 @@ Route::group([
     Route::post('rejectUserRequest/{userRequest}', [StaffController::class,'rejectRequest']);
     Route::get('getUserRequest/{userRequest}',[StaffController::class, 'userRequestReview']);
   
+    // create course
+    Route::get('getTeacherList', [StaffController::class,'getTeacherList']);
 });
 
 Route::group([

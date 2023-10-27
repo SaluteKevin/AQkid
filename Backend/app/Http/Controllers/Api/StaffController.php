@@ -39,7 +39,7 @@ class StaffController extends Controller
         ,'getTimeslotStudents','addStudentAttendance','removeStudentAttendance'
         ,'enrollmentNotPending','removeTimeslot','allUserRequests'
         ,'allUserRequestHistories','userRequestReview'
-        ,'acceptRequest','rejectRequest']]);
+        ,'acceptRequest','rejectRequest','getTeacherList']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -308,6 +308,11 @@ class StaffController extends Controller
 
         return User::queryTeacherWithCourses($user);
 
+    }
+
+    public function getTeacherList(){
+        $teachers = User::allWithRole(UserRoleEnum::TEACHER);
+        return $teachers;
     }
 
     public function createTeacher(Request $request) {
