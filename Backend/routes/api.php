@@ -154,7 +154,9 @@ Route::group([
     Route::get('userStat/{user}', [StudentController::class, 'userStat']);
 
     // enroll course
-      
+
+    Route::get('allEnrollCourse/{user}', [StudentController::class, 'allEnrollCourses']);
+
 });
 
 

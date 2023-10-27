@@ -121,7 +121,20 @@ class Course extends Model
 
     public static function getAllEnrollmentCourses(User $user) {
 
-        
+        $allCourses = Course::where('status',CourseStatusEnum::OPEN->name)->get();
+
+        $courseIds = Enrollment::where('student_id',$user->id)->where('status',EnrollmentStatusEnum::SUCCESS->name)->pluck('course_id');
+
+        $allCourses->each(function ($course) use ($courseIds) {
+            if (in_array($course->id, $courseIds->toArray())) {
+                $course->author = true;
+                
+            } else {
+                $course->author = false;
+            }
+        });
+
+        return $allCourses;
 
     }
 }
