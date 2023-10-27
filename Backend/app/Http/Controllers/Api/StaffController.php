@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Course;
 use App\Models\Enrollment;
+use App\Models\Enums\CourseStatusEnum;
 use App\Models\UserRequest;
 use App\Models\Enums\EnrollmentStatusEnum;
 use App\Models\Enums\UserRoleEnum;
@@ -39,7 +40,7 @@ class StaffController extends Controller
         ,'getTimeslotStudents','addStudentAttendance','removeStudentAttendance'
         ,'enrollmentNotPending','removeTimeslot','allUserRequests'
         ,'allUserRequestHistories','userRequestReview'
-        ,'acceptRequest','rejectRequest','getTeacherList']]);
+        ,'acceptRequest','rejectRequest','getTeacherList','createCourse']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -310,10 +311,6 @@ class StaffController extends Controller
 
     }
 
-    public function getTeacherList(){
-        $teachers = User::allWithRole(UserRoleEnum::TEACHER);
-        return $teachers;
-    }
 
     public function createTeacher(Request $request) {
 
@@ -414,5 +411,62 @@ class StaffController extends Controller
             'message' => "Failed to Reject UserRequest",
         ],422);
 
+    }
+
+    // create course
+    public function getTeacherList(){
+        $teachers = User::allWithRole(UserRoleEnum::TEACHER);
+        return $teachers;
+    }
+
+    public function createCourse(Request $request){
+        $request->validate([
+            'teacher_id'=>'required',
+            'title' =>'required',
+            'description' =>'required',
+            'quota' =>'required',
+            'capacity' =>'required',
+            'min_age' =>'required',
+            'max_age' =>'required',
+            'opens_on' =>'required',
+            'opens_until' =>'required|after_or_equal:opens_on',
+            'starts_on' =>'required|after_or_equal:opens_until',
+        ]);
+
+        $courseAttributes = [
+            'teacher_id' => $request->get('teacher_id'),  // Replace with the actual teacher ID
+            'title' => $request->get('title'),
+            'description' => $request->get('description'),
+            'quota' => $request->get('quota'),
+            'capacity' => $request->get('capacity'),
+            'min_age' => $request->get('min_age'), // Replace with the desired minimum age
+            'max_age' => $request->get('max_age'), // Replace with the desired maximum age
+            'duration' => null, // Replace with the desired duration
+            'opens_on' => strtotime($request->get('opens_on')), // Replace with the desired datetime
+            'opens_until' => strtotime($request->get('opens_until')), // Replace with the desired datetime
+            'starts_on' => strtotime($request->get('starts_on')), // Replace with the desired datetime
+            'status' => null, // You can specify the status here, or it will default to 'PENDING'
+            // Replace with the desired price
+        ];
+
+        $courseAttributes['price'] = 4000;
+
+        if ($request->get('quota') == 10){
+            $courseAttributes['price'] = 7500;
+        }
+
+        $statusOk = Course::createCourse($courseAttributes);
+       
+        if ( $statusOk != false ) {
+
+            return response()->json([
+                'message' => "Successfully created course",
+            ]);
+
+        }
+
+        return response()->json([
+            'message' => "Failed to create course",
+        ],422);
     }
 }

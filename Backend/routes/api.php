@@ -117,6 +117,7 @@ Route::group([
   
     // create course
     Route::get('getTeacherList', [StaffController::class,'getTeacherList']);
+    Route::post('createCourse', [StaffController::class,'createCourse']);
 });
 
 Route::group([

@@ -47,7 +47,7 @@ class Course extends Model
         $course->opens_until = date(env('APP_DATETIME_FORMAT'), $courseAttributes['opens_until']);
         $course->starts_on = date(env('APP_DATETIME_FORMAT'), $courseAttributes['starts_on']);
         $course->status = $courseAttributes['status'] == null ? CourseStatusEnum::PENDING->name : $courseAttributes['status']->name;
-        $course->price = $courseAttributes['price'];
+        $course->price = $courseAttributes['price'] ;
 
         return $course->save();
     }
