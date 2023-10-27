@@ -50,7 +50,9 @@ class StudentController extends Controller
     public function showCourse(Course $course)
     {
         $teacher = User::find($course->teacher_id);
-        return [$course, $teacher];
+        $course->teacher = $teacher;
+        $course->enroll_count = $course->studentsIn($course->id,EnrollmentStatusEnum::SUCCESS)->count();
+        return $course;
     }
 
     public function enrollCourse(Course $course, User $user , Request $request){
