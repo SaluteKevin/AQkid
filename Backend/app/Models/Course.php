@@ -68,7 +68,7 @@ class Course extends Model
     {
         $course = Course::find($courseId);
 
-        if ($course->status != CourseStatusEnum::OPEN)
+        if ($course->status != CourseStatusEnum::OPEN->name)
             return -1;
 
         return Course::find($courseId)->capacity - Course::studentsIn($courseId)->count();

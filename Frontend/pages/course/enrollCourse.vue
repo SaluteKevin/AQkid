@@ -26,6 +26,8 @@
 
 <script setup lang="ts">
 
+definePageMeta({layout: "student"})
+
 const day = ref('please select the time')
 const time = ref<any>('')
 const idCourse = ref(0)
@@ -66,7 +68,6 @@ const calendarOptions = ref({
 
 
 const eventData = ref([
-    { title: 'ink bd', start: '2023-11-03 10:00:00', uid: 123, color: 'purple', description: 'description for Repeating Event', eventClassNames: "test" },
     
 ])
 
