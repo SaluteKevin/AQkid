@@ -29,7 +29,7 @@
         <div class="w-1/2 mt-4">
           <div class="flex mb-16">
             <div class="w-1/2">
-              <span class="text-xl">Type</span>
+              <span class="text-xl">Course Type</span>
               <div class="relative group">
           
                   <div v-click-outside="clickOutsideQuo" class="relative">
@@ -119,8 +119,8 @@
 
 
 
-        <div class="w-2/3 border-l border-gray-400 pl-16 mt-4">
-          <div class="flex">
+        <div class="w-1/2 border-l border-gray-400 pl-16 mt-4 space-y-2">
+          <div class="flex h-1/4">
             <div class="pt-2">Start on
             <VueDatePicker class="text-black" v-model="dateStart" :is-24="true" enable-seconds
                                 hours-increment="1" minutes-increment="0" seconds-increment="0" placeholder="Select Date"
@@ -130,7 +130,7 @@
                                 :disabled-week-days="[1]"></VueDatePicker>
             </div>
           </div>
-          <div class="flex">
+          <div class="flex h-1/4">
               <div class="pt-2">Until
                 <VueDatePicker class="text-black" v-model="dateUntil" :is-24="true" enable-seconds
                                 hours-increment="1" minutes-increment="0" seconds-increment="0" placeholder="Select Date"
@@ -140,7 +140,7 @@
                                 :disabled-week-days="[1]"></VueDatePicker>
               </div>
           </div>
-          <div class="flex">
+          <div class="flex h-1/4">
             <div class="pt-2 font-semibold">
             Select Timeslot
             <VueDatePicker class="text-black z-0" v-model="date" :is-24="true" enable-seconds
@@ -151,9 +151,9 @@
                                 :disabled-week-days="[1]"></VueDatePicker>
             </div>
           </div>
-          <div class="font-semibold relative group mt-4">
+          <div class="font-semibold relative group h-1/4">
             Select Teacher: 
-            <button v-click-outside="clickOutsideTeacher" v-on:click="openTeacher = !openTeacher" class="bg-gray-300 rounded-md px-4 py-1 mt-2">
+            <button v-click-outside="clickOutsideTeacher" v-on:click="openTeacher = !openTeacher" class="bg-orange-300 rounded-md px-4 py-1 mt-2">
               {{ currentTeacher }}
               <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': openTeacher, 'rotate-0': !openTeacher}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </button>
@@ -209,20 +209,26 @@ function changeQuota(type: string){
 
 const currentCapacity = ref('Not Assign');
 const capacityNumber = [4,6];
+const capacityAmount = ref(0);
 function changeCapacity(amount: number){
     currentCapacity.value = "Amount: " + amount;
+    capacityAmount.value = amount;
 }
 
 const currentMinAge = ref('Not Assign');
 const minAgeNumber = [0,6,12,24,36,48,60];
+const minAgeAmount = ref(0);
 function changeMinAge(minAge: number){
     currentMinAge.value = minAge + " Month ("+ minAge/12+ " year)" ;
+    minAgeAmount.value = minAge;
 }
 
 const currentMaxAge = ref('Not Assign');
 const maxAgeNumber = [6,12,24,36,48,60,120];
+const maxAgeAmount = ref(0);
 function changeMaxAge(maxAge: number){
     currentMaxAge.value = maxAge + " Month ("+ maxAge/12+ " year)" ;
+    maxAgeAmount.value = maxAge;
 }
 
 const currentTeacher = ref("Not Assign");
@@ -232,7 +238,7 @@ function changeTeacher(name: string, id: number) {
     currentTeacher.value = name;
     currentTeacherNo.value = id;
 }
-const route = useRoute();
+
 async function getTeacher(){
   const {data: teacherData, error: teacherError} = await useApiFetch(`api/staff/getTeacherList`,{});
   if(teacherData.value){
