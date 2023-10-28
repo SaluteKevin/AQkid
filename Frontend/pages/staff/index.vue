@@ -62,7 +62,6 @@ const calendarOptions = ref({
   initialView: 'timeGridWeek',
   nowIndicator: true,
   editable: false,
-  dateClick: handleDateClick,
   eventClick: handleEventClick,
   // eventMouseEnter: handleEventhover,
   // eventMouseLeave: handleEventLeave,
@@ -163,12 +162,6 @@ if (timeslotResponse.value) {
 // const tooltipLeft = ref(0);
 // const tooltipWidth = ref<any>(0);
 
-
-function handleDateClick(arg) {
-  // alert('date click! ' + arg.dateStr);
-  eventData.value.push({ title: 'test', date: '2023-12-19' })
-  // calendarOptions.value.events.push({title: 'test', date: '2023-12-19'})
-}
 
 async function handleEventClick(arg) {
   await navigateTo(`/staff/detail/timeslot${arg.event.extendedProps.uid}`);

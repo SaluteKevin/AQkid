@@ -19,35 +19,7 @@ use App\Models\User;
 |
 */
 
-// Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-//      $request->user()->info;
-//      return $request->user();
-//     return User::with('info')->get();
-// });
-
-// Route::middleware(['auth:sanctum','multirole:staff'])->get('/test', function (Request $request) {
-//     return [ 'success' => true ];
-// });
-
-
-// Route::middleware(['auth:sanctum'])->post('/revoke', function (Request $request) {
-//     $user = auth()->user();
-
-//     // Revoke all of the user's tokens
-//     $user->tokens->each->delete();
-// });
-
-
-// Route::post('/loginServer', [AuthController::class,'loginServer'])->name('login.server');
-// Route::get('/setApiCookie', [AuthController::class,'setApiCookie'])->name('cookie.server');
-
-// Route::post('/testFETCH', function () {
-//     return ['success' => true];
-// })->name('test.server');
-
-
-
-
+// AUTH
 Route::group([
 
     'middleware' => 'api',
@@ -69,7 +41,7 @@ Route::group([
 
 
 
-
+// STAFF
 Route::group([
 
     'middleware' => 'api',
@@ -119,10 +91,10 @@ Route::group([
     Route::get('getTeacherList', [StaffController::class,'getTeacherList']);
     Route::post('createCourse', [StaffController::class,'createCourse']);
 
-    //test
-    Route::get('testDate', [StaffController::class,'validateTimeslot']);
 });
 
+
+// TEACHER
 Route::group([
 
     'middleware' => 'api',
@@ -141,6 +113,7 @@ Route::group([
 });
 
 
+// STUDENT
 Route::group([
     
     'middleware' => 'api',

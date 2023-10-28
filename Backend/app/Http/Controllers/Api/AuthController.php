@@ -139,9 +139,6 @@ class AuthController extends Controller
             'email' => 'nullable',
         ]);
 
-        // User $user, string $firstname, string $middlename = null, string $lastname,
-        //                                    string $birthdate, string $phone_number, string $email = null)
-
         $statusOk = User::updateUserInfo(
             $user,
             $request->get('firstname'),

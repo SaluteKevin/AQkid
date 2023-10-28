@@ -434,10 +434,7 @@ const calendarOptions = ref({
   initialView: 'timeGridWeek',
   nowIndicator: true,
   editable: false,
-  dateClick: handleDateClick,
   eventClick: handleEventClick,
-  // eventMouseEnter: handleEventhover,
-  // eventMouseLeave: handleEventLeave,
   contentHeight: 'auto',
   events: ref([]),
   scrollTime: '10:00:00', // Set the scrollTime to 10:00 AM (optional)
@@ -463,12 +460,6 @@ const eventData = ref([])
 const allTimeslots = ref({})
 
 
-// { title: 'ink bd', start: '2023-11-03 10:00:00', id: 123, color: 'purple', description: 'description for Repeating Event', eventClassNames: "test" },
-//   { title: 'event 1', date: '2023-12-19' },
-//   { title: 'event 1', date: '2023-12-19' },
-//   { title: 'event 1', date: '2023-12-19' },
-//   { title: 'event 2', date: '2023-09-12' }
-
 
 
 calendarOptions.value.events = eventData;
@@ -489,8 +480,6 @@ if (timeslotResponse.value) {
       type: allTimeslots.value[event].type,
 
     }
-
-    console.log(dayjs(allTimeslots.value[event].datetime).day())
 
     if (dayjs(allTimeslots.value[event].datetime).day() == 0) {
       temp["color"] = 'red';
@@ -538,11 +527,7 @@ if (timeslotResponse.value) {
 // const tooltipWidth = ref<any>(0);
 
 
-function handleDateClick(arg) {
-  // alert('date click! ' + arg.dateStr);
-  eventData.value.push({ title: 'test', date: '2023-12-19' })
-  // calendarOptions.value.events.push({title: 'test', date: '2023-12-19'})
-}
+
 
 async function handleEventClick(arg) {
   await navigateTo(`/staff/detail/timeslot${arg.event.extendedProps.uid}`);
