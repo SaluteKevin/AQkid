@@ -420,7 +420,7 @@ class StaffController extends Controller
     }
 
     public function createCourse(Request $request){
-        
+
         $request->validate([
             'teacher_id'=>'required',
             'title' =>'required',
@@ -470,6 +470,24 @@ class StaffController extends Controller
        
         if ( $statusOk != false ) {
 
+            $course = Course::find($statusOk);
+            $courseId = $course->id;            
+            $courseQuota = $course->quota;
+            $courseCreatedAt = $course->created_at;
+            $timeslotDateTime = strtotime($course->starts_on);
+
+            for ($time = 0; $time < $courseQuota; $time++) {
+                Timeslot::create([
+                    'course_id' => $courseId,
+                    'datetime' => date(env('APP_DATETIME_FORMAT'), $timeslotDateTime),
+                    'type' => TimeslotTypeEnum::REGULAR->name,
+                    'created_at' => $courseCreatedAt,
+                    'updated_at' => $courseCreatedAt
+                ]);
+
+                $timeslotDateTime = strtotime('+1 week', $timeslotDateTime);
+            }
+
             return response()->json([
                 'message' => "Successfully created course",
             ]);
@@ -503,4 +521,5 @@ class StaffController extends Controller
         return $failed;
 
     }
+
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Enums\CourseStatusEnum;
 use App\Models\Enums\EnrollmentStatusEnum;
+use App\Models\Enums\TimeslotTypeEnum;
 use App\Models\Enums\UserRoleEnum;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -24,7 +25,7 @@ class Course extends Model
         return $this->hasMany(Timeslot::class);
     }
 
-    public static function createCourse(array $courseAttributes): bool
+    public static function createCourse(array $courseAttributes)
     {
         if (!User::where('id', $courseAttributes['teacher_id'])->exists()) {
             error_log('Teacher \'' . $courseAttributes['teacher_id'] . '\' not found');
@@ -47,10 +48,17 @@ class Course extends Model
         $course->opens_until = date(env('APP_DATETIME_FORMAT'), $courseAttributes['opens_until']);
         $course->starts_on = date(env('APP_DATETIME_FORMAT'), $courseAttributes['starts_on']);
         $course->status = $courseAttributes['status'] == null ? CourseStatusEnum::PENDING->name : $courseAttributes['status']->name;
-        $course->price = $courseAttributes['price'] ;
+        $course->price = $courseAttributes['price'];
 
-        return $course->save();
+        if ( $course->save() ) {
+
+            return $course->id;
+
+        }
+
+        return false;
     }
+
 
     /**
      * A App\Models\Enrollment::studentsIn wrapper
@@ -74,13 +82,14 @@ class Course extends Model
         return Course::find($courseId)->capacity - Course::studentsIn($courseId)->count();
     }
 
-    public static function allTimeslotsWithAuthor(Course $course): Course{
+    public static function allTimeslotsWithAuthor(Course $course): Course
+    {
 
         // $timeslots = Timeslot::get();
 
         $timeslotIds = Timeslot::where('course_id', $course->id)
-        ->pluck('id');
-        
+            ->pluck('id');
+
         $allTimeslots =  Timeslot::get()->sortBy('datetime');
 
         $allTimeslots->each(function ($time) use ($timeslotIds) {
@@ -90,10 +99,9 @@ class Course extends Model
             } else {
                 $time->author = false;
                 $time->title = Course::find($time->course_id)->title;
-
             }
         });
-    
+
 
         // $filteredTimeslots = Timeslot::whereIn('id', $timeslotIds)->get()->sortBy('datetime');;
 
@@ -104,37 +112,35 @@ class Course extends Model
 
         // $timeslotsNotInQuery = Timeslot::whereNotIn('id', $timeslotIds)->get()->sortBy('datetime');;
 
-      
+
         // foreach ($timeslotsNotInQuery as $time) {
         //     $time->author = false;
         //     $time->title = Course::find($time->course_id)->title;
-            
+
         // }
 
         // $mergedTimeslots = $filteredTimeslots->concat($timeslotsNotInQuery);       
-        
+
         $course->timeslots = $allTimeslots;
 
         return $course;
-
     }
 
-    public static function getAllEnrollmentCourses(User $user) {
+    public static function getAllEnrollmentCourses(User $user)
+    {
 
-        $allCourses = Course::where('status',CourseStatusEnum::OPEN->name)->get();
+        $allCourses = Course::where('status', CourseStatusEnum::OPEN->name)->get();
 
-        $courseIds = Enrollment::where('student_id',$user->id)->where('status',EnrollmentStatusEnum::SUCCESS->name)->pluck('course_id');
+        $courseIds = Enrollment::where('student_id', $user->id)->where('status', EnrollmentStatusEnum::SUCCESS->name)->pluck('course_id');
 
         $allCourses->each(function ($course) use ($courseIds) {
             if (in_array($course->id, $courseIds->toArray())) {
                 $course->author = true;
-                
             } else {
                 $course->author = false;
             }
         });
 
         return $allCourses;
-
     }
 }

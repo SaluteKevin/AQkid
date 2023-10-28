@@ -19,6 +19,8 @@ class Timeslot extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = ['course_id','datetime','type','created_at','updated_at'];
+
     public function course(): BelongsTo
     {
         return $this->belongsTo(Course::class);
