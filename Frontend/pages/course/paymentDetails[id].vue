@@ -42,12 +42,13 @@ function startTimer() {
     }, 1000);
 
 }
-if (countDown.value > 0) {
+if (timer.timer() > 0) {
     startTimer();
 }
 else {
     modal.value = true;
     confirm.value = false;
+    timer.clearTime()
 }
 
 const course = ref({});
@@ -228,7 +229,7 @@ const removeImagePreview = () => {
             </div>
 
             <div v-if="!confirm" class="flex flex-col gap-4 p-8">
-                <NuxtLink class="p-4 bg-gray-400 rounded-2xl" to="/course/refund"><Button class="text-center w-full">Go to Refund
+                <NuxtLink class="p-4 bg-gray-400 rounded-2xl" to="/student/refund"><Button class="text-center w-full">Go to Refund
                         Page</Button></NuxtLink>
                 <Button v-on:click="cancelPayment" class="p-4 bg-red-300 rounded-2xl">Cancel</Button>
                 

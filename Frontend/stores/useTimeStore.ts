@@ -3,22 +3,20 @@ import { defineStore } from 'pinia'
 export const useTimeStore = defineStore('timeRegister', {
   state: () => {
     return { time: null,
-            time_semaphore: false,
              
     }
   },
   actions: {
     setTime() {
 
-      if (this.time_semaphore == true ) {
+      if (this.timer() >= 0 ) {
         return false;
       }
 
       const five_minutes_timer = new Date(new Date().getTime() + 0.2 * 60 * 1000); // เพิ่ม 5 นาที
   
       this.time = five_minutes_timer;
-      this.time_semaphore = true;
-
+      
       return true;
 
     },
@@ -26,11 +24,14 @@ export const useTimeStore = defineStore('timeRegister', {
     clearTime() {
 
       this.time = null;
-      this.time_semaphore = false;
-
+      
     },
 
     timer() { 
+      
+      if (this.time == null) {
+        return -1;
+      }
 
       const localDate = new Date(this.time);
 
