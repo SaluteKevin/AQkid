@@ -13,7 +13,7 @@ export const useTimeStore = defineStore('timeRegister', {
         return false;
       }
 
-      const five_minutes_timer = new Date(new Date().getTime() + 0.2 * 60 * 1000); // เพิ่ม 5 นาที
+      const five_minutes_timer = new Date(new Date().getTime() + 5 * 60 * 1000); // เพิ่ม 5 นาที
   
       this.time = five_minutes_timer;
       

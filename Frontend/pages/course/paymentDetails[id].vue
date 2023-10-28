@@ -5,6 +5,7 @@ import { useAuthStore } from "~/stores/useAuthStore";
 import { useTimeStore } from "~/stores/useTimeStore";
 
 const modal = ref(false);
+const showCancel = ref(false);
 const confirm = ref(true);
 const message = ref('Time out!!!');
 
@@ -67,34 +68,41 @@ if (eventCourse.value) {
 
 const profile_image_path = ref<File | null>(null)
 const user = useAuthStore().user;
-
+const uploadError = ref('')
 
 async function handleRegister() {
+
     const formData = new FormData()
+
     if (profile_image_path.value) {
         formData.append('image_path', profile_image_path.value)
+    }
 
+    const { data: registerResponse, error: registerError } = await useApiFetch(`api/student/enrollCourse/${route.params.id}/${user.value.id}`, {
+        method: "POST",
+        body: formData,
+    });
 
-        const { data: registerResponse, error: registerError } = await useApiFetch("api/student/enrollCourse/" + route.params.id + '/' + user.value.id, {
-            method: "POST",
-            body: formData,
-        });
-        if (registerResponse.value) {
-            console.log(registerResponse.value.message);
-            navigateTo(`/student`);
+    if (registerResponse.value) {
 
-            //route go home page user
-            // await navigateTo(`/student`);
-        }
-        else {
-            if (registerError.value) {
-                console.log(registerError.value?.data.message);
-                message.value = registerError.value?.data.message;
-                modal.value = true;
-            }
-        }
+        timer.clearTime()
+
+        alert('You have successfully enrolled in this course! Please patiently await confirmation from our staff after submitting the enrollment slip.')
+
+        await navigateTo(`/student`);
 
     }
+    else {
+        if (registerError.value) {
+
+            uploadError.value = "";
+
+            uploadError.value = registerError.value?.data.message;
+
+        }
+    }
+
+
 
 }
 
@@ -153,23 +161,39 @@ const removeImagePreview = () => {
 
 <template>
     <div class="bg-gradient-to-b from-sky-200 to-azure-200 flex justify-center items-center pt-20 pb-36">
-        <div class="bg-white border border-gray-200 shadow w-3/4 py-6  rounded-2xl grid grid-cols-2">
+        <div class="bg-white border border-gray-200 shadow w-3/4 py-6  rounded-2xl">
             <div class="h-2/3">
                 <div class="bg-orange-500 pb-6 mx-5">
 
                     <p class="text-center py-4 text-6xl text-white">Payment</p>
                     <div class="flex justify-center items-center">
-                        <div class="w-1/2 flex justify-center items-center bg-white rounded-lg">
+                        <div class=" flex justify-center items-center bg-white rounded-lg">
                             <div>
                                 <img class="h-auto max-w-lg"
                                     src="https://media.discordapp.net/attachments/474941945882476546/1162264364968050738/Screenshot_2023-10-13-12-43-23-97_275eb041e5d68c8a5fb815dd7041b155.jpg?ex=653b4e0a&is=6528d90a&hm=4612de7db51935602c65330a831169eeaaec50cc3360b7648d05d1f00dec3b3a&=&width=461&height=507"
                                     alt="image description">
                             </div>
                         </div>
+
                     </div>
+
 
                     <div class="flex justify-center items-center m-5">
                         <p class="px-12 py-4 text-center text-4xl text-white">Amount: {{ course.price }} baht</p>
+                    </div>
+                </div>
+                <div class="flex flex-col w-full h-full justify-center items-center p-4 my-4">
+                    <p class="text-2xl">โปรดอ่านข้อตกลง และ การแก้ปัญหา</p>
+                    <p class="text-xl text-red-500">** ลูกค้าจำเป็นที่จะต้องโอนเงินพร้อมแนบสลิปมาภายใน 5 นาที
+                        ถ้าหากโอนเงินไม่ทันจะไม่สามารถลงทะเบียนได้</p>
+
+                    <p class="text-xl text-red-500 mt-4">** กรณีที่แนบสลิป และ confirm ไม่ทันแต่ได้ทำการโอนเงินเรียบร้อยแล้ว
+                        ให้แก้ไขได้ดังนี้</p>
+                    <div class="flex flex-col justify-start">
+                        <p class="text-xl">1. เมื่อเวลาหมดจะมีปุ่มไปหน้า refund เด้งให้กดเพื่อขอคืนเงิน</p>
+                        <p class="text-xl">2. เมื่อเวลาหมดจากปุ่ม confirm จะกลายเป็นปุ่มขอ refund
+                            ซึ่งสามารถกดจากตรงนี้ได้เหมือนกัน</p>
+                        <p class="text-xl">3. ลูกค้าสามารถกดไปหน้าขอ refund จากหน้าหลักของลูกค้าได้</p>
                     </div>
 
                 </div>
@@ -178,10 +202,9 @@ const removeImagePreview = () => {
 
             </div>
 
-
             <div v-if="confirm">
                 <div class="h-full overflow-hidden">
-                    <div class="flex justify-center items-center">
+                    <div class="flex justify-center items-center p-8">
                         <div
                             class="w-full object-cover relative order-first md:order-last h-1/3 md:h-auto flex justify-center items-center border border-dashed border-gray-400 col-span-2 m-2 rounded-lg bg-no-repeat bg-center bg-origin-padding bg-cover">
                             <span v-if="imagefix" class="text-gray-400 opacity-75">
@@ -210,32 +233,55 @@ const removeImagePreview = () => {
                             remove image
                         </button>
                     </div>
-                    <div class="flex justify-end h-full">
-
-                        <div class="flex justify-center mt-10 w-2/3">
-                            <div class="text-2xl font-medium text-black w-2/3">Please confirm in
+                    <div class="flex flex-col h-full w-full mt-8">
+                        <div class="text-2xl font-medium text-black w-full flex flex-col items-center gap-2 justify-center">
+                            <div>
+                                Please confirm in
                                 <span class="text-2xl font-medium text-red-700">{{ countDown }}</span>
+                                seconds
                             </div>
-                            <div class="w-1/5">
-                                <button @click="handleRegister()"
-                                    class="px-2 py-2 text-xl bg-orange-500 hover:bg-orange-700 text-white rounded-lg">
-                                    Confirm
-                                </button>
-                                <Button v-on:click="cancelPayment" class="p-4 bg-red-300 rounded-2xl">Cancel</Button>
-                            </div>
+                            <p class="text-red-500">
+                                {{ uploadError }}
+                            </p>
                         </div>
+
+                        <div class="flex flex-col p-8 gap-4 mt-8">
+                            <button @click="handleRegister()"
+                                class="flex-1 px-2 py-2 text-xl bg-green-500 hover:bg-green-700 text-white rounded-lg">
+                                Confirm
+                            </button>
+                            <button v-on:click="showCancel = !showCancel"
+                                class="px-2 py-2 text-xl bg-red-500 hover:bg-red-700 text-white rounded-lg">
+                                Cancel
+                            </button>
+                            <div v-if="showCancel" class="flex flex-col text-2xl">Are you Sure you want to Cancel?
+                                <div class="flex gap-8 mt-4">
+                                    <button v-on:click="cancelPayment" class="p-2 bg-red-200 rounded-lg">Yes, I'm
+                                        sure</button>
+                                    <button v-on:click="showCancel = false" class="p-2 bg-gray-200 rounded-lg">No, I'm
+                                        not</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+
                     </div>
                 </div>
             </div>
 
             <div v-if="!confirm" class="flex flex-col gap-4 p-8">
-                <NuxtLink class="p-4 bg-gray-400 rounded-2xl" to="/student/refund"><Button class="text-center w-full">Go to Refund
+                <NuxtLink class="p-4 bg-gray-400 rounded-2xl" to="/student/refund"><Button class="text-center w-full">Go to
+                        Refund
                         Page</Button></NuxtLink>
                 <Button v-on:click="cancelPayment" class="p-4 bg-red-300 rounded-2xl">Cancel</Button>
-                
+
             </div>
 
+
+
         </div>
+
     </div>
 
 
@@ -274,7 +320,6 @@ const removeImagePreview = () => {
                 </div>
 
             </div>
-        </div>
-
     </div>
-</template>
+
+</div></template>

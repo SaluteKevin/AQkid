@@ -15,6 +15,8 @@ use App\Models\Enums\CourseStatusEnum;
 use App\Models\Enums\EnrollmentStatusEnum;
 use App\Models\Enums\StudentAttendanceEnum;
 use App\Models\Timeslot;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 
 use function Laravel\Prompts\error;
@@ -57,32 +59,47 @@ class StudentController extends Controller
 
     public function enrollCourse(Course $course, User $user , Request $request){
 
+        $request->validate([
+            'image_path' => 'required|image|mimes:png,gif,jpg,jpeg,bmp|max:2048'
+        ]);
+
         if( Course::availableSpotCount($course->id) == 0 ) {
             return response()->json([
-                'message' => "Course is Fully pls call the admin",
-            ]);
+                'message' => "Course is Full, Pls contact the staff",
+            ],422);
         }
+
         if( Course::availableSpotCount($course->id) < 0 ) {
             return response()->json([
                 'message' => "Course is Closed",
-            ]);
+            ],422);
         }
 
-        if ($request->file('image_path')) {
+        $imageOk = FileService::getFileManager()->uploadFile('users/' . $user->id . "/payments" . "/" . Carbon::now() . ".jpg",$request->file('image_path'));
 
-            $path = $request->file('image_path')->store('uploads', 'public');
-            $statusOk =  Enrollment::createEnrollment($user->id, $course->id, $path, EnrollmentStatusEnum::SUCCESS);
+        if ($imageOk != false) {
+
+            $statusOk =  Enrollment::createEnrollment($user->id, $course->id, $imageOk, EnrollmentStatusEnum::PENDING);
+
             if ($statusOk) {
-                return response()->json([
-                    'message' => "Successfully Register course",
-                ]);
-            }
-        }
-        return response()->json([
-            'message' => "Failed to Register Course",
-        ],422);
-        
 
+                return response()->json([
+                    'message' => "Successfully Enroll Course",
+                ]);
+
+
+            }
+
+            return response()->json([
+                'message' => "Failed to Enroll Course",
+            ],422);
+
+
+        }
+
+        return response()->json([
+            'message' => "Failed to Upload Slip",
+        ],422);
 
 
     }
