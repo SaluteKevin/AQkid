@@ -54,6 +54,14 @@ class StudentController extends Controller
         $teacher = User::find($course->teacher_id);
         $course->teacher = $teacher;
         $course->enroll_count = $course->studentsIn($course->id,EnrollmentStatusEnum::SUCCESS)->count();
+        // $course->timeslots->sortby('datetime');
+
+        $course->timeslots->each(function ($time) {
+            
+            $time->title = Course::find($time->course_id)->title;
+            
+        })->sortby('datetime');
+
         return $course;
     }
 
@@ -103,6 +111,7 @@ class StudentController extends Controller
 
 
     }
+
     
 
     public function userStat(User $user)
