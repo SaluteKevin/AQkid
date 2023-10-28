@@ -40,7 +40,7 @@ class StaffController extends Controller
         ,'getTimeslotStudents','addStudentAttendance','removeStudentAttendance'
         ,'enrollmentNotPending','removeTimeslot','allUserRequests'
         ,'allUserRequestHistories','userRequestReview'
-        ,'acceptRequest','rejectRequest','getTeacherList','createCourse']]);
+        ,'acceptRequest','rejectRequest','getTeacherList','createCourse','validateTimeslot']]);
     }
 
     public function generateTimeslot(Request $request) {
@@ -420,6 +420,7 @@ class StaffController extends Controller
     }
 
     public function createCourse(Request $request){
+        
         $request->validate([
             'teacher_id'=>'required',
             'title' =>'required',
@@ -432,6 +433,16 @@ class StaffController extends Controller
             'opens_until' =>'required|after_or_equal:opens_on',
             'starts_on' =>'required|after_or_equal:opens_until',
         ]);
+
+        // validate timeslot
+        if ($this->validateTimeslot(strtotime($request->get('starts_on')), $request->get('quota')) > 0 ) {
+
+            return response()->json([
+                'message' => "Unable to create the course because a conflicting timeslot already exists.",
+            ],422);
+
+        } 
+
 
         $courseAttributes = [
             'teacher_id' => $request->get('teacher_id'),  // Replace with the actual teacher ID
@@ -468,5 +479,28 @@ class StaffController extends Controller
         return response()->json([
             'message' => "Failed to create course",
         ],422);
+    }
+
+    public function validateTimeslot(int $datetime, int $quota) {
+
+        // $courseId = $course->id;
+        $courseQuota = $quota;
+        // $courseCreatedAt = $course->created_at;
+        $timeslotDateTime = $datetime;
+
+        $failed = 0;
+
+        for ($time = 0; $time < $courseQuota; $time++) {
+
+            if (Timeslot::where('datetime', date(env('APP_DATETIME_FORMAT'), $timeslotDateTime ) )->exists()) {
+                $failed = $failed + 1;
+            }
+
+            $timeslotDateTime = strtotime('+1 week', $timeslotDateTime);
+        
+        }
+
+        return $failed;
+
     }
 }
