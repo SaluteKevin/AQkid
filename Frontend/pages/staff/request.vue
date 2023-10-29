@@ -1,6 +1,6 @@
 <template>
     <div class="p-16 min-h-screen bg-gradient-to-b to-emerald-200 to-60% from-[#bce1ff] from-10%">
-    <h2 class="my-4 text-4xl font-semibold text-gray-600">Requests</h2>
+    <h2 class="my-4 text-4xl font-semibold text-gray-600">Enrollment Requests</h2>
 			<div class="pb-2 flex items-center justify-between text-gray-600">
 
 			</div>
@@ -14,11 +14,11 @@
 				<!-- Card -->
 
 				
-					<!-- Left side -->
+					<!-- Left side  -->
 
 					<img
 						class="h-20 w-20 rounded-full object-cover"
-						src="/images/AQKids_logo.png"
+						:src="`${config.public.imageBaseURL}${enroll.user.profile_image_path}`"
 						alt="" />
 
 					<div
@@ -78,6 +78,7 @@
 <script setup lang="ts">
 
 definePageMeta({layout: "staff"})
+const config = useRuntimeConfig();
 
 // allTeachers
 

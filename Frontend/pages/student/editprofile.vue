@@ -280,6 +280,8 @@ async function handleEditProfile() {
 
         RegistrationError.value = {};
 
+        errorProfile.value = "";
+
         profileSuccess.value = "Successfully, Update Profile";
         // await navigateTo(`/student/profile`);
 
@@ -288,6 +290,8 @@ async function handleEditProfile() {
     else {
 
         if (updateError.value) {
+
+            profileSuccess.value = "";
 
             errorProfile.value = "";
 
@@ -337,11 +341,15 @@ async function handleChangePassword() {
 
         passwordError.value = {};
 
+        errorPassword.value = "";
+
         passwordSuccess.value = "Successfully, Update Password";
     }
     else {
 
         if (updateError.value) {
+
+            passwordSuccess.value = "";
 
             errorPassword.value = "";
 
@@ -372,7 +380,7 @@ async function handleChangePassword() {
 
 const profile_image_path = ref<File | null>(null);
 const imageError = ref<{ [k: string]: any }>({})
-const imageSuccess = ref();
+const imageSuccess = ref("");
 
 async function handleChangeImage() {
 
@@ -393,12 +401,16 @@ async function handleChangeImage() {
 
         imageError.value = {};
 
+        errorImage.value = "";
+
         imageSuccess.value = "Successfully, Change Profile Image";
 
     }
     else {
 
         if (updateError.value) {
+
+            imageSuccess.value = "";
 
             errorImage.value = "";
 

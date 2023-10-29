@@ -19,7 +19,7 @@
 
 					<img
 						class="h-20 w-20 rounded-full object-cover"
-						src="/images/AQKids_logo.png"
+						:src="`${config.public.imageBaseURL}${refund.user.profile_image_path}`"
 						alt="" />
 
 					<div
@@ -79,7 +79,8 @@
 <script setup lang="ts">
 
 definePageMeta({layout: "staff"})
-
+const config = useRuntimeConfig();
+// :src="`${config.public.imageBaseURL}${enroll.user.profile_image_path}`"
 // allTeachers
 
 const allRequests = ref({})

@@ -19,7 +19,7 @@
 
 					<img
 						class="h-12 w-12 rounded-full object-cover"
-						src="/images/AQKids_logo.png"
+						:src="`${config.public.imageBaseURL}${enroll.user.profile_image_path}`"
 						alt="" />
 
 					<div
@@ -79,6 +79,7 @@
 <script setup lang="ts">
 
 definePageMeta({layout: "staff"})
+const config = useRuntimeConfig();
 
 // allTeachers
 

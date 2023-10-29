@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div class="h-auto w-full justify-center grid">
-                            <img src="/images/AQKids_logo.png" class="object-contain h-72 w-72 place-self-end">
+                            <img :src="`${config.public.imageBaseURL}${enroll.user.profile_image_path}`" class="object-contain h-72 w-72 place-self-end">
                         </div>
                     </div>
 
@@ -89,10 +89,10 @@
                     </div>
 
                 </div>
-                <a :href="`${config.public.apiBaseURL}storage/users/21/profile_image.jpg`" target="_blank">
+                <a :href="`${config.public.imageBaseURL}${enroll.proof_of_payment_path}`" target="_blank">
                 <div class="flex flex-wrap shadow-xl">
                     <img class="w-full h-full object-contain rounded-r-md"
-                        src="https://media.discordapp.net/attachments/711217095681245235/1163756633248256020/screenshot_20231017_153305.png?ex=6540bbd2&is=652e46d2&hm=ed685f35d47d877d7d50a69b0352335448310412b882c321fe23a09c0316768b&=&width=324&height=560">
+                    :src="`${config.public.imageBaseURL}${enroll.proof_of_payment_path}`">
                 </div>
                 </a>
             </div>
@@ -127,6 +127,7 @@ async function fetchEnroll() {
 
     if (enrollResponse.value) {
         enroll.value = enrollResponse.value;
+        console.log(enroll.value)
 
     }
 
