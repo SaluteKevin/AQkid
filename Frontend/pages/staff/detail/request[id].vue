@@ -44,6 +44,10 @@
                                     <span v-if="enroll.status == 'FAILED'" class="text-xl text-red-500">{{enroll.status}}</span>
                                 </label>
                             </div>
+
+                            <div v-if="enroll.status != 'PENDING'" class="my-4 block text-2xl font-semibold">Review Comment <br>
+                                <span class="text-xl text-gray-500">{{enroll.review_comment}}</span>
+                            </div>
                         </div>
                         <div class="h-auto w-full justify-center grid">
                             <img src="/images/AQKids_logo.png" class="object-contain h-72 w-72 place-self-end">

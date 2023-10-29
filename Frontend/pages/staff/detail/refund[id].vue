@@ -37,6 +37,10 @@
                                     <span v-if="refund.status == 'APPROVED'" class="text-xl text-green-500">{{refund.status}}</span>
                                     <span v-if="refund.status == 'REJECTED'" class="text-xl text-red-500">{{refund.status}}</span>
                 </label>
+                <div v-if="refund.status != 'PENDING'" class="my-4 block text-2xl font-semibold">Review Comment <br>
+                    <span class="text-xl text-gray-500">{{refund.review_comment}}</span>
+                </div>
+                
                 <div v-if="refund.status == 'PENDING'" class="mt-8">
                     <span class="title-font font-medium text-2xl text-gray-900">Refund amount : ${{ refund.course_price }}
                         BAHT</span>
@@ -93,6 +97,8 @@ async function fetchRefund() {
 
     if (refundResponse.value) {
         refund.value = refundResponse.value;
+
+        console.log(refund.value)
 
     }
 
