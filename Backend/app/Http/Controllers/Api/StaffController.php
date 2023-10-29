@@ -108,9 +108,21 @@ class StaffController extends Controller
 
         if ($enrollment->updateStatus(EnrollmentStatusEnum::SUCCESS, $request->get('comment'))) {
 
+            $statusOk = Timeslot::addStudentTimeslots($enrollment->course_id, $enrollment->student_id);
+
+            if ($statusOk) {
+
+                return response()->json([
+                    'message' => "Successfully Accept Enrollment",
+                ]);
+
+            }
+
             return response()->json([
-                'message' => "Successfully Accept Enrollment",
-            ]);
+                'message' => "Failed to Add Student class",
+            ], 422);
+
+           
         }
 
         return response()->json([

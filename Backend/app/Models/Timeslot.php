@@ -174,5 +174,27 @@ class Timeslot extends Model
 
     }
 
+    public static function addStudentTimeslots(int $courseId, int $studentId) {
+
+        try {
+            
+            $course = Course::find($courseId);
+            $student = User::find($studentId);
+
+            foreach($course->timeslots as $timeslot) {
+
+                $timeslot->studentAttendances()->attach($student, ['has_attended' => 'FALSE']);
+            }
+
+
+            return true;
+
+        } catch (\Exception $e) {
+            
+            return false;
+        }
+    
+
+    }
 
 }
