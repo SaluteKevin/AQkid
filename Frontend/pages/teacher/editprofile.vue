@@ -27,7 +27,7 @@
 
                                     <img ref="imagePreview" :src="imagePreviewSrc" alt="">
                                 </div>
-
+                                
                                 <div class="flex w-full gap-5">
                                     <input @change="handleImageChange" ref="profileImageInput" id="profile_image"
                                         name="profile_image"
@@ -48,17 +48,22 @@
 
 
                         </div>
+                        <p class="text-green-500">{{ imageSuccess }}</p>
+                        <p class="text-red-500 font-normal">
+                            {{ errorImage }}
+                            </p>    
                         <div class="flex justify-end gap-2">
-                            <button v-on:click="handleChangeImage"
+                            <button v-if="!showImageEdit" v-on:click="showImageEdit = !showImageEdit" class="text-white bg-[#202142] hover:bg-indigo-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Edit</button>
+                            <button v-if="showImageEdit" v-on:click="handleChangeImage"
                                 class="text-white bg-indigo-700  hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Save</button>
-                            <button v-on:click="cancel" 
+                            <button v-if="showImageEdit" v-on:click="cancel" 
                                 class="text-white bg-[#202142] hover:bg-indigo-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Cancel</button>
                                 
                         </div>
                         <p class="text-red-500" v-for="error in imageError['profile_image_path']" :key="error">
                                     {{ error }}
                                     </p>
-                                    <p class="text-green-500">{{ imageSuccess }}</p>
+                                    
 
                         <div class="relative flex py-5 items-center w-full px-10">
                             <div class="flex-grow border-t border-gray-400"></div>
@@ -140,11 +145,14 @@
                                     </p>
                             </div>
                             <p class="text-green-500">{{ profileSuccess }}</p>
-
+                            <p class="text-red-500 font-normal">
+                            {{ errorProfile }}
+                            </p>
                             <div class="flex justify-end gap-2">
-                                <button v-on:click="handleEditProfile"
+                                <button v-if="!showProfileEdit" v-on:click="showProfileEdit = !showProfileEdit" class="text-white bg-[#202142] hover:bg-indigo-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Edit</button>
+                                <button v-if="showProfileEdit" v-on:click="handleEditProfile"
                                     class="text-white bg-indigo-700  hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Save</button>
-                                <button  v-on:click="cancel" 
+                                <button  v-if="showProfileEdit" v-on:click="cancel" 
                                     class="text-white bg-[#202142] hover:bg-indigo-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Cancel</button>
                             </div>
 
@@ -175,10 +183,14 @@
                         </div>
 
                         <p class="text-green-500">{{ passwordSuccess }}</p>
+                        <p class="text-red-500 font-normal">
+                            {{ errorPassword }}
+                            </p>
                         <div class="flex justify-end gap-2">
-                            <button v-on:click="handleChangePassword"
+                            <button v-if="!showPasswordEdit" v-on:click="showPasswordEdit = !showPasswordEdit" class="text-white bg-[#202142] hover:bg-indigo-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Edit</button>
+                            <button v-if="showPasswordEdit" v-on:click="handleChangePassword"
                                 class="text-white bg-indigo-700  hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Save</button>
-                            <button  v-on:click="cancel" 
+                            <button v-if="showPasswordEdit" v-on:click="cancel" 
                                 class="text-white bg-[#202142] hover:bg-indigo-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Cancel</button>
                         </div>
 
@@ -277,6 +289,9 @@ async function handleEditProfile() {
 
         if (updateError.value) {
 
+            errorProfile.value = "";
+
+            errorProfile.value = updateError.value.data.message;
 
             const errors = updateError.value.data.errors;
 
@@ -328,6 +343,9 @@ async function handleChangePassword() {
 
         if (updateError.value) {
 
+            errorPassword.value = "";
+
+            errorPassword.value = updateError.value.data.message;
 
             const errors = updateError.value.data.errors;
 
@@ -382,6 +400,9 @@ async function handleChangeImage() {
 
         if (updateError.value) {
 
+            errorImage.value = "";
+
+            errorImage.value = updateError.value.data.message;
 
             const errors = updateError.value.data.errors;
 
@@ -414,6 +435,15 @@ async function fetchAuthUser() {
     await auth.fetchAuthUser();
 
 }
+
+// all edits
+const showImageEdit = ref(false)
+const showProfileEdit = ref(false)
+const showPasswordEdit = ref(false)
+
+const errorImage = ref("")
+const errorProfile = ref("")
+const errorPassword = ref("")
 
 </script>
     
