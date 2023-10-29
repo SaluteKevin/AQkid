@@ -84,6 +84,19 @@ class StudentController extends Controller
             ],422);
         }
 
+        $startDate = Carbon::parse($user->birthdate);
+        $currentDate = Carbon::now();
+
+        $monthsDifference = $startDate->diffInMonths($currentDate);
+
+        if ($monthsDifference > $course->max_age || $monthsDifference < $course->min_age) {
+
+            return response()->json([
+                'message' => "Your age is not valid",
+            ],422);
+
+        }
+
         $imageOk = FileService::getFileManager()->uploadFile('users/' . $user->id . "/payments" . "/" . $this->generate_id(Carbon::now()) . ".jpg",$request->file('image_path'));
 
         if ($imageOk != false) {
