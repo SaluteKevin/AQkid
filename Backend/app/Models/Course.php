@@ -50,13 +50,44 @@ class Course extends Model
         $course->status = $courseAttributes['status'] == null ? CourseStatusEnum::PENDING->name : $courseAttributes['status']->name;
         $course->price = $courseAttributes['price'];
 
-        if ( $course->save() ) {
+        if ($course->save()) {
 
             return $course->id;
-
         }
 
         return false;
+    }
+
+    public static function createCourseTimeslots(int $courseId)
+    {
+        try {
+            
+            $course = Course::find($courseId);
+            $courseId = $course->id;
+            $courseQuota = $course->quota;
+            $courseCreatedAt = $course->created_at;
+            $timeslotDateTime = strtotime($course->starts_on);
+
+            for ($time = 0; $time < $courseQuota; $time++) {
+                Timeslot::create([
+                    'course_id' => $courseId,
+                    'datetime' => date(env('APP_DATETIME_FORMAT'), $timeslotDateTime),
+                    'type' => TimeslotTypeEnum::REGULAR->name,
+                    'created_at' => $courseCreatedAt,
+                    'updated_at' => $courseCreatedAt
+                ]);
+
+                $timeslotDateTime = strtotime('+1 week', $timeslotDateTime);
+            }
+
+            return true;
+
+        } catch (\Exception $e) {
+            // Handle the exception as needed
+            // \Log::error("Error creating timeslots: " . $e->getMessage());
+
+            return false;
+        }
     }
 
 
@@ -99,7 +130,7 @@ class Course extends Model
                 $time->author = false;
                 $time->title = Course::find($time->course_id)->title;
             }
-        });     
+        });
 
         $course->timeslots = $allTimeslots;
 

@@ -31,19 +31,13 @@ class StaffController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['rejectEnrollment','acceptEnrollment','enrollmentRequestReview'
-        ,'allEnrollmentRequests','allTeachers'
-        ,'getTeacher','createTeacher','searchTeacher'
-        ,'allStudents','getStudent','searchStudent'
-        ,'getAllCourses','filterStudent','getCourse'
-        ,'allTimeslots','createTimeslot','getTimeslot'
-        ,'getTimeslotStudents','addStudentAttendance','removeStudentAttendance'
-        ,'enrollmentNotPending','removeTimeslot','allUserRequests'
-        ,'allUserRequestHistories','userRequestReview'
-        ,'acceptRequest','rejectRequest','getTeacherList','createCourse','validateTimeslot']]);
+        $this->middleware('auth:api', ['except' => [
+            'rejectEnrollment', 'acceptEnrollment', 'enrollmentRequestReview', 'allEnrollmentRequests', 'allTeachers', 'getTeacher', 'createTeacher', 'searchTeacher', 'allStudents', 'getStudent', 'searchStudent', 'getAllCourses', 'filterStudent', 'getCourse', 'allTimeslots', 'createTimeslot', 'getTimeslot', 'getTimeslotStudents', 'addStudentAttendance', 'removeStudentAttendance', 'enrollmentNotPending', 'removeTimeslot', 'allUserRequests', 'allUserRequestHistories', 'userRequestReview', 'acceptRequest', 'rejectRequest', 'getTeacherList', 'createCourse', 'validateTimeslot'
+        ]]);
     }
 
-    public function generateTimeslot(Request $request) {
+    public function generateTimeslot(Request $request)
+    {
 
         // 1. สร้าง course ตามเวลา generic
 
@@ -58,93 +52,97 @@ class StaffController extends Controller
      *  course open 1 คาบ ไม่มี student (ควรจะปิด)
      */
 
-    public function getAllCourses() {
+    public function getAllCourses()
+    {
         return Course::get();
     }
 
 
-    public function getCourse(Course $course) {
+    public function getCourse(Course $course)
+    {
 
         $courseWithAllTimeslots = Course::allTimeslotsWithAuthor($course);
 
         $courseWithAllTimeslots->enroll_count = Course::studentsIn($courseWithAllTimeslots->id)->count();
-        
+
         return $courseWithAllTimeslots;
     }
 
-    public function allTimeslots() {
-        
+    public function allTimeslots()
+    {
+
         $timeslots = Timeslot::get();
 
         return Timeslot::queryTimeslotCourseTitle($timeslots);
     }
-     
 
-    public function allEnrollmentRequests() {
+
+    public function allEnrollmentRequests()
+    {
 
         $enrollments = Enrollment::enrollmentsWithStatus(EnrollmentStatusEnum::PENDING);
-        
-        $enrollmentsWithUser = Enrollment::getEnrollmentWithUserPaginate($enrollments);
-        
-        return $enrollmentsWithUser;
 
+        $enrollmentsWithUser = Enrollment::getEnrollmentWithUserPaginate($enrollments);
+
+        return $enrollmentsWithUser;
     }
 
-    public function enrollmentRequestReview(Enrollment $enrollment) {
+    public function enrollmentRequestReview(Enrollment $enrollment)
+    {
         $enrollment = Enrollment::getEnrollmentWithUser($enrollment);
         return $enrollment;
         // return specific enrollment request
 
     }
 
-    public function enrollmentNotPending() {
+    public function enrollmentNotPending()
+    {
 
         $enrollments = Enrollment::getEnrollmentNotPending();
         $enrollmentsWithUser = Enrollment::getEnrollmentWithUserPaginate($enrollments);
         return $enrollmentsWithUser;
     }
 
-    public function acceptEnrollment(Enrollment $enrollment,Request $request) {
-       
-        if ($enrollment->updateStatus(EnrollmentStatusEnum::SUCCESS,$request->get('comment'))) {
-        
+    public function acceptEnrollment(Enrollment $enrollment, Request $request)
+    {
+
+        if ($enrollment->updateStatus(EnrollmentStatusEnum::SUCCESS, $request->get('comment'))) {
+
             return response()->json([
                 'message' => "Successfully Accept Enrollment",
             ]);
+        }
 
-       }
-
-       return response()->json([
-        'message' => "Failed to Accept Enrollment",
-        ],422);
-
+        return response()->json([
+            'message' => "Failed to Accept Enrollment",
+        ], 422);
     }
 
-    public function rejectEnrollment(Enrollment $enrollment,Request $request) {
-        
-        if ($enrollment->updateStatus(EnrollmentStatusEnum::FAILED,$request->get('comment'))) {
+    public function rejectEnrollment(Enrollment $enrollment, Request $request)
+    {
+
+        if ($enrollment->updateStatus(EnrollmentStatusEnum::FAILED, $request->get('comment'))) {
 
             return response()->json([
                 'message' => "Successfully Reject Enrollment",
             ]);
-        
         }
 
         return response()->json([
             'message' => "Failed to Reject Enrollment",
-        ],422);
-
+        ], 422);
     }
 
-    public function getTimeslot(Timeslot $timeslot) {
+    public function getTimeslot(Timeslot $timeslot)
+    {
 
         $timeslot->title = Course::find($timeslot->course_id)->title;
 
         return $timeslot;
-
     }
 
-    public function createTimeslot(Course $course, Request $request) {
+    public function createTimeslot(Course $course, Request $request)
+    {
 
         $dateTime = $request->get('datetime');
 
@@ -155,19 +153,18 @@ class StaffController extends Controller
             return response()->json([
                 'message' => "Successfully Created Timeslot",
             ]);
-
         }
-        
+
         return response()->json([
             'message' => "Failed to Created Timeslot",
-        ],422);
-        
+        ], 422);
     }
 
-    public function removeTimeslot(Timeslot $timeslot) {
+    public function removeTimeslot(Timeslot $timeslot)
+    {
 
         $courseId = $timeslot->course_id;
-        
+
         $statusOk = Timeslot::deleteTimeslot($timeslot->id);
 
         if ($statusOk) {
@@ -176,113 +173,99 @@ class StaffController extends Controller
                 'message' => "Successfully Delete Timeslot",
                 'course_id' => $courseId
             ]);
-
         }
-        
+
         return response()->json([
             'message' => "Failed to Deleted Timeslot",
-        ],422);
-        
-
+        ], 422);
     }
 
-    public function getTimeslotStudents(Timeslot $timeslot) {
+    public function getTimeslotStudents(Timeslot $timeslot)
+    {
 
         return Timeslot::getTimeslotStudents($timeslot);
-
     }
 
 
-    public function addStudentAttendance(Timeslot $timeslot, User $student) {
+    public function addStudentAttendance(Timeslot $timeslot, User $student)
+    {
 
         if ($timeslot->attachStudents(StudentAttendanceEnum::FALSE, $student->id)) {
 
             return response()->json([
                 'message' => "Successfully Added Student",
             ]);
-
         }
 
         return response()->json([
             'message' => "Failed to Add Student",
-        ],422);
-
-        
+        ], 422);
     }
 
-    public function removeStudentAttendance(Timeslot $timeslot, User $student) {
+    public function removeStudentAttendance(Timeslot $timeslot, User $student)
+    {
 
         if ($timeslot->detachStudents($student->id)) {
 
             return response()->json([
                 'message' => "Successfully Removed Student",
             ]);
-
         }
 
         return response()->json([
             'message' => "Failed to Remove Student",
-        ],422);
-
+        ], 422);
     }
-    
+
     // Student Page
- 
-    public function filterStudent(Request $request) {
+
+    public function filterStudent(Request $request)
+    {
 
         if ($request->get('filter') == 'active') {
 
             $activeStudents = User::queryStudentWithCoursesCountFilter('active');
 
             return $activeStudents;
-
-
-        }
-
-        else if ($request->get('filter') == 'inactive') {
+        } else if ($request->get('filter') == 'inactive') {
 
             $inactiveStudents = User::queryStudentWithCoursesCountFilter('inactive');
 
             return $inactiveStudents;
-
-
-        }
-
-        else {
+        } else {
 
             $students = User::allWithRolePaginate(UserRoleEnum::STUDENT);
 
             $studentsWithCoursesCount = User::queryStudentWithCoursesCount($students);
 
             return $studentsWithCoursesCount;
-
         }
-
     }
 
-    public function getStudent(User $user) {
+    public function getStudent(User $user)
+    {
 
         // implement enrollments futhermore
         $userWithCourses = User::getStudentWithCourses($user);
 
         return $userWithCourses;
-
     }
 
-    public function searchStudent(Request $request) {
+    public function searchStudent(Request $request)
+    {
 
         $search = $request->input('search');
 
         $students = User::searchUser($search, UserRoleEnum::STUDENT);
 
         return $students;
-
     }
 
 
     // Teacher Page
 
-    public function allTeachers() {
+    public function allTeachers()
+    {
 
         $teachers = User::allWithRolePaginate(UserRoleEnum::TEACHER);
 
@@ -293,7 +276,8 @@ class StaffController extends Controller
 
     }
 
-    public function searchTeacher(Request $request) {
+    public function searchTeacher(Request $request)
+    {
 
         $search = $request->input('search');
 
@@ -302,17 +286,17 @@ class StaffController extends Controller
         $teachersWithCourses = User::queryWithCoursesCountCollection($teachers);
 
         return $teachersWithCourses;
-
     }
 
-    public function getTeacher(User $user) {
+    public function getTeacher(User $user)
+    {
 
         return User::queryTeacherWithCourses($user);
-
     }
 
 
-    public function createTeacher(Request $request) {
+    public function createTeacher(Request $request)
+    {
 
         $request->validate([
             'username' => 'required|max:255|unique:users',
@@ -325,27 +309,32 @@ class StaffController extends Controller
             'email' => 'nullable',
             'profile_image_path' => 'nullable|image|mimes:png,gif,jpg,jpeg,bmp|max:2048'
         ]);
-        
-        $statusOk = User::createUser($request->get('username'), $request->get('password'), UserRoleEnum::TEACHER,
-                                     $request->get('firstname'), $request->get('middlename'), $request->get('lastname'),
-                                     $request->get('birthdate'), $request->get('phone_number'), $request->get('email'),
-                                     $request->file('profile_image_path'));
 
-        
+        $statusOk = User::createUser(
+            $request->get('username'),
+            $request->get('password'),
+            UserRoleEnum::TEACHER,
+            $request->get('firstname'),
+            $request->get('middlename'),
+            $request->get('lastname'),
+            $request->get('birthdate'),
+            $request->get('phone_number'),
+            $request->get('email'),
+            $request->file('profile_image_path')
+        );
 
-        if ( $statusOk != false ) {
+
+
+        if ($statusOk != false) {
 
             return response()->json([
                 'message' => "Successfully created User",
             ]);
-
         }
 
         return response()->json([
             'message' => "Failed to create User",
-        ],422);
-
-        
+        ], 422);
     }
 
 
@@ -353,95 +342,94 @@ class StaffController extends Controller
 
     // refund
 
-    public function userRequestReview(UserRequest $userRequest) {
+    public function userRequestReview(UserRequest $userRequest)
+    {
 
         $userRequestWithUser = UserRequest::getUserRequestWithUser($userRequest);
 
         return $userRequestWithUser;
-
     }
 
-    public function allUserRequests() {
+    public function allUserRequests()
+    {
 
         $allUserRequests = UserRequest::getUserRequests();
 
         $allUserRequestsWithUser = UserRequest::getUserRequestsWithUserPaginate($allUserRequests);
 
         return $allUserRequestsWithUser;
-
     }
 
-    public function allUserRequestHistories() {
+    public function allUserRequestHistories()
+    {
 
         $allUserRequests = UserRequest::getUserRequestHistories();
 
         $allUserRequestsWithUser = UserRequest::getUserRequestsWithUserPaginate($allUserRequests);
 
         return $allUserRequestsWithUser;
-
     }
 
-    public function acceptRequest(UserRequest $userRequest,Request $request) {
-       
-        if ($userRequest->updateStatus(UserRequestStatusEnum::APPROVED,$request->get('comment'))) {
-        
+    public function acceptRequest(UserRequest $userRequest, Request $request)
+    {
+
+        if ($userRequest->updateStatus(UserRequestStatusEnum::APPROVED, $request->get('comment'))) {
+
             return response()->json([
                 'message' => "Successfully Approved UserRequest",
             ]);
+        }
 
-       }
-
-       return response()->json([
-        'message' => "Failed to Approve UserRequest",
-        ],422);
-
+        return response()->json([
+            'message' => "Failed to Approve UserRequest",
+        ], 422);
     }
 
-    public function rejectRequest(UserRequest $userRequest,Request $request) {
-        
-        if ($userRequest->updateStatus(UserRequestStatusEnum::REJECTED,$request->get('comment'))) {
+    public function rejectRequest(UserRequest $userRequest, Request $request)
+    {
+
+        if ($userRequest->updateStatus(UserRequestStatusEnum::REJECTED, $request->get('comment'))) {
 
             return response()->json([
                 'message' => "Successfully Rejected UserRequest",
             ]);
-        
         }
 
         return response()->json([
             'message' => "Failed to Reject UserRequest",
-        ],422);
-
+        ], 422);
     }
 
     // create course
-    public function getTeacherList(){
+    public function getTeacherList()
+    {
         $teachers = User::allWithRole(UserRoleEnum::TEACHER);
         return $teachers;
     }
 
-    public function createCourse(Request $request){
+    public function createCourse(Request $request)
+    {
 
         $request->validate([
-            'teacher_id'=>'required',
-            'title' =>'required',
-            'description' =>'required',
-            'quota' =>'required',
-            'capacity' =>'required',
-            'min_age' =>'required',
-            'max_age' =>'required',
-            'opens_on' =>'required',
-            'opens_until' =>'required|after_or_equal:opens_on',
-            'starts_on' =>'required|after_or_equal:opens_until',
+            'teacher_id' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'quota' => 'required',
+            'capacity' => 'required',
+            'min_age' => 'required',
+            'max_age' => 'required',
+            'opens_on' => 'required',
+            'opens_until' => 'required|after_or_equal:opens_on',
+            'starts_on' => 'required|after_or_equal:opens_until',
         ]);
 
         // validate timeslot
-        if ($this->validateTimeslot(strtotime($request->get('starts_on')), $request->get('quota')) > 0 ) {
+        if ($this->validateTimeslot(strtotime($request->get('starts_on')), $request->get('quota')) > 0) {
 
             return response()->json([
                 'message' => "Unable to create the course because a conflicting timeslot already exists.",
-            ],422);
-
-        } 
+            ], 422);
+        }
 
 
         $courseAttributes = [
@@ -462,44 +450,35 @@ class StaffController extends Controller
 
         $courseAttributes['price'] = 4000;
 
-        if ($request->get('quota') == 10){
+        if ($request->get('quota') == 10) {
             $courseAttributes['price'] = 7500;
         }
 
         $statusOk = Course::createCourse($courseAttributes);
-       
-        if ( $statusOk != false ) {
 
-            $course = Course::find($statusOk);
-            $courseId = $course->id;            
-            $courseQuota = $course->quota;
-            $courseCreatedAt = $course->created_at;
-            $timeslotDateTime = strtotime($course->starts_on);
+        if ($statusOk != false) {
 
-            for ($time = 0; $time < $courseQuota; $time++) {
-                Timeslot::create([
-                    'course_id' => $courseId,
-                    'datetime' => date(env('APP_DATETIME_FORMAT'), $timeslotDateTime),
-                    'type' => TimeslotTypeEnum::REGULAR->name,
-                    'created_at' => $courseCreatedAt,
-                    'updated_at' => $courseCreatedAt
+            $statusOk2nd = Course::createCourseTimeslots($statusOk);
+
+            if ($statusOk2nd) {
+
+                return response()->json([
+                    'message' => "Successfully created course",
                 ]);
-
-                $timeslotDateTime = strtotime('+1 week', $timeslotDateTime);
             }
 
             return response()->json([
-                'message' => "Successfully created course",
-            ]);
-
+                'message' => "Failed to create course timeslots",
+            ], 422);
         }
 
         return response()->json([
             'message' => "Failed to create course",
-        ],422);
+        ], 422);
     }
 
-    public function validateTimeslot(int $datetime, int $quota) {
+    public function validateTimeslot(int $datetime, int $quota)
+    {
 
         // $courseId = $course->id;
         $courseQuota = $quota;
@@ -510,16 +489,13 @@ class StaffController extends Controller
 
         for ($time = 0; $time < $courseQuota; $time++) {
 
-            if (Timeslot::where('datetime', date(env('APP_DATETIME_FORMAT'), $timeslotDateTime ) )->exists()) {
+            if (Timeslot::where('datetime', date(env('APP_DATETIME_FORMAT'), $timeslotDateTime))->exists()) {
                 $failed = $failed + 1;
             }
 
             $timeslotDateTime = strtotime('+1 week', $timeslotDateTime);
-        
         }
 
         return $failed;
-
     }
-
 }
