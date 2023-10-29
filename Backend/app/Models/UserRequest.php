@@ -56,7 +56,9 @@ class UserRequest extends Model
         $user = User::find($userRequest->originator_id);
         $userRequest->user = $user;
 
-        $userRequest->course_price = Course::find($userRequest->course_id)->price;
+        if ($userRequest->course_id != null) {
+            $userRequest->course_price = Course::find($userRequest->course_id)->price;
+        }
         return $userRequest;
     }
 
