@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Enums\UserRequestTypeEnum;
 use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Http\UploadedFile;
 
 class UserRequest extends Model
 {
@@ -21,6 +22,33 @@ class UserRequest extends Model
     public function course(): BelongsTo
     {
         return $this->belongsTo(Course::class);
+    }
+
+    public static function createUserRequest(int $originatorId, int $courseId, string $title, 
+                                             string $imagePath) {
+        
+        $statusOk = false;
+
+        $userRequest = new UserRequest();
+        $userRequest->originator_id = $originatorId;
+
+        $courseIdinput = $courseId;
+
+        if (Course::find($courseId) == null) {
+            $courseIdinput = null;
+        }
+
+        $userRequest->course_id = $courseIdinput;
+        $userRequest->type = UserRequestTypeEnum::REFUND->name;
+        $userRequest->title = $title;
+        $userRequest->description = $imagePath;
+        $userRequest->status = UserRequestStatusEnum::PENDING->name;
+        $userRequest->review_comment = null;
+
+        $statusOk = $userRequest->save();
+
+        return $statusOk;
+
     }
 
     public static function getUserRequestWithUser(UserRequest $userRequest): UserRequest

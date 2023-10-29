@@ -3,14 +3,14 @@ definePageMeta({ layout: "student" })
 
 import { useAuthStore } from "~/stores/useAuthStore";
 import { useTimeStore } from "~/stores/useTimeStore";
-
+const route = useRoute();
 const modal = ref(false);
 const showCancel = ref(false);
 const confirm = ref(true);
 const message = ref('Time out!!!');
 
 async function refundRequest() {
-    await navigateTo(`/student/refund`);
+    await navigateTo(`/student/refund${route.params.id}`);
 }
 
 async function closeModal() {
@@ -25,7 +25,6 @@ async function cancelPayment() {
 
 }
 
-const route = useRoute();
 
 const timer = useTimeStore();
 const countDown = ref(timer.timer())
@@ -271,7 +270,7 @@ const removeImagePreview = () => {
             </div>
 
             <div v-if="!confirm" class="flex flex-col gap-4 p-8">
-                <NuxtLink class="p-4 bg-gray-400 rounded-2xl" to="/student/refund"><Button class="text-center w-full">Go to
+                <NuxtLink class="p-4 bg-gray-400 rounded-2xl" :to="`/student/refund${route.params.id}`"><Button class="text-center w-full">Go to
                         Refund
                         Page</Button></NuxtLink>
                 <Button v-on:click="cancelPayment" class="p-4 bg-red-300 rounded-2xl">Cancel</Button>

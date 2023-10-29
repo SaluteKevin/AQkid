@@ -15,6 +15,7 @@ use App\Models\Enums\CourseStatusEnum;
 use App\Models\Enums\EnrollmentStatusEnum;
 use App\Models\Enums\StudentAttendanceEnum;
 use App\Models\Timeslot;
+use App\Models\UserRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
@@ -31,7 +32,7 @@ class StudentController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getAllClasses', 'getAllCourse', 'showCourse', 'enrollCourse', 'updateProfile', 'userStat','allEnrollCourses']]);
+        $this->middleware('auth:api', ['except' => ['getAllClasses', 'getAllCourse', 'showCourse', 'enrollCourse', 'updateProfile', 'userStat','allEnrollCourses','refundRequest']]);
     }
 
     public function getAllClasses(User $user)
@@ -121,6 +122,42 @@ class StudentController extends Controller
         $hash_urlsafe = rtrim( $hash_urlsafe, '=' );
         // Shorten the string before returning.
         return substr( $hash_urlsafe, 0, $length );
+    }
+
+    public function refundRequest(User $user, Request $request) {
+
+        $request->validate([
+            'image_path' => 'required|image|mimes:png,gif,jpg,jpeg,bmp|max:2048',
+            'title' => 'required',
+            'course' => 'required',
+        ]);
+
+        
+        $image_path = FileService::getFileManager()->uploadFile('users/' . $user->id . "/refunds" . "/" . $this->generate_id(Carbon::now()) . ".jpg",$request->file('image_path'));
+
+        if ($image_path != false) {
+
+            $statusOk = UserRequest::createUserRequest($user->id, $request->get('course'), $request->get('title'),$image_path);
+
+            if ($statusOk) {
+
+                return response()->json([
+                    'message' => "Successfully Created Refund Request",
+                ]);
+
+            }
+
+            return response()->json([
+                'message' => "Failed to Create Refund Request",
+            ],422);
+
+
+        }
+
+        return response()->json([
+            'message' => "Failed to Upload Slip",
+        ],422);
+
     }
 
     

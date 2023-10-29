@@ -133,6 +133,7 @@ Route::group([
     // enroll course
 
     Route::get('allEnrollCourse/{user}', [StudentController::class, 'allEnrollCourses']);
+    Route::post('createRefund/{user}', [StudentController::class, 'refundRequest']);
 
 });
 
