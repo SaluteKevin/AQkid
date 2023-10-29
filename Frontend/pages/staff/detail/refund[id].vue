@@ -42,8 +42,6 @@
                 </div>
                 
                 <div v-if="refund.status == 'PENDING'" class="mt-8">
-                    <span v-if="refund.course_price" class="title-font font-medium text-2xl text-gray-900">Refund amount : $ {{ refund.course_price }}
-                    BAHT</span>
                     <button v-on:click="showAccept"
                         class="mb-1.5 block w-full text-center text-white bg-green-600 hover:bg-green-700 px-2 py-1.5 rounded-md">
                         Accept
