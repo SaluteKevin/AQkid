@@ -155,16 +155,18 @@ class Timeslot extends Model
 
     public static function getStudentClasses(User $user) {
 
-        $classes = Timeslot::whereIn(
-            'course_id',
-            Course::whereIn('id', Enrollment::where('student_id', $user->id)
-                ->where('status', EnrollmentStatusEnum::SUCCESS->name)
-                ->pluck('course_id'))
-            ->where('status', CourseStatusEnum::ACTIVE->name)
-            ->pluck('id')
-        )->where('datetime', '>=', Carbon::now())
-        ->get()->sortby('datetime');
+        // $classes = Timeslot::whereIn(
+        //     'course_id',
+        //     Course::whereIn('id', Enrollment::where('student_id', $user->id)
+        //         ->where('status', EnrollmentStatusEnum::SUCCESS->name)
+        //         ->pluck('course_id'))
+        //     ->where('status', CourseStatusEnum::ACTIVE->name)
+        //     ->pluck('id')
+        // )->where('datetime', '>=', Carbon::now())
+        // ->get()->sortby('datetime');
 
+        $classes = $user->studentAttendances->where('datetime', '>=', Carbon::now())->where('pivot.has_attended',StudentAttendanceEnum::FALSE->name);
+        
         foreach($classes as $class) {
             $class->title = Course::find($class->course_id)->title;
             $class->duration = Course::find($class->course_id)->duration;
