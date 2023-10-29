@@ -101,7 +101,7 @@
                 <div class="ml-4 mt-4 flex capitalize text-black w-1/5">
                     <span class="mr-2">name:</span>
                     <span class="text-gray-600">
-                        {{ student.username }}
+                        {{student.first_name}} {{ student.middle_name }} {{student.last_name }}
                     </span>
                 </div>
 

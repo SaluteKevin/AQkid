@@ -32,8 +32,8 @@
 
 					<div
 						class="p-3  flex capitalize text-black place-content-center w-1/4">
-						<span>Phone Number</span>
-						<span class="text-gray-600">
+						<span>Phone Number: </span>
+						<span class="ml-1 text-gray-600">
 							{{ refund.user.phone_number}}
 						</span>
 
@@ -41,8 +41,8 @@
 
                     <div
 						class="p-3 flex text-black place-content-center w-1/4">
-						<span>Request time</span>
-						<span class="text-gray-600">
+						<span>Request time:</span>
+						<span class="ml-1 text-gray-600">
 							{{formatDateTime(new Date(refund.created_at))}}
 						</span>
 						
