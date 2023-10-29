@@ -32,7 +32,7 @@ class StudentController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getAllClasses', 'getAllCourse', 'showCourse', 'enrollCourse', 'updateProfile', 'userStat','allEnrollCourses','refundRequest']]);
+        $this->middleware('auth:api', ['except' => ['getAllClasses', 'getAllCourse', 'showCourse', 'enrollCourse', 'updateProfile', 'userStat','allEnrollCourses','refundRequest','myEnrollments']]);
     }
 
     public function getAllClasses(User $user)
@@ -183,5 +183,17 @@ class StudentController extends Controller
         // Course::allTimeslotsWithAuthor($course);
         return Course::getAllEnrollmentCourses($user);
 
+    }
+
+    // my enrollment
+    public function myEnrollments(User $user) {
+
+        $enrollments = Enrollment::where('student_id',$user->id)->get()->sortbyDesc('created_at');
+
+        foreach($enrollments as $enroll) {
+            $enroll->title = Course::find($enroll->course_id)->title;
+        }
+        
+        return $enrollments;
     }
 }
