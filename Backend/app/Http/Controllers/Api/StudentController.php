@@ -83,7 +83,7 @@ class StudentController extends Controller
             ],422);
         }
 
-        $imageOk = FileService::getFileManager()->uploadFile('users/' . $user->id . "/payments" . "/" . Carbon::now() . ".jpg",$request->file('image_path'));
+        $imageOk = FileService::getFileManager()->uploadFile('users/' . $user->id . "/payments" . "/" . $this->generate_id(Carbon::now()) . ".jpg",$request->file('image_path'));
 
         if ($imageOk != false) {
 
@@ -110,6 +110,17 @@ class StudentController extends Controller
         ],422);
 
 
+    }
+
+    public function generate_id( $input, $length = 6 ){
+        // Create a raw binary sha256 hash and base64 encode it.
+        $hash_base64 = base64_encode( hash( 'sha256', $input, true ) );
+        // Replace non-urlsafe chars to make the string urlsafe.
+        $hash_urlsafe = strtr( $hash_base64, '+/', '-_' );
+        // Trim base64 padding characters from the end.
+        $hash_urlsafe = rtrim( $hash_urlsafe, '=' );
+        // Shorten the string before returning.
+        return substr( $hash_urlsafe, 0, $length );
     }
 
     
