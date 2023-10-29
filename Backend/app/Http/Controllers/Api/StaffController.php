@@ -156,7 +156,7 @@ class StaffController extends Controller
         }
 
         return response()->json([
-            'message' => "Failed to Created Timeslot",
+            'message' => "Failed to Create Timeslot",
         ], 422);
     }
 

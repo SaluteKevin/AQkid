@@ -44,6 +44,10 @@
                         Remove Timeslot
                     </button>
 
+                    <p class="text-red-500 font-normal">
+                        {{ errorRemove }}
+                    </p>
+
                     <div v-if="showRemove" class="w-full flex">
                         <button v-on:click="removeTimeslot"
                             class="bg-red-500 w-1/2 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
@@ -73,6 +77,9 @@
     <div class="flex w-full p-8 gap-4">
         <div class="flex-1 flex flex-col gap-2 border p-4">
             <h1>Attend Students </h1>
+            <p class="text-red-500 font-normal">
+                {{ errorRemStd }}
+            </p>
 
             <div v-for="student in students">
                 <div class="flex justify-between rounded-lg shadow-md p-4 border" v-if="student.expect" :key="student.id">
@@ -95,7 +102,10 @@
         </div>
         <div class="flex-1 flex flex-col gap-2 border p-4">
             <h1>All Students</h1>
-
+            <p class="text-red-500 font-normal">
+                {{ errorAddStd }}
+            </p>
+            
             <div v-for="student in students">
                 <div class="flex justify-between rounded-lg shadow-md p-4 border" v-if="!student.expect" :key="student.id">
                     <button type="button" v-on:click="AddStudent(student.id)"
@@ -147,6 +157,7 @@ if (timeslotResponse.value) {
 
 const showRemove = ref(false);
 
+const errorRemove = ref("");
 async function removeTimeslot() {
 
     const { data: removeResponse, error: removeError } = await useApiFetch(`api/staff/removeTimeslot/${route.params.id}`, {
@@ -160,7 +171,10 @@ async function removeTimeslot() {
     } else {
 
         if (removeError.value) {
-            console.log(removeError.value)
+
+            errorRemove.value = "";
+
+            errorRemove.value = removeError.value.data.message;
         }
     }
 
@@ -189,6 +203,7 @@ async function fetchStudents() {
 
 await fetchStudents();
 
+const errorAddStd = ref("")
 async function AddStudent(studentId: int) {
 
     const { data: addResponse, error: addError } = await useApiFetch(`api/staff/addStudent/${route.params.id}/${studentId}`, {
@@ -202,13 +217,18 @@ async function AddStudent(studentId: int) {
     } else {
 
         if (addError.value) {
-            console.log(addError.value)
+
+            errorAddStd.value = "";
+
+            errorAddStd.value = addError.value.data.message;
+
         }
     }
 
 
 }
 
+const errorRemStd = ref("")
 async function RemoveStudent(studentId: int) {
 
     const { data: removeResponse, error: removeError } = await useApiFetch(`api/staff/removeStudent/${route.params.id}/${studentId}`, {
@@ -223,7 +243,11 @@ async function RemoveStudent(studentId: int) {
     } else {
 
         if (removeError.value) {
-            console.log(removeError.value)
+
+            errorRemStd.value = "";
+
+            errorRemStd.value = removeError.value.data.message;
+
         }
     }
 }

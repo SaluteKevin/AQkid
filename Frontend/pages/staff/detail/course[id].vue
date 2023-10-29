@@ -134,6 +134,9 @@
 
 
                             <div>
+                                <p class="text-red-500 font-normal">
+                                {{ showError }}
+                                </p>
                                 <button v-on:click="submitCreateTimeslot" class="
                         w-full
                         
@@ -574,6 +577,7 @@ import dayjs from 'dayjs';
 
 const date = ref();
 const datePickerState = ref<any>(null);
+const showError = ref("");
 
 async function submitCreateTimeslot() {
 
@@ -594,6 +598,12 @@ async function submitCreateTimeslot() {
         if (createError.value) {
 
             datePickerState.value = false
+
+            showError.value = "";
+
+            showError.value = createError.value.data.message;
+
+
 
         }
 
