@@ -32,7 +32,7 @@ class StudentController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getAllClasses', 'getAllCourse', 'showCourse', 'enrollCourse', 'updateProfile', 'userStat','allEnrollCourses','refundRequest','myEnrollments']]);
+        $this->middleware('auth:api', ['except' => ['getAllClasses', 'getAllCourse', 'showCourse', 'enrollCourse', 'updateProfile', 'userStat','allEnrollCourses','refundRequest','myEnrollments','myRefunds']]);
     }
 
     public function getAllClasses(User $user)
@@ -208,5 +208,12 @@ class StudentController extends Controller
         }
         
         return $enrollments;
+    }
+
+    public function myRefunds(User $user) {
+
+        $refunds = UserRequest::where('originator_id', $user->id)->get()->sortByDesc('created_at');
+
+        return $refunds;
     }
 }

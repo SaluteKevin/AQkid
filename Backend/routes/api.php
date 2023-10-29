@@ -138,6 +138,7 @@ Route::group([
 
     // myenroll
     Route::get('myEnrollments/{user}', [StudentController::class, 'myEnrollments']);
+    Route::get('myRefunds/{user}', [StudentController::class, 'myRefunds']);
 });
 
 

@@ -10,18 +10,18 @@
                     :src="`${config.public.imageBaseURL}${refund.user.profile_image_path}`" alt="" /> -->
 
             <div class="p-2 flex flex-col capitalize text-black place-content-center w-1/5">
-                <span>Course name</span>
+                <span>Refund Title</span>
                 <span class="mt-2 text-gray-600">
-                    {{ enrollment.title }}
+                    {{ refundrequest.title }}
                 </span>
             </div>
 
             <div class="p-2  flex flex-col capitalize text-black place-content-center w-1/5">
                 <span>Status</span>
                 <span class="mt-2 text-gray-600">
-                    <span v-if="enrollment.status == 'PENDING'" class="text-xl text-yellow-500">{{ enrollment.status }}</span>
-                    <span v-if="enrollment.status == 'SUCCESS'" class="text-xl text-green-500">{{ enrollment.status }}</span>
-                    <span v-if="enrollment.status == 'FAILED'" class="text-xl text-red-500">{{ enrollment.status }}</span>
+                    <span v-if="refundrequest.status == 'PENDING'" class="text-xl text-yellow-500">{{ refundrequest.status }}</span>
+                    <span v-if="refundrequest.status == 'APPROVED'" class="text-xl text-green-500">{{ refundrequest.status }}</span>
+                    <span v-if="refundrequest.status == 'REJECTED'" class="text-xl text-red-500">{{ refundrequest.status }}</span>
                 </span>
 
             </div>
@@ -29,7 +29,7 @@
             <div class="p-2 flex flex-col text-black place-content-center w-1/5">
                 <span>Request time</span>
                 <span class="mt-2 text-gray-600">
-                    {{ dayjs(enrollment.created_at).format('YYYY-MM-DD HH:mm:ss') }}
+                    {{ dayjs(refundrequest.created_at).format('YYYY-MM-DD HH:mm:ss') }}
                 </span>
 
             </div>
@@ -53,12 +53,12 @@
         </div>
         <div v-if="showDetail" class="flex gap-8 bg-gray-200 p-8">
             <div class=" rounded-b-lg p-4">Proof of payment:</div>
-            <a :href="`${config.public.imageBaseURL}${enrollment.proof_of_payment_path}`" target="_blank">
+            <a :href="`${config.public.imageBaseURL}${refundrequest.description}`" target="_blank">
                 <img class="object-contain rounded-r-md" width="200" height="200"
-                    :src="`${config.public.imageBaseURL}${enrollment.proof_of_payment_path}`">
+                    :src="`${config.public.imageBaseURL}${refundrequest.description}`">
             </a>
 
-            <div class=" rounded-b-lg p-4">Review comments: {{ enrollment.review_comment }}</div>
+            <div class=" rounded-b-lg p-4">Review comments: {{ refundrequest.review_comment }}</div>
         </div>
 
     </div>
@@ -67,8 +67,8 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
 const config = useRuntimeConfig();
-const props = defineProps(['enroll'])
-const enrollment = ref(props.enroll);
+const props = defineProps(['refund'])
+const refundrequest = ref(props.refund);
 const showDetail = ref(false);
 
 const clickOutside = () => {
