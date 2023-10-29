@@ -204,7 +204,7 @@ async function fetchStudents() {
 await fetchStudents();
 
 const errorAddStd = ref("")
-async function AddStudent(studentId: int) {
+async function AddStudent(studentId: any) {
 
     const { data: addResponse, error: addError } = await useApiFetch(`api/staff/addStudent/${route.params.id}/${studentId}`, {
         method: "POST"
@@ -229,7 +229,7 @@ async function AddStudent(studentId: int) {
 }
 
 const errorRemStd = ref("")
-async function RemoveStudent(studentId: int) {
+async function RemoveStudent(studentId: any) {
 
     const { data: removeResponse, error: removeError } = await useApiFetch(`api/staff/removeStudent/${route.params.id}/${studentId}`, {
         method: "POST"

@@ -50,6 +50,9 @@
   <div class="flex w-full p-8 gap-4">
     <div class="flex-1 flex flex-col gap-2 border p-4 bg-green-100">
       <h1>Attend Students </h1>
+      <p class="text-red-500 font-normal">
+                {{ errorRemStd }}
+      </p>
 
       <div v-for="student in allstudents">
         <div class="flex justify-between rounded-lg shadow-md p-4 border bg-white" v-if="student.pivot.has_attended == 'TRUE'"
@@ -72,6 +75,9 @@
     </div>
     <div class="flex-1 flex flex-col gap-2 border p-4 bg-red-100">
       <h1>Absent Students</h1>
+      <p class="text-red-500 font-normal">
+                {{ errorAddStd }}
+      </p>
 
       <div v-for="student in allstudents">
         <div class="flex justify-between rounded-lg shadow-md p-4 border bg-white" v-if="student.pivot.has_attended == 'FALSE'"
@@ -148,7 +154,8 @@ else {
 
 
 // add student attend
-async function AddStudent(studentId: int) {
+const errorAddStd = ref("")
+async function AddStudent(studentId: any) {
 
   const { data: addResponse, error: addError } = await useApiFetch(`api/teacher/attendStudent/${route.params.id}/${studentId}`, {
     method: "POST"
@@ -161,7 +168,10 @@ async function AddStudent(studentId: int) {
   } else {
 
     if (addError.value) {
-      console.log(addError.value)
+
+      errorAddStd.value = "";
+
+      errorAddStd.value = addError.value.data.message;
     }
   }
 
@@ -173,7 +183,8 @@ async function AddStudent(studentId: int) {
 
 
 // remove student attend
-async function RemoveStudent(studentId: int) {
+const errorRemStd = ref("")
+async function RemoveStudent(studentId: any) {
 
   const { data: removeResponse, error: removeError } = await useApiFetch(`api/teacher/absentStudent/${route.params.id}/${studentId}`, {
     method: "POST"
@@ -187,7 +198,10 @@ async function RemoveStudent(studentId: int) {
   } else {
 
     if (removeError.value) {
-      console.log(removeError.value)
+
+      errorRemStd.value = "";
+
+      errorRemStd.value = removeError.value.data.message;
     }
   }
 }
