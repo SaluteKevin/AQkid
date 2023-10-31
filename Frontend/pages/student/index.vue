@@ -404,7 +404,7 @@
             class="relative flex-1 flex flex-col min-w-0 break-words bg-white shadow-2xl border-0 bg-clip-border rounded-2xl mb-5 draggable">
             <div class="px-9 pt-5 flex justify-between items-stretch flex-wrap min-h-[70px] pb-0 bg-transparent">
               <div class="flex flex-col items-start justify-center m-2 ml-0 font-medium text-xl/normal text-dark">
-                <span class=" text-5xl/none font-semibold mr-2 tracking-[-0.115rem]">Swimmmer Status</span>
+                <span class=" text-5xl/none font-semibold mr-2 tracking-[-0.115rem]">Swimmer Status</span>
                 <div class="mt-4 w-full gap-2 p-4 flex flex-col ">
                   <div class="flex items-center gap-4">
                     <svg width="35" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -562,11 +562,13 @@ if (statResponse.value) {
 
   exploring.value = statResponse.value.enrollments;
 
-  if (statResponse.value.attend < 10) {
-    level.value = 1;
-  } else {
-    level.value = Math.floor(statResponse.value.attend / 10);
-  }
+  level.value = 1 + statResponse.value.attend/10;
+  // if (statResponse.value.attend < 10) {
+  //   level.value = statResponse.value.attend;
+  // }
+  // } else {
+  //   level.value = Math.floor(statResponse.value.attend / 10);
+  // }
 
   exp.value = statResponse.value.attend % 10;
 
