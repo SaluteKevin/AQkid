@@ -506,7 +506,7 @@
         </div>
       </div>
     </div>
-    <section v-click-outside="clickOutsideClasses" v-if="showClasses" ref="scrollClasses" class="flex flex-col w-full justify-center items-center mt-24 ">
+    <section v-click-outside="clickOutsideClasses" v-if="showClasses" ref="scrollClasses" class="flex flex-col w-full justify-center items-center mt-24 bg-gradient-to-t from-sky-900 from-10% via-sky-600 via-30% to-white to-70%">
       <h1 class="text-4xl font-bold">Classes</h1>
       <div class="waviy ">
         <span style="--i:1">T</span>
@@ -519,11 +519,17 @@
         <span style="--i:8">E</span>
       </div>
       <ol>
+        <div v-if="timelineClasses.length === 0" class="h-screen w-screen px-32">
+          <div class="flex justify-center item-center border-4 border-gray-400 h-2/3 w-auto border-dashed">
+            <div class="h-full flex justify-center items-center text-white text-8xl drop-shadow-lg">
+              No class here ＞︿＜
+            </div>
+          </div>
+        </div>
         <div v-for="classes in timelineClasses">
 
           <Timeslot :timeslot="classes"></Timeslot>
           
-
         </div>
       </ol>
     </section>
@@ -550,7 +556,7 @@ const aquatic = ref(0);
 const exploring = ref(0);
 const level = ref(0);
 const exp = ref(0);
-
+const attentcount = ref(0);
 
 // my classes
 
@@ -589,6 +595,7 @@ const { data: classResponse, error: classError } = await useApiFetch(`api/studen
 if (classResponse.value) {
 
   timelineClasses.value = classResponse.value;
+  console.log(timelineClasses.value.length)
 
 
 } else {
