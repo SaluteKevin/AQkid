@@ -1,5 +1,5 @@
 <template>
-    <div class="flex justify-center bg-gradient-to-t from-cyan-200 from-20% via-white to-purple-200 to-90% w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
+    <div class="flex justify-center bg-gradient-to-t from-cyan-200 from-20% via-white to-purple-200 to-90% w-full flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
 
         <main class="flex justify-center w-full min-h-screen py-1 md:w-2/3 lg:w-3/4">
             <!-- Profile Card -->
