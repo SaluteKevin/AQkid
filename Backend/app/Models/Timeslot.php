@@ -28,7 +28,7 @@ class Timeslot extends Model
 
     public function studentAttendances(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'student_attendances', 'timeslot_id', 'student_id')->withPivot('has_attended');
+        return $this->belongsToMany(User::class, 'student_attendances', 'timeslot_id', 'student_id')->withPivot('has_attended', 'review_comment');
     }
 
     public function teacherAttendances(): BelongsToMany
