@@ -28,7 +28,7 @@
 
             <!-- Icon Menu Section -->
             <div class="flex items-center justify-center space-x-6">
-                <!-- Register -->
+                <!-- Profile -->
                 <NuxtLink v-if="isStudent()" class="h-full flex text-gray-600 hover:text-blue-500
                     cursor-pointer transition-colors duration-300" to="/student/profile">
                     <div class="h-full flex place-items-center mr-1">
@@ -38,7 +38,7 @@
                 </NuxtLink>
 
                 <!-- Login -->
-                <button v-if="isStudent()" v-on:click="logout" class="flex text-gray-600 
+                <button v-on:click="logout" class="flex text-gray-600 
                     cursor-pointer transition-colors duration-300
                     font-semibold hover:text-blue-600" to="/auths/login">
 

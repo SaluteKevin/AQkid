@@ -13,14 +13,9 @@
                             <div class="mt-6 flex flex-wrap gap-4 justify-center">
                                 <NuxtLink class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" to="/teacher/editprofile">Edit Profile</NuxtLink>
                             </div>
+                            
                         </div>
                         <hr class="my-6 border-t border-gray-300">
-                        
-                    </div>
-                </div>
-
-                <div class="col-span-4 sm:col-span-9">
-                    <div class="bg-white shadow rounded-lg p-6">
                         <h2 class="text-xl font-bold mb-4">Teacher Information</h2>
                         <p class="text-gray-700">Firstname : {{ user.value.first_name }} </p>
                         <p class="text-gray-700">Middlename : {{ user.value.middle_name }} </p>
@@ -28,9 +23,15 @@
                         <p class="text-gray-700">Email : {{ user.value.email }} </p>
                         <p class="text-gray-700">Age : {{ new Date().getFullYear() - new
                             Date(user.value.birthdate).getFullYear() }} </p>
-                        <hr class="my-6 border-t border-gray-300">
+                    </div>
+                </div>
+
+                <div class="col-span-4 sm:col-span-9">
+                    <div class="bg-white shadow rounded-lg p-6">
                         
-                        <h2 class="text-xl font-bold mt-6 mb-4">Courses</h2>
+        
+                        
+                        <h2 class="text-xl font-bold mt-2 mb-4">Courses</h2>
 
                         <div v-for="course in courses" >
                         <div v-if="course.status === 'ACTIVE'" class="mb-3 shadow-xl border bg-green-100 rounded-2xl p-4" >

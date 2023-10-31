@@ -1,37 +1,78 @@
 <template>
-    <header
-        class="fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md border border-gray-100 bg-white/80 py-3 shadow backdrop-blur-lg md:top-6 md:rounded-3xl lg:max-w-screen-lg">
-        <div class="px-4">
-            <div class="flex items-center justify-between">
-                <div class="flex shrink-0">
-                    <NuxtLink  to="/teacher" aria-current="page" class="flex items-center">
-                        <img class="h-7 w-auto" src="/images/AQKids_logo.png" alt="">
-                    </NuxtLink>
-                </div>
-                <div class="hidden md:flex md:items-center md:justify-center md:gap-5">
-                   
-                    
-                </div>
-                <div class="flex items-center justify-end gap-3">
-                    <NuxtLink class="hidden items-center justify-center rounded-xl bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 transition-all duration-150 hover:bg-gray-50 sm:inline-flex"
-                        to="/teacher/profile">{{ auth.user.value.username }}</NuxtLink>
-                    <button v-on:click='logout' class="inline-flex items-center justify-center rounded-xl bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-150 hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                       >Logout</button>
-                </div>
+    <div class="flex flex-col mb-16">
+        <!-- Page Scroll Progress -->
+        <div class="fixed inset-x-0 top-0 z-50 h-0.5 mt-0.5
+            bg-blue-500" :style="`width: ${percent}%`"></div>
+
+        <!-- Navbar -->
+        <nav class="flex justify-around py-4 bg-white/80
+            backdrop-blur-md shadow-md w-full
+            fixed top-0 left-0 right-0 z-20">
+
+            <!-- Logo Container -->
+            <div class="flex items-center">
+                <!-- Logo -->
+                <NuxtLink class="flex items-center space-x-2" to="/teacher" >
+                        
+                        <div aria-hidden="true" class="flex space-x-1">
+                            <img src="/images/AQKids_logo.png" class="h-12">
+                        </div>
+                        <span class="text-4xl font-bold text-cyan-900">AQKids</span>
+                </NuxtLink>
             </div>
-        </div>
-    </header>
-    <div class="mt-24">
+
+            <!-- Links Section -->
+            <div class="items-center hidden space-x-8 lg:flex">
+               
+            </div>
+
+            <!-- Icon Menu Section -->
+            <div class="flex items-center justify-center space-x-6">
+                <NuxtLink v-if="isTeacher()" class="h-full flex text-gray-600 hover:text-blue-500
+                    cursor-pointer transition-colors duration-300" to="/teacher/profile">
+                    <div class="h-full flex place-items-center mr-2">
+                        {{ user.username }}
+                    </div>
+                    <img :src="`${config.public.imageBaseURL}${user.profile_image_path}`" class="bg-gray-700 h-12 w-12 rounded-full">
+                </NuxtLink>
+                <!-- Login -->
+                <button v-on:click="logout" class="flex text-gray-600 
+                    cursor-pointer transition-colors duration-300
+                    font-semibold hover:text-blue-600" >
+
+                    <svg class="fill-current h-5 w-5 mr-2 mt-0.5" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24"
+                        viewBox="0 0 24 24">
+                        <path
+                            d="M10,17V14H3V10H10V7L15,12L10,17M10,2H19A2,2 0 0,1 21,4V20A2,2 0 0,1 19,22H10A2,2 0 0,1 8,20V18H10V20H19V4H10V6H8V4A2,2 0 0,1 10,2Z" />
+                    </svg>
+
+                    Logout
+                </button>
+
+
+
+           
+                
+            </div>
+        </nav>
+    </div>
+
+    <div class="">
         <slot />
     </div>
 </template>
+
+
 
 <script setup lang="ts">
 
 import {useAuthStore} from "~/stores/useAuthStore";
 const auth = useAuthStore();
-
+const config = useRuntimeConfig();
+const user = auth.user.value;
 await auth.setCSRFCookie();
+
 
 async function logout() {
 
