@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen bg-gradient-to-t from-cyan-400 from-10%">
+  <div class="h-screen bg-gradient-to-t from-cyan-400 from-20% to-white to-70%">
   <div class="flex px-16 mt-24 divide-x-2 space-x-10">
     <!--Class information-->
     <div class="w-1/3">
@@ -42,10 +42,10 @@
     </div>
 
     <div class="w-full">
-      <div class="flex justify-center">
-        <div class="divide border-t border-gray-400"></div>
+      <div class="flex justify-center mx-8">
+        <div class="flex-grow border-t border-gray-400 mt-4"></div>
         <span class="flex mx-4 text-2xl text-gray-400">Timeslot Student Attendances</span>
-        <div class="divide border-t border-gray-400"></div>
+        <div class="flex-grow border-t border-gray-400 mt-4"></div>
       </div>
 
       <div class="flex w-full p-8 gap-4 ">

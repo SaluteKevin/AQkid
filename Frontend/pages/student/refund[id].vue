@@ -51,11 +51,11 @@
                         :src="imagePreviewSrc" alt="">
                 </div>
             </div>
-            <div class="grid grid-cols-2 gap-4 px-2 w-full ">
+            <div class="grid grid-cols-2 gap-4 px-2 w-full">
                 <NuxtLink to="/student">
                     <div
-                        class="flex flex-col items-start justify-center duration-200 text-white rounded-2xl bg-red-500  bg-clip-border px-3 py-4 shadow-lg hover:bg-white hover:text-black">
-                        <p class="text-sm">Cancel</p>
+                        class="flex flex-col justify-center rounded-2xl duration-200 text-white  bg-red-500  bg-clip-border px-3 py-4 shadow-lg hover:bg-white hover:text-black">
+                        <p class="flex justify-center text-sm ">Cancel</p>
                         <p class="text-base font-medium text-navy-700 ">
                         </p>
                     </div>

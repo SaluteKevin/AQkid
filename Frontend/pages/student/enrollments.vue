@@ -8,7 +8,7 @@
 
         <!-- card -->
         <div v-for="enroll in allEnrollments" class="flex flex-col gap-2 ">
-            <Enrollment :enroll="enroll" class="mt-2"></Enrollment>
+            <Enrollment :enroll="enroll" class="mt-2 duration-200"></Enrollment>
         </div>
 
 

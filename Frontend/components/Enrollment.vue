@@ -34,10 +34,10 @@
 
             </div>
 
-            <div class="flex place-content-center items-center flex-col">
+            <div class="flex place-content-center items-center flex-col duration-200">
                 <div>More Detail</div>
                 <svg v-on:click="showDetail = !showDetail" width="50" fill="#000000" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
+                    xmlns="http://www.w3.org/2000/svg" class="transition">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                     <g id="SVGRepo_iconCarrier">

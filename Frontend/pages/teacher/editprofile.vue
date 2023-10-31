@@ -1,17 +1,18 @@
 <template>
-    <div class="flex justify-center bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
+    <div class="flex justify-center bg-gradient-to-t from-cyan-200 from-20% via-white to-purple-200 to-90% w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
 
         <main class="flex justify-center w-full min-h-screen py-1 md:w-2/3 lg:w-3/4">
-            <div class="p-2 md:p-4">
+            <!-- Profile Card -->
+            <div class="p-2 md:p-4 bg-white">
                 <div class="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
                     <h2 class="text-2xl font-bold sm:text-xl">Profile setting</h2>
-                    <div class="relative flex py-5 items-center w-full px-10">
+                    <div class="relative flex pt-5 items-center w-full px-10">
                         <div class="flex-grow border-t border-gray-400"></div>
                         <span class="flex-shrink mx-4 text-gray-400">Image Section</span>
                         <div class="flex-grow border-t border-gray-400"></div>
                     </div>
 
-                    <div class="grid max-w-2xl mx-auto mt-8">
+                    <div class="grid max-w-2xl mx-auto">
                         <div class="flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0">
 
                             <div class="flex flex-col space-y-5 sm:ml-8">
