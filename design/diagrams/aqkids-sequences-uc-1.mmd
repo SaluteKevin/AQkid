@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant user
+    participant system
+    system->>user: แสดงหน้าฟอร์มลงทะเบียนบัญชีผู้ใช้ระบบ
+    user->>user: กรอกข้อมูล
+    user->>system: กดปุ่ม "Create Account"
+    system->>system: ตรวจสอบข้อมูลที่ผู้ใช้กรอก
+    system->>user: แสดงฟอร์มลงชื่อเข้าใช้ระบบ
+    user->>system: กรอกข้อมูล
+    user->>system: กดปุ่ม "Sign In"
+    system->>system: ตรวจสอบข้อมูลที่ผู้ใช้กรอก
+    system->>system: เข้าสู่ระบบ

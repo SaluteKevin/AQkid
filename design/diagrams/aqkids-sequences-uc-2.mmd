@@ -1,0 +1,7 @@
+sequenceDiagram
+    participant system
+    participant staff
+    system->>staff: แสดงฟอร์มให้เลือกวัน เวลา และรายละเอียดของคอร์สที่จะสร้าง โดยจะแสดงวันและเวลาที่ไม่ถูกจองโดยคอร์สใด ๆ
+    staff->>staff: กรอกข้อมูลของคอร์ส
+    staff->>system: กดปุ่ม “Create”
+    system->>system: เขียนข้อมูลเกี่ยวกับคอร์สลงในฐานข้อมูล
