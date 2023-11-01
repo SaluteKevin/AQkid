@@ -1,0 +1,55 @@
+@startuml
+!pragma teoz true
+skinparam monochrome true
+skinparam defaultFontName Sarabun
+autonumber
+
+title Use Case 3: ลงทะเบียนคอร์ส
+
+participant "ลูกค้า" as Customer
+participant "เว็บเบราว์เซอร์" as Browser
+participant "เว็บเซิร์ฟเวอร์" as Server
+participant "ฐานข้อมูล" as Database
+
+activate Customer
+Customer -> Browser: กดปุ่ม "ENROLL COURSE"
+activate Browser
+Browser -> Server: ขอเข้าถึงหน้าสมัครคอร์ส
+activate Server
+Server -> Database: ขอข้อมูลคอร์สและตารางเวลา
+activate Database
+Database --> Server: ข้อมูลคอร์สและตารางเวลา
+deactivate Database
+Server --> Browser: หน้าสมัครคอร์ส
+deactivate Server
+Browser -> Customer: แสดงหน้าสมัครคอร์ส
+' ฟอร์มให้เลือกคอร์สที่จะสมัครจากวันและเวลา
+Browser -> Customer: เลือกคอร์ส
+Customer -> Browser: กดปุ่ม "Confirm"
+Browser -> Customer: แสดงหน้ายืนยันรายละเอียดคอร์ส
+Customer -> Browser: กดปุ่ม "Confirm"
+
+{start} Browser -[hidden]> Server
+& Browser -> Customer: แสดงหน้าชำระเงิน
+Customer ->(90) Browser: อัปโหลด\nหลักฐานการชำระเงิน
+{end} Customer -> Browser: กดปุ่ม "Confirm"
+{end} Browser -[hidden]> Server
+
+{start} <-> {end}: {<U+2264> 5 นาที}
+
+Browser -> Server: ส่งข้อมูลการสมัคร
+activate Server
+Server -> Server: ตรวจสอบข้อมูลการสมัคร
+activate Server
+deactivate Server
+Server ->> Database: เขียนข้อมูลการสมัครคอร์ส
+activate Database
+deactivate Database
+Server --> Browser: ผลการสมัครคอร์ส
+deactivate Server
+Browser --> Customer: แสดงผลการสมัครคอร์ส
+Customer -> Browser: กดปุ่ม "OK"
+Browser --> Customer: แสดงหน้าหลัก
+deactivate Browser
+deactivate Customer
+@enduml

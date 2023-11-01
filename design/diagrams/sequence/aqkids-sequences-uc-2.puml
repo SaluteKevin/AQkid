@@ -1,0 +1,46 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontName Sarabun
+autonumber
+
+title Use Case 2: จัดการคอร์ส
+
+participant "เจ้าหน้าที่" as Staff
+participant "เว็บเบราว์เซอร์" as Browser
+participant "เว็บเซิร์ฟเวอร์" as Server
+participant "ฐานข้อมูล" as Database
+
+Staff -> Browser: กดสร้างคอร์ส
+activate Staff
+activate Browser
+Browser -> Server: ขอเข้าถึงหน้าสร้างคอร์ส
+activate Server
+Server -> Database: ขอข้อมูลคอร์สและตารางเวลา
+activate Database
+Database --> Server: ข้อมูลคอร์สและตารางเวลา
+deactivate Database
+Server --> Browser: หน้าสร้างคอร์ส
+deactivate Server
+Browser --> Staff: แสดงหน้าสร้างคอร์ส
+Staff -> Browser: กรอกข้อมูลของคอร์ส
+Staff -> Browser: กดปุ่ม "Create"
+Browser -> Server: ส่งข้อมูลของคอร์ส
+activate Server
+Server -> Server: ตรวจสอบข้อมูลที่กรอก
+activate Server
+deactivate Server
+Server ->> Database: เขียนข้อมูลของคอร์ส
+activate Database
+deactivate Database
+Server --> Browser: ผลการสร้างคอร์ส
+deactivate Server
+Browser --> Staff: แสดงผลการสร้างคอร์ส
+Staff -> Browser: กดปุ่ม "OK"
+Browser -> Server: ขอเข้าถึงหน้าหลัก
+activate Server
+Server --> Browser: หน้าหลัก
+deactivate Server
+Browser --> Staff: แสดงหน้าหลัก
+deactivate Browser
+deactivate Staff
+@enduml

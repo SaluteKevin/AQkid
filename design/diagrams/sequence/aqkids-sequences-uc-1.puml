@@ -1,0 +1,54 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontName Sarabun
+autonumber
+
+title Use Case 1: ยืนยันตัวตน
+
+participant "ผู้ใช้ระบบ" as User
+participant "เว็บเบราว์เซอร์" as Browser
+participant "เว็บเซิร์ฟเวอร์" as Server
+participant "ฐานข้อมูล" as Database
+
+User -> Browser: กดลงทะเบียนบัญชีผู้ใช้
+activate User
+activate Browser
+Browser -> Server: ขอเข้าถึงหน้าลงทะเบียนบัญชีผู้ใช้
+activate Server
+Server --> Browser: หน้าฟอร์มลงทะเบียนบัญชีผู้ใช้ระบบ
+deactivate Server
+Browser --> User: แสดงหน้าฟอร์มลงทะเบียนบัญชีผู้ใช้ระบบ
+User -> Browser: กรอกข้อมูล
+User -> Browser: กดปุ่ม "Create Account"
+Browser -> Server: ส่งข้อมูลส่วนตัวที่ผู้ใช้กรอก
+activate Server
+Server -> Database: ขอข้อมูลผู้ใช้
+activate Database
+Database --> Server: ข้อมูลผู้ใช้
+deactivate Database
+Server -> Server: ตรวจสอบข้อมูลที่ผู้ใช้กรอก
+activate Server
+deactivate Server
+Server ->> Database: เขียนข้อมูลผู้ใช้
+activate Database
+deactivate Database
+Server --> Browser: หน้าฟอร์มลงชื่อเข้าใช้ระบบ
+deactivate Server
+Browser --> User: แสดงฟอร์มลงชื่อเข้าใช้ระบบ
+User -> Browser: กรอกข้อมูล
+User -> Browser: กดปุ่ม "Sign In"
+Browser -> Server: ส่งข้อมูลการเข้าสู่ระบบ
+activate Server
+Server -> Database: ขอข้อมูลการเข้าสู่ระบบของผู้ใช้
+activate Database
+Database --> Server: ข้อมูลการเข้าสู่ระบบของผู้ใช้
+deactivate Database
+Server -> Server: ตรวจสอบข้อมูลที่ผู้ใช้กรอก
+activate Server
+deactivate Server
+Server --> Browser: หน้าหลัก
+deactivate Server
+Browser --> User: แสดงหน้าหลัก
+deactivate Browser
+deactivate User
+@enduml
