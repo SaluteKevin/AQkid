@@ -4,11 +4,12 @@ skinparam defaultFontName Sarabun
 autonumber
 
 title Use Case 1: ยืนยันตัวตน
+mainframe **sd** AuthenticateUser
 
-participant "ผู้ใช้ระบบ" as User
-participant "เว็บเบราว์เซอร์" as Browser
-participant "เว็บเซิร์ฟเวอร์" as Server
-participant "ฐานข้อมูล" as Database
+participant "user:User" as User
+participant ":WebBrowser" as Browser
+participant ":WebServer" as Server
+participant ":Database" as Database
 
 User -> Browser: กดลงทะเบียนบัญชีผู้ใช้
 activate User

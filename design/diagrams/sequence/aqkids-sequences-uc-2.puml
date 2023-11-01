@@ -4,11 +4,12 @@ skinparam defaultFontName Sarabun
 autonumber
 
 title Use Case 2: จัดการคอร์ส
+mainframe **sd** ManageCourse
 
-participant "เจ้าหน้าที่" as Staff
-participant "เว็บเบราว์เซอร์" as Browser
-participant "เว็บเซิร์ฟเวอร์" as Server
-participant "ฐานข้อมูล" as Database
+participant "staff:User" as Staff
+participant ":WebBrowser" as Browser
+participant ":WebServer" as Server
+participant ":Database" as Database
 
 Staff -> Browser: กดสร้างคอร์ส
 activate Staff

@@ -2,15 +2,16 @@
 !pragma teoz true
 skinparam monochrome true
 skinparam defaultFontName Sarabun
-autonumber
 
 title Use Case 3: ลงทะเบียนคอร์ส
+mainframe **sd** EnrollCourse
 
-participant "ลูกค้า" as Customer
-participant "เว็บเบราว์เซอร์" as Browser
-participant "เว็บเซิร์ฟเวอร์" as Server
-participant "ฐานข้อมูล" as Database
+participant "customer:User" as Customer
+participant ":WebBrowser" as Browser
+participant ":WebServer" as Server
+participant ":Database" as Database
 
+autonumber
 activate Customer
 Customer -> Browser: กดปุ่ม "ENROLL COURSE"
 activate Browser
@@ -30,13 +31,15 @@ Browser -> Customer: แสดงหน้ายืนยันรายละ�
 Customer -> Browser: กดปุ่ม "Confirm"
 
 {start} Browser -[hidden]> Server
+autonumber 11
 & Browser -> Customer: แสดงหน้าชำระเงิน
 Customer ->(90) Browser: อัปโหลด\nหลักฐานการชำระเงิน
 {end} Customer -> Browser: กดปุ่ม "Confirm"
 {end} Browser -[hidden]> Server
 
-{start} <-> {end}: {<U+2264> 5 นาที}
+{start} <-> {end}: {0..5 min}
 
+autonumber 14
 Browser -> Server: ส่งข้อมูลการสมัคร
 activate Server
 Server -> Server: ตรวจสอบข้อมูลการสมัคร
