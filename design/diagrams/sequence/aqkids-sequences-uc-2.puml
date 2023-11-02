@@ -44,7 +44,7 @@ activate Server
 deactivate Server
 
 ' break 1.1
-break
+break ข้อมูลที่กรอกถูกต้อง
 
 Server ->> Database: เขียนข้อมูลของคอร์ส
 
