@@ -87,7 +87,7 @@
                     </svg>
                 </button>
             </div>
-            <div class="p-4 h-80 overflow-y-auto">
+            <div class="p-4 h-80 overflow-y-auto" ref="chatContainer">
                 <!-- Chat messages will be displayed here -->
                 <div v-for="message in messages" :key="message">
                     <div v-if="message.sender_id == user.id" class="mb-2 text-right">
@@ -159,8 +159,14 @@ function isStudent() {
 const isChatboxOpen = ref(false); // Set the initial state to open
 
 // Function to toggle the chatbox visibility
-function toggleChatbox() {
+async function toggleChatbox() {
     // chatContainer.classList.toggle("hidden");
+    await chatBoxOpen();
+
+    await scrollBottom();
+}
+
+async function chatBoxOpen() {
     isChatboxOpen.value = !isChatboxOpen.value; // Toggle the state
 }
 
@@ -188,6 +194,18 @@ let channel = pusher.subscribe(channelName);
 channel.bind('message', (data: any) => {
     addMessage(data);
 });
+
+const chatContainer = ref();
+
+async function scrollBottom() {
+
+    if (isChatboxOpen.value) {
+        const element = chatContainer.value
+
+        element.scrollTop = element.scrollHeight;
+    }
+
+};
 
 
 const { data: chatResponse, error: chatError } = await useApiFetch(`api/message/fetchChatStudent/${user.id}`, {});
