@@ -12,41 +12,28 @@ participant ":WebServer" as Server
 participant ":Database" as Database
 
 autonumber
-
 activate Customer
 Customer -> Browser: กดปุ่ม "ENROLL COURSE"
-
 activate Browser
 Browser -> Server: ขอเข้าถึงหน้าสมัครคอร์ส
-
 activate Server
 Server -> Database: ขอข้อมูลคอร์สและตารางเวลา
-
 activate Database
 Database --> Server: ข้อมูลคอร์สและตารางเวลา
 deactivate Database
-
 Server --> Browser: หน้าสมัครคอร์ส
 deactivate Server
-
 Browser --> Customer: แสดงหน้าสมัครคอร์ส
-
+' ฟอร์มให้เลือกคอร์สที่จะสมัครจากวันและเวลา
 Customer -> Browser: เลือกคอร์ส
 Customer -> Browser: กดปุ่ม "Confirm"
 Browser --> Customer: แสดงหน้ายืนยันรายละเอียดคอร์ส
-
 Customer -> Browser: กดปุ่ม "Confirm"
 
 {start} Browser -[hidden]> Server
-
 autonumber 11
 & Browser --> Customer: แสดงหน้าชำระเงิน
-
 Customer ->(90) Browser: อัปโหลด\nหลักฐานการชำระเงิน
-
-' alt 1
-alt เวลาไม่เกิน 5 นาที
-
 {end} Customer -> Browser: กดปุ่ม "Confirm"
 {end} Browser -[hidden]> Server
 
@@ -54,60 +41,18 @@ alt เวลาไม่เกิน 5 นาที
 
 autonumber 14
 Browser -> Server: ส่งข้อมูลการสมัครคอร์ส
-
 activate Server
-' Server -> Server: ตรวจสอบข้อมูลการสมัครคอร์ส
-
-' activate Server
-' deactivate Server
-
+Server -> Server: ตรวจสอบข้อมูลการสมัครคอร์ส
+activate Server
+deactivate Server
 Server ->> Database: เขียนข้อมูลการสมัครคอร์ส
-
 activate Database
 deactivate Database
-
 Server --> Browser: ผลการสมัครคอร์ส
 deactivate Server
-
 Browser --> Customer: แสดงผลการสมัครคอร์ส
-
-else เวลาเกิน 5 นาที
-
-Customer -> Browser: กดปุ่ม "Go to Refund Page"
-Browser -> Server: ขอเข้าถึงหน้าสร้างคำขอคืนเงิน
-
-activate Server
-Server --> Browser: หน้าสร้างคำขอคืนเงิน
-deactivate Server
-
-Browser --> Customer: หน้าสร้างคำขอคืนเงิน
-Customer -> Browser: กรอกข้อมูลคำขอคืนเงิน
-Customer -> Browser: กดปุ่ม "Send"
-Browser -> Server: ส่งข้อมูลคำขอคืนเงิน
-
-activate Server
-Server ->> Database: เขียนคำขอคืนเงิน
-
-activate Database
-deactivate Database
-
-Server --> Browser: ผลการสร้างคำขอคืนเงิน
-deactivate Server
-
-Browser --> Customer: แสดงผลการสร้างคำขอคืนเงิน
-
-'alt 1
-end
-
 Customer -> Browser: กดปุ่ม "OK"
-Browser -> Server: ขอเข้าถึงหน้าหลัก
-
-activate Server
-Server --> Browser: หน้าหลัก
-deactivate Server
-
 Browser --> Customer: แสดงหน้าหลัก
 deactivate Browser
-
 deactivate Customer
 @enduml

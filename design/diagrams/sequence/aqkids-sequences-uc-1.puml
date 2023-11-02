@@ -12,44 +12,95 @@ participant ":WebServer" as Server
 participant ":Database" as Database
 
 User -> Browser: กดลงทะเบียนบัญชีผู้ใช้
+
 activate User
+
 activate Browser
 Browser -> Server: ขอเข้าถึงหน้าลงทะเบียนบัญชีผู้ใช้
+
 activate Server
 Server --> Browser: หน้าฟอร์มลงทะเบียนบัญชีผู้ใช้ระบบ
 deactivate Server
+
 Browser --> User: แสดงหน้าฟอร์มลงทะเบียนบัญชีผู้ใช้ระบบ
+
+' loop 1
+loop ข้อมูลที่กรอกไม่ถูกต้อง
+
 User -> Browser: กรอกข้อมูล
 User -> Browser: กดปุ่ม "Create Account"
 Browser -> Server: ส่งข้อมูลส่วนตัวที่ผู้ใช้กรอก
+
 activate Server
 Server -> Database: ขอข้อมูลผู้ใช้
+
 activate Database
 Database --> Server: ข้อมูลผู้ใช้
 deactivate Database
+
 Server -> Server: ตรวจสอบข้อมูลที่ผู้ใช้กรอก
+
 activate Server
 deactivate Server
+
+break ข้อมูลที่กรอกถูกต้อง
+
 Server ->> Database: เขียนข้อมูลผู้ใช้
+
 activate Database
 deactivate Database
+
 Server --> Browser: หน้าฟอร์มลงชื่อเข้าใช้ระบบ
 deactivate Server
+
+' break 1.1
+end
+
+Server --> Browser: สั่งให้แจ้งเตือนผู้ใช้ให้ตรวจสอบข้อมูลที่กรอก
+Browser --> User: แจ้งเตือนผู้ใช้ให้ตรวจสอบข้อมูลที่กรอก
+
+' loop 1
+end
+
 Browser --> User: แสดงฟอร์มลงชื่อเข้าใช้ระบบ
+
+' loop 2
+loop ยืนยันตัวตนไม่สำเร็จ
+
 User -> Browser: กรอกข้อมูล
 User -> Browser: กดปุ่ม "Sign In"
 Browser -> Server: ส่งข้อมูลการเข้าสู่ระบบ
+
 activate Server
 Server -> Database: ขอข้อมูลการเข้าสู่ระบบของผู้ใช้
+
 activate Database
 Database --> Server: ข้อมูลการเข้าสู่ระบบของผู้ใช้
 deactivate Database
+
 Server -> Server: ตรวจสอบข้อมูลที่ผู้ใช้กรอก
+
 activate Server
 deactivate Server
+
+' break 2.1
+break ยืนยันตัวตนสำเร็จ
+
 Server --> Browser: หน้าหลัก
 deactivate Server
+
+' break 2.1
+end
+
+Server --> Browser: สั่งให้แจ้งเตือนผู้ใช้ให้ตรวจสอบข้อมูลที่กรอก
+Browser --> User: แจ้งเตือนผู้ใช้ให้ตรวจสอบข้อมูลที่กรอก
+
+' loop 2
+end
+
 Browser --> User: แสดงหน้าหลัก
+
 deactivate Browser
+
 deactivate User
 @enduml

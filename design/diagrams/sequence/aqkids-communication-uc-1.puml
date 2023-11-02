@@ -1,0 +1,36 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontName Sarabun
+skinparam linestyle ortho
+' autonumber
+
+title Use Case 1: ยืนยันตัวตน
+mainframe **sd** AuthenticateUser
+
+rectangle "user:User" as User
+rectangle ":WebBrowser" as Browser
+rectangle ":WebServer" as Server
+rectangle ":Database" as Database
+
+User -- Browser: กดลงทะเบียนบัญชีผู้ใช้
+Browser -- Server: ขอเข้าถึงหน้าลงทะเบียนบัญชีผู้ใช้
+Server -- Browser: หน้าฟอร์มลงทะเบียนบัญชีผู้ใช้ระบบ
+Browser -- User: แสดงหน้าฟอร์มลงทะเบียนบัญชีผู้ใช้ระบบ
+User -- Browser: กรอกข้อมูล
+User -- Browser: กดปุ่ม "Create Account"
+Browser -- Server: ส่งข้อมูลส่วนตัวที่ผู้ใช้กรอก
+Server -- Database: ขอข้อมูลผู้ใช้
+Database -- Server: ข้อมูลผู้ใช้
+Server -- Server: ตรวจสอบข้อมูลที่ผู้ใช้กรอก
+Server -- Database: เขียนข้อมูลผู้ใช้
+Server -- Browser: หน้าฟอร์มลงชื่อเข้าใช้ระบบ
+Browser -- User: แสดงฟอร์มลงชื่อเข้าใช้ระบบ
+User -- Browser: กรอกข้อมูล
+User -- Browser: กดปุ่ม "Sign In"
+Browser -- Server: ส่งข้อมูลการเข้าสู่ระบบ
+Server -- Database: ขอข้อมูลการเข้าสู่ระบบของผู้ใช้
+Database -- Server: ข้อมูลการเข้าสู่ระบบของผู้ใช้
+Server -- Server: ตรวจสอบข้อมูลที่ผู้ใช้กรอก
+Server -- Browser: หน้าหลัก
+Browser -- User: แสดงหน้าหลัก
+@enduml
