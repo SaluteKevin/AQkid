@@ -124,6 +124,17 @@ class Timeslot extends Model
 
         return true;
     }
+    public function updateReview(int $studentId, string $reviewText): bool
+    {
+        if ($this->studentAttendances()->find($studentId) == null) {
+            error_log('Student \'' . $studentId . '\' has not been attached');
+            return false;
+        }
+
+            $this->studentAttendances()->updateExistingPivot($studentId, ['review_comment' => $reviewText]);
+
+        return true;
+    }
 
     public static function getTimeslotStudents(Timeslot $timeslot) {
 

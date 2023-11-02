@@ -137,8 +137,14 @@
                 
             </div>
         </div>
-        <div class="relative h-10 ">
-          <button  type="button" class="absolute right-1 text-green-700 hover:text-white border border-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Green</button>
+        <div class="flex flex-row justify-end mr-1">
+          <div class="h-10 ">
+            <button  type="button" class=" text-amber-500 hover:text-white border border-amber-500 hover:bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-amber-500 dark:text-amber-500 dark:hover:text-white dark:hover:bg-amber-400 dark:focus:ring-amber-400">Add image</button>
+          </div>
+          <div class="h-10">
+            <button  type="button" v-on:click="ReviewStudent(studentSelect.id)"  class=" text-green-700 hover:text-white border border-green-700 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Save</button>
+          </div>
+
         </div>
 
       </div>
@@ -148,6 +154,63 @@
     </div>
   </div>
   
+
+  
+  <div id="purchaseModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative w-full max-w-2xl max-h-full">
+                        <!-- Modal content -->
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                             <!-- Modal header -->
+                            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                                <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-sky-400 to-cyan-500">
+                                    Purchase order
+                                </h1>
+                                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="purchaseModal">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="p-6 space-y-6">
+                                <div class="py-20 bg-white px-2">
+                                    <div class="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl">
+                                        <div class="md:flex">
+                                            <div class="w-full p-3">
+                                                <div class="relative border-dotted h-48 rounded-lg border-dashed border-2 border-blue-700 bg-gray-100 flex justify-center items-center">
+                                                    <div class="absolute">
+                                                        <div class="flex flex-col items-center">
+                                                            <i class="fa fa-folder-open fa-4x text-blue-700"></i>
+                                                            <!-- <span class="block text-gray-400 font-normal">Select file video here</span> -->
+                                                            
+                                                            <input type="file" name="image" id="inputImage" accept="image/*" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="font-xl" id="previewsImg-con" style="display: none">
+                                Preview Image
+                                <div class="mt-2 gap-1 flex justify-center items-center" id="preview-image">
+
+                                </div>
+                            </div>
+                            
+                            <!-- Modal footer -->
+                            <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                <button data-modal-hide="purchaseModal" type="button" class="text-white bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">close</button>
+                                  
+                                <button type="submit" class="right-5 absolute flex-2 rounded-full bg-green-600 text-white antialiased font-bold hover:bg-green-800 px-12 py-2">Add</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
   
 
 
@@ -225,22 +288,21 @@ else {
 
 }
 
+var studentSelect = ref();
 
-async function review(student: object) {
-  console.log(student);
+function review(student) {
+  // console.log(student);
   selected.value.selecteReview = student.first_name + ' ' + student.last_name;
   selected.value.reviewText = student.pivot.review_comment;
-
+  studentSelect.value = student;
+  
   playAnimation();
 }
 
 
-const textReview = ref('test');
 const selected = ref({
-  student: 0,
   selecteReview: 'please select the student',
   reviewText: '',
-
 });
 
 function playAnimation() {
@@ -296,6 +358,8 @@ async function RemoveStudent(studentId: int) {
   });
 
   if (removeResponse.value) {
+    var animatedElement = document.getElementById('myDiv');
+    animatedElement.classList.remove('slide-right');
 
     await fetchStudents();
 
@@ -304,6 +368,32 @@ async function RemoveStudent(studentId: int) {
 
     if (removeError.value) {
       console.log(removeError.value)
+    }
+  }
+}
+
+async function ReviewStudent(studentId: int) {
+
+  const formData = new FormData()
+  await formData.append('reviewText', selected.value.reviewText);
+
+  const { data: reviewResponse, error: reviewError } = await useApiFetch(`api/teacher/addReviewStudent/${route.params.id}/${studentId}`, {
+    method: "POST",
+    body: formData,
+  });
+
+  if (reviewResponse.value) {
+    console.log("VVVVVV");
+    console.log(reviewResponse.value);
+    var animatedElement = document.getElementById('myDiv');
+    animatedElement.classList.remove('slide-right');
+    await fetchStudents();
+
+
+  } else {
+
+    if (reviewError.value) {
+      console.log(reviewError.value);
     }
   }
 }

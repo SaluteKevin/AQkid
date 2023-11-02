@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Course;
 use App\Models\Enums\StudentAttendanceEnum;
+use App\Models\StudentAttendance;
 use App\Models\Timeslot;
 
 
@@ -81,6 +82,35 @@ class TeacherController extends Controller
     public function studentAbsent(Timeslot $timeslot, User $student) {
 
         if ($timeslot->updateAttendance($student->id, StudentAttendanceEnum::FALSE)) {
+
+            return response()->json([
+                'message' => "Successfully Absent Student",
+            ]);
+            
+        }
+
+        return response()->json([
+            'message' => "Failed to Absent Student",
+        ],422);
+
+    }
+    public function studentReview(Timeslot $timeslot, User $student, Request $request) {
+        if ($timeslot->updateReview($student->id, $request->reviewText)) {
+
+            return response()->json([
+                'message' => "Successfully Review Student",
+            ]);
+            
+        }
+
+        return response()->json([
+            'message' => "Failed to Review Student",
+        ],422);
+
+    }
+    public function studentReviewImages(Timeslot $timeslot, User $student) {
+
+        if ($timeslot->updateReviewImages($student->id, StudentAttendanceEnum::FALSE)) {
 
             return response()->json([
                 'message' => "Successfully Absent Student",
