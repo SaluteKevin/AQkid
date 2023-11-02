@@ -139,10 +139,10 @@
         </div>
         <div class="flex flex-row justify-end mr-1">
           <div class="h-10 ">
-            <button  type="button" class=" text-amber-500 hover:text-white border border-amber-500 hover:bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-amber-500 dark:text-amber-500 dark:hover:text-white dark:hover:bg-amber-400 dark:focus:ring-amber-400">Add image</button>
+            <button  type="button" @click="openModal()" class=" text-amber-700 hover:text-white border border-amber-500 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-amber-500 dark:text-amber-500 dark:hover:text-white dark:hover:bg-amber-400 dark:focus:ring-amber-600">Add image</button>
           </div>
           <div class="h-10">
-            <button  type="button" v-on:click="ReviewStudent(studentSelect.id)"  class=" text-green-700 hover:text-white border border-green-700 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Save</button>
+            <button  type="button" v-on:click="ReviewStudent(studentSelect.id)"  class=" text-green-700 hover:text-white border border-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Save</button>
           </div>
 
         </div>
@@ -154,64 +154,72 @@
     </div>
   </div>
   
+  <!-- modal -->
+  <div v-if="modal" id="modelConfirm" class="fixed z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4 ">
+    <div class="relative my-40 mx-auto shadow-xl rounded-md bg-white w-1/2">
 
-  
-  <div id="purchaseModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                    <div class="relative w-full max-w-2xl max-h-full">
-                        <!-- Modal content -->
-                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                             <!-- Modal header -->
-                            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                                <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-sky-400 to-cyan-500">
-                                    Purchase order
-                                </h1>
-                                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="purchaseModal">
-                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                    </svg>
-                                    <span class="sr-only">Close modal</span>
-                                </button>
-                            </div>
-                            <!-- Modal body -->
-                            <div class="p-6 space-y-6">
-                                <div class="py-20 bg-white px-2">
-                                    <div class="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl">
-                                        <div class="md:flex">
-                                            <div class="w-full p-3">
-                                                <div class="relative border-dotted h-48 rounded-lg border-dashed border-2 border-blue-700 bg-gray-100 flex justify-center items-center">
-                                                    <div class="absolute">
-                                                        <div class="flex flex-col items-center">
-                                                            <i class="fa fa-folder-open fa-4x text-blue-700"></i>
-                                                            <!-- <span class="block text-gray-400 font-normal">Select file video here</span> -->
-                                                            
-                                                            <input type="file" name="image" id="inputImage" accept="image/*" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="font-xl" id="previewsImg-con" style="display: none">
-                                Preview Image
-                                <div class="mt-2 gap-1 flex justify-center items-center" id="preview-image">
+        <div class="flex justify-end p-2">
+            <button @click="closeModal()" type="button"
+                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </button>
+        </div>
 
-                                </div>
-                            </div>
-                            
-                            <!-- Modal footer -->
-                            <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                <button data-modal-hide="purchaseModal" type="button" class="text-white bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">close</button>
-                                  
-                                <button type="submit" class="right-5 absolute flex-2 rounded-full bg-green-600 text-white antialiased font-bold hover:bg-green-800 px-12 py-2">Add</button>
-                                
-                            </div>
-                        </div>
-                    </div>
+        <div class="p-6 pt-0 text-center">
+          <p class="text-4xl font-bold text-gray-900 dark:text-white bg-amber-200 rounded-xl py-3">Image</p>
+              <div class="flex flex-col p-2">
+                  <div v-for="(previewSrc, index) in imagePreviewSrcs" :key="index"
+                       class="w-full object-cover relative order-first md:order-last md:h-auto flex justify-center items-center border border-dashed border-gray-400 col-span-2 m-2 rounded-lg bg-no-repeat bg-center bg-origin-padding bg-cover">
+                    <span v-if="imagefix" class="text-gray-400 opacity-75">
+                      <svg class="w-14 h-14" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                           stroke-width="0.7" stroke="currentColor">
+                        <!-- SVG Path -->
+                      </svg>
+                    </span>
+                    <h3 v-if="imagefix" class="w-full">Preview Image</h3>
+
+                    <img class="object-scale-down h-1/2 w-3/5 text-gray-400 rounded-lg"
+                         :src="previewSrc" alt="">
+                  </div>
+              </div>
+
+              <div class="flex gap-5 pt-5">
+                <div class="relative w-1/2">
+                    <label title="Click to upload" for="profile_image" class="cursor-pointer flex items-center gap-4 px-6 py-4 before:border-gray-400/60 hover:before:border-gray-300 group dark:before:bg-darker dark:hover:before:border-gray-500 before:bg-gray-100 dark:before:border-gray-600 before:absolute before:inset-0 before:rounded-3xl before:border before:border-dashed before:transition-transform before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
+                     <div class="w-max relative">
+                         <img class="w-12" src="https://www.svgrepo.com/show/485545/upload-cicle.svg" alt="file upload icon" width="512" height="512">
+                     </div>
+                     <div class="relative">
+                         <span class="block text-base font-semibold relative text-blue-900 dark:text-white group-hover:text-blue-500">
+                             Upload a file
+                         </span>
+                         <span class="mt-0.5 block text-sm text-gray-500 dark:text-gray-400">Max 2 MB</span>
+                     </div>
+                    </label>
+                    <input @change="handleImageChange()" accept="image/png, image/gif, image/jpeg" ref="profileImageInput"
+                            id="profile_image" name="profile_image[]" multiple type="file"
+                            class="hidden">
                 </div>
+                        
+                <button @click="removeImage()"
+                    class='inline-flex items-center shadow-md my-2 px-2 py-2 bg-gray-900 text-gray-50 border border-transparent
+                    rounded-md font-semibold text-xs uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none 
+                    focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150'>
+                    remove image
+                </button>
+              </div>
+            
+        </div>
+
+    </div>
+  </div>
 
   
+
 
 
 
@@ -231,6 +239,7 @@
         transform: translateX(97%);
       }
     } 
+
     
 
 
@@ -245,7 +254,7 @@ import { DelayedRunner } from '@fullcalendar/core/internal';
 import dayjs from 'dayjs';
 
 
-
+const modal = ref(false);
 const allstudents = ref([]);
 
 const timeslot = ref({});
@@ -271,6 +280,13 @@ async function fetchStudents() {
 
 await fetchStudents();
 
+function openModal() {
+  modal.value = true;
+}
+
+function closeModal() {
+  modal.value = false;
+}
 
 
 // if (studentData.value) {
@@ -358,8 +374,6 @@ async function RemoveStudent(studentId: int) {
   });
 
   if (removeResponse.value) {
-    var animatedElement = document.getElementById('myDiv');
-    animatedElement.classList.remove('slide-right');
 
     await fetchStudents();
 
@@ -397,6 +411,60 @@ async function ReviewStudent(studentId: int) {
     }
   }
 }
+
+
+
+
+
+
+// image preview
+const profileImageInput = ref<HTMLInputElement | null>(null);
+const imagePreviews = ref<Array<HTMLImageElement | null>>([]);
+const imagePreviewSrcs = ref<Array<string>>([]);
+const imagefixes = ref<Array<boolean>>([]);
+const profile_image_paths = ref<Array<File | null>>([]);
+
+function handleImageChange() {
+  removeImage();
+  if (profileImageInput.value && profileImageInput.value.files) {
+    const selectedFiles = profileImageInput.value.files;
+
+    for (let i = 0; i < selectedFiles.length; i++) {
+      const reader = new FileReader();
+      const selectedFile = selectedFiles[i];
+
+      reader.onload = (event: ProgressEvent<FileReader>) => {
+        const previewSrc = event.target?.result as string;
+
+        imagePreviewSrcs.value.push(previewSrc);
+        imagefixes.value.push(false);
+        profile_image_paths.value.push(selectedFile);
+
+        const imagePreviewElement = document.createElement('img');
+        imagePreviewElement.src = previewSrc;
+        imagePreviews.value.push(imagePreviewElement);
+      };
+
+      reader.readAsDataURL(selectedFile);
+    }
+  } else {
+    // Handle the case when no file is selected or the selection is canceled
+    imagePreviewSrcs.value = [];
+    imagefixes.value = [];
+    profile_image_paths.value = [];
+    imagePreviews.value = [];
+  }
+}
+
+function removeImage() {
+  imagePreviews.value = [];
+  imagePreviewSrcs.value = [];
+  imagefixes.value = [];
+  profile_image_paths.value = [];
+}
+
+
+
 
 </script>
 
