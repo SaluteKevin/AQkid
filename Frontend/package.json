@@ -30,6 +30,7 @@
     "click-outside-vue3": "^4.0.1",
     "gsap": "^3.12.2",
     "pinia": "^2.1.6",
-    "pinia-plugin-persist": "^1.0.0"
+    "pinia-plugin-persist": "^1.0.0",
+    "pusher-js": "^8.3.0"
   }
 }
