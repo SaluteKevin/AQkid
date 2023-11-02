@@ -25,7 +25,7 @@ class ChatMessage extends Model
         $users->each(function ($user) {
             
             $user->last_message = ChatMessage::where('channel_id',$user->id)->get()->sortByDesc('created_at')->first();
-            
+
         });
 
         return $users;
