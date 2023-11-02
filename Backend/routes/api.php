@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\StaffController;
 use App\Http\Controllers\Api\TeacherController;
 use App\Http\Controllers\Api\StudentController;
+use App\Http\Controllers\Api\ChatController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
@@ -141,4 +142,22 @@ Route::group([
     Route::get('myRefunds/{user}', [StudentController::class, 'myRefunds']);
 });
 
+Route::group([
+    
+    'middleware' => 'api',
+    'prefix' => 'message'
+    
+], function ($router) {
+    
+    // staff
+    Route::get('getStaffChannels', [ChatController::class, 'getStaffChannels']);
+    Route::get('fetchChatStaff/{channel}', [ChatController::class, 'fetchChatStaff']);
+    Route::post('messageStaff', [ChatController::class, 'messageStaff']);
 
+    // student
+    Route::post('messageStudent', [ChatController::class, 'messageStudent']);
+    Route::get('fetchChatStudent/{channel}', [ChatController::class, 'fetchChatStudent']);
+    
+    
+
+});
