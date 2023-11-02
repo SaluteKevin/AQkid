@@ -168,6 +168,12 @@ async function getChannel() {
 
         }
 
+        allChannels.value.sort((a, b) => {
+            const createdAtA = new Date(a.last_message.created_at);
+            const createdAtB = new Date(b.last_message.created_at);
+
+            return createdAtB - createdAtA;
+        });
 
     } else {
         if (channelsError.value) {
