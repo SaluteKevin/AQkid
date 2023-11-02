@@ -56,7 +56,7 @@
         <p class="text-2xl font-extrabold text-dark-grey-900">Course Enrollment</p>
         <p class="text-base leading-7 text-dark-grey-600">See all the courses here!!</p>
         <NuxtLink to="/course/enrollCourse"
-          class="z-10 bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+          class="z-10 bg-orange-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
           <i class="fas fa-heart"></i> Enroll Course
         </NuxtLink>
       </div>
@@ -129,7 +129,7 @@
         <p class="text-2xl font-extrabold text-dark-grey-900">Money Refund</p>
         <p class="text-base leading-7 text-dark-grey-600">Create Refund Application here!!</p>
         <NuxtLink :to="`/student/refund${0}`"
-          class="z-10 bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+          class="z-10 bg-orange-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
           <i class="fas fa-heart"></i> Request Refund
         </NuxtLink>
 
@@ -157,7 +157,7 @@
         <p class="text-2xl font-extrabold text-dark-grey-900">Student Archievements</p>
         <p class="text-base leading-7 text-dark-grey-600">See my stat here!!</p>
         <button v-on:click="toStat"
-          class="z-10 bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          class="z-10 bg-orange-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
           type="button">
           <i class="fas fa-heart"></i> My Archievements
         </button>
@@ -256,7 +256,7 @@
         <p class="text-2xl font-extrabold text-dark-grey-900">My Enrollments</p>
         <p class="text-base leading-7 text-dark-grey-600">See all my enrollments here!!</p>
         <NuxtLink to="/student/enrollments"
-          class="z-10 bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+          class="z-10 bg-orange-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
           <i class="fas fa-heart"></i> My Enrollments
         </NuxtLink>
 
@@ -315,7 +315,7 @@
         <p class="text-2xl font-extrabold text-dark-grey-900">My Refund Requests</p>
         <p class="text-base leading-7 text-dark-grey-600">See all my Refund Requests here!!</p>
         <NuxtLink to="/student/refund"
-          class="z-10 bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+          class="z-10 bg-orange-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
           <i class="fas fa-heart"></i> My Refund Request
         </NuxtLink>
 
@@ -348,7 +348,7 @@
         <p class="text-2xl font-extrabold text-dark-grey-900">Aquatic Training</p>
         <p class="text-base leading-7 text-dark-grey-600">See all my classes here!!</p>
         <button v-on:click="toClasses"
-          class="z-10 bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          class="z-10 bg-orange-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
           type="button">
           <i class="fas fa-heart"></i> My Classes
         </button>
@@ -506,7 +506,8 @@
         </div>
       </div>
     </div>
-    <section v-click-outside="clickOutsideClasses" v-if="showClasses" ref="scrollClasses" class="flex flex-col w-full justify-center items-center mt-24 bg-gradient-to-t from-sky-900 from-10% via-sky-600 via-30% to-white to-70%">
+    <section v-click-outside="clickOutsideClasses" v-if="showClasses" ref="scrollClasses"
+      class="flex flex-col w-full justify-center items-center mt-24 bg-gradient-to-t from-sky-900 from-10% via-sky-600 via-30% to-white to-70%">
       <h1 class="text-4xl font-bold">Classes</h1>
       <div class="waviy ">
         <span style="--i:1">T</span>
@@ -529,22 +530,24 @@
         <div v-for="classes in timelineClasses">
 
           <Timeslot :timeslot="classes"></Timeslot>
-          
+
         </div>
       </ol>
     </section>
 
-    <button id="to-top-button" title="Go To Top" v-on:click="toTop"
-      class="fixed z-10 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-purple-600 hover:bg-purple-700 text-white text-lg font-semibold transition-colors duration-300">
+    <button ref="to-top-button" title="Go To Top" v-on:click="toTop"
+      class="fixed z-10 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-cyan-900 hover:bg-cyan-950 text-white text-lg font-semibold transition-colors duration-300">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
         <path d="M12 4l8 8h-6v8h-4v-8H4l8-8z" />
       </svg>
       <span class="sr-only">Go to top</span>
     </button>
   </div>
+  
 </template>
 
 <script setup lang="ts">
+
 definePageMeta({ layout: "student" })
 const config = useRuntimeConfig();
 import { useAuthStore } from "~/stores/useAuthStore";
@@ -558,6 +561,10 @@ const level = ref(0);
 const exp = ref(0);
 const attentcount = ref(0);
 
+
+
+
+
 // my classes
 
 const { data: statResponse, error: statError } = await useApiFetch(`api/student/userStat/${user.id}`, {});
@@ -568,7 +575,7 @@ if (statResponse.value) {
 
   exploring.value = statResponse.value.enrollments;
 
-  level.value = 1 + statResponse.value.attend/10;
+  level.value = 1 + statResponse.value.attend / 10;
   // if (statResponse.value.attend < 10) {
   //   level.value = statResponse.value.attend;
   // }
@@ -687,6 +694,8 @@ const clickOutsideArchive = () => {
 const clickOutsideClasses = () => {
   showClasses.value = false;
 };
+
+
 
 </script>
 
