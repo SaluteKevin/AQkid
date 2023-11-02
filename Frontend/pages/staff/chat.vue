@@ -1,16 +1,16 @@
 <template>
-    <div class="flex h-screen overflow-hidden">
+    <div class="flex h-[46rem] overflow-hidden">
         <!-- Sidebar -->
         <div class="w-1/4 bg-white border-r border-gray-300">
             <!-- Sidebar Header -->
-            <header class="p-4 border-b border-gray-300 flex justify-between items-center bg-indigo-600 text-white">
+            <header class="p-4 border-b border-gray-300 flex justify-between items-center bg-blue-600 text-white">
                 <h1 class="text-2xl font-semibold">AQKids Chats</h1>
             </header>
 
             <!-- Contact List -->
-            <div class="overflow-y-auto h-screen p-3 mb-9 pb-20">
+            <div class="overflow-y-auto h-full p-3  pb-20">
                 <div v-for="channel in allChannels">
-                    <Contract @see-chat="onClickChat" :contract="channel" :last_message="channel.last_message.message"
+                    <Contract @see-chat="onClickChat" :id="channel.id" :first_name="channel.first_name" :last_name="channel.last_name" :profile_image_path="channel.profile_image_path" :last_message="channel.last_message.message"
                         :has_read="channel.last_message.has_read">
                     </Contract>
                 </div>
@@ -18,7 +18,7 @@
         </div>
 
         <!-- Main Chat Area -->
-        <div v-if="showChat" v-click-outside="clickOutside" class="flex-1">
+        <div v-if="showChat" v-click-outside="clickOutside" class="flex-1 bg-gray-200">
             <!-- Chat Header -->
             <header class="bg-gray-600 text-white p-4 flex">
                 <h1 class="text-2xl font-semibold">{{ chatName }}</h1>
@@ -26,10 +26,10 @@
             </header>
 
             <!-- Chat Messages -->
-            <div class="h-screen overflow-y-auto p-4 pb-36" ref="chatContainer">
+            <div class="h-full overflow-y-auto p-4 pb-36" ref="chatContainer">
                 <div v-for="message in messages" :key="message">
                     <!-- Incoming Message -->
-                    <div v-if="message.sender_id != auth.user.value.id" class="flex mb-4 cursor-pointer">
+                    <div v-if="message.sender_id != auth.user.value.id" class="flex mb-4">
                         <div class="w-9 h-9 rounded-full flex items-center justify-center mr-2">
                             <img src="https://placehold.co/200x/ffa8e4/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato" alt="User Avatar"
                                 class="w-8 h-8 rounded-full">
@@ -40,7 +40,7 @@
                     </div>
 
                     <!-- Outgoing Message -->
-                    <div v-if="message.sender_id == auth.user.value.id" class="flex justify-end mb-4 cursor-pointer">
+                    <div v-if="message.sender_id == auth.user.value.id" class="flex justify-end mb-4">
                         <div class="flex max-w-96 bg-indigo-500 text-white rounded-lg p-3 gap-3">
                             <p>{{ message.message }}</p>
                         </div>
