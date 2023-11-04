@@ -147,8 +147,10 @@ class Course extends Model
         $allCourses->each(function ($course) use ($courseIds) {
             if (in_array($course->id, $courseIds->toArray())) {
                 $course->author = true;
+                $course->studentsIn = Course::studentsIn($course->id)->count();
             } else {
                 $course->author = false;
+                $course->studentsIn = Course::studentsIn($course->id)->count();
             }
         });
 
