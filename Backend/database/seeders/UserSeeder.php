@@ -275,7 +275,7 @@ class UserSeeder extends Seeder
             'role' => 'STUDENT',
             'first_name' => 'Mikali',
             'last_name' => 'Hetian',
-            'birthdate' => '2020-10-17',
+            'birthdate' => '2021-10-17',
             'phone_number' => '0878133545',
             'profile_image_path' => 'users/' . $id++ . '/profile_image.jpg',
             // `email` => `mikali@gmail.com`,
