@@ -1,0 +1,55 @@
+@startuml
+skinparam {
+    monochrome true
+    defaultFontName Sarabun
+}
+
+title Component Diagram
+
+component :Database as db {
+    portout DBConnector as dbConnectorPort
+}
+
+component :WebServer as ws {
+    portin ServerConnector as wsServerConnectorPort
+
+    [DBMS]
+    [Authentication]
+    [UserManagement]
+    [ScheduleManagement]
+    [Routing]
+
+    component EnrollmentProcessing  {
+        [PaymentProcessing]
+    }
+
+    [UserRequestProcessing]
+    [CourseProcessing]
+
+    UserManagement <.. Authentication
+    UserManagement <.left. CourseProcessing: <<use>>
+    UserManagement <.up. ScheduleManagement
+
+    Authentication <.right. Routing: <<use>>
+
+    CourseProcessing <.left. ScheduleManagement
+    CourseProcessing <.left. EnrollmentProcessing: <<use>>
+
+    EnrollmentProcessing <.. UserRequestProcessing: <<use>>
+
+    DBMS -0- wsServerConnectorPort
+}
+
+component :WebBrowser as wb {
+    [Browser]
+
+    component Cookies {
+        [AuthenticationFactors]
+    }
+
+    Cookies -0)- Browser: BrowserAPI
+}
+
+dbConnectorPort --0)-- wsServerConnectorPort
+ws ---0)--- wb: Internet
+@enduml
