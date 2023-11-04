@@ -32,7 +32,7 @@ class StudentController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getAllClasses', 'getAllCourse', 'showCourse', 'enrollCourse', 'updateProfile', 'userStat','allEnrollCourses','refundRequest','myEnrollments','myRefunds']]);
+        $this->middleware('auth:api', ['except' => ['getAllClasses', 'getAllCourse', 'showCourse', 'enrollCourse', 'updateProfile', 'userStat','allEnrollCourses','refundRequest','myEnrollments','myRefunds','getReceipt']]);
     }
 
     public function getAllClasses(User $user)
@@ -215,5 +215,12 @@ class StudentController extends Controller
         $refunds = UserRequest::where('originator_id', $user->id)->get()->sortByDesc('created_at');
 
         return $refunds;
+    }
+
+    public function getReceipt(Enrollment $enrollment) {
+        $enrollment->receipt;
+        $enrollment->user = User::find($enrollment->student_id);
+        return $enrollment;
+
     }
 }

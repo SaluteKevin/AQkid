@@ -19,8 +19,10 @@
             <div class="p-2  flex flex-col capitalize text-black place-content-center w-1/5">
                 <span>Status</span>
                 <span class="mt-2 text-gray-600">
-                    <span v-if="enrollment.status == 'PENDING'" class="text-xl text-yellow-500">{{ enrollment.status }}</span>
-                    <span v-if="enrollment.status == 'SUCCESS'" class="text-xl text-green-500">{{ enrollment.status }}</span>
+                    <span v-if="enrollment.status == 'PENDING'" class="text-xl text-yellow-500">{{ enrollment.status
+                    }}</span>
+                    <span v-if="enrollment.status == 'SUCCESS'" class="text-xl text-green-500">{{ enrollment.status
+                    }}</span>
                     <span v-if="enrollment.status == 'FAILED'" class="text-xl text-red-500">{{ enrollment.status }}</span>
                 </span>
 
@@ -59,6 +61,12 @@
             </a>
 
             <div class=" rounded-b-lg p-4">Review comments: {{ enrollment.review_comment }}</div>
+
+            <a v-if="enrollment.status == 'SUCCESS'" :href="`/student/receipt${enrollment.id}`" >
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold p-4 rounded-full">
+                    Get Receipt
+                </button>
+            </a>
         </div>
 
     </div>
