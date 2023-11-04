@@ -343,7 +343,7 @@ class User extends Authenticatable implements JWTSubject
         $user->birthdate = $birthdate;
         $user->phone_number = $phone_number;
         $user->email = $email;
-        $user->profile_image_path = "DEFAULT";
+        $user->profile_image_path = "users/default/profile_image.jpg";
 
         $statusOk = $user->save();
 
