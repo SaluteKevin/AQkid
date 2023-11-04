@@ -74,6 +74,172 @@ class CourseSeeder extends Seeder
             'updated_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday noon', strtotime('-2 week', time()))),
         ]);
 
+        $teacherId = User::where('username', '_t3')->first()->id;
+        Course::create([
+            'teacher_id' => $teacherId,
+            'title' => 'Teacher number 3',
+            'description' => 'learn with teacher number 3',
+            'quota' => 10,
+            'capacity' => 4,
+            'min_age' => 12,
+            'max_age' => 24,
+            'duration' => 60,
+            'opens_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 10am', strtotime('-1 week', time()))),
+            'opens_until' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 10am', strtotime('+2 week', time()))),
+            'starts_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 10am', strtotime('+4 week', time()))),
+            'status' => CourseStatusEnum::OPEN->name,
+            'price' => 7500.00,
+            'created_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 10am', strtotime('-2 week', time()))),
+            'updated_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 10am', strtotime('-2 week', time()))),
+        ]);
+
+        $teacherId = User::where('username', '_t4')->first()->id;
+        Course::create([
+            'teacher_id' => $teacherId,
+            'title' => 'Teacher no. 3',
+            'description' => 'hello world',
+            'quota' => 10,
+            'capacity' => 4,
+            'min_age' => 12,
+            'max_age' => 24,
+            'duration' => 60,
+            'opens_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 11am', strtotime('-1 week', time()))),
+            'opens_until' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 11am', strtotime('+2 week', time()))),
+            'starts_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 11am', strtotime('+4 week', time()))),
+            'status' => CourseStatusEnum::OPEN->name,
+            'price' => 7500.00,
+            'created_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 11am', strtotime('-2 week', time()))),
+            'updated_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 11am', strtotime('-2 week', time()))),
+        ]);
+
+        $teacherId = User::where('username', '_t2')->first()->id;
+        Course::create([
+            'teacher_id' => $teacherId,
+            'title' => 'Teacher no. 2',
+            'description' => 'hello world',
+            'quota' => 10,
+            'capacity' => 4,
+            'min_age' => 12,
+            'max_age' => 24,
+            'duration' => 60,
+            'opens_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 1pm', strtotime('-1 week', time()))),
+            'opens_until' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 1pm', strtotime('+2 week', time()))),
+            'starts_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 1pm', strtotime('+4 week', time()))),
+            'status' => CourseStatusEnum::OPEN->name,
+            'price' => 7500.00,
+            'created_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 1pm', strtotime('-2 week', time()))),
+            'updated_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 1pm', strtotime('-2 week', time()))),
+        ]);
+
+        $teacherId = User::where('username', '_t1')->first()->id;
+        Course::create([
+            'teacher_id' => $teacherId,
+            'title' => 'Teacher no money',
+            'description' => 'hello world',
+            'quota' => 10,
+            'capacity' => 4,
+            'min_age' => 12,
+            'max_age' => 24,
+            'duration' => 60,
+            'opens_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Thursday 2pm', strtotime('-1 week', time()))),
+            'opens_until' => date(env('APP_DATETIME_FORMAT'), strtotime('next Thursday 2pm', strtotime('+2 week', time()))),
+            'starts_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Thursday 2pm', strtotime('+4 week', time()))),
+            'status' => CourseStatusEnum::OPEN->name,
+            'price' => 7500.00,
+            'created_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Thursday 2pm', strtotime('-2 week', time()))),
+            'updated_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Thursday 2pm', strtotime('-2 week', time()))),
+        ]);
+        $teacherId = User::where('username', '_t1')->first()->id;
+        Course::create([
+            'teacher_id' => $teacherId,
+            'title' => 'Teacher no money',
+            'description' => 'hello world',
+            'quota' => 10,
+            'capacity' => 4,
+            'min_age' => 12,
+            'max_age' => 24,
+            'duration' => 60,
+            'opens_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Wednesday 2pm', strtotime('-1 week', time()))),
+            'opens_until' => date(env('APP_DATETIME_FORMAT'), strtotime('next Wednesday 2pm', strtotime('+2 week', time()))),
+            'starts_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Wednesday 2pm', strtotime('+4 week', time()))),
+            'status' => CourseStatusEnum::OPEN->name,
+            'price' => 7500.00,
+            'created_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Wednesday 2pm', strtotime('-2 week', time()))),
+            'updated_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Wednesday 2pm', strtotime('-2 week', time()))),
+        ]);
+        $teacherId = User::where('username', '_t1')->first()->id;
+        Course::create([
+            'teacher_id' => $teacherId,
+            'title' => 'Teacher no money',
+            'description' => 'hello world',
+            'quota' => 10,
+            'capacity' => 4,
+            'min_age' => 12,
+            'max_age' => 24,
+            'duration' => 60,
+            'opens_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Saturday 2pm', strtotime('-1 week', time()))),
+            'opens_until' => date(env('APP_DATETIME_FORMAT'), strtotime('next Saturday 2pm', strtotime('+2 week', time()))),
+            'starts_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Saturday 2pm', strtotime('+4 week', time()))),
+            'status' => CourseStatusEnum::OPEN->name,
+            'price' => 7500.00,
+            'created_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Saturday 2pm', strtotime('-2 week', time()))),
+            'updated_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Saturday 2pm', strtotime('-2 week', time()))),
+        ]);
+        $teacherId = User::where('username', '_t1')->first()->id;
+        Course::create([
+            'teacher_id' => $teacherId,
+            'title' => 'Teacher no money',
+            'description' => 'hello world',
+            'quota' => 10,
+            'capacity' => 4,
+            'min_age' => 12,
+            'max_age' => 24,
+            'duration' => 60,
+            'opens_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Sunday 2pm', strtotime('-1 week', time()))),
+            'opens_until' => date(env('APP_DATETIME_FORMAT'), strtotime('next Sunday 2pm', strtotime('+2 week', time()))),
+            'starts_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Sunday 2pm', strtotime('+4 week', time()))),
+            'status' => CourseStatusEnum::OPEN->name,
+            'price' => 7500.00,
+            'created_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Sunday 2pm', strtotime('-2 week', time()))),
+            'updated_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Sunday 2pm', strtotime('-2 week', time()))),
+        ]);
+        $teacherId = User::where('username', '_t1')->first()->id;
+        Course::create([
+            'teacher_id' => $teacherId,
+            'title' => 'Teacher no money',
+            'description' => 'hello world',
+            'quota' => 10,
+            'capacity' => 4,
+            'min_age' => 12,
+            'max_age' => 24,
+            'duration' => 60,
+            'opens_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 2pm', strtotime('-1 week', time()))),
+            'opens_until' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 2pm', strtotime('+2 week', time()))),
+            'starts_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 2pm', strtotime('+4 week', time()))),
+            'status' => CourseStatusEnum::OPEN->name,
+            'price' => 7500.00,
+            'created_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 2pm', strtotime('-2 week', time()))),
+            'updated_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Friday 2pm', strtotime('-2 week', time()))),
+        ]);
+        $teacherId = User::where('username', '_t1')->first()->id;
+        Course::create([
+            'teacher_id' => $teacherId,
+            'title' => 'Teacher no money',
+            'description' => 'hello world',
+            'quota' => 10,
+            'capacity' => 4,
+            'min_age' => 12,
+            'max_age' => 24,
+            'duration' => 60,
+            'opens_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Tuesday 2pm', strtotime('-1 week', time()))),
+            'opens_until' => date(env('APP_DATETIME_FORMAT'), strtotime('next Tuesday 2pm', strtotime('+2 week', time()))),
+            'starts_on' => date(env('APP_DATETIME_FORMAT'), strtotime('next Tuesday 2pm', strtotime('+4 week', time()))),
+            'status' => CourseStatusEnum::OPEN->name,
+            'price' => 7500.00,
+            'created_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Tuesday 2pm', strtotime('-2 week', time()))),
+            'updated_at' => date(env('APP_DATETIME_FORMAT'), strtotime('next Tuesday 2pm', strtotime('-2 week', time()))),
+        ]);
+
         // Course 4 is FULL
         $teacherId = User::where('username', '_t3')->first()->id;
         Course::create([
