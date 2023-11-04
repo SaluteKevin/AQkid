@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/tailwindcss',
     'dayjs-nuxt',
+    'nuxt-pdfeasy',
   ],
 
   tailwindcss: {
