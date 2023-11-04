@@ -82,11 +82,11 @@
                         
                         <NuxtLink v-if="!author && myAge >= min_age && myAge <= max_age" :to="`/course/confirmCourse${idCourse}`"
                             class="rounded-lg group relative px-8 py-1 overflow-hidden bg-green-300 hover:bg-green-400 focus:bg-green-500 text-xl shadow my-6">
-                            Confirm
+                            View
                         </NuxtLink>
                         
+                        <span v-else>Not available</span>
 
-                        <button v-on:click="clickOutside" class="rounded-lg group relative px-8 py-1 overflow-hidden bg-red-300 hover:bg-red-400 focus:bg-red-500 text-xl shadow my-6">Cancel</button>
                     </div>
                 </dl>
             </div>

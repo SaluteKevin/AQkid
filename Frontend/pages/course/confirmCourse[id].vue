@@ -13,7 +13,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 
 const calendarOptions = ref({
     plugins: [interactionPlugin, timeGridPlugin, dayGridPlugin],
-    initialView: 'timeGridWeek',
+    initialView: 'dayGridMonth',
     nowIndicator: true,
     editable: false,
     //   dateClick: handleDateClick,
