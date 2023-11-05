@@ -80,7 +80,7 @@ activate Server
 Server --> Browser: หน้าสร้างคำขอคืนเงิน
 deactivate Server
 
-Browser --> Customer: หน้าสร้างคำขอคืนเงิน
+Browser --> Customer: แสดงหน้าสร้างคำขอคืนเงิน
 Customer -> Browser: กรอกข้อมูลคำขอคืนเงิน
 Customer -> Browser: กดปุ่ม "Send"
 Browser -> Server: ส่งข้อมูลคำขอคืนเงิน
