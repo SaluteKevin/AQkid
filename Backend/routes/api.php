@@ -135,6 +135,7 @@ Route::group([
     // enroll course
 
     Route::get('allEnrollCourse/{user}', [StudentController::class, 'allEnrollCourses']);
+    Route::get('reviewStudent/{user}' , [StudentController::class, 'getMyClass']);
 
 });
 

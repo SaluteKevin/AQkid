@@ -174,13 +174,7 @@
               <div class="flex flex-col p-2">
                   <div v-for="(previewSrc, index) in imagePreviewSrcs" :key="index"
                        class="w-full object-cover relative order-first md:order-last md:h-auto flex justify-center items-center border border-dashed border-gray-400 col-span-2 m-2 rounded-lg bg-no-repeat bg-center bg-origin-padding bg-cover">
-                    <span v-if="imagefix" class="text-gray-400 opacity-75">
-                      <svg class="w-14 h-14" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                           stroke-width="0.7" stroke="currentColor">
-                        <!-- SVG Path -->
-                      </svg>
-                    </span>
-                    <h3 v-if="imagefix" class="w-full">Preview Image</h3>
+                    
 
                     <img class="object-scale-down h-1/2 w-3/5 text-gray-400 rounded-lg"
                          :src="previewSrc" alt="">
@@ -206,10 +200,15 @@
                 </div>
                         
                 <button @click="removeImage()"
-                    class='inline-flex items-center shadow-md my-2 px-2 py-2 bg-gray-900 text-gray-50 border border-transparent
+                    class='inline-flex items-center shadow-md my-5 px-2 py-2 bg-gray-900 text-gray-50 border border-transparent
                     rounded-md font-semibold text-xs uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none 
                     focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150'>
                     remove image
+                </button>
+                <button @click="ReviewStudentImages(studentSelect.id)" class="absolute right-4 bottom-8 inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+                  <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                      Save
+                  </span>
                 </button>
               </div>
             
@@ -286,6 +285,7 @@ function openModal() {
 
 function closeModal() {
   modal.value = false;
+  removeImage();
 }
 
 
@@ -386,31 +386,6 @@ async function RemoveStudent(studentId: int) {
   }
 }
 
-async function ReviewStudent(studentId: int) {
-
-  const formData = new FormData()
-  await formData.append('reviewText', selected.value.reviewText);
-
-  const { data: reviewResponse, error: reviewError } = await useApiFetch(`api/teacher/addReviewStudent/${route.params.id}/${studentId}`, {
-    method: "POST",
-    body: formData,
-  });
-
-  if (reviewResponse.value) {
-    console.log("VVVVVV");
-    console.log(reviewResponse.value);
-    var animatedElement = document.getElementById('myDiv');
-    animatedElement.classList.remove('slide-right');
-    await fetchStudents();
-
-
-  } else {
-
-    if (reviewError.value) {
-      console.log(reviewError.value);
-    }
-  }
-}
 
 
 
@@ -462,6 +437,70 @@ function removeImage() {
   imagefixes.value = [];
   profile_image_paths.value = [];
 }
+
+async function ReviewStudent(studentId: int) {
+
+  const formData = new FormData();
+  await formData.append('reviewText', selected.value.reviewText);
+
+  const { data: reviewResponse, error: reviewError } = await useApiFetch(`api/teacher/addReviewStudent/${route.params.id}/${studentId}`, {
+    method: "POST",
+    body: formData,
+  });
+
+  if (reviewResponse.value) {
+    console.log("VVVVVV");
+    console.log(reviewResponse.value);
+    var animatedElement = document.getElementById('myDiv');
+    animatedElement.classList.remove('slide-right');
+    await fetchStudents();
+
+
+  } else {
+
+    if (reviewError.value) {
+      console.log(reviewError.value);
+    }
+  }
+}
+async function ReviewStudentImages(studentId: int) {
+
+  const formData = new FormData();
+  
+
+  if (profileImageInput.value && profileImageInput.value?.files?.length != 0) {
+    
+    for (let i = 0; i < profile_image_paths.value.length; i++) {
+      const file = profile_image_paths.value[i];
+      formData.append('images[]', file);
+    }
+  }
+  else {
+    return console.log('stoped');
+  }
+
+
+  const { data: reviewResponse, error: reviewError } = await useApiFetch(`api/teacher/addReviewImagesStudent/${route.params.id}/${studentId}`, {
+    method: "POST",
+    body: formData,
+  });
+
+  if (reviewResponse.value) {
+    console.log("VVVVVV");
+    console.log(reviewResponse.value);
+    await fetchStudents();
+    closeModal();
+
+
+  } else {
+
+    if (reviewError.value) {
+      console.log(reviewError.value);
+    }
+  }
+}
+
+
 
 
 
