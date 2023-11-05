@@ -1,94 +1,99 @@
 <template>
-    <div class='app p-12 transform ease-in-out'>
-        <FullCalendar :options='calendarOptions' />
-    </div>
-    <div  ref="scrollEvent" v-if="showCard" class="flex w-full justify-center mb-8">
-        <div class="bg-white max-w-2xl shadow overflow-hidden sm:rounded-lg">
-            <div class="px-4 py-5 sm:px-6">
-                <h3 class="text-lg leading-6 font-medium text-gray-900">
-                    Course Info
-                </h3>
-                <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                    Details and informations about course.
-                </p>
-            </div>
-            <div class="border-t border-gray-200">
-                <dl>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">
-                            Day
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ day }}
-                        </dd>
-                    </div>
-                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">
-                            Time
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ time }}
-                        </dd>
-                    </div>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">
-                            Already in
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            <div v-if="author">Yes</div>
-                            <div v-if="!author">No</div>
-                        </dd>
-                    </div>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">
-                            Capacity
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ enroll_count }} / {{ capacity }} people
-                        </dd>
-                    </div>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">
-                            Age-restricted
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            
-                            <div>min_age : 
-                                <span v-if="min_age < 12">{{min_age}} 
-                                    <span v-if="min_age == 1">month</span> 
-                                    <span v-if="min_age > 1">months</span>
-                                </span>
-                                <span v-if="min_age >= 12">{{min_age / 12}} 
-                                    <span v-if="min_age / 12 == 1">year</span> 
-                                    <span v-if="min_age / 12 > 1">years</span>
-                                </span>
-                            </div>
-                            <div>max_age : 
-                                <span v-if="max_age < 12">{{max_age}} 
-                                    <span v-if="max_age == 1">month</span> 
-                                    <span v-if="max_age > 1">months</span>
-                                </span>
-                                <span v-if="max_age >= 12">{{max_age / 12}} 
-                                    <span v-if="max_age / 12 == 1">year</span> 
-                                    <span v-if="max_age / 12 > 1">years</span>
-                                </span>
+    <div class="bg-gradient-to-t from-blue-200 from-30% to-80% to-sky-100 pb-20">
+        <div class="text-4xl pt-12 ml-12 font-bold text-gray-700 ">
+            Enroll Course
+        </div>
+        <div class='app p-6 transform ease-in-out '>
+            <FullCalendar :options='calendarOptions' class="bg-white p-6 rounded-xl" />
+        </div>
+        <div  ref="scrollEvent" v-if="showCard" class="flex w-full justify-center">
+            <div class="bg-white max-w-2xl shadow overflow-hidden sm:rounded-lg">
+                <div class="px-4 py-5 sm:px-6">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        Course Info
+                    </h3>
+                    <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                        Details and informations about course.
+                    </p>
+                </div>
+                <div class="border-t border-gray-200">
+                    <dl>
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">
+                                Day
+                            </dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                {{ day }}
+                            </dd>
+                        </div>
+                        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">
+                                Time
+                            </dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                {{ time }}
+                            </dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">
+                                Already in
+                            </dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                <div v-if="author">Yes</div>
+                                <div v-if="!author">No</div>
+                            </dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">
+                                Capacity
+                            </dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                {{ enroll_count }} / {{ capacity }} people
+                            </dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">
+                                Age-restricted
+                            </dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                 
-                            </div>
-                        </dd>
-                    </div>
-
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        
-                        
-                        <NuxtLink v-if="!author && myAge >= min_age && myAge <= max_age" :to="`/course/confirmCourse${idCourse}`"
-                            class="rounded-lg group relative px-8 py-1 overflow-hidden bg-green-300 hover:bg-green-400 focus:bg-green-500 text-xl shadow my-6">
-                            View
-                        </NuxtLink>
-                        
-                        <span v-else>Not available</span>
-
-                    </div>
-                </dl>
+                                <div>min_age : 
+                                    <span v-if="min_age < 12">{{min_age}} 
+                                        <span v-if="min_age == 1">month</span> 
+                                        <span v-if="min_age > 1">months</span>
+                                    </span>
+                                    <span v-if="min_age >= 12">{{min_age / 12}} 
+                                        <span v-if="min_age / 12 == 1">year</span> 
+                                        <span v-if="min_age / 12 > 1">years</span>
+                                    </span>
+                                </div>
+                                <div>max_age : 
+                                    <span v-if="max_age < 12">{{max_age}} 
+                                        <span v-if="max_age == 1">month</span> 
+                                        <span v-if="max_age > 1">months</span>
+                                    </span>
+                                    <span v-if="max_age >= 12">{{max_age / 12}} 
+                                        <span v-if="max_age / 12 == 1">year</span> 
+                                        <span v-if="max_age / 12 > 1">years</span>
+                                    </span>
+                                    
+                                </div>
+                            </dd>
+                        </div>
+    
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            
+                            
+                            <NuxtLink v-if="!author && myAge >= min_age && myAge <= max_age" :to="`/course/confirmCourse${idCourse}`"
+                                class="rounded-lg group relative px-8 py-1 overflow-hidden bg-green-300 hover:bg-green-400 focus:bg-green-500 text-xl shadow my-6">
+                                View
+                            </NuxtLink>
+                            
+                            <span v-else>Not available</span>
+    
+                        </div>
+                    </dl>
+                </div>
             </div>
         </div>
     </div>
@@ -109,7 +114,7 @@ import dayjs from 'dayjs';
 
 const calendarOptions = ref({
     plugins: [interactionPlugin, timeGridPlugin, dayGridPlugin],
-    initialView: 'timeGridWeek',
+    initialView: 'dayGridMonth',
     nowIndicator: true,
     editable: false,
     //   dateClick: handleDateClick,
