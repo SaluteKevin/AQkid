@@ -130,9 +130,9 @@ async function paymentConfirm() {
                     class=" w-full relative flex flex-col items-center rounded-[20px] w-[700px] max-w-[95%] bg-white shadow-2xl p-3 border broder-gray-400">
                     <div class="mt-2 mb-8 w-full ">
                         
-                        <p class="mt-2 px-2 text-base text-gray-600">
+                        <span class="mt-2 px-2 text-xl font-semibold text-gray-600">
                             {{ course.description }}
-                        </p>
+                        </span>
                     </div>
                     <div class="grid grid-cols-3 gap-4 px-2 w-full ">
                         <div
