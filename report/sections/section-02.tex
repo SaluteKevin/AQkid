@@ -2,10 +2,129 @@
 
 \subsection{หลักการทำงานของระบบและการแก้ปัญหา}
 
+\subsubsection{การลงทะเบียนเรียนคอร์สเรียนว่ายนํ้า}
+
+\begin{enumerate}
+    \item ลูกค้าสมัครใช้งานระบบ
+    \item แสดงคอร์สเรียนว่ายนํ้าที่พร้อมให้ลงทะเบียนเรียนทั้งหมด
+    \item ลูกค้าสามารถเลือกสมัครคอร์สเรียนว่ายนํ้าที่เปิดสอน และ คุณสมบัติของตัวลูกค้าผ่านตามเงิื่อนไขของคอร์สเรียน
+    \item ผู้ดูแลระบบตัดสินใจ อนุมัติ หรือ ปฏิเสธ รายการสมัครคอร์สเรียน
+\end{enumerate}
+
+\subsubsection{การลงทะเบียนเรียนล้มเหลว และ การขอคืนเงิน}
+
+\begin{enumerate}
+    \item ลูกค้าสามารถขอคืนเงินในกรณีที่การลงทะเบียนเรียนล้มเหลว
+    \item กรณีล้มเหลว
+        \begin{itemize}
+            \item ทำการแนบหลักฐานการชำระเงินไม่ทันเวลาที่กำหนด
+            \item ทำการชำระเงินด้วยจำนวนที่ไม่ตรงตามเงื่อนไขการชำระเงิน
+        \end{itemize}
+    \item ผู้ดูแลระบบตัดสินใจ อนุมัติ หรือ ปฏิเสธ รายการขอคืนเงิน
+\end{enumerate}
+
+\subsubsection{การรับสมัครอาจารย์ผู้สอน}
+
+\begin{enumerate}
+    \item ผู้ดูแลรับสมัครและตรวจสอบ คุณสมบัติอาจารย์ผู้สอน
+    \item ผู้ดูแลสมัครใช้งานระบบให้ อาจารย์ผู้สอน
+\end{enumerate}
+
+\subsubsection{การสร้างคอร์สเรียน}
+
+\begin{enumerate}
+    \item ผู้ดูแลเลือกสร้างคอร์สเรียนตามวันเวลาในระบบ และ กำหนดคุณสมบัติของคอร์สเรียน
+    \item ผู้ดูแลเลือกอาจารย์ผู้สอนมารับผิดชอบการสอนของคอร์สเรียน
+\end{enumerate}
+
+\subsubsection{การเข้าเรียน}
+
+\begin{enumerate}
+    \item การเข้าเรียนในกรณีปกติ
+    \begin{enumerate}
+        \item นักเรียนเข้าเรียนคาบเรียนว่ายนํ้าตามวันเวลาที่กำหนด
+        \item อาจารย์ผู้สอนเช็คชื่อการเข้าเรียนของนักเรียน
+    \end{enumerate}
+    \item การเข้าเรียนในกรณีพิเศษ
+    \begin{enumerate}
+        \item การเรียนร่วม
+        \begin{enumerate}
+            \item มีเหตุผลที่จำเป็นสำหรับการเรียนร่วม\\
+                \textbf{เหตุผลที่จำเป็น}\\
+                \begin{itemize}
+                    \item นักเรียนไม่สามารถเข้าคาบเรียนในวันเวลาที่กำหนด
+                    \item อาจารย์ผู้สอนไม่สามารถสอนในวันเวลาที่กำหนด
+                \end{itemize}
+        \end{enumerate}
+        \item การเรียนเสริม
+        \begin{enumerate}
+            \item มีเหตุผลที่จำเป็นสำหรับการจัดคาบเรียนเสริม\\
+            \textbf{เหตุผลที่จำเป็น}\\
+            \begin{itemize}
+                \item นักเรียนไม่สามารถเข้าคาบเรียน หรือ คาบเรียนอื่นในวันเวลาที่กำหนด
+                \item อาจารย์ผู้สอนไม่สามารถสอนในวันเวลาที่กำหนด
+            \end{itemize}
+            \item ผู้ดูแลสร้างคาบเรียนเสริม และ จัดสรรนักเรียนที่จะเรียนในคาบเรียนเสริม
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
 \subsection{ทฤษฎีที่เกี่ยวข้อง}
+
+ในการวิเคราะห์และออกแบบระบบนั้น มีความจำเป็นที่จะต้องใช้หลักความรู้และความเข้าใจจากหลายๆส่วนด้วยกัน ต้องมีการสำรวจปัญหาและความต้องการ รวมถึงความเหมาะสมของระบบที่จะต้องออกแบบให้เข้ากับผู้ใช้ มีการออกแบบอย่างละเอียดและรอบคอบ โดยต้องมีกาเปรียบเทียบกับระบบเดิมที่ผู้ใช้นั้นใช้งานอยู่ในปัจจุบัน เพื่อที่จะสามารถเห็นถึงความแตกต่างและข้อปรับปรุงที่ควรพัฒนาให้ดียิ่งขึ้น
 
 \subsection{การออกแบบระบบการจัดการฐานข้อมูล}
 
+ในการออกแบบระบบจัดการฐานข้อมูลจำเป็นต้องใช้ความรู้ และ การพิจารณาออกแบบระบบอย่างถี่ถ้วน โดยต้องเข้าใจสิ่งที่ต้องออกแบบเป็นอย่างดีไม่ว่าจะเป็นการทำงานของธุรกิจ เพื่อให้การออกแบบเป็นไปได้ไง และ เป็นขั้นตอน โดยการออกแบบระบบฐานข้อมูลนั้นต้องมีการออกแบบดังนี้ ได้แก่
+
+\begin{itemize}
+    \item Data Flow Diagram
+    \item CRUD Table
+    \item ER Diagram
+    \item Table Structure (Query Table, Data Dictionary)
+\end{itemize}
+
 \subsection{การกำหนดและออกแบบคุณสมบัติของแอปพลิเคชัน}
 
+ในการพัฒนาและออกแบบคุณสมบัติของแอปพลิเคชันจำเป็นจะต้องมีการวิเคราะห์และสำรวจถึงปัญหา ความจำเป็น รวมถึงความต้องการจากผู้ใช้งานระบบ โดยเมื่อมีการวิเคราะห์เสร็จเรียบร้อยแล้วนั้น จสามารถนำมาเขียนเป็นแผนผังต่างๆและตารางต่างๆ เพื่อทำให้มีความเข้าใจและสามารถพัฒนาได้ตรงตามที่กำหนดไว้
+
+\begin{itemize}
+    \item Activity Diagram (Business Process)
+    \item Use Case Diagram
+    \item Use Case Description
+    \item Sequence Diagram
+    \item Collaboration Diagram
+    \item State Diagram
+    \item Class Diagram
+\end{itemize}
+
 \subsection{เทคโนโลยีที่ใช้พัฒนาระบบ}
+
+\begin{enumerate}
+    \item Visual Studio Code
+    \item Docker
+    \item Laravel web framework
+    \begin{enumerate}
+        \item php programming language
+        \item guzzle HTTP client
+        \item jwt-auth
+        \item pusher php server
+    \end{enumerate}
+    \item Nuxt.js web framework
+    \begin{enumerate}
+        \item Pinia
+        \item day.js
+        \item fullcalendar
+        \item vueuse
+        \item vue datepicker
+        \item vue clock outside
+        \item gsap
+        \item pdfeasy
+        \item pusher.js
+    \end{enumerate}
+    \item draw.io
+    \item PlantUML
+    \item Mermaid Chart
+    \item Google Docs
+    \item miro.com
+\end{enumerate}

@@ -7,12 +7,15 @@
 
 %% Packages
 \RequirePackage{geometry}
+\RequirePackage{pdflscape}
 \RequirePackage[fulladjust]{marginnote}
+\RequirePackage{float}
 \RequirePackage{tabularx}
 \RequirePackage{calc}
 \RequirePackage{xcolor}
 \RequirePackage{xparse}
 \RequirePackage{graphicx}
+% \RequirePackage{adjustbox}
 \RequirePackage{tikz}
 \RequirePackage{multicol}
 \RequirePackage[verbose]{wrapfig}
@@ -32,6 +35,7 @@
 \RequirePackage{makeidx}
 \RequirePackage{fancyhdr}
 % \RequirePackage{nameref}
+\RequirePackage{titlesec}
 \RequirePackage{titleref}
 \RequirePackage{hyperref}
 
@@ -43,8 +47,8 @@
 \DeclareRobustCommand{\appName}{\ourTeam}
 \DeclareRobustCommand{\docsname}{เว็บแอปพลิเคชันจัดการตารางเวลาโรงเรียนสอนว่ายน้ำ}
 
-\def\testimage{./images/test/ice.jpg}
-\def\testimagei{./images/test/cat.jpg}
+\def\testimage{./figures/test/ice.jpg}
+\def\testimagei{./figures/test/cat.jpg}
 
 \DeclareRobustCommand{\niirulecolor}{\color{black}}
 \definecolor{niigrey}{RGB}{245,245,245}
@@ -91,8 +95,8 @@ paper=a4paper,
 twoside=false,
 hmargin={0.86in,0.86in},
 vmargin={1in,1.3in},
-marginparwidth=110pt,
-marginparsep=30pt,
+marginparwidth=90pt,
+marginparsep=20pt,
 includemp=true,
 reversemarginpar=true}
 
@@ -195,13 +199,17 @@ itemsep=1.5ex}
 \setlist[enumerate, 1]{%
 align=left,
 leftmargin=*,
-itemsep=1ex}
+itemsep=0.2ex}
 
 \setlist[itemize, 1]{%
 align=left,
 leftmargin=*,
-itemsep=1ex}
+itemsep=0.2ex}
 
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+\renewcommand{\labelenumiv}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.\arabic{enumiv}}
 
 %% Listings
 \lstset{%
@@ -267,11 +275,11 @@ belowskip=1.5ex}
 
 % Images
 \DeclareRobustCommand{\niiparimagehere}[2][\relax]{%
-\vspace{\baselineskip}
+\vspace{-1\baselineskip}
 \begin{figure}[!htb]
     \includegraphics[
-        width=0.7\textwidth,
-        height=0.7\textwidth,
+        width=\textwidth,
+        height=0.95\textheight,
         keepaspectratio]{#2}
     \ifx#1\relax
     \else
