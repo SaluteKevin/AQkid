@@ -34,7 +34,7 @@
                     <div class="bg-white shadow rounded-lg p-6">
                         <h2 class="flex justify-center text-xl font-bold mb-4 ">HISTORY & COURSES</h2>
                         <div v-for="course in courses">
-                            <div v-if="course.status === 'ACTIVE'"
+                            <div v-if="course.status === 'ENDED'"
                                 class="mb-3 shadow-xl border bg-green-100 rounded-2xl p-4">
                                 <div class="flex justify-between  p-4 rounded-lg">
                                     <span class="text-gray-600 font-bold">{{ course.title }}</span>
@@ -45,9 +45,15 @@
                                     </p>
 
                                 </div>
+                                <a :href="`/student/certificate${course.id}`" target="_blank">
+                                <button
+                                        class="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg">
+                                        Get Certificate
+                                    </button>
+                                </a>
                             </div>
 
-                            <div v-if="course.status !== 'ACTIVE'" class="mb-3 shadow-xl border  rounded-2xl p-4">
+                            <div v-else class="mb-3 shadow-xl border rounded-2xl p-4">
                                 <div class="flex justify-between  p-4 rounded-lg">
                                     <span class="text-gray-600 font-bold">{{ course.title }}</span>
                                     <p class="flex flex-col">
