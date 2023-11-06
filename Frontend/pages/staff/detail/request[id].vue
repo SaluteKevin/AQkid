@@ -7,9 +7,8 @@
                     <img alt="ecommerce" :src="`${config.public.imageBaseURL}${enroll.proof_of_payment_path}`">
                 </a>
     
-                <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 text-2xl">
+                <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 text-xl">
     
-                    <p class="leading-relaxed mt-4">
                     <div class="card">
                         <div class="h-full w-full justify-center grid mb-10">
                                 <img :src="`${config.public.imageBaseURL}${enroll.user.profile_image_path}`" class="object-cover h-72 w-72  rounded-full">
@@ -31,53 +30,44 @@
     
     
                     </div>
-                    <div>
-                    </div>
-                    </p>
-                    <label class="my-4 block text-xl font-semibold">Request Status<br>
-                                        <span v-if="enroll.status == 'PENDING'" class="text-xl text-yellow-500">{{enroll.status}}</span>
-                                        <span v-if="enroll.status == 'APPROVED'" class="text-xl text-green-500">{{enroll.status}}</span>
-                                        <span v-if="enroll.status == 'REJECTED'" class="text-xl text-red-500">{{enroll.status}}</span>
-                    </label>
-                    <div v-if="enroll.status != 'PENDING'" class="my-4 block text-2xl font-semibold">Review Comment <br>
-                        <span class="text-xl text-gray-500">{{enroll.review_comment}}</span>
-                    </div>
-                    
-                    <div v-if="enroll.status == 'PENDING'" class="mt-8">
+                    <div class="mb-3">
+                                <label class="mb-2 block text-xl font-semibold">Request Status<br>
+                                    <span v-if="enroll.status == 'PENDING'" class="text-xl text-yellow-500">{{enroll.status}}</span>
+                                    <span v-if="enroll.status == 'SUCCESS'" class="text-xl text-green-500">{{enroll.status}}</span>
+                                    <span v-if="enroll.status == 'FAILED'" class="text-xl text-red-500">{{enroll.status}}</span>
+                                </label>
+                            </div>
+                    <div class="mb-3" v-if="enroll.status == 'PENDING'">
                         <button v-on:click="showAccept"
                             class="mb-1.5 block w-full text-center text-white bg-green-600 hover:bg-green-700 px-2 py-1.5 rounded-md">
                             Accept
                         </button>
-    
+
                         <div v-if="showAcceptInput" class="flex gap-8 mb-8">
-                            <input class="bg-gray-200 py-1.5 px-4 border-1 border w-4/5" type="text"
-                                placeholder="Comment (Optional)" v-model="acceptComment">
-                            <button v-on:click="acceptenroll"
-                                class="w-1/5 h-16 bg-orange-500 text-white rounded-md hover:bg-orange-700 mr-4">Submit</button>
+                            <input class="bg-gray-200 py-1.5 px-4 border-1 border w-4/5" type="text" placeholder="Comment (Optional)"  v-model="acceptComment">
+                            <button v-on:click="AcceptEnroll" class="w-1/5 h-16 bg-orange-500 text-white rounded-md hover:bg-orange-700 mr-4">Submit</button>
                         </div>
-    
+
                         <p class="text-red-500" >
-                                        {{ formError.accept }}
+                                    {{ formError.accept }}
                         </p>
-    
-    
+
+
                         <button v-on:click="showReject"
                             class="mb-1.5 flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
                             Reject
                         </button>
-    
+
                         <div v-if="showRejectInput" class="flex gap-8 mb-4">
-                            <input class="bg-gray-200 py-1.5 px-4 border-1 border w-4/5" type="text"
-                                placeholder="** Please provide a reason for rejecting this enrollment." v-model="rejectComment">
-                            <button v-on:click="rejectenroll"
-                                class="w-1/5 h-16 bg-orange-500 text-white rounded-md hover:bg-orange-700 mr-4">Submit</button>
+                            <input class="bg-gray-200 py-1.5 px-4 border-1 border w-4/5" type="text" placeholder="** Please provide a reason for rejecting this enrollment." v-model="rejectComment">
+                            <button v-on:click="RejectEnroll" class="w-1/5 h-16 bg-orange-500 text-white rounded-md hover:bg-orange-700 mr-4">Submit</button>
                         </div>
-    
+
                         <p class="text-red-500" >
-                                        {{ formError.reject }}
-                            </p>
-    
+                                    {{ formError.reject }}
+                        </p>
                     </div>
+    
                 </div>
             </div>
         </div>
