@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="898px" preserveAspectRatio="none" style="width:862px;height:898px;background:#FFFFFF;" version="1.1" viewBox="0 0 862 898" width="862px" zoomAndPan="magnify"><defs/><g><rect fill="none" height="28.2" id="_title" style="stroke:none;stroke-width:1.0;" width="155" x="349.75" y="10"/><text fill="#000000" font-family="Sarabun" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="145" x="354.75" y="29.952">Use Case 2: จัดการคอร์ส</text><rect fill="#FFFFFF" height="848.5" style="stroke:#000000;stroke-width:1.5;" width="847.5" x="9" y="44.2"/><path d="M126,44.2 L126,55.4 L116,65.4 L9,65.4 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="Sarabun" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="14" x="12" y="60.152">sd</text><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="90" x="29" y="60.152">ManageCourse</text><rect fill="#FFFFFF" height="695" style="stroke:#181818;stroke-width:1.0;" width="10" x="56.5" y="138.5"/><rect fill="#FFFFFF" height="695" style="stroke:#181818;stroke-width:1.0;" width="10" x="312.5" y="138.5"/><rect fill="#FFFFFF" height="92.7" style="stroke:#181818;stroke-width:1.0;" width="10" x="590.5" y="169.4"/><rect fill="#FFFFFF" height="191.6" style="stroke:#181818;stroke-width:1.0;" width="10" x="590.5" y="411.6"/><rect fill="#FFFFFF" height="28" style="stroke:#181818;stroke-width:1.0;" width="10" x="595.5" y="450.5"/><rect fill="#FFFFFF" height="30.9" style="stroke:#181818;stroke-width:1.0;" width="10" x="590.5" y="771.7"/><rect fill="#FFFFFF" height="30.9" style="stroke:#181818;stroke-width:1.0;" width="10" x="788.5" y="200.3"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="788.5" y="542.3"/><rect fill="none" height="372" style="stroke:#000000;stroke-width:1.5;" width="835.5" x="15" y="308"/><rect fill="none" height="110.7" style="stroke:#000000;stroke-width:1.5;" width="579.5" x="261" y="500.5"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="61" x2="61" y1="105.6" y2="851.5"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="317" x2="317" y1="105.6" y2="851.5"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="595" x2="595" y1="105.6" y2="851.5"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="793.5" x2="793.5" y1="105.6" y2="851.5"/><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="73" x="25" y="72.4"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="59" x="32" y="94.352">staff:User</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="73" x="25" y="850.5"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="59" x="32" y="872.452">staff:User</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="93" x="271" y="72.4"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="79" x="278" y="94.352">:WebBrowser</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="93" x="271" y="850.5"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="79" x="278" y="872.452">:WebBrowser</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="83" x="554" y="72.4"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="69" x="561" y="94.352">:WebServer</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="83" x="554" y="850.5"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="69" x="561" y="872.452">:WebServer</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="74" x="756.5" y="72.4"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="60" x="763.5" y="94.352">:Database</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="74" x="756.5" y="850.5"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="60" x="763.5" y="872.452">:Database</text><rect fill="#FFFFFF" height="695" style="stroke:#181818;stroke-width:1.0;" width="10" x="56.5" y="138.5"/><rect fill="#FFFFFF" height="695" style="stroke:#181818;stroke-width:1.0;" width="10" x="312.5" y="138.5"/><rect fill="#FFFFFF" height="92.7" style="stroke:#181818;stroke-width:1.0;" width="10" x="590.5" y="169.4"/><rect fill="#FFFFFF" height="191.6" style="stroke:#181818;stroke-width:1.0;" width="10" x="590.5" y="411.6"/><rect fill="#FFFFFF" height="28" style="stroke:#181818;stroke-width:1.0;" width="10" x="595.5" y="450.5"/><rect fill="#FFFFFF" height="30.9" style="stroke:#181818;stroke-width:1.0;" width="10" x="590.5" y="771.7"/><rect fill="#FFFFFF" height="30.9" style="stroke:#181818;stroke-width:1.0;" width="10" x="788.5" y="200.3"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="788.5" y="542.3"/><polygon fill="#181818" points="300.5,134.5,310.5,138.5,300.5,142.5,304.5,138.5" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="66.5" x2="306.5" y1="138.5" y2="138.5"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="73.5" y="133.484">1</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="71" x="84.5" y="133.484">กดสร้างคอร์ส</text><polygon fill="#181818" points="578.5,165.4,588.5,169.4,578.5,173.4,582.5,169.4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="322.5" x2="584.5" y1="169.4" y2="169.4"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="329.5" y="164.384">2</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="126" x="340.5" y="164.384">ขอเข้าถึงหน้าสร้างคอร์ส</text><polygon fill="#181818" points="776.5,196.3,786.5,200.3,776.5,204.3,780.5,200.3" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="600.5" x2="782.5" y1="200.3" y2="200.3"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="607.5" y="195.284">3</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="158" x="618.5" y="195.284">ขอข้อมูลคอร์สและตารางเวลา</text><polygon fill="#181818" points="611.5,227.2,601.5,231.2,611.5,235.2,607.5,231.2" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="605.5" x2="792.5" y1="231.2" y2="231.2"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="617.5" y="226.184">4</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="142" x="628.5" y="226.184">ข้อมูลคอร์สและตารางเวลา</text><polygon fill="#181818" points="333.5,258.1,323.5,262.1,333.5,266.1,329.5,262.1" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="327.5" x2="594.5" y1="262.1" y2="262.1"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="339.5" y="257.084">5</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="78" x="350.5" y="257.084">หน้าสร้างคอร์ส</text><polygon fill="#181818" points="77.5,289,67.5,293,77.5,297,73.5,293" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="71.5" x2="311.5" y1="293" y2="293"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="83.5" y="287.984">6</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="108" x="94.5" y="287.984">แสดงหน้าสร้างคอร์ส</text><path d="M15,308 L87,308 L87,316.9 L77,326.9 L15,326.9 L15,308 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="372" style="stroke:#000000;stroke-width:1.5;" width="835.5" x="15" y="308"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="27" x="30" y="322.884">loop</text><text fill="#000000" font-family="Sarabun" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="114" x="102" y="321.748">[ข้อมูลที่กรอกไม่ถูกต้อง]</text><polygon fill="#181818" points="300.5,345.8,310.5,349.8,300.5,353.8,304.5,349.8" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="66.5" x2="306.5" y1="349.8" y2="349.8"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="73.5" y="344.784">7</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="112" x="84.5" y="344.784">กรอกข้อมูลของคอร์ส</text><polygon fill="#181818" points="300.5,376.7,310.5,380.7,300.5,384.7,304.5,380.7" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="66.5" x2="306.5" y1="380.7" y2="380.7"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="73.5" y="375.684">8</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="84" x="84.5" y="375.684">กดปุ่ม "Create"</text><polygon fill="#181818" points="578.5,407.6,588.5,411.6,578.5,415.6,582.5,411.6" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="322.5" x2="584.5" y1="411.6" y2="411.6"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="329.5" y="406.584">9</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="98" x="340.5" y="406.584">ส่งข้อมูลของคอร์ส</text><line style="stroke:#181818;stroke-width:1.0;" x1="605.5" x2="647.5" y1="442.5" y2="442.5"/><line style="stroke:#181818;stroke-width:1.0;" x1="647.5" x2="647.5" y1="442.5" y2="455.5"/><line style="stroke:#181818;stroke-width:1.0;" x1="606.5" x2="647.5" y1="455.5" y2="455.5"/><polygon fill="#181818" points="616.5,451.5,606.5,455.5,616.5,459.5,612.5,455.5" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="612.5" y="437.484">10</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="121" x="630.5" y="437.484">ตรวจสอบข้อมูลที่กรอก</text><path d="M261,500.5 L339,500.5 L339,509.4 L329,519.4 L261,519.4 L261,500.5 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="110.7" style="stroke:#000000;stroke-width:1.5;" width="579.5" x="261" y="500.5"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="33" x="276" y="515.384">break</text><line style="stroke:#181818;stroke-width:1.0;" x1="786.5" x2="776.5" y1="542.3" y2="538.3"/><line style="stroke:#181818;stroke-width:1.0;" x1="786.5" x2="776.5" y1="542.3" y2="546.3"/><line style="stroke:#181818;stroke-width:1.0;" x1="600.5" x2="787.5" y1="542.3" y2="542.3"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="607.5" y="537.284">11</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="111" x="625.5" y="537.284">เขียนข้อมูลของคอร์ส</text><polygon fill="#181818" points="333.5,599.2,323.5,603.2,333.5,607.2,329.5,603.2" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="327.5" x2="594.5" y1="603.2" y2="603.2"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="339.5" y="598.184">12</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="91" x="357.5" y="598.184">ผลการสร้างคอร์ส</text><polygon fill="#181818" points="333.5,637.1,323.5,641.1,333.5,645.1,329.5,641.1" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="327.5" x2="594.5" y1="641.1" y2="641.1"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="339.5" y="636.084">13</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="231" x="357.5" y="636.084">สั่งให้แจ้งเตือนผู้ใช้ให้ตรวจสอบข้อมูลที่กรอก</text><polygon fill="#181818" points="77.5,668,67.5,672,77.5,676,73.5,672" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="71.5" x2="311.5" y1="672" y2="672"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="83.5" y="666.984">14</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="204" x="101.5" y="666.984">แจ้งเตือนผู้ใช้ให้ตรวจสอบข้อมูลที่กรอก</text><polygon fill="#181818" points="77.5,705.9,67.5,709.9,77.5,713.9,73.5,709.9" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="71.5" x2="311.5" y1="709.9" y2="709.9"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="83.5" y="704.884">15</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="121" x="101.5" y="704.884">แสดงผลการสร้างคอร์ส</text><polygon fill="#181818" points="300.5,736.8,310.5,740.8,300.5,744.8,304.5,740.8" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="66.5" x2="306.5" y1="740.8" y2="740.8"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="73.5" y="735.784">16</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="62" x="91.5" y="735.784">กดปุ่ม "OK"</text><polygon fill="#181818" points="578.5,767.7,588.5,771.7,578.5,775.7,582.5,771.7" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="322.5" x2="584.5" y1="771.7" y2="771.7"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="329.5" y="766.684">17</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="93" x="347.5" y="766.684">ขอเข้าถึงหน้าหลัก</text><polygon fill="#181818" points="333.5,798.6,323.5,802.6,333.5,806.6,329.5,802.6" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="327.5" x2="594.5" y1="802.6" y2="802.6"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="339.5" y="797.584">18</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="45" x="357.5" y="797.584">หน้าหลัก</text><polygon fill="#181818" points="72.5,829.5,62.5,833.5,72.5,837.5,68.5,833.5" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="66.5" x2="316.5" y1="833.5" y2="833.5"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="78.5" y="828.484">19</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="75" x="96.5" y="828.484">แสดงหน้าหลัก</text><!--MD5=[349863e9fed24708e4d016ce942a4612]
+@startuml
+skinparam monochrome true
+skinparam defaultFontName Sarabun
+autonumber
+
+title Use Case 2: จัดการคอร์ส
+mainframe **sd** ManageCourse
+
+participant "staff:User" as Staff
+participant ":WebBrowser" as Browser
+participant ":WebServer" as Server
+participant ":Database" as Database
+
+Staff -> Browser: กดสร้างคอร์ส
+
+activate Staff
+
+activate Browser
+Browser -> Server: ขอเข้าถึงหน้าสร้างคอร์ส
+
+activate Server
+Server -> Database: ขอข้อมูลคอร์สและตารางเวลา
+
+activate Database
+Database - -> Server: ข้อมูลคอร์สและตารางเวลา
+deactivate Database
+
+Server - -> Browser: หน้าสร้างคอร์ส
+deactivate Server
+
+Browser - -> Staff: แสดงหน้าสร้างคอร์ส
+
+' loop 1
+loop ข้อมูลที่กรอกไม่ถูกต้อง
+
+Staff -> Browser: กรอกข้อมูลของคอร์ส
+Staff -> Browser: กดปุ่ม "Create"
+Browser -> Server: ส่งข้อมูลของคอร์ส
+
+activate Server
+Server -> Server: ตรวจสอบข้อมูลที่กรอก
+
+activate Server
+deactivate Server
+
+' break 1.1
+break
+
+Server ->> Database: เขียนข้อมูลของคอร์ส
+
+activate Database
+deactivate Database
+
+Server - -> Browser: ผลการสร้างคอร์ส
+deactivate Server
+
+' break 1.1
+end
+
+Server - -> Browser: สั่งให้แจ้งเตือนผู้ใช้ให้ตรวจสอบข้อมูลที่กรอก
+Browser - -> Staff: แจ้งเตือนผู้ใช้ให้ตรวจสอบข้อมูลที่กรอก
+
+' loop 1
+end
+
+Browser - -> Staff: แสดงผลการสร้างคอร์ส
+Staff -> Browser: กดปุ่ม "OK"
+Browser -> Server: ขอเข้าถึงหน้าหลัก
+
+activate Server
+Server - -> Browser: หน้าหลัก
+deactivate Server
+
+Browser - -> Staff: แสดงหน้าหลัก
+deactivate Browser
+
+deactivate Staff
+@enduml
+
+@startuml
+skinparam monochrome true
+skinparam defaultFontName Sarabun
+autonumber
+
+title Use Case 2: จัดการคอร์ส
+mainframe **sd** ManageCourse
+
+participant "staff:User" as Staff
+participant ":WebBrowser" as Browser
+participant ":WebServer" as Server
+participant ":Database" as Database
+
+Staff -> Browser: กดสร้างคอร์ส
+
+activate Staff
+
+activate Browser
+Browser -> Server: ขอเข้าถึงหน้าสร้างคอร์ส
+
+activate Server
+Server -> Database: ขอข้อมูลคอร์สและตารางเวลา
+
+activate Database
+Database - -> Server: ข้อมูลคอร์สและตารางเวลา
+deactivate Database
+
+Server - -> Browser: หน้าสร้างคอร์ส
+deactivate Server
+
+Browser - -> Staff: แสดงหน้าสร้างคอร์ส
+
+loop ข้อมูลที่กรอกไม่ถูกต้อง
+
+Staff -> Browser: กรอกข้อมูลของคอร์ส
+Staff -> Browser: กดปุ่ม "Create"
+Browser -> Server: ส่งข้อมูลของคอร์ส
+
+activate Server
+Server -> Server: ตรวจสอบข้อมูลที่กรอก
+
+activate Server
+deactivate Server
+
+break
+
+Server ->> Database: เขียนข้อมูลของคอร์ส
+
+activate Database
+deactivate Database
+
+Server - -> Browser: ผลการสร้างคอร์ส
+deactivate Server
+
+end
+
+Server - -> Browser: สั่งให้แจ้งเตือนผู้ใช้ให้ตรวจสอบข้อมูลที่กรอก
+Browser - -> Staff: แจ้งเตือนผู้ใช้ให้ตรวจสอบข้อมูลที่กรอก
+
+end
+
+Browser - -> Staff: แสดงผลการสร้างคอร์ส
+Staff -> Browser: กดปุ่ม "OK"
+Browser -> Server: ขอเข้าถึงหน้าหลัก
+
+activate Server
+Server - -> Browser: หน้าหลัก
+deactivate Server
+
+Browser - -> Staff: แสดงหน้าหลัก
+deactivate Browser
+
+deactivate Staff
+@enduml
+
+PlantUML version 1.2022.7(Tue Aug 23 00:01:30 ICT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: TH
+--></g></svg>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 770 850" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;">
+    <g transform="matrix(1,0,0,1,-121.297,-272.075)">
+        <g id="_title" transform="matrix(1,0,0,1,-13.7035,278.525)">
+            <rect x="449.5" y="5" width="141" height="28.2" style="fill:none;"/>
+            <g transform="matrix(1,0,0,1,455.187,22.376)">
+                <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:14px;">Component Diagram</text>
+            </g>
+        </g>
+        <g id="cluster_db" transform="matrix(1,0,0,1,-578.216,838.625)">
+            <g transform="matrix(1,0,0,0.62982,0,17.1023)">
+                <rect x="712" y="46.2" width="110" height="73" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:1px;"/>
+            </g>
+            <rect x="802" y="51.2" width="15" height="10" style="fill:none;stroke:rgb(24,24,24);stroke-width:1px;"/>
+            <rect x="800" y="53.2" width="4" height="2" style="fill:none;stroke:rgb(24,24,24);stroke-width:1px;"/>
+            <rect x="800" y="57.2" width="4" height="2" style="fill:none;stroke:rgb(24,24,24);stroke-width:1px;"/>
+            <g transform="matrix(1,0,0,1,736,74.152)">
+                <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:14px;">:Databas<tspan x="55.426px " y="0px ">e</tspan></text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,-162,-75.0346)">
+            <g id="cluster_wb">
+                <g transform="matrix(1.45461,0,0,0.671404,-476.43,315.387)">
+                    <rect x="728" y="959.8" width="320" height="336.4" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:1px;"/>
+                </g>
+                <rect x="1028" y="964.8" width="15" height="10" style="fill:none;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                <rect x="1026" y="966.8" width="4" height="2" style="fill:none;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                <rect x="1026" y="970.8" width="4" height="2" style="fill:none;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,773.438,984.657)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:14px;">:W<tspan x="16.03px " y="0px ">e</tspan>bBr<tspan x="45.332px " y="0px ">o</tspan>ws<tspan x="69.79px " y="0px ">e</tspan>r</text>
+                </g>
+            </g>
+            <g id="cluster_Cookies" transform="matrix(1,0,0,1,-161.146,15.3879)">
+                <g id="elem_AuthenticationFactors">
+                    <rect x="808" y="1065.8" width="176" height="48.2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                    <rect x="964" y="1070.8" width="15" height="10" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                    <rect x="962" y="1072.8" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                    <rect x="962" y="1076.8" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                    <g transform="matrix(1,0,0,1,834.071,1100.29)">
+                        <g transform="matrix(14,0,0,14,124.39,0)">
+                        </g>
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:14px;">A<tspan x="8.414px " y="0px ">u</tspan>thorization<tspan x="86.492px 93.632px 101.738px 108.92px " y="0px 0px 0px 0px ">Toke</tspan>n</text>
+                    </g>
+                </g>
+                <rect x="776" y="1020.8" width="232" height="117.2" style="fill:none;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                <rect x="988" y="1025.8" width="15" height="10" style="fill:none;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                <rect x="986" y="1027.8" width="4" height="2" style="fill:none;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                <rect x="986" y="1031.8" width="4" height="2" style="fill:none;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                <g transform="matrix(1,0,0,1,867,1048.75)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:14px;">Cookie<tspan x="44.044px " y="0px ">s</tspan></text>
+                </g>
+            </g>
+            <g id="elem_Browser" transform="matrix(1,0,0,1,172.177,-153.332)">
+                <rect x="760" y="1224" width="88" height="48.2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                <rect x="828" y="1229" width="15" height="10" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                <rect x="826" y="1231" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                <rect x="826" y="1235" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                <g transform="matrix(1,0,0,1,775,1258.95)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:14px;">Br<tspan x="13.902px " y="0px ">o</tspan>ws<tspan x="38.36px " y="0px ">e</tspan>r</text>
+                </g>
+            </g>
+            <g id="link_Cookies_Browser" transform="matrix(1,0,0,1,92.0887,-44.5031)">
+                <g transform="matrix(1,0,0,1,765.613,1124.27)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:13px;">Br<tspan x="12.077px " y="0px ">o</tspan>ws<tspan x="33.67px " y="0px ">e</tspan>rAPI</text>
+                </g>
+                <g transform="matrix(1,0,0,1,-0.870626,-49.0153)">
+                    <g id="Cookies-Browser" transform="matrix(1.11808e-19,-0.00181243,1,6.07153e-17,-382.686,1192.24)">
+                        <path d="M789.997,1138.28C790.222,1140.05 790.447,1141.82 790.672,1143.58C791.12,1147.11 791.566,1150.61 792,1154C793.299,1164.15 794.681,1174.92 796.029,1185.4" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                    </g>
+                    <g id="Cookies-Browser1" serif:id="Cookies-Browser" transform="matrix(1.11808e-19,-0.00181243,1,6.07153e-17,-382.686,1192.24)">
+                        <path d="M796.447,1188.65C798.105,1201.53 799.69,1213.81 800.98,1223.76" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                    </g>
+                    <g transform="matrix(0.148837,-0.988862,0.988862,0.148837,-500.076,1801.26)">
+                        <path d="M790.605,1198.64C794.947,1202 801.279,1201.18 804.631,1196.84" style="fill:none;fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1.5px;"/>
+                    </g>
+                    <circle cx="796.715" cy="1190.73" r="6" style="fill:white;stroke:rgb(24,24,24);stroke-width:1.5px;"/>
+                </g>
+            </g>
+        </g>
+        <g id="cluster_ws">
+            <g transform="matrix(0.863944,0,0,1,120.545,0)">
+                <rect x="7" y="316.2" width="879" height="447.6" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:1px;"/>
+            </g>
+            <rect x="866" y="321.2" width="15" height="10" style="fill:none;stroke:rgb(24,24,24);stroke-width:1px;"/>
+            <rect x="864" y="323.2" width="4" height="2" style="fill:none;stroke:rgb(24,24,24);stroke-width:1px;"/>
+            <rect x="864" y="327.2" width="4" height="2" style="fill:none;stroke:rgb(24,24,24);stroke-width:1px;"/>
+            <g transform="matrix(1,0,0,1,469.666,340.443)">
+                <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:14px;">:W<tspan x="16.03px " y="0px ">e</tspan>bServ<tspan x="59.402px " y="0px ">e</tspan>r</text>
+            </g>
+            <g transform="matrix(1,0,0,1,157.571,-22.5862)">
+                <g id="cluster_EnrollmentProcessing">
+                    <g>
+                        <rect x="452" y="393.2" width="214" height="117.2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:1px;"/>
+                        <rect x="646" y="398.2" width="15" height="10" style="fill:none;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                        <rect x="644" y="400.2" width="4" height="2" style="fill:none;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                        <rect x="644" y="404.2" width="4" height="2" style="fill:none;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                        <g transform="matrix(1,0,0,1,488.5,421.152)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:14px;">Enr<tspan x="21.294px " y="0px ">o</tspan>llmentPr<tspan x="84.7px " y="0px ">o</tspan>ce<tspan x="107.562px " y="0px ">s</tspan>sing</text>
+                        </g>
+                        <rect x="152" y="691.6" width="130" height="48.2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="262" y="696.6" width="15" height="10" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="260" y="698.6" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="260" y="702.6" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <g transform="matrix(1,0,0,1,167,726.552)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:14px;">A<tspan x="8.414px " y="0px ">u</tspan>thentication</text>
+                        </g>
+                        <rect x="143.5" y="582.4" width="147" height="48.2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="270.5" y="587.4" width="15" height="10" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="268.5" y="589.4" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="268.5" y="593.4" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <g transform="matrix(1,0,0,1,158.5,617.352)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:14px;">Us<tspan x="15.722px " y="0px ">e</tspan>rManagement</text>
+                        </g>
+                        <rect x="31" y="438.2" width="176" height="48.2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="187" y="443.2" width="15" height="10" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="185" y="445.2" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="185" y="449.2" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <g transform="matrix(1,0,0,1,46,473.152)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:14px;">Schedul<tspan x="49.588px " y="0px ">e</tspan>Management</text>
+                        </g>
+                        <rect x="352" y="691.6" width="88" height="48.2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="420" y="696.6" width="15" height="10" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="418" y="698.6" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="418" y="702.6" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <g transform="matrix(1,0,0,1,367,726.552)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:14px;">Routing</text>
+                        </g>
+                        <g transform="matrix(1,0,0,1,103,-0.4113)">
+                            <g>
+                                <rect x="369" y="582.4" width="182" height="48.2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                                <rect x="531" y="587.4" width="15" height="10" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                                <rect x="529" y="589.4" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                                <rect x="529" y="593.4" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                                <g transform="matrix(1,0,0,1,384,617.352)">
+                                    <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:14px;">Us<tspan x="15.722px " y="0px ">e</tspan>rReque<tspan x="68.432px " y="0px ">s</tspan>tPr<tspan x="94.164px " y="0px ">o</tspan>ce<tspan x="117.026px " y="0px ">s</tspan>sing</text>
+                                </g>
+                            </g>
+                            <g>
+                                <path id="EnrollmentProcessing-backto-UserRequestProcessing" d="M460,510.811L460,582.05" style="fill:none;fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;stroke-dasharray:7,7;"/>
+                                <path d="M460,510.811L456,519.811L460,515.811L464,519.811L460,510.811Z" style="fill:rgb(24,24,24);fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                                <g transform="matrix(1,0,0,1,471.718,549.681)">
+                                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:13px;">«us<tspan x="19.539px " y="0px ">e</tspan>»</text>
+                                </g>
+                            </g>
+                        </g>
+                        <rect x="242" y="438.2" width="148" height="48.2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="370" y="443.2" width="15" height="10" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="368" y="445.2" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="368" y="449.2" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <g transform="matrix(1,0,0,1,257,473.152)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:14px;">Cours<tspan x="36.652px " y="0px ">e</tspan>Pr<tspan x="57.918px " y="0px ">o</tspan>ce<tspan x="80.78px " y="0px ">s</tspan>sing</text>
+                        </g>
+                        <rect x="483.5" y="438.2" width="159" height="48.2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="622.5" y="443.2" width="15" height="10" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="620.5" y="445.2" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <rect x="620.5" y="449.2" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+                        <g transform="matrix(1,0,0,1,498.5,473.152)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:14px;">P<tspan x="7.84px " y="0px ">a</tspan>ymentPr<tspan x="69.188px " y="0px ">o</tspan>ce<tspan x="92.05px " y="0px ">s</tspan>sing</text>
+                        </g>
+                        <path id="UserManagement-backto-Authentication" d="M217,637.11L217,691.23" style="fill:none;fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;stroke-dasharray:7,7;"/>
+                        <path d="M217,632.54L213,641.54L217,637.54L221,641.54L217,632.54Z" style="fill:rgb(24,24,24);fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                        <path id="CourseProcessing-to-UserManagement" d="M299.65,486.78C282.46,511.48 255.38,550.37 236.94,576.86" style="fill:none;fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;stroke-dasharray:7,7;"/>
+                        <path d="M234.24,580.74L242.667,575.643L237.099,576.638L236.104,571.069L234.24,580.74Z" style="fill:rgb(24,24,24);fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                        <g transform="matrix(1,0,0,1,267,549.284)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:13px;">«us<tspan x="19.539px " y="0px ">e</tspan>»</text>
+                        </g>
+                        <path id="ScheduleManagement-to-UserManagement" d="M135.18,486.78C152.21,511.48 179.01,550.37 197.26,576.86" style="fill:none;fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;stroke-dasharray:7,7;"/>
+                        <path d="M199.93,580.74L198.127,571.058L197.097,576.62L191.535,575.59L199.93,580.74Z" style="fill:rgb(24,24,24);fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                        <path id="Authentication-backto-Routing" d="M288.65,715.7L351.74,715.7" style="fill:none;fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;stroke-dasharray:7,7;"/>
+                        <path d="M283.9,715.7L292.9,719.7L288.9,715.7L292.9,711.7L283.9,715.7Z" style="fill:rgb(24,24,24);fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                        <g transform="matrix(1,0,0,1,300.5,709.584)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:13px;">«us<tspan x="19.539px " y="0px ">e</tspan>»</text>
+                        </g>
+                        <path id="ScheduleManagement-to-CourseProcessing" d="M207.5,462.3L235.39,462.3" style="fill:none;fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;stroke-dasharray:7,7;"/>
+                        <path d="M240.31,462.3L231.31,458.3L235.31,462.3L231.31,466.3L240.31,462.3Z" style="fill:rgb(24,24,24);fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                        <path id="EnrollmentProcessing-to-CourseProcessing" d="M451.966,462.3L396.3,462.3" style="fill:none;fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;stroke-dasharray:7,7;"/>
+                        <path d="M391.62,462.3L400.62,466.3L396.62,462.3L400.62,458.3L391.62,462.3Z" style="fill:rgb(24,24,24);fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                        <g transform="matrix(1,0,0,1,408.32,456.184)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:13px;">«us<tspan x="19.539px " y="0px ">e</tspan>»</text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g>
+            <g transform="matrix(1,0,0,1,213.326,831.444)">
+                <g transform="matrix(14,0,0,14,125.958,0)">
+                </g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:14px;">Databas<tspan x="49.28px " y="0px ">e</tspan>Connection</text>
+            </g>
+            <g id="link_dbConnectorPort_wsServerConnectorPort" transform="matrix(1,0,0,-1,-578.67,1093.66)">
+                <g id="dbConnectorPort-wsServerConnectorPort" transform="matrix(1,-5.01083e-17,-5.01083e-17,0.590835,0.454399,140.731)">
+                    <path d="M767,125.42L767,222.51" style="fill:none;fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                </g>
+                <g id="dbConnectorPort-wsServerConnectorPort1" serif:id="dbConnectorPort-wsServerConnectorPort" transform="matrix(1,-5.01083e-17,-5.01083e-17,0.590835,0.454399,140.731)">
+                    <path d="M767,229.28L767,309.88" style="fill:none;fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;"/>
+                </g>
+                <g transform="matrix(1,0,0,1,0.454399,48.6484)">
+                    <path d="M759.929,224.62C761.804,226.494 764.349,227.549 767,227.549C769.651,227.549 772.196,226.494 774.071,224.62" style="fill:none;fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1.5px;"/>
+                    <circle cx="767" cy="217.549" r="6" style="fill:white;stroke:rgb(24,24,24);stroke-width:1.5px;"/>
+                </g>
+            </g>
+            <g transform="matrix(1,0,0,1,-578.216,765.625)">
+                <rect x="761" y="113.2" width="12" height="12" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:1.5px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-578.446,447.64)">
+                <rect x="761" y="310.2" width="12" height="12" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:1.5px;"/>
+            </g>
+        </g>
+        <g id="link_DBMS_wsServerConnectorPort" transform="matrix(1.03835,0,0,1.03835,-609.872,279.951)">
+            <g>
+                <g id="DBMS-wsServerConnectorPort" transform="matrix(2e-06,0,0,0.734978,769.16,138.363)">
+                    <path d="M814.76,437.94C801.16,403.56 776.57,341.39 769.16,322.67" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                </g>
+                <g transform="matrix(1,0,0,1,-20.4788,43.9892)">
+                    <circle cx="789.639" cy="374.433" r="6" style="fill:white;stroke:rgb(24,24,24);stroke-width:1.5px;"/>
+                </g>
+            </g>
+        </g>
+        <g id="elem_DBMS" transform="matrix(1,0,0,1,-635.222,194.05)">
+            <g transform="matrix(1,0,0,0.780508,0,96.1813)">
+                <rect x="786.5" y="438.2" width="75" height="48.2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+            </g>
+            <rect x="841.5" y="443.2" width="15" height="10" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+            <rect x="839.5" y="445.2" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+            <rect x="839.5" y="449.2" width="4" height="2" style="fill:rgb(241,241,241);stroke:rgb(24,24,24);stroke-width:0.5px;"/>
+            <g transform="matrix(1,0,0,1,799.71,463.14)">
+                <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:14px;">DBMS</text>
+            </g>
+        </g>
+        <g id="link_ws_wb">
+            <g id="ws-wb" transform="matrix(1,0,0,1,121.297,266.385)">
+                <path d="M614.703,566.288L614.703,618.38" style="fill:none;fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;"/>
+            </g>
+            <g id="ws-wb1" serif:id="ws-wb" transform="matrix(1,0,0,1,121.297,266.385)">
+                <path d="M614.703,497.415L614.703,563.72" style="fill:none;fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,752.25,829.887)">
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:13px;">Internet</text>
+            </g>
+            <g transform="matrix(1,0,0,1,0,-28.7141)">
+                <path d="M728.929,859.187C730.804,861.061 733.349,862.116 736,862.116C738.651,862.116 741.196,861.061 743.071,859.187" style="fill:none;fill-rule:nonzero;stroke:rgb(24,24,24);stroke-width:1.5px;"/>
+                <circle cx="736" cy="852.116" r="6" style="fill:white;stroke:rgb(24,24,24);stroke-width:1.5px;"/>
+            </g>
+        </g>
+    </g>
+</svg>
