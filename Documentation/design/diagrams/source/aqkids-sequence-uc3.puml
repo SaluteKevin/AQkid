@@ -32,7 +32,7 @@ deactivate Server
 Browser --> Customer: แสดงหน้าสมัครคอร์ส
 
 Customer -> Browser: เลือกคอร์ส
-Customer -> Browser: กดปุ่ม "Confirm"
+Customer -> Browser: กดปุ่ม "View"
 Browser --> Customer: แสดงหน้ายืนยันรายละเอียดคอร์ส
 
 Customer -> Browser: กดปุ่ม "Confirm"
