@@ -1,5 +1,6 @@
 <script setup lang="ts">
-definePageMeta({ layout: "student" })
+definePageMeta({ layout: "student",
+middleware: ['is-authorized','is-student'] })
 
 
 // fullcalendar

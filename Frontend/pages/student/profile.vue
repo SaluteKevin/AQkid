@@ -77,7 +77,8 @@ import { useAuthStore } from "~/stores/useAuthStore";
 const config = useRuntimeConfig()
 
 const user = useAuthStore().user;
-definePageMeta({ layout: "student" })
+definePageMeta({ layout: "student",
+middleware: ['is-authorized','is-student'] })
 
 const courses = ref({})
 

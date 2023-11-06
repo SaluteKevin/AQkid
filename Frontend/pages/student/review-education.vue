@@ -24,7 +24,8 @@
 </template>
   
   <script setup lang="ts">
-  definePageMeta({ layout: "student" })
+  definePageMeta({ layout: "student",
+middleware: ['is-authorized','is-student'] })
   import FullCalendar from '@fullcalendar/vue3'
   import interactionPlugin from '@fullcalendar/interaction'
   import timeGridPlugin from '@fullcalendar/timegrid'

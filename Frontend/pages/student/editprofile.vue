@@ -203,7 +203,8 @@
     
     
 <script setup lang="ts">
-definePageMeta({ layout: "student" })
+definePageMeta({ layout: "student",
+middleware: ['is-authorized','is-student'] })
 import { useAuthStore } from "~/stores/useAuthStore";
 const auth = useAuthStore();
 

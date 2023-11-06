@@ -19,7 +19,8 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: false })
+definePageMeta({ layout: false,
+middleware: ['is-authorized','is-student'] })
 const route = useRoute();
 import { useAuthStore } from "~/stores/useAuthStore";
 const auth = useAuthStore();

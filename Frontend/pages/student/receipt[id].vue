@@ -3,7 +3,8 @@
 </template>
   
 <script setup lang="ts">
-definePageMeta({ layout: false })
+definePageMeta({ layout: false,
+middleware: ['is-authorized','is-student'] })
 const route = useRoute();
 import { useNuxtApp } from '#app';
 import dayjs from 'dayjs';
