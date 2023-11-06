@@ -70,8 +70,9 @@
 </template>
     
 <script setup lang="ts">
+definePageMeta({ layout: "teacher",
+middleware: ['is-authorized','is-teacher'] })
 
-definePageMeta({ layout: "teacher" })
 const config = useRuntimeConfig();
 import {useAuthStore} from "~/stores/useAuthStore";
 

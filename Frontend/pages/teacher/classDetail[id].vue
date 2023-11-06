@@ -254,8 +254,8 @@
 
 
 <script setup lang="ts">
-
-definePageMeta({ layout: "teacher" })
+definePageMeta({ layout: "teacher",
+middleware: ['is-authorized','is-teacher'] })
 const route = useRoute();
 import { DelayedRunner } from '@fullcalendar/core/internal';
 import dayjs from 'dayjs';

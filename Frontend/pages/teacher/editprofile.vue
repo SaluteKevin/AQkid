@@ -204,7 +204,8 @@
     
     
 <script setup lang="ts">
-definePageMeta({ layout: "teacher" })
+definePageMeta({ layout: "teacher",
+middleware: ['is-authorized','is-teacher'] })
 import { useAuthStore } from "~/stores/useAuthStore";
 const auth = useAuthStore();
 
