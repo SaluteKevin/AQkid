@@ -85,7 +85,7 @@
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             
                             
-                            <NuxtLink v-if="!author && myAge >= min_age && myAge <= max_age" :to="`/course/confirmCourse${idCourse}`"
+                            <NuxtLink v-if="!author && myAge >= min_age && myAge <= max_age && enroll_count < capacity" :to="`/course/confirmCourse${idCourse}`"
                                 class="rounded-lg group relative px-8 py-1 overflow-hidden bg-green-300 hover:bg-green-400 focus:bg-green-500 text-xl shadow my-6">
                                 View
                             </NuxtLink>
