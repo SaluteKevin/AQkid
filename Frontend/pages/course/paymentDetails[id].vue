@@ -33,7 +33,7 @@ const countDown = ref(timer.timer())
 function startTimer() {
 
     const timercount = setInterval(() => {
-        if (timer.timer() === 0) {
+        if (timer.timer() < 1) {
             modal.value = true;
             confirm.value = false;
             timer.clearTime()
