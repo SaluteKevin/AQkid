@@ -590,7 +590,7 @@ if (statResponse.value) {
 
   exploring.value = statResponse.value.enrollments;
 
-  level.value = 1 + statResponse.value.attend / 10;
+  level.value = 1 + statResponse.value.attend / 10 - statResponse.value.attend % 10 /10;
   // if (statResponse.value.attend < 10) {
   //   level.value = statResponse.value.attend;
   // }
