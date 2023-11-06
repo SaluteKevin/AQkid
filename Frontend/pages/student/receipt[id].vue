@@ -13,7 +13,7 @@ import dayjs from 'dayjs';
 const { data: receiptResponse, error: receiptError } = await useApiFetch(`api/student/getReceipt/${route.params.id}`, {});
 
 if (receiptResponse.value) {
-    console.log(receiptResponse.value)
+    
 } else {
     if (receiptError.value) {   
     
