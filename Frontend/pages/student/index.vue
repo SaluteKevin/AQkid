@@ -127,11 +127,15 @@
           </g>
         </svg>
         <p class="text-2xl font-extrabold text-dark-grey-900">Money Refund</p>
-        <p class="text-base leading-7 text-dark-grey-600">Create Refund Application here!!</p>
-        <NuxtLink :to="`/student/refund${0}`"
+        <p class="text-base leading-7 text-dark-grey-600">See my Refund Requests here!!!!</p>
+        <NuxtLink to="/student/refund"
+          class="z-10 bg-orange-500 text-white hover:bg-orange-700 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+          <i class="fas fa-heart"></i> My Refund
+        </NuxtLink>
+        <!-- <NuxtLink :to="`/student/refund${0}`"
           class="z-10 bg-orange-500 text-white hover:bg-orange-700 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
           <i class="fas fa-heart"></i> Request Refund
-        </NuxtLink>
+        </NuxtLink> -->
 
       </div>
       <div
@@ -264,105 +268,7 @@
 
       <div
         class="border flex-1 shadow-2xl  mt-12 flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl shadow-main">
-        <span>
-          <svg height="100px" width="100px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-            <g id="SVGRepo_iconCarrier">
-              <g>
-                <path style="fill:#FDE5A2;"
-                  d="M377.149,491.668l-26.64-26.64l-73.384,14.677H145.033l-81.136-81.136 c-8.272-8.272-8.102-21.791,0.511-29.848c8.239-7.706,21.25-7.098,29.227,0.879l51.399,51.399l95.399-22.015l29.353-29.353 c32.423-32.423,84.991-32.423,117.414,0l55.994,55.994c5.551,5.551,5.551,14.552,0,20.103l-45.942,45.942 C391.701,497.22,382.701,497.22,377.149,491.668z">
-                </path>
-                <path style="fill:#FDE5A2;"
-                  d="M161.991,398.118l78.166,0.587v41.513l-78.477-0.59c-11.463-0.087-20.686-9.449-20.6-20.912 C141.166,407.255,150.528,398.032,161.991,398.118z">
-                </path>
-              </g>
-              <path style="fill:#F2C127;"
-                d="M240.155,423.137v17.081l-78.477-0.59c-9.946-0.075-18.195-7.137-20.151-16.491L240.155,423.137z"></path>
-              <path style="fill:#FDD042;"
-                d="M63.918,369.234l88.455,88.455h132.091l74.912-20.431c3.593-0.979,7.435,0.04,10.069,2.674 l39.771,39.771l-11.963,11.963c-5.551,5.551-14.552,5.551-20.103,0l-26.64-26.64l-73.384,14.677H145.034l-81.137-81.136 C55.793,390.464,55.816,377.341,63.918,369.234z">
-              </path>
-              <path style="fill:#AFF0E8;"
-                d="M502.342,308.74H9.658c-5.334,0-9.658-4.325-9.658-9.658V25.826c0-5.334,4.325-9.658,9.658-9.658 h492.683c5.334,0,9.658,4.325,9.658,9.658v273.255C512,304.416,507.675,308.74,502.342,308.74z">
-              </path>
-              <path style="fill:#74DBC9;"
-                d="M36.571,308.74H9.658c-5.334,0-9.658-4.325-9.658-9.658V25.826c0-5.334,4.325-9.658,9.658-9.658 h26.913V308.74z">
-              </path>
-              <path style="fill:#2DB59F;"
-                d="M420.571,52.74H91.429c0,30.297-24.56,54.857-54.857,54.857v109.714 c30.297,0,54.857,24.56,54.857,54.857h329.143c0-30.297,24.56-54.857,54.857-54.857V107.597 C445.131,107.597,420.571,83.037,420.571,52.74z M128,189.882c-15.149,0-27.429-12.28-27.429-27.429 c0-15.149,12.28-27.429,27.429-27.429c15.149,0,27.429,12.28,27.429,27.429C155.429,177.603,143.149,189.882,128,189.882z M384,189.882c-15.149,0-27.429-12.28-27.429-27.429c0-15.149,12.28-27.429,27.429-27.429c15.149,0,27.429,12.28,27.429,27.429 C411.429,177.603,399.149,189.882,384,189.882z">
-              </path>
-              <path style="fill:#AFF0E8;"
-                d="M274.286,154.454H264v-46.857h28.571c4.735,0,8.571-3.837,8.571-8.571s-3.837-8.571-8.571-8.571H264 V80.168c0-4.735-3.837-8.571-8.571-8.571s-8.571,3.837-8.571,8.571v10.286h-9.143c-14.809,0-27.429,11.477-27.429,26.286v27.429 c0,14.809,12.619,27.429,27.429,27.429h9.143v46.857h-27.429c-4.735,0-8.571,3.837-8.571,8.571s3.837,8.571,8.571,8.571h27.429 v9.143c0,4.735,3.837,8.571,8.571,8.571S264,249.475,264,244.74v-9.143h10.286c14.809,0,26.286-12.619,26.286-27.429V180.74 C300.571,165.93,289.095,154.454,274.286,154.454z M237.714,154.454c-5.357,0-10.286-4.929-10.286-10.286V116.74 c0-5.357,4.929-9.143,10.286-9.143h9.143v46.857H237.714z M283.429,208.168c0,5.357-3.786,10.286-9.143,10.286H264v-46.857h10.286 c5.357,0,9.143,3.786,9.143,9.143V208.168z">
-              </path>
-              <g>
-                <path style="fill:#74DBC9;"
-                  d="M402.286,107.025h-36.571c-4.735,0-8.571-3.837-8.571-8.571c0-4.735,3.837-8.571,8.571-8.571h36.571 c4.735,0,8.571,3.837,8.571,8.571C410.857,103.189,407.021,107.025,402.286,107.025z">
-                </path>
-                <path style="fill:#74DBC9;"
-                  d="M402.286,235.025h-36.571c-4.735,0-8.571-3.837-8.571-8.571s3.837-8.571,8.571-8.571h36.571 c4.735,0,8.571,3.837,8.571,8.571S407.021,235.025,402.286,235.025z">
-                </path>
-                <path style="fill:#74DBC9;"
-                  d="M146.286,107.025h-36.571c-4.735,0-8.571-3.837-8.571-8.571c0-4.735,3.837-8.571,8.571-8.571h36.571 c4.735,0,8.571,3.837,8.571,8.571C154.857,103.189,151.021,107.025,146.286,107.025z">
-                </path>
-                <path style="fill:#74DBC9;"
-                  d="M146.286,235.025h-36.571c-4.735,0-8.571-3.837-8.571-8.571s3.837-8.571,8.571-8.571h36.571 c4.735,0,8.571,3.837,8.571,8.571S151.021,235.025,146.286,235.025z">
-                </path>
-              </g>
-            </g>
-          </svg>
-        </span>
-        <p class="text-2xl font-extrabold text-dark-grey-900">My Refund Requests</p>
-        <p class="text-base leading-7 text-dark-grey-600">See all my Refund Requests here!!</p>
-        <NuxtLink to="/student/refund"
-          class="z-10 bg-orange-500 text-white hover:bg-orange-700 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
-          <i class="fas fa-heart"></i> My Refund Request
-        </NuxtLink>
-
-      </div>
-
-      <div
-        class="border flex-1 shadow-2xl  mt-12 flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl shadow-main">
-        <span>
-          <svg width="100px" height="100px" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--twemoji"
-            preserveAspectRatio="xMidYMid meet" fill="#000000">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-            <g id="SVGRepo_iconCarrier">
-              <path fill="#FFCC4D" d="M36 34a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V15a2 2 0 0 1 2-2h32a2 2 0 0 1 2 2v19z"></path>
-              <path fill="#6D6E71" d="M34 13H2a2 2 0 0 0-2 2h36a2 2 0 0 0-2-2z"></path>
-              <path fill="#3B88C3" d="M2 24h32v4H2zm0-6h32v4H2zm0 12h32v4H2z"></path>
-              <path fill="#FFCC4D" d="M28 17h2v18h-2z"></path>
-              <path fill="#FFE8B6" d="M22 0H6a2 2 0 0 0-2 2v34h20V2a2 2 0 0 0-2-2z"></path>
-              <path fill="#808285" d="M22 0H6a2 2 0 0 0-2 2h20a2 2 0 0 0-2-2z"></path>
-              <path fill="#55ACEE" d="M6 18h16v4H6zm0 6h16v4H6zm0 6h16v4H6z"></path>
-              <path fill="#FFE8B6" d="M10 7h2v29h-2zm6 0h2v29h-2z"></path>
-              <path fill="#269" d="M12 30h4v6h-4z"></path>
-              <circle fill="#A7A9AC" cx="14" cy="9" r="6"></circle>
-              <circle fill="#E6E7E8" cx="14" cy="9" r="4"></circle>
-              <path fill="#A0041E" d="M17 10h-3a1 1 0 0 1-1-1V4a1 1 0 0 1 2 0v4h2a1 1 0 0 1 0 2z"></path>
-            </g>
-          </svg>
-        </span>
-        <p class="text-2xl font-extrabold text-dark-grey-900">Aquatic Training</p>
-        <p class="text-base leading-7 text-dark-grey-600">See all my classes here!!</p>
-        <button v-on:click="toClasses"
-          class="z-10 bg-orange-500 text-white hover:bg-orange-700 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-          type="button">
-          <i class="fas fa-heart"></i> My Classes
-        </button>
-
-      </div>
-
-
-    </div>
-
-    <div class="flex justify-center px-12 w-full gap-4">
-      <div class="flex-1  mt-12 flex flex-col items-center gap-3 px-8 py-10 rounded-3xl "></div>
-      <div
-        class="border flex-1 shadow-2xl  mt-12 flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl shadow-main">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100px" height="100px" viewBox="0 0 512 512" version="1.1" xml:space="preserve">
+         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100px" height="100px" viewBox="0 0 512 512" version="1.1" xml:space="preserve">
 
         <g id="_x34_98_x2C__student__x2C__notes__x2C__note_x2C__education">
         <g>
@@ -418,7 +324,49 @@
           <i class="fas fa-heart"></i> My review Education
         </NuxtLink>
 
+
       </div>
+
+      <div
+        class="border flex-1 shadow-2xl  mt-12 flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl shadow-main">
+        <span>
+          <svg width="100px" height="100px" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--twemoji"
+            preserveAspectRatio="xMidYMid meet" fill="#000000">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path fill="#FFCC4D" d="M36 34a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V15a2 2 0 0 1 2-2h32a2 2 0 0 1 2 2v19z"></path>
+              <path fill="#6D6E71" d="M34 13H2a2 2 0 0 0-2 2h36a2 2 0 0 0-2-2z"></path>
+              <path fill="#3B88C3" d="M2 24h32v4H2zm0-6h32v4H2zm0 12h32v4H2z"></path>
+              <path fill="#FFCC4D" d="M28 17h2v18h-2z"></path>
+              <path fill="#FFE8B6" d="M22 0H6a2 2 0 0 0-2 2v34h20V2a2 2 0 0 0-2-2z"></path>
+              <path fill="#808285" d="M22 0H6a2 2 0 0 0-2 2h20a2 2 0 0 0-2-2z"></path>
+              <path fill="#55ACEE" d="M6 18h16v4H6zm0 6h16v4H6zm0 6h16v4H6z"></path>
+              <path fill="#FFE8B6" d="M10 7h2v29h-2zm6 0h2v29h-2z"></path>
+              <path fill="#269" d="M12 30h4v6h-4z"></path>
+              <circle fill="#A7A9AC" cx="14" cy="9" r="6"></circle>
+              <circle fill="#E6E7E8" cx="14" cy="9" r="4"></circle>
+              <path fill="#A0041E" d="M17 10h-3a1 1 0 0 1-1-1V4a1 1 0 0 1 2 0v4h2a1 1 0 0 1 0 2z"></path>
+            </g>
+          </svg>
+        </span>
+        <p class="text-2xl font-extrabold text-dark-grey-900">Aquatic Training</p>
+        <p class="text-base leading-7 text-dark-grey-600">See all my classes here!!</p>
+        <button v-on:click="toClasses"
+          class="z-10 bg-orange-500 text-white hover:bg-orange-700 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button">
+          <i class="fas fa-heart"></i> My Classes
+        </button>
+
+      </div>
+
+
+    </div>
+
+    <div class="flex justify-center px-12 w-full gap-4">
+      <div class="flex-1  mt-12 flex flex-col items-center gap-3 px-8 py-10 rounded-3xl "></div>
+      
       
       <div class="flex-1  mt-12 flex flex-col items-center gap-3 px-8 py-10 rounded-3xl "></div>
       
