@@ -21,17 +21,22 @@
 
 
   <div class="h-fit w-full px-10 mt-10 mb-16">
-    <div class="h-full w-full p-16 flex flex-wrap gap-8  border border-dashed shadow-2xl">
+    <div class="h-full w-full p-16 grid grid-cols-4 gap-6  border border-dashed shadow-2xl">
 
       <div class="flex items-center justify-center h-full" v-for="course in courseResponse" :key="course.id">
-        <div class="bg-white shadow-2xl p-6 rounded-2xl border-2 border-gray-50">
+        <div class="bg-white shadow-lg p-6 rounded-2xl w-full text-gray-500 border-2 border-gray-50 hover:bg-gray-200 hover:text-orange-500 hover:scale-105 duration-200">
           <div class="flex flex-col">
             <div>
-              <h2 class="font-bold text-gray-600 text-center">{{ course.title }}</h2>
+              <h2 class="font-bold text-center">{{ course.title }}</h2>
             </div>
-            <p class="text-xs text-gray-500 text-center">{{ course.duration / 60 }} Hour</p>
+            <p v-if="course.status == 'OPEN' " class="text-xs text-center text-green-500">{{ course.status }}</p>
+            <p v-if="course.status == 'PENDING' " class="text-xs text-center text-amber-500">{{ course.status }}</p>
+            <p v-if="course.status == 'ENDED' " class="text-xs text-center text-gray-500">{{ course.status }}</p>
+            <p v-if="course.status == 'ACTIVE' " class="text-xs text-center text-blue-500">{{ course.status }}</p>
+            <p v-if="course.status == 'CANCELLED' " class="text-xs text-center text-red-500">{{ course.status }}</p>
+            <p v-if="course.status == 'FULL' " class="text-xs text-center text-purple-500">{{ course.status }}</p>
             <div class="w-full place-items-end text-right border-t-2 border-gray-100 mt-2">
-              <NuxtLink class="text-indigo-600 text-xs font-medium" :to="`/staff/detail/course${course.id}`">View Course
+              <NuxtLink class="text-indigo-600 ho text-xs font-medium" :to="`/staff/detail/course${course.id}`">View Course
               </NuxtLink>
 
             </div>
