@@ -57,7 +57,7 @@
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                 
-                                <div>min_age : 
+                                <div>
                                     <span v-if="min_age < 12">{{min_age}} 
                                         <span v-if="min_age == 1">month</span> 
                                         <span v-if="min_age > 1">months</span>
@@ -66,8 +66,7 @@
                                         <span v-if="min_age / 12 == 1">year</span> 
                                         <span v-if="min_age / 12 > 1">years</span>
                                     </span>
-                                </div>
-                                <div>max_age : 
+                                to
                                     <span v-if="max_age < 12">{{max_age}} 
                                         <span v-if="max_age == 1">month</span> 
                                         <span v-if="max_age > 1">months</span>

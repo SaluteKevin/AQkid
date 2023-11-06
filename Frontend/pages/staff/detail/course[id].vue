@@ -36,7 +36,7 @@
                     class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-lg ">
                     <p class="text-sm text-gray-600">Age-restricted</p>
                     <p class="text-base font-medium text-navy-700 ">
-                        {{ course.min_age }} to {{ course.max_age }} years old
+                        {{ course.min_age/12 }} to {{ course.max_age/12 }} years old
                     </p>
                 </div>
 

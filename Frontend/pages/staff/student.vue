@@ -72,19 +72,6 @@
             </div>
 
         </div>
-        <div class="pb-2 flex items-center justify-between text-gray-600">
-            <!-- Header -->
-            <div>
-                <span>
-                    <span class="text-green-400">
-                        {{studentsCount}}
-                    </span>
-                    Students
-                </span>
-                
-            </div>
-
-        </div>
 
         <!-- card -->
         <div class="flex flex-col gap-2">

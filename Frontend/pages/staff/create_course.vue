@@ -111,8 +111,8 @@
         <div class="flex-grow border-t border-gray-400 w-5/6"></div>
         <div class="flex mt-10">
 
-          <div class="w-1/2">
-            <span class="text-xl">Min Age</span>
+          <div class="w-1/3">
+            <span class="text-xl">Age Selection</span>
             <div class="relative group">
 
               <div v-click-outside="clickOutsideMin" class="relative">
@@ -148,42 +148,14 @@
               {{ error }}
             </p>
           </div>
-          <div class="w-1/2">
-            <span class="text-xl">Max Age</span>
-            <div class="relative group">
-
-              <div v-click-outside="clickOutsideMax" class="relative">
-                <button v-on:click="openMaxAge = !openMaxAge" class="bg-orange-300 rounded-md px-4 py-1 mt-2">
-                  <span>{{ currentMaxAge }}</span>
-                  <svg fill="currentColor" viewBox="0 0 20 20"
-                    :class="{ 'rotate-180': openMaxAge, 'rotate-0': !openMaxAge }"
-                    class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
-                    <path fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                </button>
-                <div v-if="openMaxAge" x-transition:enter="transition ease-out duration-100"
-                  x-transition:enter-start="transform opacity-0 scale-95"
-                  x-transition:enter-end="transform opacity-100 scale-100"
-                  x-transition:leave="transition ease-in duration-75"
-                  x-transition:leave-start="transform opacity-100 scale-100"
-                  x-transition:leave-end="transform opacity-0 scale-95"
-                  class="absolute left-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
-                  <div v-for="number in maxAgeNumber" :key="number.name" @click="changeMaxAge(number)"
-                    v-on:click="openMaxAge = !openMaxAge"
-                    class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
-                    <button class="px-2">
-                      {{ number }}
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            <p class="text-red-500 font-normal" v-for="error in createError['max_age']" :key="error">
-              {{ error }}
-            </p>
+          <div class="w-1/3 bg-gray-200 h-full p-2">
+            <span>Age type</span>
+            <p>B1: 0 - 6 Months</p>
+            <p>B2: 6 - 12 Moths</p>
+            <p>T1: 1 - 2 Years</p>
+            <p>T2: 2 - 3 Years</p>
+            <p>T3: 3 - 4 Years</p>
+            <p>Ps: 5 - 10 Years</p>
           </div>
         </div>
       </div>
@@ -289,7 +261,6 @@ const open = ref(false);
 const openQuota = ref(false);
 const openCapacity = ref(false);
 const openMinAge = ref(false);
-const openMaxAge = ref(false);
 const openTeacher = ref(false);
 const title = ref('');
 const description = ref('');
@@ -316,19 +287,34 @@ function changeCapacity(amount: number) {
 }
 
 const currentMinAge = ref('Not Assign');
-const minAgeNumber = [0, 6, 12, 24, 36, 48, 60];
+const minAgeNumber = ['B1', 'B2', 'T1', 'T2', 'T3', 'Ps'];
 const minAgeAmount = ref();
-function changeMinAge(minAge: number) {
-  currentMinAge.value = minAge + " Month (" + minAge / 12 + " year)";
-  minAgeAmount.value = minAge;
-}
-
-const currentMaxAge = ref('Not Assign');
-const maxAgeNumber = [6, 12, 24, 36, 48, 60, 120];
 const maxAgeAmount = ref();
-function changeMaxAge(maxAge: number) {
-  currentMaxAge.value = maxAge + " Month (" + maxAge / 12 + " year)";
-  maxAgeAmount.value = maxAge;
+function changeMinAge(minAge: string) {
+  currentMinAge.value = minAge;
+  if(minAge=='B1'){
+    minAgeAmount.value = 0;
+    maxAgeAmount.value = 6;
+  }
+  if(minAge=='B2'){
+    minAgeAmount.value = 6;
+    maxAgeAmount.value = 12;  }
+  if(minAge=='T1'){
+    minAgeAmount.value = 12;
+    maxAgeAmount.value = 24;
+  }
+  if(minAge=='T2'){
+    minAgeAmount.value = 24;
+    maxAgeAmount.value = 36;
+  }
+  if(minAge=='T3'){
+    minAgeAmount.value = 36;
+    maxAgeAmount.value = 48;
+  }
+  if(minAge=='Ps'){
+    minAgeAmount.value = 48;
+    maxAgeAmount.value = 120;
+  }
 }
 
 const currentTeacher = ref("Not Assign");

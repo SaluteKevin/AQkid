@@ -46,13 +46,13 @@
                     <!-- Header -->
                     <div>
                         <span>
-                            <span class="text-green-400">
+                            <span class="text-green-700">
                                 {{ teachersCount }}
                             </span>
                             teachers
                         </span>
                         <span>
-                            <span class="text-green-400">
+                            <span class="text-green-700">
                                 {{coursesCount }}
                             </span>
                             courses
