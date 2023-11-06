@@ -149,6 +149,9 @@ Route::group([
     //review Student
     Route::get('reviewStudent/{user}' , [StudentController::class, 'getMyClass']);
 
+    // certificate
+    Route::get('certificate/{course}', [StudentController::class, 'certificate']);
+
 });
 
 Route::group([

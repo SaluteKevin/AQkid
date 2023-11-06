@@ -33,7 +33,7 @@ class StudentController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getAllClasses', 'getAllCourse', 'showCourse', 'enrollCourse', 'updateProfile', 'userStat','allEnrollCourses','refundRequest','myEnrollments','myRefunds','getReceipt']]);
+        $this->middleware('auth:api', ['except' => ['getAllClasses', 'getAllCourse', 'showCourse', 'enrollCourse', 'updateProfile', 'userStat','allEnrollCourses','refundRequest','myEnrollments','myRefunds','getReceipt','certificate']]);
     }
 
     public function getAllClasses(User $user)
@@ -239,6 +239,10 @@ class StudentController extends Controller
 
 
 
+    }
+
+    public function certificate(Course $course) {
+        return $course;
     }
 
 

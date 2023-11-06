@@ -6,13 +6,13 @@
                 <br><br>
                 <span style="font-size:25px"><i>This is to certify that</i></span>
                 <br><br>
-                <span style="font-size:30px"><b>$student.getFullName()</b></span><br /><br />
+                <span style="font-size:30px"><b>{{ auth.user.value.first_name }} {{ auth.user.value.last_name }}</b></span><br /><br />
                 <span style="font-size:25px"><i>has completed the course</i></span> <br /><br />
-                <span style="font-size:30px">$course.getName()</span> <br /><br />
-                <span style="font-size:20px">with score of <b>$grade.getPoints()%</b></span> <br /><br /><br /><br />
+                <span style="font-size:30px">{{ certificate.title }}</span> <br /><br />
+                <span style="font-size:20px">swimming course with a Graceful and Elegant touch.</span> <br /><br /><br /><br />
                 <span style="font-size:25px"><i>dated</i></span><br>
-                #set ($dt = $DateFormatter.getFormattedDate($grade.getAwardDate(), "MMMM dd, yyyy"))
-                <span style="font-size:30px">$dt</span>
+                {{  dayjs(certificate.updated_at).format('YYYY-MM-DD HH:mm:ss')}}
+                
             </div>
         </div>
     </div>
@@ -20,4 +20,21 @@
 
 <script setup lang="ts">
 definePageMeta({ layout: false })
+const route = useRoute();
+import { useAuthStore } from "~/stores/useAuthStore";
+const auth = useAuthStore();
+import dayjs from 'dayjs';
+
+const certificate = ref({});
+const { data: certificateResponse, error: certificateError } = await useApiFetch(`api/student/certificate/${route.params.id}`, {});
+
+if (certificateResponse.value) {
+    certificate.value = certificateResponse.value
+} else {
+    if (certificateError.value) {   
+    
+    }
+
+}
+
 </script>
