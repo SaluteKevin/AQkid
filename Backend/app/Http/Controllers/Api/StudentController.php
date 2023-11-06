@@ -14,6 +14,7 @@ use App\Models\Enrollment;
 use App\Models\Enums\CourseStatusEnum;
 use App\Models\Enums\EnrollmentStatusEnum;
 use App\Models\Enums\StudentAttendanceEnum;
+use App\Models\StudentAttendance;
 use App\Models\Timeslot;
 use App\Models\UserRequest;
 use Carbon\Carbon;
@@ -223,4 +224,22 @@ class StudentController extends Controller
         return $enrollment;
 
     }
+
+    public function getMyClass(User $user) {
+        $myclass = StudentAttendance::where('student_id',$user->id)->where('has_attended',TRUE )->get();
+        $mytimeslots =  [];
+        foreach($myclass as $timeslot) {
+            $timeslot->time = Timeslot::find($timeslot->timeslot_id)->datetime;
+            $timeslot->title = Course::find(Timeslot::find($timeslot->timeslot_id)->course_id)->title;
+            $timeslot->images = $timeslot->images;
+            $mytimeslots[] = $timeslot;
+        }
+
+        return $mytimeslots;
+
+
+
+    }
+
+
 }

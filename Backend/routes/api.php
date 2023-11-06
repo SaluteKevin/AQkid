@@ -109,7 +109,9 @@ Route::group([
     Route::post('attendStudent/{timeslot}/{student}', [TeacherController::class, 'studentAttend']);
     Route::post('absentStudent/{timeslot}/{student}', [TeacherController::class, 'studentAbsent']);
     Route::get('getTeacherCourses/{teacher}', [TeacherController::class, 'getTeacherCourses']);
-   
+    Route::post('addReviewStudent/{timeslot}/{student}', [TeacherController::class, 'studentReview']);
+    Route::post('addReviewImagesStudent/{timeslot}/{student}', [TeacherController::class, 'studentReviewImages']);
+    
     
 });
 
@@ -143,6 +145,10 @@ Route::group([
 
     // receipt
     Route::get('getReceipt/{enrollment}', [StudentController::class, 'getReceipt']);
+
+    //review Student
+    Route::get('reviewStudent/{user}' , [StudentController::class, 'getMyClass']);
+
 });
 
 Route::group([
