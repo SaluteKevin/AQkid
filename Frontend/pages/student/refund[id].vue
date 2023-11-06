@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="grid grid-cols-2 gap-4 px-2 w-full">
-                <NuxtLink to="/student">
+                <NuxtLink to="/student/refund">
                     <div
                         class="flex flex-col justify-center rounded-2xl duration-200 text-white  bg-red-500  bg-clip-border px-3 py-4 shadow-lg hover:bg-white hover:text-black">
                         <p class="flex justify-center text-sm ">Cancel</p>
@@ -161,7 +161,7 @@ async function handleRefund() {
 
         alert('You have successfully created refund ! Please patiently await confirmation from our staff after submitting the refund slip.')
 
-        await navigateTo(`/student`);
+        await navigateTo(`/student/refund`);
 
     }
     else {
