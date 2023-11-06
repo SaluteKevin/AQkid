@@ -56,7 +56,7 @@
         <p class="text-2xl font-extrabold text-dark-grey-900">Course Enrollment</p>
         <p class="text-base leading-7 text-dark-grey-600">See all the courses here!!</p>
         <NuxtLink to="/course/enrollCourse"
-          class="z-10 bg-orange-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+          class="z-10 bg-orange-500 text-white hover:bg-orange-700 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
           <i class="fas fa-heart"></i> Enroll Course
         </NuxtLink>
       </div>
@@ -129,7 +129,7 @@
         <p class="text-2xl font-extrabold text-dark-grey-900">Money Refund</p>
         <p class="text-base leading-7 text-dark-grey-600">Create Refund Application here!!</p>
         <NuxtLink :to="`/student/refund${0}`"
-          class="z-10 bg-orange-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+          class="z-10 bg-orange-500 text-white hover:bg-orange-700 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
           <i class="fas fa-heart"></i> Request Refund
         </NuxtLink>
 
@@ -157,7 +157,7 @@
         <p class="text-2xl font-extrabold text-dark-grey-900">Student Archievements</p>
         <p class="text-base leading-7 text-dark-grey-600">See my stat here!!</p>
         <button v-on:click="toStat"
-          class="z-10 bg-orange-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          class="z-10 bg-orange-500 text-white hover:bg-orange-700 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
           type="button">
           <i class="fas fa-heart"></i> My Archievements
         </button>
@@ -256,7 +256,7 @@
         <p class="text-2xl font-extrabold text-dark-grey-900">My Enrollments</p>
         <p class="text-base leading-7 text-dark-grey-600">See all my enrollments here!!</p>
         <NuxtLink to="/student/enrollments"
-          class="z-10 bg-orange-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+          class="z-10 bg-orange-500 text-white hover:bg-orange-700 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
           <i class="fas fa-heart"></i> My Enrollments
         </NuxtLink>
 
@@ -315,7 +315,7 @@
         <p class="text-2xl font-extrabold text-dark-grey-900">My Refund Requests</p>
         <p class="text-base leading-7 text-dark-grey-600">See all my Refund Requests here!!</p>
         <NuxtLink to="/student/refund"
-          class="z-10 bg-orange-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+          class="z-10 bg-orange-500 text-white hover:bg-orange-700 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
           <i class="fas fa-heart"></i> My Refund Request
         </NuxtLink>
 
@@ -348,7 +348,7 @@
         <p class="text-2xl font-extrabold text-dark-grey-900">Aquatic Training</p>
         <p class="text-base leading-7 text-dark-grey-600">See all my classes here!!</p>
         <button v-on:click="toClasses"
-          class="z-10 bg-orange-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          class="z-10 bg-orange-500 text-white hover:bg-orange-700 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
           type="button">
           <i class="fas fa-heart"></i> My Classes
         </button>
