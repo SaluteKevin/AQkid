@@ -3,12 +3,12 @@
         <div class="text-4xl pt-12 ml-12 font-bold text-gray-700 ">
             Enroll Course
         </div>
-        <div class='app m-6 transform ease-in-out '>
+        <div class='app mx-6 transform ease-in-out '>
             <div>
                 <FullCalendar :options='calendarOptions' class="bg-white rounded-xl" />
             </div>
         </div>
-        <div  ref="scrollEvent" v-if="showCard" class="flex w-full justify-center">
+        <div  ref="scrollEvent" v-if="showCard" class="mt-10 flex w-full justify-center">
             <div class="bg-white max-w-2xl shadow overflow-hidden sm:rounded-lg">
                 <div class="px-4 py-5 sm:px-6">
                     <h3 class="text-lg leading-6 font-medium text-gray-900">
