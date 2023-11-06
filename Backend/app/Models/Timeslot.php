@@ -28,7 +28,7 @@ class Timeslot extends Model
 
     public function studentAttendances(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'student_attendances', 'timeslot_id', 'student_id')->withPivot('has_attended');
+        return $this->belongsToMany(User::class, 'student_attendances', 'timeslot_id', 'student_id')->withPivot('has_attended','review_comment');
     }
 
     public function teacherAttendances(): BelongsToMany
@@ -197,6 +197,18 @@ class Timeslot extends Model
         }
     
 
+    }
+
+    public function updateReview(int $studentId, string $reviewText): bool
+    {
+        if ($this->studentAttendances()->find($studentId) == null) {
+            error_log('Student \'' . $studentId . '\' has not been attached');
+            return false;
+        }
+
+            $this->studentAttendances()->updateExistingPivot($studentId, ['review_comment' => $reviewText]);
+
+        return true;
     }
 
 }

@@ -1,4 +1,12 @@
 <template>
+  <div class="absolute left-10 top-30">
+            <NuxtLink to="/student">
+                <button
+                    class="bg-orange-500 px-8 py-1 text-xl text-white border-2 border-white hover:bg-orange-700 duration-150 rounded-lg">
+                    back
+                </button>
+            </NuxtLink>
+        </div>
 
     <div class="container mx-auto w-full mt-28">
         <FullCalendar :options='calendarOptions' />

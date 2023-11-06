@@ -1,6 +1,7 @@
 <template>
   <div class="h-screen bg-gradient-to-t from-cyan-400 from-20% to-white to-70%">
   <div class="flex px-16 mt-24 divide-x-2 space-x-10">
+    
     <!--Class information-->
     <div class="w-1/3">
       <div class="rounded-2xl shadow-xl bg-white">
