@@ -32,6 +32,8 @@
     "nuxt-pdfeasy": "^1.4.0",
     "pinia": "^2.1.6",
     "pinia-plugin-persist": "^1.0.0",
-    "pusher-js": "^8.3.0"
+    "promptpay-qr": "^0.5.0",
+    "pusher-js": "^8.3.0",
+    "qrcode": "^1.5.3"
   }
 }

@@ -156,6 +156,29 @@ const removeImagePreview = () => {
     }
 };
 
+// qrcode
+import generatePayload from 'promptpay-qr';
+import qrcode from 'qrcode';
+
+const mobileNumber = '0972522263';
+const amount = course.value.price;
+let qrCodeSvg = '';
+
+const payload = generatePayload(mobileNumber, { amount });
+
+const generateQRCode = () => {
+    const options = { type: 'svg', color: { dark: '#000', light: '#fff' } };
+    qrcode.toString(payload, options, (err, svg) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        qrCodeSvg = svg;
+    });
+};
+
+generateQRCode();
+
 
 </script>
 
@@ -169,9 +192,7 @@ const removeImagePreview = () => {
                     <div class="flex justify-center items-center">
                         <div class=" flex justify-center items-center bg-white rounded-lg">
                             <div>
-                                <img class="h-auto max-w-lg"
-                                    src="https://media.discordapp.net/attachments/474941945882476546/1162264364968050738/Screenshot_2023-10-13-12-43-23-97_275eb041e5d68c8a5fb815dd7041b155.jpg?ex=653b4e0a&is=6528d90a&hm=4612de7db51935602c65330a831169eeaaec50cc3360b7648d05d1f00dec3b3a&=&width=461&height=507"
-                                    alt="image description">
+                                <div class="h-[600px] w-[600px]" v-if="qrCodeSvg" v-html="qrCodeSvg"></div>
                             </div>
                         </div>
 
