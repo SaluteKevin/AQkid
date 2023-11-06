@@ -141,7 +141,8 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: "staff" })
+definePageMeta({layout: "staff",
+middleware: ['is-authorized','is-staff']})
 const config = useRuntimeConfig();
 import { usePaginateStore } from '~/stores/usePaginateStore'
 const paginate = usePaginateStore();

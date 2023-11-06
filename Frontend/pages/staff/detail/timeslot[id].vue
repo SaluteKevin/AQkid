@@ -129,7 +129,8 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: "staff" })
+definePageMeta({layout: "staff",
+middleware: ['is-authorized','is-staff']})
 
 import '@vuepic/vue-datepicker/dist/main.css'
 import dayjs from 'dayjs';

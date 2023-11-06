@@ -50,7 +50,8 @@
 </template>
   
 <script setup lang="ts">
-definePageMeta({ layout: "staff" })
+definePageMeta({layout: "staff",
+middleware: ['is-authorized','is-staff']})
 import FullCalendar from '@fullcalendar/vue3'
 import interactionPlugin from '@fullcalendar/interaction'
 import timeGridPlugin from '@fullcalendar/timegrid'

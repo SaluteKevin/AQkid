@@ -116,7 +116,8 @@
 
 <script setup lang="ts">
 const config = useRuntimeConfig();
-definePageMeta({ layout: "staff" })
+definePageMeta({layout: "staff",
+middleware: ['is-authorized','is-staff']})
 
 const route = useRoute();
 

@@ -336,7 +336,8 @@
 
 <script setup lang="ts">
 
-definePageMeta({layout: "staff"})
+definePageMeta({layout: "staff",
+middleware: ['is-authorized','is-staff']})
 
 const Registration = ref(false)
 const scrollRegis = ref()

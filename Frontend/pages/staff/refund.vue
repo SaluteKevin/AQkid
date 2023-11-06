@@ -78,7 +78,8 @@
 
 <script setup lang="ts">
 
-definePageMeta({layout: "staff"})
+definePageMeta({layout: "staff",
+middleware: ['is-authorized','is-staff']})
 const config = useRuntimeConfig();
 // :src="`${config.public.imageBaseURL}${enroll.user.profile_image_path}`"
 // allTeachers

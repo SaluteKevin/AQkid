@@ -81,7 +81,8 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: "staff" })
+definePageMeta({layout: "staff",
+middleware: ['is-authorized','is-staff']})
 const config = useRuntimeConfig();
 const route = useRoute();
 

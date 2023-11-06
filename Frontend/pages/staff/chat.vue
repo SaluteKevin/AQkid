@@ -69,7 +69,8 @@
 </template>
   
 <script setup lang="ts">
-definePageMeta({ layout: "staff" })
+definePageMeta({layout: "staff",
+middleware: ['is-authorized','is-staff']})
 import { useAuthStore } from "~/stores/useAuthStore";
 const auth = useAuthStore();
 import Pusher from 'pusher-js';
