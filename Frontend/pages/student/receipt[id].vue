@@ -13,7 +13,7 @@ import dayjs from 'dayjs';
 const { data: receiptResponse, error: receiptError } = await useApiFetch(`api/student/getReceipt/${route.params.id}`, {});
 
 if (receiptResponse.value) {
-
+    console.log(receiptResponse.value)
 } else {
     if (receiptError.value) {   
     
@@ -56,15 +56,25 @@ $pdf.add([
     { lineBreak: {} },
     { lineBreak: {} },
     { raw: 'Receipt of ' + receiptResponse.value.user.first_name + " " + receiptResponse.value.user.last_name, text: { } }, // common text
-    { raw: 'Amount: ' + receiptResponse.value.receipt.amount + ' Baht', text: {}, },
-    { raw: 'Pay at: ' + dayjs(receiptResponse.value.receipt.payment_timestamp).format('YYYY-MM-DD HH:mm:ss'), text: {} },
-    { raw: 'Description: ' + receiptResponse.value.receipt.description, text: {} },
+    { lineBreak: {} },
+    { table: { // table. Check pdfkit-table package for more explanations
+    body: {
+      title: "Receipt Details",
+      headers: [ "Course Title", "Description","Pay at","Amount"],
+      rows: [
+        [ receiptResponse.value.course.title, receiptResponse.value.receipt.description,  
+        dayjs(receiptResponse.value.receipt.payment_timestamp).format('YYYY-MM-DD HH:mm:ss'), receiptResponse.value.receipt.amount + ' Baht'],
+      ],
+    },
+    options: {}
+    }},
     { lineBreak: {} },
     { lineBreak: {} },
     { lineBreak: {} },
     { lineBreak: {} },
     { raw: 'Payment Status: ' + receiptResponse.value.status, text: {bold: true} },
     { raw: 'Total: ' + receiptResponse.value.receipt.total + " Baht", text: {bold: true} },
+    
 
 
 ])

@@ -221,6 +221,7 @@ class StudentController extends Controller
     public function getReceipt(Enrollment $enrollment) {
         $enrollment->receipt;
         $enrollment->user = User::find($enrollment->student_id);
+        $enrollment->course;
         return $enrollment;
 
     }
