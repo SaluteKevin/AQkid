@@ -22,6 +22,14 @@
                     <dl>
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">
+                                Quota
+                            </dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                {{ quota }} classes
+                            </dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">
                                 Day
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
@@ -171,7 +179,7 @@ if (eventCourse.value) {
             min_age: eventCourse.value[event].min_age,
             enroll_count: eventCourse.value[event].studentsIn,
             capacity: eventCourse.value[event].capacity,
-
+            quota: eventCourse.value[event].quota
         }
 
         if (dayjs(eventCourse.value[event].starts_on).day() == 0) {
@@ -234,7 +242,7 @@ const max_age = ref(0)
 const min_age = ref(0)
 const enroll_count = ref(0)
 const capacity = ref(0)
-
+const quota = ref(0)
 
 
 async function handleEventClick(arg) {
@@ -248,7 +256,8 @@ async function handleEventClick(arg) {
     min_age.value = arg.event.extendedProps.min_age;
     enroll_count.value = arg.event.extendedProps.enroll_count;
     capacity.value = arg.event.extendedProps.capacity;
-    
+    quota.value = arg.event.extendedProps.quota;
+
     await showCardtrue();
 
     await toEvent();
