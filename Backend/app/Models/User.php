@@ -147,12 +147,30 @@ class User extends Authenticatable implements JWTSubject
      */
     public static function searchUser(string $search, UserRoleEnum $userRole): Collection
     {
+        $users = User::where('role', $userRole->name)
+        ->when($search, function ($query) use ($search) {
+            return $query->where('first_name', 'LIKE', '%' . $search . '%');
+        })
+        ->get();
 
-        return User::where('role', $userRole->name)
-            ->when($search, function ($query) use ($search) {
-                return $query->where('first_name', 'LIKE', '%' . $search . '%');
-            })
-            ->get();
+        foreach ($users as $student) {
+
+            $count = 0;
+            $enrollments = Enrollment::where('student_id', $student->id)->where('status', EnrollmentStatusEnum::SUCCESS->name)->get();
+
+            foreach ($enrollments as $enrollment) {
+                $course = Course::find($enrollment->course_id);
+
+                if ($course != null && $course->status == CourseStatusEnum::ACTIVE->name) {
+                    $count += 1;
+                }
+            }
+
+            $student->courses_count = $count;
+
+        }
+
+        return $users;
     }
 
 
