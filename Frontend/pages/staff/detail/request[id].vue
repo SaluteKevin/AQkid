@@ -27,6 +27,9 @@
                             {{ formatDateTime(new
                                 Date(enroll.created_at)) }}
                         </div>
+                        <div class="title title--epic mt-12 text-2xl font-bold"><span class="text-gray-500">Course price:</span>
+                            {{ enroll.course.price }} Baht
+                        </div>
     
     
                     </div>
