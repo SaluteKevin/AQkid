@@ -52,9 +52,9 @@ class AuthController extends Controller
             'firstname' => 'required',
             'middlename' => 'nullable',
             'lastname' => 'required',
-            'birthdate' => 'required',
+            'birthdate' => 'required|'.'before_or_equal:' . now()->format('Y-m-d'),
             'phone_number' => 'required',
-            'email' => 'nullable',
+            'email' => 'nullable|unique:users',
             'profile_image_path' => 'nullable|image|mimes:png,gif,jpg,jpeg,bmp|max:2048'
         ]);
         
@@ -134,9 +134,9 @@ class AuthController extends Controller
             'firstname' => 'required',
             'middlename' => 'nullable',
             'lastname' => 'required',
-            'birthdate' => 'required',
+            'birthdate' => 'required|'.'before_or_equal:' . now()->format('Y-m-d'),
             'phone_number' => 'required',
-            'email' => 'nullable',
+            'email' => 'nullable|unique:users',
         ]);
 
         $statusOk = User::updateUserInfo(
