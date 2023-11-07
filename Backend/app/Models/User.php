@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Enums\CourseStatusEnum;
 use App\Models\Enums\EnrollmentStatusEnum;
+use App\Models\Enums\StudentAttendanceEnum;
 use App\Models\Enums\UserRoleEnum;
 use App\Services\FileService;
 use Illuminate\Contracts\Pagination\Paginator;
@@ -91,6 +92,19 @@ class User extends Authenticatable implements JWTSubject
     public function teacherAttendances(): BelongsToMany
     {
         return $this->belongsToMany(Timeslot::class, 'teacher_attendances', 'teacher_id', 'timeslot_id');
+    }
+
+    public function studentQuota() {
+
+        $count = 0;
+
+        $courses = Course::whereIn('id', Enrollment::where('student_id', $this->id)->where('status',EnrollmentStatusEnum::SUCCESS->name)->distinct('course_id')->pluck('course_id'))->get();
+
+        foreach($courses as $course) {
+            $count = $count + ($course->quota - $this->studentAttendances->whereIn('course_id',$course->id)->where('pivot.has_attended',StudentAttendanceEnum::TRUE->name)->count());
+        }
+
+        return $count;
     }
 
     /**

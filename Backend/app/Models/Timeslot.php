@@ -118,6 +118,9 @@ class Timeslot extends Model
         } else if ($this->studentAttendances()->find($studentId)->pivot->has_attended == $studentAttendance->name) {
             error_log('Attempting to change attendance to the same value');
             return false;
+        } else if ($studentAttendance == StudentAttendanceEnum::TRUE && User::find($studentId)->studentQuota() < 1) {
+            error_log('Attempting to change attendance for a student who is out of quota');
+            return false;
         }
 
             $this->studentAttendances()->updateExistingPivot($studentId, ['has_attended' => $studentAttendance->name]);
@@ -130,16 +133,24 @@ class Timeslot extends Model
         $studentsId = $timeslot->studentAttendances->pluck('id');
 
 
-        $mergedTimeslots = User::where('role', UserRoleEnum::STUDENT->name)->get();
+        $makeupStudents = User::whereNotIn('id',$studentsId)->where('role', UserRoleEnum::STUDENT->name)->get();
 
+        $makeupStudents = $makeupStudents->filter(function ($user) {
+            return $user->studentQuota() > 0;
+        });
 
-        $mergedTimeslots->each(function ($student) use ($studentsId) {
+        $studentIn = User::whereIn('id',$studentsId)->get();
+
+        $mergeStudents = $makeupStudents->concat($studentIn);
+
+        $mergeStudents->each(function ($student) use ($studentsId) {
             $student->expect = in_array($student->id, $studentsId->toArray());
         });
 
-        return $mergedTimeslots;
+        return $mergeStudents;
 
     }
+
 
     public static function queryTimeslotCourseTitle(Collection $timeslots) {
 

@@ -1,6 +1,6 @@
 <template>
     <div class="p-16 min-h-screen bg-gradient-to-b to-pink-200 to-60% from-[#bce1ff] from-10%">
-    <h2 class="my-4 text-4xl font-semibold text-gray-600">Refund History</h2>
+    <h2 class="my-4 text-4xl font-semibold text-gray-600">Refund Histories</h2>
 			<div class="pb-2 flex items-center justify-between text-gray-600">
 				<!-- Header -->
 

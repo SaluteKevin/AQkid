@@ -369,7 +369,7 @@ function clickOutside() {
 
 
 
-
+const errorAddStd = ref('');
 
 // add student attend
 async function AddStudent(studentId: int) {
@@ -385,7 +385,9 @@ async function AddStudent(studentId: int) {
   } else {
 
     if (addError.value) {
-      console.log(addError.value)
+      errorAddStd.value = "";
+
+      errorAddStd.value = addError.value.data.message;
     }
   }
 
@@ -395,7 +397,7 @@ async function AddStudent(studentId: int) {
 
 
 
-
+const errorRemStd = ref('');
 // remove student attend
 async function RemoveStudent(studentId: int) {
 
@@ -411,7 +413,9 @@ async function RemoveStudent(studentId: int) {
   } else {
 
     if (removeError.value) {
-      console.log(removeError.value)
+      errorRemStd.value = "";
+
+      errorRemStd.value = removeError.value.data.message;
     }
   }
 }

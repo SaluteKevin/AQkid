@@ -2,7 +2,7 @@
     <!-- active user  -->
     <div class="p-16 min-h-screen bg-gradient-to-b to-orange-200 to-60% from-[#bce1ff] from-10%">
         <div class="flex justify-between items-center">
-            <h2 class="my-4 text-4xl font-semibold text-gray-600 w-1/3">Student List</h2>
+            <h2 class="my-4 text-4xl font-semibold text-gray-600 w-1/3">Student Lists</h2>
             <label
                 class="relative bg-white min-w-sm max-w-2xl flex flex-col md:flex-row items-center justify-center border  px-2 rounded-2xl shadow-2xl focus-within:border-gray-300 w-1/2"
                 for="search-bar">

@@ -75,7 +75,7 @@ class TeacherController extends Controller
         }
 
         return response()->json([
-            'message' => "Failed to Attend Student",
+            'message' => "Attempting to change attendance for a student who is out of quota",
         ],422);
     }
 

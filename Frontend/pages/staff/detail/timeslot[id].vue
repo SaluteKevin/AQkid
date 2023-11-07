@@ -101,7 +101,7 @@
 
         </div>
         <div class="flex-1 flex flex-col gap-2 border p-4">
-            <h1>All Students</h1>
+            <h1>Student with available enrollment slots.</h1>
             <p class="text-red-500 font-normal">
                 {{ errorAddStd }}
             </p>
