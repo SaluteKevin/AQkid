@@ -90,6 +90,7 @@ class StaffController extends Controller
     public function enrollmentRequestReview(Enrollment $enrollment)
     {
         $enrollment = Enrollment::getEnrollmentWithUser($enrollment);
+        $enrollment->course = Course::find($enrollment->id);
         return $enrollment;
         // return specific enrollment request
 
