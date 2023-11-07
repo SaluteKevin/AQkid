@@ -45,12 +45,12 @@
                                     <circle cx="8.5" cy="7" r="4" />
                                     <path d="M20 8v6M23 11h-6" />
                                 </svg>
-                                <span class="ml-">
+                                <span class="ml-2">
                                     Sign In
                                 </span>
                             </button>
                             <p class="text-lg font-light text-gray-700 pt-2">
-                                Don't have an account yet? <NuxtLink class="font-medium text-primary-600 hover:underline" to="/auths/register">Sign up</NuxtLink>
+                                Don't have an account yet ? <NuxtLink class="font-medium text-primary-600 hover:underline" to="/auths/register">Sign up</NuxtLink>
                             </p>
                         </div>
                     </form>

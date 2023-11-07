@@ -222,16 +222,16 @@
                             class="bg-black mt-8
                                 shadow-inner 
                                 hover:shadow-xl duration-300 hover:bg-white hover:text-indigo-600 w-full text-center py-3 rounded text-white my-1"
-                        >Create Account</button>
+                        >Sign up</button>
 
                         <p class="text-red-500" v-for="error in RegistrationError['message']" :key="error">
                                     {{ error }}
                         </p>
 
                         <div class="text-grey-dark">
-                        Already Sign Up? 
+                        Already have an account ?
                         <NuxtLink class="no-underline border-b border-blue text-indigo-600" to="/auths/login">
-                            Log in
+                            Sign in
                         </NuxtLink>
 
                     </div>
