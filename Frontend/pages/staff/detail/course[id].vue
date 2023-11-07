@@ -16,6 +16,21 @@
                     {{ course.description }}
                 </p>
             </div>
+            <div class="mb-8 w-full flex-col flex ">
+                <span class="mt-2 px-2 text-xl font-semibold text-gray-500">
+                    Title: <span class="text-black">{{ course.title }}</span>
+                </span>
+                <span class="px-2 text-xl font-semibold text-gray-500">
+                    Description: <span class="text-black">{{ course.description }}</span>
+                </span>
+                <span class="px-2 text-xl font-semibold text-gray-500">
+                    starts_on: <span class="text-black">{{ dayjs(course.starts_on).format('YYYY-MM-DD HH:mm:ss') }}</span>
+                </span>
+                <span class="px-2 text-xl font-semibold text-gray-500">
+                    Teacher_name: <span class="text-black">{{ course.teacher.first_name }} {{ course.teacher.last_name }}</span>
+                </span>
+            </div>
+           
             <div class="grid grid-cols-2 gap-4 px-2 w-full ">
                 <div
                     class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-lg ">
@@ -36,7 +51,7 @@
                     class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-lg ">
                     <p class="text-sm text-gray-600">Age-restricted</p>
                     <p class="text-base font-medium text-navy-700 ">
-                        {{ course.min_age/12 }} to {{ course.max_age/12 }} years old
+                        {{ course.min_age / 12 }} to {{ course.max_age / 12 }} years old
                     </p>
                 </div>
 
@@ -58,7 +73,7 @@
                 <div class="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-lg ">
                     <p class="text-sm text-gray-600">Course price</p>
                     <p class="text-base font-medium text-navy-700 ">
-                        {{ course.price }}
+                        {{ course.price }} Baht
                     </p>
                 </div>
             </div>
@@ -135,7 +150,7 @@
 
                             <div>
                                 <p class="text-red-500 font-normal">
-                                {{ showError }}
+                                    {{ showError }}
                                 </p>
                                 <button v-on:click="submitCreateTimeslot" class="
                         w-full
@@ -408,8 +423,10 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({layout: "staff",
-middleware: ['is-authorized','is-staff']})
+definePageMeta({
+    layout: "staff",
+    middleware: ['is-authorized', 'is-staff']
+})
 import FullCalendar from '@fullcalendar/vue3'
 import interactionPlugin from '@fullcalendar/interaction'
 import timeGridPlugin from '@fullcalendar/timegrid'
@@ -519,7 +536,7 @@ const { data: courseResponse, error: courseError } = await useApiFetch(`api/staf
 if (courseResponse.value) {
 
     course.value = courseResponse.value;
-
+    
     let first = 1;
 
     for (const event in courseResponse.value.timeslots) {
@@ -586,7 +603,7 @@ async function submitCreateTimeslot() {
         method: "POST",
         body: {
             datetime: dayjs(date.value).format('YYYY-MM-DD HH:mm:ss')
-        } 
+        }
     });
 
     if (createResponse.value) {

@@ -64,7 +64,7 @@ class StaffController extends Controller
         $courseWithAllTimeslots = Course::allTimeslotsWithAuthor($course);
 
         $courseWithAllTimeslots->enroll_count = Course::studentsIn($courseWithAllTimeslots->id)->count();
-
+        $courseWithAllTimeslots->teacher = User::find($courseWithAllTimeslots->teacher_id);
         return $courseWithAllTimeslots;
     }
 
