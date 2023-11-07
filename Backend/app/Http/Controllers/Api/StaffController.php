@@ -48,7 +48,7 @@ class StaffController extends Controller
     }
 
     /**
-     * 
+     *
      *  course open 1 คาบ ไม่มี student (ควรจะปิด)
      */
 
@@ -123,7 +123,7 @@ class StaffController extends Controller
                 'message' => "Failed to Add Student class",
             ], 422);
 
-           
+
         }
 
         return response()->json([
@@ -319,7 +319,7 @@ class StaffController extends Controller
             'lastname' => 'required',
             'birthdate' => 'required',
             'phone_number' => 'required',
-            'email' => 'nullable',
+            'email' => 'nullable|unique:users',
             'profile_image_path' => 'nullable|image|mimes:png,gif,jpg,jpeg,bmp|max:2048'
         ]);
 
