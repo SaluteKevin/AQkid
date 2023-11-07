@@ -1,0 +1,43 @@
+@startuml
+skinparam {
+    monochrome true
+    defaultFontName Sarabun
+}
+
+title Component Diagram
+
+[User]
+[Staff]
+[Teacher]
+[Student]
+[Authentication]
+
+component EnrollmentController  {
+    [Payment]
+}
+
+[CourseController]
+[UserRequest] as UserRequest
+[UserRefundRequest]
+
+UserRequest <|.. UserRefundRequest
+
+User <|.. Staff
+User <|.. Teacher
+User <|.. Student
+
+Authentication -(0- User: UserAuthenticationFactors
+
+CourseController -(0- Authentication: SessionInfo
+CourseController -(0- User: TeacherIdentifier
+
+EnrollmentController -(0- Authentication: SessionInfo
+EnrollmentController -(0- CourseController: CourseIdentifier
+' EnrollmentController -(0- User: StudentIdentifier
+
+' PaymentSystem -(0- Authentication: SessionInfo
+' PaymentSystem -(0- EnrollmentController: EnrollmentIdentifier
+
+UserRequest -(0- Authentication: SessionInfo
+UserRequest -(0- CourseController: CourseControllerIdentifier
+@enduml

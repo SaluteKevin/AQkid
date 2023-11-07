@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1340px" preserveAspectRatio="none" style="width:754px;height:1340px;background:#FFFFFF;" version="1.1" viewBox="0 0 754 1340" width="754px" zoomAndPan="magnify"><defs/><g><rect fill="none" height="28.2" id="_title" style="stroke:none;stroke-width:1.0;" width="149" x="298.25" y="10"/><text fill="#000000" font-family="Sarabun" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="139" x="303.25" y="29.952">Use Case 3: สมัครคอร์ส</text><rect fill="#FFFFFF" height="1290.5" style="stroke:#000000;stroke-width:1.5;" width="740.5" x="8" y="44.2"/><path d="M114,44.2 L114,55.4 L104,65.4 L8,65.4 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="Sarabun" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="14" x="11" y="60.152">sd</text><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="79" x="28" y="60.152">EnrollCourse</text><rect fill="none" height="549.6" style="stroke:#000000;stroke-width:1.5;" width="692" x="49.5" y="595.3"/><line style="stroke:#181818;stroke-width:1.0;" x1="226.25" x2="226.25" y1="447.5" y2="645.1"/><polygon fill="#181818" points="222.25,457.5,226.25,447.5,230.25,457.5,226.25,453.5" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="222.25,635.1,226.25,645.1,230.25,635.1,226.25,639.1" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="52" x="230.25" y="551.734">{0..5 min}</text><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="65.5" x2="65.5" y1="105.6" y2="1292.5"/><rect fill="#FFFFFF" height="1173.9" style="stroke:#181818;stroke-width:1.0;" width="10" x="60.5" y="113.6"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="283.5" x2="283.5" y1="105.6" y2="1292.5"/><rect fill="#FFFFFF" height="1138" style="stroke:#181818;stroke-width:1.0;" width="10" x="278.5" y="136.5"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="490.5" x2="490.5" y1="105.6" y2="1292.5"/><rect fill="#FFFFFF" height="92.7" style="stroke:#181818;stroke-width:1.0;" width="10" x="485.5" y="167.4"/><rect fill="#FFFFFF" height="61.8" style="stroke:#181818;stroke-width:1.0;" width="10" x="485.5" y="708.9"/><rect fill="#FFFFFF" height="30.9" style="stroke:#181818;stroke-width:1.0;" width="10" x="485.5" y="889.7"/><rect fill="#FFFFFF" height="61.8" style="stroke:#181818;stroke-width:1.0;" width="10" x="485.5" y="1044.2"/><rect fill="#FFFFFF" height="30.9" style="stroke:#181818;stroke-width:1.0;" width="10" x="485.5" y="1212.7"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="688.5" x2="688.5" y1="105.6" y2="1292.5"/><rect fill="#FFFFFF" height="30.9" style="stroke:#181818;stroke-width:1.0;" width="10" x="683.5" y="198.3"/><rect fill="#FFFFFF" height="13" style="stroke:#181818;stroke-width:1.0;" width="10" x="683.5" y="739.8"/><rect fill="#FFFFFF" height="13" style="stroke:#181818;stroke-width:1.0;" width="10" x="683.5" y="1075.1"/><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="103" x="14" y="72.4"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="89" x="21" y="94.352">customer:User</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="93" x="237" y="72.4"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="79" x="244" y="94.352">:WebBrowser</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="83" x="449" y="72.4"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="69" x="456" y="94.352">:WebServer</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="74" x="651.5" y="72.4"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="60" x="658.5" y="94.352">:Database</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="103" x="14" y="1292.5"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="89" x="21" y="1314.452">customer:User</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="93" x="237" y="1292.5"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="79" x="244" y="1314.452">:WebBrowser</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="83" x="449" y="1292.5"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="69" x="456" y="1314.452">:WebServer</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="74" x="651.5" y="1292.5"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="60" x="658.5" y="1314.452">:Database</text><polygon fill="#181818" points="266.5,132.5,276.5,136.5,266.5,140.5,270.5,136.5" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="70.5" x2="272.5" y1="136.5" y2="136.5"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="77.5" y="131.484">1</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="143" x="88.5" y="131.484">กดปุ่ม "ENROLL COURSE"</text><polygon fill="#181818" points="473.5,163.4,483.5,167.4,473.5,171.4,477.5,167.4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="288.5" x2="479.5" y1="167.4" y2="167.4"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="295.5" y="162.384">2</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="130" x="306.5" y="162.384">ขอเข้าถึงหน้าสมัครคอร์ส</text><polygon fill="#181818" points="671.5,194.3,681.5,198.3,671.5,202.3,675.5,198.3" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="495.5" x2="677.5" y1="198.3" y2="198.3"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="502.5" y="193.284">3</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="158" x="513.5" y="193.284">ขอข้อมูลคอร์สและตารางเวลา</text><polygon fill="#181818" points="506.5,225.2,496.5,229.2,506.5,233.2,502.5,229.2" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="500.5" x2="682.5" y1="229.2" y2="229.2"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="512.5" y="224.184">4</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="142" x="523.5" y="224.184">ข้อมูลคอร์สและตารางเวลา</text><polygon fill="#181818" points="299.5,256.1,289.5,260.1,299.5,264.1,295.5,260.1" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="293.5" x2="484.5" y1="260.1" y2="260.1"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="305.5" y="255.084">5</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="82" x="316.5" y="255.084">หน้าสมัครคอร์ส</text><polygon fill="#181818" points="81.5,287,71.5,291,81.5,295,77.5,291" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="75.5" x2="277.5" y1="291" y2="291"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="87.5" y="285.984">6</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="112" x="98.5" y="285.984">แสดงหน้าสมัครคอร์ส</text><polygon fill="#181818" points="266.5,317.9,276.5,321.9,266.5,325.9,270.5,321.9" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="70.5" x2="272.5" y1="321.9" y2="321.9"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="77.5" y="316.884">7</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="57" x="88.5" y="316.884">เลือกคอร์ส</text><polygon fill="#181818" points="266.5,348.8,276.5,352.8,266.5,356.8,270.5,352.8" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="70.5" x2="272.5" y1="352.8" y2="352.8"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="77.5" y="347.784">8</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="90" x="88.5" y="347.784">กดปุ่ม "Confirm"</text><polygon fill="#181818" points="81.5,379.7,71.5,383.7,81.5,387.7,77.5,383.7" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="75.5" x2="277.5" y1="383.7" y2="383.7"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="87.5" y="378.684">9</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="173" x="98.5" y="378.684">แสดงหน้ายืนยันรายละเอียดคอร์ส</text><polygon fill="#181818" points="266.5,410.6,276.5,414.6,266.5,418.6,270.5,414.6" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="70.5" x2="272.5" y1="414.6" y2="414.6"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="77.5" y="409.584">10</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="90" x="95.5" y="409.584">กดปุ่ม "Confirm"</text><polygon fill="#181818" points="81.5,441.5,71.5,445.5,81.5,449.5,77.5,445.5" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="75.5" x2="277.5" y1="445.5" y2="445.5"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="87.5" y="440.484">11</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="97" x="105.5" y="440.484">แสดงหน้าชำระเงิน</text><polygon fill="#181818" points="268.9107,575.6578,276.5,583.3,265.7339,583,270.9934,580.9173" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="70.5" x2="276.5" y1="493.3" y2="583.3"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="77.5" y="479.834">12</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="46" x="95.5" y="471.384">อัปโหลด</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="108" x="95.5" y="488.284">หลักฐานการชำระเงิน</text><path d="M49.5,595.3 L110.5,595.3 L110.5,604.2 L100.5,614.2 L49.5,614.2 L49.5,595.3 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="549.6" style="stroke:#000000;stroke-width:1.5;" width="692" x="49.5" y="595.3"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="16" x="64.5" y="610.184">alt</text><text fill="#000000" font-family="Sarabun" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="93" x="125.5" y="609.048">[เวลาไม่เกิน 5 นาที]</text><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="49.5" x2="741.5" y1="820.6" y2="820.6"/><text fill="#000000" font-family="Sarabun" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="81" x="54.5" y="832.348">[เวลาเกิน 5 นาที]</text><polygon fill="#181818" points="266.5,643.1,276.5,647.1,266.5,651.1,270.5,647.1" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="70.5" x2="272.5" y1="647.1" y2="647.1"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="77.5" y="642.084">13</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="90" x="95.5" y="642.084">กดปุ่ม "Confirm"</text><polygon fill="#181818" points="473.5,704.9,483.5,708.9,473.5,712.9,477.5,708.9" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="288.5" x2="479.5" y1="708.9" y2="708.9"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="295.5" y="703.884">14</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="125" x="313.5" y="703.884">ส่งข้อมูลการสมัครคอร์ส</text><line style="stroke:#181818;stroke-width:1.0;" x1="681.5" x2="671.5" y1="739.8" y2="735.8"/><line style="stroke:#181818;stroke-width:1.0;" x1="681.5" x2="671.5" y1="739.8" y2="743.8"/><line style="stroke:#181818;stroke-width:1.0;" x1="495.5" x2="682.5" y1="739.8" y2="739.8"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="502.5" y="734.784">15</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="138" x="520.5" y="734.784">เขียนข้อมูลการสมัครคอร์ส</text><polygon fill="#181818" points="299.5,766.7,289.5,770.7,299.5,774.7,295.5,770.7" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="293.5" x2="484.5" y1="770.7" y2="770.7"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="305.5" y="765.684">16</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="95" x="323.5" y="765.684">ผลการสมัครคอร์ส</text><polygon fill="#181818" points="81.5,797.6,71.5,801.6,81.5,805.6,77.5,801.6" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="75.5" x2="277.5" y1="801.6" y2="801.6"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="87.5" y="796.584">17</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="125" x="105.5" y="796.584">แสดงผลการสมัครคอร์ส</text><polygon fill="#181818" points="266.5,854.8,276.5,858.8,266.5,862.8,270.5,858.8" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="70.5" x2="272.5" y1="858.8" y2="858.8"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="77.5" y="853.784">18</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="149" x="95.5" y="853.784">กดปุ่ม "Go to Refund Page"</text><polygon fill="#181818" points="473.5,885.7,483.5,889.7,473.5,893.7,477.5,889.7" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="288.5" x2="479.5" y1="889.7" y2="889.7"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="295.5" y="884.684">19</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="160" x="313.5" y="884.684">ขอเข้าถึงหน้าสร้างคำขอคืนเงิน</text><polygon fill="#181818" points="299.5,916.6,289.5,920.6,299.5,924.6,295.5,920.6" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="293.5" x2="484.5" y1="920.6" y2="920.6"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="305.5" y="915.584">20</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="112" x="323.5" y="915.584">หน้าสร้างคำขอคืนเงิน</text><polygon fill="#181818" points="81.5,947.5,71.5,951.5,81.5,955.5,77.5,951.5" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="75.5" x2="277.5" y1="951.5" y2="951.5"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="87.5" y="946.484">21</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="112" x="105.5" y="946.484">หน้าสร้างคำขอคืนเงิน</text><polygon fill="#181818" points="266.5,978.4,276.5,982.4,266.5,986.4,270.5,982.4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="70.5" x2="272.5" y1="982.4" y2="982.4"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="77.5" y="977.384">22</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="124" x="95.5" y="977.384">กรอกข้อมูลคำขอคืนเงิน</text><polygon fill="#181818" points="266.5,1009.3,276.5,1013.3,266.5,1017.3,270.5,1013.3" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="70.5" x2="272.5" y1="1013.3" y2="1013.3"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="77.5" y="1008.284">23</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="73" x="95.5" y="1008.284">กดปุ่ม "Send"</text><polygon fill="#181818" points="473.5,1040.2,483.5,1044.2,473.5,1048.2,477.5,1044.2" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="288.5" x2="479.5" y1="1044.2" y2="1044.2"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="295.5" y="1039.184">24</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="110" x="313.5" y="1039.184">ส่งข้อมูลคำขอคืนเงิน</text><line style="stroke:#181818;stroke-width:1.0;" x1="681.5" x2="671.5" y1="1075.1" y2="1071.1"/><line style="stroke:#181818;stroke-width:1.0;" x1="681.5" x2="671.5" y1="1075.1" y2="1079.1"/><line style="stroke:#181818;stroke-width:1.0;" x1="495.5" x2="682.5" y1="1075.1" y2="1075.1"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="502.5" y="1070.084">25</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="91" x="520.5" y="1070.084">เขียนคำขอคืนเงิน</text><polygon fill="#181818" points="299.5,1102,289.5,1106,299.5,1110,295.5,1106" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="293.5" x2="484.5" y1="1106" y2="1106"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="305.5" y="1100.984">26</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="125" x="323.5" y="1100.984">ผลการสร้างคำขอคืนเงิน</text><polygon fill="#181818" points="81.5,1132.9,71.5,1136.9,81.5,1140.9,77.5,1136.9" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="75.5" x2="277.5" y1="1136.9" y2="1136.9"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="87.5" y="1131.884">27</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="155" x="105.5" y="1131.884">แสดงผลการสร้างคำขอคืนเงิน</text><polygon fill="#181818" points="266.5,1177.8,276.5,1181.8,266.5,1185.8,270.5,1181.8" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="70.5" x2="272.5" y1="1181.8" y2="1181.8"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="77.5" y="1176.784">28</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="62" x="95.5" y="1176.784">กดปุ่ม "OK"</text><polygon fill="#181818" points="473.5,1208.7,483.5,1212.7,473.5,1216.7,477.5,1212.7" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="288.5" x2="479.5" y1="1212.7" y2="1212.7"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="295.5" y="1207.684">29</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="93" x="313.5" y="1207.684">ขอเข้าถึงหน้าหลัก</text><polygon fill="#181818" points="299.5,1239.6,289.5,1243.6,299.5,1247.6,295.5,1243.6" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="293.5" x2="484.5" y1="1243.6" y2="1243.6"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="305.5" y="1238.584">30</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="45" x="323.5" y="1238.584">หน้าหลัก</text><polygon fill="#181818" points="81.5,1270.5,71.5,1274.5,81.5,1278.5,77.5,1274.5" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="75.5" x2="277.5" y1="1274.5" y2="1274.5"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="87.5" y="1269.484">31</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="75" x="105.5" y="1269.484">แสดงหน้าหลัก</text><line style="stroke:#181818;stroke-width:1.0;" x1="226.25" x2="226.25" y1="447.5" y2="645.1"/><polygon fill="#181818" points="222.25,457.5,226.25,447.5,230.25,457.5,226.25,453.5" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="222.25,635.1,226.25,645.1,230.25,635.1,226.25,639.1" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="52" x="230.25" y="551.734">{0..5 min}</text><!--MD5=[9fe067b010f802b9db8f065628092689]
+@startuml
+!pragma teoz true
+skinparam monochrome true
+skinparam defaultFontName Sarabun
+
+title Use Case 3: สมัครคอร์ส
+mainframe **sd** EnrollCourse
+
+participant "customer:User" as Customer
+participant ":WebBrowser" as Browser
+participant ":WebServer" as Server
+participant ":Database" as Database
+
+autonumber
+
+activate Customer
+Customer -> Browser: กดปุ่ม "ENROLL COURSE"
+
+activate Browser
+Browser -> Server: ขอเข้าถึงหน้าสมัครคอร์ส
+
+activate Server
+Server -> Database: ขอข้อมูลคอร์สและตารางเวลา
+
+activate Database
+Database - -> Server: ข้อมูลคอร์สและตารางเวลา
+deactivate Database
+
+Server - -> Browser: หน้าสมัครคอร์ส
+deactivate Server
+
+Browser - -> Customer: แสดงหน้าสมัครคอร์ส
+
+Customer -> Browser: เลือกคอร์ส
+Customer -> Browser: กดปุ่ม "Confirm"
+Browser - -> Customer: แสดงหน้ายืนยันรายละเอียดคอร์ส
+
+Customer -> Browser: กดปุ่ม "Confirm"
+
+{start} Browser -[hidden]> Server
+
+autonumber 11
+& Browser - -> Customer: แสดงหน้าชำระเงิน
+
+Customer ->(90) Browser: อัปโหลด\nหลักฐานการชำระเงิน
+
+' alt 1
+alt เวลาไม่เกิน 5 นาที
+
+{end} Customer -> Browser: กดปุ่ม "Confirm"
+{end} Browser -[hidden]> Server
+
+{start} <-> {end}: {0..5 min}
+
+autonumber 14
+Browser -> Server: ส่งข้อมูลการสมัครคอร์ส
+
+activate Server
+' Server -> Server: ตรวจสอบข้อมูลการสมัครคอร์ส
+
+' activate Server
+' deactivate Server
+
+Server ->> Database: เขียนข้อมูลการสมัครคอร์ส
+
+activate Database
+deactivate Database
+
+Server - -> Browser: ผลการสมัครคอร์ส
+deactivate Server
+
+Browser - -> Customer: แสดงผลการสมัครคอร์ส
+
+else เวลาเกิน 5 นาที
+
+Customer -> Browser: กดปุ่ม "Go to Refund Page"
+Browser -> Server: ขอเข้าถึงหน้าสร้างคำขอคืนเงิน
+
+activate Server
+Server - -> Browser: หน้าสร้างคำขอคืนเงิน
+deactivate Server
+
+Browser - -> Customer: หน้าสร้างคำขอคืนเงิน
+Customer -> Browser: กรอกข้อมูลคำขอคืนเงิน
+Customer -> Browser: กดปุ่ม "Send"
+Browser -> Server: ส่งข้อมูลคำขอคืนเงิน
+
+activate Server
+Server ->> Database: เขียนคำขอคืนเงิน
+
+activate Database
+deactivate Database
+
+Server - -> Browser: ผลการสร้างคำขอคืนเงิน
+deactivate Server
+
+Browser - -> Customer: แสดงผลการสร้างคำขอคืนเงิน
+
+'alt 1
+end
+
+Customer -> Browser: กดปุ่ม "OK"
+Browser -> Server: ขอเข้าถึงหน้าหลัก
+
+activate Server
+Server - -> Browser: หน้าหลัก
+deactivate Server
+
+Browser - -> Customer: แสดงหน้าหลัก
+deactivate Browser
+
+deactivate Customer
+@enduml
+
+@startuml
+!pragma teoz true
+skinparam monochrome true
+skinparam defaultFontName Sarabun
+
+title Use Case 3: สมัครคอร์ส
+mainframe **sd** EnrollCourse
+
+participant "customer:User" as Customer
+participant ":WebBrowser" as Browser
+participant ":WebServer" as Server
+participant ":Database" as Database
+
+autonumber
+
+activate Customer
+Customer -> Browser: กดปุ่ม "ENROLL COURSE"
+
+activate Browser
+Browser -> Server: ขอเข้าถึงหน้าสมัครคอร์ส
+
+activate Server
+Server -> Database: ขอข้อมูลคอร์สและตารางเวลา
+
+activate Database
+Database - -> Server: ข้อมูลคอร์สและตารางเวลา
+deactivate Database
+
+Server - -> Browser: หน้าสมัครคอร์ส
+deactivate Server
+
+Browser - -> Customer: แสดงหน้าสมัครคอร์ส
+
+Customer -> Browser: เลือกคอร์ส
+Customer -> Browser: กดปุ่ม "Confirm"
+Browser - -> Customer: แสดงหน้ายืนยันรายละเอียดคอร์ส
+
+Customer -> Browser: กดปุ่ม "Confirm"
+
+{start} Browser -[hidden]> Server
+
+autonumber 11
+& Browser - -> Customer: แสดงหน้าชำระเงิน
+
+Customer ->(90) Browser: อัปโหลด\nหลักฐานการชำระเงิน
+
+alt เวลาไม่เกิน 5 นาที
+
+{end} Customer -> Browser: กดปุ่ม "Confirm"
+{end} Browser -[hidden]> Server
+
+{start} <-> {end}: {0..5 min}
+
+autonumber 14
+Browser -> Server: ส่งข้อมูลการสมัครคอร์ส
+
+activate Server
+
+
+Server ->> Database: เขียนข้อมูลการสมัครคอร์ส
+
+activate Database
+deactivate Database
+
+Server - -> Browser: ผลการสมัครคอร์ส
+deactivate Server
+
+Browser - -> Customer: แสดงผลการสมัครคอร์ส
+
+else เวลาเกิน 5 นาที
+
+Customer -> Browser: กดปุ่ม "Go to Refund Page"
+Browser -> Server: ขอเข้าถึงหน้าสร้างคำขอคืนเงิน
+
+activate Server
+Server - -> Browser: หน้าสร้างคำขอคืนเงิน
+deactivate Server
+
+Browser - -> Customer: หน้าสร้างคำขอคืนเงิน
+Customer -> Browser: กรอกข้อมูลคำขอคืนเงิน
+Customer -> Browser: กดปุ่ม "Send"
+Browser -> Server: ส่งข้อมูลคำขอคืนเงิน
+
+activate Server
+Server ->> Database: เขียนคำขอคืนเงิน
+
+activate Database
+deactivate Database
+
+Server - -> Browser: ผลการสร้างคำขอคืนเงิน
+deactivate Server
+
+Browser - -> Customer: แสดงผลการสร้างคำขอคืนเงิน
+
+end
+
+Customer -> Browser: กดปุ่ม "OK"
+Browser -> Server: ขอเข้าถึงหน้าหลัก
+
+activate Server
+Server - -> Browser: หน้าหลัก
+deactivate Server
+
+Browser - -> Customer: แสดงหน้าหลัก
+deactivate Browser
+
+deactivate Customer
+@enduml
+
+PlantUML version 1.2022.7(Tue Aug 23 00:01:30 ICT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: TH
+--></g></svg>

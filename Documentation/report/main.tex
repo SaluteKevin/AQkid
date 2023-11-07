@@ -1,0 +1,58 @@
+% !TEX program = xelatex
+\documentclass{article}
+
+\usepackage{aqdocs}
+% \usepackage{showframe}
+
+\includeonly{%
+./sections/title,
+./sections/section-01,
+./sections/section-02,
+./sections/section-03,
+./sections/section-04,
+./sections/section-05,
+./sections/appendix}
+
+\title{\textbf{\appName\\
+เว็บแอปพลิเคชันจัดการตารางเวลาโรงเรียนสอนว่ายน้ำ}}
+
+\author{%
+Author 1\\
+Author 2\\
+Author 3\\
+Author 4}
+
+\date{}
+
+
+\begin{document}
+\pagestyle{empty}
+\pagenumbering{gobble}
+\include{./sections/title}
+
+\clearpage
+\tableofcontents
+
+\clearpage
+\listoftables
+
+\clearpage
+\listoffigures
+
+\clearpage
+\pagestyle{fancy}
+\pagenumbering{arabic}
+\include{./sections/section-01}
+
+\clearpage
+\include{./sections/section-02}
+
+\clearpage
+\include{./sections/section-03}
+
+\clearpage
+\include{./sections/section-04}
+
+\clearpage
+\include{./sections/section-05}
+\end{document}

@@ -1,0 +1,185 @@
+@startuml
+skinparam {
+    classAttributeIconSize 0
+    monochrome true
+    defaultFontName Sarabun
+}
+
+title Class Diagram
+' mainframe Classes
+
+abstract DatabaseModel {
+    {field} -id: int
+    {field} -createdAt: Timestamp
+    {field} -updatedAt: Timestamp
+    {method} +getId(): int
+    {method} +getCreatedAt(): Timestamp
+    {method} +setCreatedAt()
+    {method} +getUpdatedAt(): Timestamp
+    {method} +setUpdatedAt()
+}
+
+interface "Queryable<T>" as Queryable {
+    {abstract} find(): T
+    {abstract} first(): T
+    {abstract} get(): Collection<T>
+    {abstract} or(): Collection<Object>
+    {abstract} where(): Collection<Object>
+    {abstract} whereIn(): Collection<Object>
+}
+
+' class User extends DatabaseModel implements Queryable {
+class User {
+    {field} -username: String
+    {field} -password: String
+    {field} -role: Enum
+    {field} -firstName: String
+    {field} -middleName: String
+    {field} -lastName: String
+    {field} -birthdate: Date
+    {field} -phoneNumber: String
+    {field} -profileImagePath: String
+    {field} -email: String
+
+    {method} +getUsername(): String
+    {method} +getPassword(): String
+    {method} +setPassword()
+    {method} +getRole(): Enum
+    {method} +getFirstName(): String
+    {method} +setFirstName()
+    {method} +getMiddleName(): String
+    {method} +setMiddleName()
+    {method} +getLastName(): String
+    {method} +setLastName()
+    {method} +getBirthdate(): Date
+    {method} +getPhoneNumber(): String
+    {method} +setPhoneNumber()
+    {method} +getProfileImagePath(): String
+    {method} +setProfileImagePath()
+    {method} +getEmail(): String
+    {method} +setEmail()
+    {method} +register(): User
+    {method} +login(): User
+    {method} +updateInfo()
+}
+
+' class Course extends DatabaseModel implements Queryable {
+class Course {
+    {field} -teacherId: int
+    {field} -title: String
+    {field} -description: String
+    {field} -quota: int
+    {field} -capacity: int
+    {field} -minAge: int
+    {field} -maxAge: int
+    {field} -duration: int
+    {field} -opensOn: DateTime
+    {field} -opensUntil: DateTime
+    {field} -startsOn: DateTime
+    {field} -status: Enum
+    {field} -price: float
+
+    {static} +all(): Collection<Course>
+    {method} +getTeacherId(): int
+    {method} +getTitle(): String
+    {method} +getDescription(): String
+    {method} +getQuota(): int
+    {method} +getCapacity(): int
+    {method} +getMinAge(): int
+    {method} +getMaxAge(): int
+    {method} +getDuration(): int
+    {method} +getOpensOn(): DateTime
+    {method} +getOpensUntil(): DateTime
+    {method} +getStartsOn(): DateTime
+    {method} +getStatus(): Enum
+    {method} +setStatus()
+    {method} +getPrice(): float
+}
+
+' class Enrollment extends DatabaseModel implements Queryable {
+class Enrollment {
+    {field} -courseId: int
+    {field} -studentId: int
+    {field} -proofOfPaymentPath: String
+    {field} -status: Enum
+    {field} -reviewComment: String
+
+    {static} +all(): Collection<Enrollment>
+    {method} +getCourseId(): int
+    {method} +getStudentId(): int
+    {method} +getProofOfPaymentPath(): String
+    {method} +getStatus(): Enum
+    {method} +setStatus()
+    {method} +getReviewComment(): String
+    {method} +setReviewComment()
+}
+
+' class Receipt extends DatabaseModel implements Queryable {
+class Receipt {
+    {field} -enrollmentId: int
+    {field} -paymentTimestamp: Timestamp
+    {field} -receiptTimestamp: Timestamp
+    {field} -description: String
+    {field} -amount: float
+    {field} -subtotal: float
+    {field} -total: float
+
+    {method} +getEnrollmentId(): int
+    {method} +getPaymentTimestamp(): Timestamp
+    {method} +getReceiptTimestamp(): Timestamp
+    {method} +setReceiptTimestamp()
+    {method} +getDescription(): String
+    {method} +getAmount(): float
+    {method} +getSubtotal(): float
+    {method} +getTotal(): float
+}
+
+' class Timeslot extends DatabaseModel implements Queryable {
+class Timeslot {
+    {field} -courseId: int
+    {field} -dateTime: DateTime
+    {field} -type: Enum
+
+    {static} +all(): Collection<Timeslot>
+    {method} ~Timeslot()
+    {method} +getCourseId(): int
+    {method} +getDateTime(): DateTime
+    {method} +getType(): Enum
+}
+
+' class UserRequest extends DatabaseModel implements Queryable {
+class UserRequest {
+    {field} -originatorId: int
+    {field} -courseId: int
+    {field} -type: Enum
+    {field} -title: String
+    {field} -description: String
+    {field} -status: Enum
+    {field} -reviewComment: String
+
+    {static} +all(): Collection<UserRequest>
+    {method} +getOriginatorId(): int
+    {method} +getCourseId(): int
+    {method} +getType(): Enum
+    {method} +getTitle(): String
+    {method} +getDescription(): String
+    {method} +getStatus(): Enum
+    {method} +setStatus()
+    {method} +getReviewComment(): String
+    {method} +setReviewComment()
+}
+
+DatabaseModel <|-- User
+DatabaseModel <|-- Course
+DatabaseModel <|-- Enrollment
+DatabaseModel <|-- Receipt
+DatabaseModel <|-- Timeslot
+DatabaseModel <|-- UserRequest
+
+Queryable <|... User
+Queryable <|... Course
+Queryable <|... Enrollment
+Queryable <|... Receipt
+Queryable <|... Timeslot
+Queryable <|... UserRequest
+@enduml

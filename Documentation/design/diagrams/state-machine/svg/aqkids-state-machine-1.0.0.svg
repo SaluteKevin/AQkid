@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="829px" preserveAspectRatio="none" style="width:1559px;height:829px;background:#FFFFFF;" version="1.1" viewBox="0 0 1559 829" width="1559px" zoomAndPan="magnify"><defs/><g><rect fill="none" height="28.2" id="_title" style="stroke:none;stroke-width:1.0;" width="157" x="691.75" y="5"/><text fill="#000000" font-family="Sarabun" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="147" x="696.75" y="24.952">State Machine Diagram</text><rect fill="#FFFFFF" height="784.4" style="stroke:#000000;stroke-width:1.5;" width="1553.5" x="-1" y="39.2"/><path d="M104,39.2 L104,50.4 L94,60.4 L-1,60.4 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="95" x="2" y="55.152">ProgressCourse</text><!--MD5=[9ce7c72825951e5f0d311dd9b19c94cf]
+cluster enrolling--><g id="cluster_enrolling"><path d="M147,74.4 L992,74.4 A12.5,12.5 0 0 1 1004.5,86.9 L1004.5,102.6 L134.5,102.6 L134.5,86.9 A12.5,12.5 0 0 1 147,74.4 " fill="#F1F1F1" style="stroke:#F1F1F1;stroke-width:1.0;"/><rect fill="none" height="468.1" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="870" x="134.5" y="74.4"/><line style="stroke:#181818;stroke-width:0.5;" x1="134.5" x2="1004.5" y1="102.6" y2="102.6"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="92" x="523.5" y="94.352">กำลังสมัครคอร์ส</text></g><g id="enrolling.wait4payment"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="201" x="331" y="119.4"/><line style="stroke:#181818;stroke-width:0.5;" x1="331" x2="532" y1="147.6" y2="147.6"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="181" x="341" y="139.352">รออัปโหลดหลักฐานการชำระเงิน</text></g><g id="enrolling.requestEnrollFailed"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="147" x="229" y="247.4"/><line style="stroke:#181818;stroke-width:0.5;" x1="229" x2="376" y1="275.6" y2="275.6"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="127" x="239" y="267.352">ขอสมัครคอร์สไม่สำเร็จ</text></g><g id="enrolling.requestEnrollSucceeded"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="133" x="715" y="119.4"/><line style="stroke:#181818;stroke-width:0.5;" x1="715" x2="848" y1="147.6" y2="147.6"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="113" x="725" y="139.352">ขอสมัครคอร์สสำเร็จ</text></g><g id="enrolling.enrollFailed"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="131" x="473" y="247.4"/><line style="stroke:#181818;stroke-width:0.5;" x1="473" x2="604" y1="275.6" y2="275.6"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="111" x="483" y="267.352">สมัครคอร์สไม่สำเร็จ</text></g><g id="enrolling.enrollSucceeded"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="117" x="767" y="247.4"/><line style="stroke:#181818;stroke-width:0.5;" x1="767" x2="884" y1="275.6" y2="275.6"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="97" x="777" y="267.352">สมัครคอร์สสำเร็จ</text></g><ellipse cx="168.5" cy="144.4" fill="#222222" rx="10" ry="10" style="stroke:none;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="85" x="496" y="563.452">enrollAborted</text><ellipse cx="538.5" cy="542.5" fill="#F1F1F1" rx="6" ry="6" style="stroke:#181818;stroke-width:1.5;"/><line style="stroke:#181818;stroke-width:1.5;" x1="542.8891" x2="535.1109" y1="546.8891" y2="539.1109"/><line style="stroke:#181818;stroke-width:1.5;" x1="542.8891" x2="535.1109" y1="539.1109" y2="546.8891"/><ellipse cx="929.5" cy="272.4" fill="none" rx="10" ry="10" style="stroke:#222222;stroke-width:1.0;"/><ellipse cx="930" cy="272.9" fill="#222222" rx="6" ry="6" style="stroke:none;stroke-width:1.0;"/><g id="notRegistered"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="103" x="12" y="770.6"/><line style="stroke:#181818;stroke-width:0.5;" x1="12" x2="115" y1="798.8" y2="798.8"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="83" x="22" y="790.552">ไม่มีมีบัญชีผู้ใช้</text></g><g id="registered"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="80" x="229.5" y="770.6"/><line style="stroke:#181818;stroke-width:0.5;" x1="229.5" x2="309.5" y1="798.8" y2="798.8"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="60" x="239.5" y="790.552">มีบัญชีผู้ใช้</text></g><g id="notEnrolled"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="136" x="493.5" y="770.6"/><line style="stroke:#181818;stroke-width:0.5;" x1="493.5" x2="629.5" y1="798.8" y2="798.8"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="116" x="503.5" y="790.552">ไม่มีคอร์สพร้อมเรียน</text></g><g id="enrolled"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="122" x="1126.5" y="247.4"/><line style="stroke:#181818;stroke-width:0.5;" x1="1126.5" x2="1248.5" y1="275.6" y2="275.6"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="102" x="1136.5" y="267.352">มีคอร์สพร้อมเรียน</text></g><g id="attendedCourse"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="68" x="1484.5" y="517.5"/><line style="stroke:#181818;stroke-width:0.5;" x1="1484.5" x2="1552.5" y1="545.7" y2="545.7"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="48" x="1494.5" y="537.452">จบคอร์ส</text></g><ellipse cx="63.5" cy="542.5" fill="#222222" rx="10" ry="10" style="stroke:none;stroke-width:1.0;"/><ellipse cx="1518.5" cy="795.6" fill="none" rx="10" ry="10" style="stroke:#222222;stroke-width:1.0;"/><ellipse cx="1519" cy="796.1" fill="#222222" rx="6" ry="6" style="stroke:none;stroke-width:1.0;"/><path d="M1072,375.4 L1437,375.4 A12.5,12.5 0 0 1 1449.5,387.9 L1449.5,403.6 L1059.5,403.6 L1059.5,387.9 A12.5,12.5 0 0 1 1072,375.4 " fill="#F1F1F1" style="stroke:#F1F1F1;stroke-width:1.0;"/><rect fill="none" height="334.2" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="390" x="1059.5" y="375.4"/><line style="stroke:#181818;stroke-width:0.5;" x1="1059.5" x2="1449.5" y1="403.6" y2="403.6"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="88" x="1210.5" y="395.352">กำลังเรียนคอร์ส</text><g id="attendingCourse.attending"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="136" x="1071.5" y="488.6"/><line style="stroke:#181818;stroke-width:0.5;" x1="1071.5" x2="1207.5" y1="516.8" y2="516.8"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="116" x="1081.5" y="508.552">กำลังเรียนคอร์สเรียน</text></g><g id="attendingCourse.courseCompleted"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="84" x="1097.5" y="592.6"/><line style="stroke:#181818;stroke-width:0.5;" x1="1097.5" x2="1181.5" y1="620.8" y2="620.8"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="64" x="1107.5" y="612.552">คอร์สถูกปิด</text></g><ellipse cx="1139.5" cy="424.6" fill="#222222" rx="10" ry="10" style="stroke:none;stroke-width:1.0;"/><ellipse cx="1139.5" cy="689.6" fill="none" rx="10" ry="10" style="stroke:#222222;stroke-width:1.0;"/><ellipse cx="1140" cy="690.1" fill="#222222" rx="6" ry="6" style="stroke:none;stroke-width:1.0;"/><!--MD5=[a6ce12b6e5eca4c84ba59ac842029b2d]
+link *start*attendingCourse to attending--><g id="link_*start*attendingCourse_attending"><path d="M1139.5,434.91 C1139.5,446.06 1139.5,465.29 1139.5,481.83 " fill="none" id="*start*attendingCourse-to-attending" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1139.5,486.74,1143.5,477.74,1139.5,481.74,1135.5,477.74,1139.5,486.74" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="25" x="1140.5" y="467.484">เรียน</text></g><!--MD5=[bce0527c1541374a47df0d8d36666938]
+link attending to attending--><g id="link_attending_attending"><path d="M1207.98,504.71 C1218.41,506.07 1225.5,509.03 1225.5,513.6 C1225.5,517.17 1221.17,519.76 1214.31,521.37 " fill="none" id="attending-to-attending" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1209.47,522.23,1219.029,524.6019,1214.3936,521.3594,1217.6361,516.7241,1209.47,522.23" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="203" x="1231.5" y="519.484">ยังเรียนไม่ครบตามจำนวนครั้งของคอร์ส</text></g><!--MD5=[b037714a7278d9f4dc2b01d825fef61a]
+link attending to courseCompleted--><g id="link_attending_courseCompleted"><path d="M1139.5,539.03 C1139.5,553.16 1139.5,571.07 1139.5,586.11 " fill="none" id="attending-to-courseCompleted" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1139.5,590.85,1143.5,581.85,1139.5,585.85,1135.5,581.85,1139.5,590.85" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="177" x="1140.5" y="571.484">เรียนครบตามจำนวนครั้งของคอร์ส</text></g><!--MD5=[f073d632ed06a8940a6442fba1f7cc7e]
+link courseCompleted to *end*attendingCourse--><g id="link_courseCompleted_*end*attendingCourse"><path d="M1139.5,643.08 C1139.5,652.91 1139.5,663.96 1139.5,672.72 " fill="none" id="courseCompleted-to-*end*attendingCourse" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1139.5,677.66,1143.5,668.66,1139.5,672.66,1135.5,668.66,1139.5,677.66" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[6daf12ff94fa8b4861589b1b404071f4]
+link *start to notRegistered--><g id="link_*start_notRegistered"><path d="M63.5,552.73 C63.5,586.9 63.5,707.09 63.5,764.12 " fill="none" id="*start-to-notRegistered" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="63.5,768.91,67.5,759.91,63.5,763.91,59.5,759.91,63.5,768.91" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[366dff50128532444c8051c22cd99b59]
+link notRegistered to registered--><g id="link_notRegistered_registered"><path d="M115.48,795.6 C148.56,795.6 191.02,795.6 222.98,795.6 " fill="none" id="notRegistered-to-registered" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="227.72,795.6,218.72,791.6,222.72,795.6,218.72,799.6,227.72,795.6" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="78" x="133.25" y="789.484">สมัครบัญชีผู้ใช้</text></g><!--MD5=[6da989f09d0c684fdc4f9a58aa0e0db3]
+link registered to notEnrolled--><g id="link_registered_notEnrolled"><path d="M309.79,795.6 C355.29,795.6 430.3,795.6 486.62,795.6 " fill="none" id="registered-to-notEnrolled" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="491.54,795.6,482.54,791.6,486.54,795.6,482.54,799.6,491.54,795.6" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="147" x="328" y="789.484">ตรวจสอบคอร์สที่พร้อมเรียน</text></g><!--MD5=[1151e790064f9d792d927ae256ccfe5e]
+link notEnrolled to enrolling--><g id="link_notEnrolled_enrolling"><path d="M629.58,791.03 C737.5,783.8 940.23,763.26 984.5,709.6 C1024.085,661.62 1025.3775,522.39 1016.6288,394.2562 C1014.4416,362.2228 1011.6268,330.8829 1008.6259,301.8356 C1007.8756,294.5738 1007.1138,287.4553 1006.3472,280.5051 C1005.9639,277.03 1005.5794,273.5969 1005.1946,270.209 C1005.0022,268.5151 1004.8097,266.8325 1004.6172,265.1615 " fill="none" id="notEnrolled-to-enrolling" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1004.6172,265.1615,1001.6733,274.5601,1005.1894,270.1287,1009.6208,273.6447,1004.6172,265.1615" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="60" x="1013.5" y="342.284">สมัครคอร์ส</text></g><!--MD5=[4b6d1c7c4ab4a4176d669e66a4cbc89b]
+link *start*enrolling to wait4payment--><g id="link_*start*enrolling_wait4payment"><path d="M178.81,144.4 C203.28,144.4 267.09,144.4 324.47,144.4 " fill="none" id="*start*enrolling-to-wait4payment" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="329.2,144.4,320.2,140.4,324.2,144.4,320.2,148.4,329.2,144.4" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="116" x="196.75" y="138.284">สร้างคำขอสมัครคอร์ส</text></g><!--MD5=[c6465dae6ee88a7ba830145c5a326c66]
+link wait4payment to requestEnrollFailed--><g id="link_wait4payment_requestEnrollFailed"><path d="M330.73,155.36 C272.92,163.39 208.36,177.1 190.5,199.4 C173.84,220.21 194.91,236.88 223.11,248.92 " fill="none" id="wait4payment-to-requestEnrollFailed" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="227.43,250.69,220.6232,243.5719,222.8045,248.7913,217.5852,250.9727,227.43,250.69" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="67" x="191.5" y="214.284">กด "Cancel"</text></g><!--MD5=[c6465dae6ee88a7ba830145c5a326c66]
+link wait4payment to requestEnrollFailed--><g id="link_wait4payment_requestEnrollFailed"><path d="M333.07,169.84 C319.82,177.23 307.92,186.86 299.5,199.4 C291.46,211.38 291.27,227.18 293.49,240.93 " fill="none" id="wait4payment-to-requestEnrollFailed-1" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="294.38,245.59,296.6394,236.0038,293.4517,240.6769,288.7785,237.4892,294.38,245.59" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="172" x="300.5" y="214.284">ไม่ได้กด "Confirm" ภายใน 5 นาที</text></g><!--MD5=[dc751d8d7e3334bd3b589be2c582da96]
+link requestEnrollFailed to enrollAborted--><g id="link_requestEnrollFailed_enrollAborted"><path d="M323.86,297.66 C374.26,354.92 498.74,496.33 530.85,532.81 " fill="none" id="requestEnrollFailed-to-enrollAborted" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="533.89,536.27,530.9383,526.8739,530.5833,532.5196,524.9376,532.1646,533.89,536.27" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="30" x="366.5" y="342.284">ละทิ้ง</text></g><!--MD5=[184d5ef4d1820a2f7d1c814a7b7902e3]
+link wait4payment to requestEnrollSucceeded--><g id="link_wait4payment_requestEnrollSucceeded"><path d="M532.26,144.4 C588.43,144.4 657.11,144.4 708.14,144.4 " fill="none" id="wait4payment-to-requestEnrollSucceeded" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="713.08,144.4,704.08,140.4,708.08,144.4,704.08,148.4,713.08,144.4" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="146" x="550.5" y="138.284">กด "Confirm" ภายใน 5 นาที</text></g><!--MD5=[ba33508bc3715b49bc4744f84c928405]
+link requestEnrollSucceeded to enrollFailed--><g id="link_requestEnrollSucceeded_enrollFailed"><path d="M750.41,169.81 C730.36,184.81 703.3,203.7 677.5,217.4 C656.3,228.66 632.22,238.84 610.13,247.25 " fill="none" id="requestEnrollSucceeded-to-enrollFailed" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="605.68,248.93,615.513,249.4889,610.3569,247.1619,612.684,242.0058,605.68,248.93" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="67" x="707.5" y="214.284">กด "Cancel"</text></g><!--MD5=[ba33508bc3715b49bc4744f84c928405]
+link requestEnrollSucceeded to enrollFailed--><g id="link_requestEnrollSucceeded_enrollFailed"><path d="M714.66,149.2 C642.66,154.86 534.97,168.38 509.5,199.4 C499.46,211.63 504.73,227.79 513.38,241.7 " fill="none" id="requestEnrollSucceeded-to-enrollFailed-1" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="516.13,245.84,514.4659,236.1327,513.3565,241.6797,507.8095,240.5703,516.13,245.84" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="158" x="510.5" y="214.284">หลักฐานการชำระเงินไม่ถูกต้อง</text></g><!--MD5=[2f5cc4a8eed1cc6c6a442d7f5b87e638]
+link enrollFailed to enrollAborted--><g id="link_enrollFailed_enrollAborted"><path d="M538.5,297.66 C538.5,353.48 538.5,489.31 538.5,529.88 " fill="none" id="enrollFailed-to-enrollAborted" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="538.5,534.79,542.5,525.79,538.5,529.79,534.5,525.79,538.5,534.79" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="30" x="539.5" y="342.284">ละทิ้ง</text></g><!--MD5=[e600c51c61d311ed6e63fd042b21b862]
+link requestEnrollSucceeded to enrollSucceeded--><g id="link_requestEnrollSucceeded_enrollSucceeded"><path d="M789.98,169.69 C797.11,190.09 807.31,219.32 814.96,241.21 " fill="none" id="requestEnrollSucceeded-to-enrollSucceeded" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="816.54,245.75,817.3383,235.9335,814.8863,241.0314,809.7885,238.5794,816.54,245.75" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="145" x="806.5" y="214.284">หลักฐานการชำระเงินถูกต้อง</text></g><!--MD5=[3d52fa011c16d83749abc35c6c865432]
+link enrollSucceeded to *end*enrolling--><g id="link_enrollSucceeded_*end*enrolling"><path d="M884.41,272.4 C893.94,272.4 903.48,272.4 913.02,272.4 " fill="none" id="enrollSucceeded-to-*end*enrolling" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="917.77,272.4,908.77,268.4,912.77,272.4,908.77,276.4,917.77,272.4" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[032abf266e4f7dc4967b46a7f0ad7a24]
+link enrollAborted to notEnrolled--><g id="link_enrollAborted_notEnrolled"><path d="M538.98,548.74 C541.49,576.2 553.23,704.35 558.69,763.96 " fill="none" id="enrollAborted-to-notEnrolled" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="559.13,768.69,562.2891,759.3615,558.6722,763.711,554.3227,760.0941,559.13,768.69" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[8b0b0d338c50b78df115b31cf01a6974]
+link enrolling to enrolled--><g id="link_enrolling_enrolled"><path d="M1004.7169,155.6672 C1005.3301,156.0554 1005.9579,156.4529 1006.5998,156.8594 C1016.8716,163.3631 1030.7719,172.165 1046.3313,182.0175 C1077.45,201.7225 1115.205,225.63 1143.84,243.76 " fill="none" id="enrolling-to-enrolled" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1147.98,246.38,1142.5399,238.1699,1143.7635,243.6928,1138.2405,244.9164,1147.98,246.38" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[f9e17ef76c865e7c90b5f170d3b958f0]
+link enrolled to attendingCourse--><g id="link_enrolled_attendingCourse"><path d="M1193.56,297.66 C1197.97,315.29 1204.37,340.9 1211.38,368.97 " fill="none" id="enrolled-to-attendingCourse" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1212.52,373.53,1214.2446,363.8333,1211.3208,368.6759,1206.4781,365.7521,1212.52,373.53" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="73" x="1205.5" y="342.284">เข้าเรียนคอร์ส</text></g><!--MD5=[f9b6fab1e703f6c39379dd2b06c01aeb]
+link attendingCourse to attendedCourse--><g id="link_attendingCourse_attendedCourse"><path d="M1449.92,542.5 C1459.21,542.5 1468.5,542.5 1477.78,542.5 " fill="none" id="attendingCourse-to-attendedCourse" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1482.7,542.5,1473.7,538.5,1477.7,542.5,1473.7,546.5,1482.7,542.5" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[a51ade95d25d31789c738447b7d30516]
+link attendedCourse to *end--><g id="link_attendedCourse_*end"><path d="M1518.5,567.58 C1518.5,618.51 1518.5,735.97 1518.5,778.7 " fill="none" id="attendedCourse-to-*end" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1518.5,783.6,1522.5,774.6,1518.5,778.6,1514.5,774.6,1518.5,783.6" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[3beea9b38d1575565b92f2472dc0d382]
+@startuml
+skinparam monochrome true
+skinparam defaultFontName Sarabun
+
+title State Machine Diagram
+mainframe ProgressCourse
+
+state "ไม่มีมีบัญชีผู้ใช้" as notRegistered
+state "มีบัญชีผู้ใช้" as registered
+state "ไม่มีคอร์สพร้อมเรียน" as notEnrolled
+state "มีคอร์สพร้อมเรียน" as enrolled
+state "จบคอร์ส" as attendedCourse
+
+[*] - -> notRegistered
+notRegistered -> registered: สมัครบัญชีผู้ใช้
+registered -> notEnrolled: ตรวจสอบคอร์สที่พร้อมเรียน
+notEnrolled -> enrolling: สมัครคอร์ส
+
+state "กำลังสมัครคอร์ส" as enrolling {
+    state "รออัปโหลดหลักฐานการชำระเงิน" as wait4payment
+    state "ขอสมัครคอร์สไม่สำเร็จ" as requestEnrollFailed
+    state "ขอสมัครคอร์สสำเร็จ" as requestEnrollSucceeded
+    state "สมัครคอร์สไม่สำเร็จ" as enrollFailed
+    state "สมัครคอร์สสำเร็จ" as enrollSucceeded
+
+    [*] -> wait4payment: สร้างคำขอสมัครคอร์ส
+
+    wait4payment - -> requestEnrollFailed: กด "Cancel"
+    wait4payment - -> requestEnrollFailed: ไม่ได้กด "Confirm" ภายใน 5 นาที
+    requestEnrollFailed - -> enrollAborted <<exitPoint>>: ละทิ้ง
+
+    wait4payment -> requestEnrollSucceeded: กด "Confirm" ภายใน 5 นาที
+
+    requestEnrollSucceeded - -> enrollFailed: กด "Cancel"
+    requestEnrollSucceeded - -> enrollFailed: หลักฐานการชำระเงินไม่ถูกต้อง
+    enrollFailed - -> enrollAborted: ละทิ้ง
+
+    requestEnrollSucceeded - -> enrollSucceeded: หลักฐานการชำระเงินถูกต้อง
+    enrollSucceeded -> [*]
+}
+
+enrollAborted - -> notEnrolled
+enrolling -down-> enrolled
+enrolled - -> attendingCourse: เข้าเรียนคอร์ส
+
+state "กำลังเรียนคอร์ส" as attendingCourse {
+    ' state "ACTIVE" as active
+    ' state "ENDED" as ended
+    ' state "ยังเรียนไม่ครบตามจำนวนครั้งของคอร์ส" as quotaRemains
+    ' state "เรียนครบตามจำนวนครั้งของคอร์ส" as quotaReached
+    state "กำลังเรียนคอร์สเรียน" as attending
+    state "คอร์สถูกปิด" as courseCompleted
+
+    ' [*] -> active
+    ' active -> active: นักเรียนอย่างน้อย 1 คนยังเรียนไม่ครบตามจำนวนครั้งของคอร์ส
+    ' active -> ended: นักเรียนทุกคนเรียนครบตามจำนวนครั้งของคอร์ส
+    [*] - -> attending: เรียน
+    attending - -> attending: ยังเรียนไม่ครบตามจำนวนครั้งของคอร์ส
+    attending - -> courseCompleted: เรียนครบตามจำนวนครั้งของคอร์ส
+
+    courseCompleted - -> [*]
+}
+
+attendingCourse -> attendedCourse
+attendedCourse - -> [*]
+@enduml
+
+@startuml
+skinparam monochrome true
+skinparam defaultFontName Sarabun
+
+title State Machine Diagram
+mainframe ProgressCourse
+
+state "ไม่มีมีบัญชีผู้ใช้" as notRegistered
+state "มีบัญชีผู้ใช้" as registered
+state "ไม่มีคอร์สพร้อมเรียน" as notEnrolled
+state "มีคอร์สพร้อมเรียน" as enrolled
+state "จบคอร์ส" as attendedCourse
+
+[*] - -> notRegistered
+notRegistered -> registered: สมัครบัญชีผู้ใช้
+registered -> notEnrolled: ตรวจสอบคอร์สที่พร้อมเรียน
+notEnrolled -> enrolling: สมัครคอร์ส
+
+state "กำลังสมัครคอร์ส" as enrolling {
+    state "รออัปโหลดหลักฐานการชำระเงิน" as wait4payment
+    state "ขอสมัครคอร์สไม่สำเร็จ" as requestEnrollFailed
+    state "ขอสมัครคอร์สสำเร็จ" as requestEnrollSucceeded
+    state "สมัครคอร์สไม่สำเร็จ" as enrollFailed
+    state "สมัครคอร์สสำเร็จ" as enrollSucceeded
+
+    [*] -> wait4payment: สร้างคำขอสมัครคอร์ส
+
+    wait4payment - -> requestEnrollFailed: กด "Cancel"
+    wait4payment - -> requestEnrollFailed: ไม่ได้กด "Confirm" ภายใน 5 นาที
+    requestEnrollFailed - -> enrollAborted <<exitPoint>>: ละทิ้ง
+
+    wait4payment -> requestEnrollSucceeded: กด "Confirm" ภายใน 5 นาที
+
+    requestEnrollSucceeded - -> enrollFailed: กด "Cancel"
+    requestEnrollSucceeded - -> enrollFailed: หลักฐานการชำระเงินไม่ถูกต้อง
+    enrollFailed - -> enrollAborted: ละทิ้ง
+
+    requestEnrollSucceeded - -> enrollSucceeded: หลักฐานการชำระเงินถูกต้อง
+    enrollSucceeded -> [*]
+}
+
+enrollAborted - -> notEnrolled
+enrolling -down-> enrolled
+enrolled - -> attendingCourse: เข้าเรียนคอร์ส
+
+state "กำลังเรียนคอร์ส" as attendingCourse {
+    state "กำลังเรียนคอร์สเรียน" as attending
+    state "คอร์สถูกปิด" as courseCompleted
+
+    [*] - -> attending: เรียน
+    attending - -> attending: ยังเรียนไม่ครบตามจำนวนครั้งของคอร์ส
+    attending - -> courseCompleted: เรียนครบตามจำนวนครั้งของคอร์ส
+
+    courseCompleted - -> [*]
+}
+
+attendingCourse -> attendedCourse
+attendedCourse - -> [*]
+@enduml
+
+PlantUML version 1.2022.7(Tue Aug 23 00:01:30 ICT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: TH
+--></g></svg>
