@@ -39,7 +39,7 @@ $pdf.new({
                 // simple header
                 ({ Text }, context, current, total) => {
                     // render in every page
-                    Text('Enrollment Reciept', { bold: true, fontSize: 20 }, {
+                    Text('Enrollment Receipt', { bold: true, fontSize: 20 }, {
                         x: context.width / 2,
                         y: context.margins.top - 20
                     })
