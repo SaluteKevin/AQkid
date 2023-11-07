@@ -60,7 +60,7 @@ const course = ref({});
 const { data: eventCourse, error: loginError } = await useApiFetch("api/student/showCourse/" + route.params.id, {});
 
 if (eventCourse.value) {
-
+    console.log(eventCourse.value)
     course.value = eventCourse.value;
 
     let first = 1;
@@ -112,7 +112,7 @@ async function paymentConfirm() {
 
 }
 
-
+import dayjs from 'dayjs';
 </script>
 
 <template>
@@ -129,10 +129,21 @@ async function paymentConfirm() {
             <div class="items-center mt-12 w-full">
                 <div
                     class=" w-full relative flex flex-col items-center rounded-[20px] w-[700px] max-w-[95%] bg-white shadow-2xl p-3 border broder-gray-400">
-                    <div class="mt-2 mb-8 w-full ">
+                    <div class="mt-2 mb-8 w-full flex-col flex ">
                         
-                        <span class="mt-2 px-2 text-xl font-semibold text-gray-600">
-                            {{ course.description }}
+                        <span class="mt-2 px-2 text-xl font-semibold text-gray-500">
+                            Title: <span class="text-black">{{ course.title }}</span>
+                        </span>
+                        <span class="px-2 text-xl font-semibold text-gray-500">
+                            Description: <span class="text-black">{{ course.description }}</span>
+                        </span>
+                    </div>
+                    <div class="mt-2 mb-8 w-full flex flex-col "> 
+                        <span class="px-2 text-xl font-semibold text-gray-500">
+                            starts_on: <span class="text-black">{{ dayjs(course.starts_on).format('YYYY-MM-DD HH:mm:ss') }}</span>
+                        </span>
+                        <span class="px-2 text-xl font-semibold text-gray-500">
+                            Teacher_name: <span class="text-black">{{ course.teacher.first_name }} {{ course.teacher.last_name }}</span>
                         </span>
                     </div>
                     <div class="grid grid-cols-3 gap-4 px-2 w-full ">
