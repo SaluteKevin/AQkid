@@ -148,9 +148,11 @@ class Course extends Model
             if (in_array($course->id, $courseIds->toArray())) {
                 $course->author = true;
                 $course->studentsIn = Course::studentsIn($course->id)->count();
+                $course->teacher = User::find($course->teacher_id);
             } else {
                 $course->author = false;
                 $course->studentsIn = Course::studentsIn($course->id)->count();
+                $course->teacher = User::find($course->teacher_id);
             }
         });
 

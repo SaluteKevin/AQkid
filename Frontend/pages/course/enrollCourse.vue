@@ -36,21 +36,12 @@
                                 {{ day }}
                             </dd>
                         </div>
-                        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">
                                 Time
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                 {{ time }}
-                            </dd>
-                        </div>
-                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-gray-500">
-                                Already in
-                            </dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                <div v-if="author">Yes</div>
-                                <div v-if="!author">No</div>
                             </dd>
                         </div>
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -89,16 +80,55 @@
                                 </div>
                             </dd>
                         </div>
-    
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">
+                                opens_on
+                            </dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                {{ dayjs(opens_on).format('YYYY-MM-DD HH:mm:ss') }}
+                            </dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">
+                                opens_until
+                            </dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                {{ dayjs(opens_until).format('YYYY-MM-DD HH:mm:ss') }}
+                            </dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">
+                                starts_on
+                            </dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                {{ dayjs(starts_on).format('YYYY-MM-DD HH:mm:ss') }}
+                            </dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">
+                                Teacher 
+                            </dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                {{ teacher_name }}
+                            </dd>
+                        </div>
+    
+                        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             
                             
                             <NuxtLink v-if="!author && myAge >= min_age && myAge <= max_age && enroll_count < capacity" :to="`/course/confirmCourse${idCourse}`"
                                 class="rounded-lg group relative px-8 py-1 overflow-hidden bg-green-300 hover:bg-green-400 focus:bg-green-500 text-xl shadow my-6">
                                 View
                             </NuxtLink>
+                            <span v-else-if="author">
+                                <div>You are in this Course</div> 
+                            </span>
                             
-                            <span v-else>Not available</span>
+                            
+                            <span v-else>
+                                <div v-if="enroll_count >= capacity" class="text-red-500">The Course is Full</div>
+                                <div v-if="myAge < min_age && myAge > max_age" class="text-red-500">Your age does not meet the criteria</div>
+                            </span>
     
                         </div>
                     </dl>
@@ -166,9 +196,9 @@ const { data: eventCourse, error: eventError } = await useApiFetch(`api/student/
 
 if (eventCourse.value) {
 
-
+    
     for (const event in eventCourse.value) {
-
+        
         let temp = {
             title: eventCourse.value[event].title,
             start: eventCourse.value[event].starts_on,
@@ -179,7 +209,11 @@ if (eventCourse.value) {
             min_age: eventCourse.value[event].min_age,
             enroll_count: eventCourse.value[event].studentsIn,
             capacity: eventCourse.value[event].capacity,
-            quota: eventCourse.value[event].quota
+            quota: eventCourse.value[event].quota,
+            opens_on: eventCourse.value[event].opens_on,
+            opens_until: eventCourse.value[event].opens_until,
+            starts_on: eventCourse.value[event].starts_on,
+            teacher_name: eventCourse.value[event].teacher.first_name + " " + eventCourse.value[event].teacher.last_name
         }
 
         if (dayjs(eventCourse.value[event].starts_on).day() == 0) {
@@ -243,7 +277,10 @@ const min_age = ref(0)
 const enroll_count = ref(0)
 const capacity = ref(0)
 const quota = ref(0)
-
+const opens_on = ref('')
+const opens_until = ref('')
+const starts_on = ref('')
+const teacher_name = ref('')
 
 async function handleEventClick(arg) {
 
@@ -257,6 +294,10 @@ async function handleEventClick(arg) {
     enroll_count.value = arg.event.extendedProps.enroll_count;
     capacity.value = arg.event.extendedProps.capacity;
     quota.value = arg.event.extendedProps.quota;
+    opens_on.value = arg.event.extendedProps.opens_on;
+    opens_until.value = arg.event.extendedProps.opens_until;
+    starts_on.value = arg.event.extendedProps.starts_on;
+    teacher_name.value = arg.event.extendedProps.teacher_name;
 
     await showCardtrue();
 
