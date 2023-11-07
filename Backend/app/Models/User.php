@@ -101,8 +101,10 @@ class User extends Authenticatable implements JWTSubject
         $courses = Course::whereIn('id', Enrollment::where('student_id', $this->id)->where('status',EnrollmentStatusEnum::SUCCESS->name)->distinct('course_id')->pluck('course_id'))->get();
 
         foreach($courses as $course) {
-            $count = $count + ($course->quota - $this->studentAttendances->whereIn('course_id',$course->id)->where('pivot.has_attended',StudentAttendanceEnum::TRUE->name)->count());
+            $count = $count + $course->quota; 
         }
+
+        $count = $count - $this->studentAttendances->where('pivot.has_attended',StudentAttendanceEnum::TRUE->name)->count();
 
         return $count;
     }
