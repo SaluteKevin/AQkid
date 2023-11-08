@@ -67,13 +67,17 @@ class TeacherController extends Controller
     public function checkAll(Timeslot $timeslot) {
         
         $students = $timeslot->studentAttendances;
-
+        $errors = [];
         foreach($students as $student) {
-            $timeslot->updateAttendance($student->id, StudentAttendanceEnum::TRUE);
+            $statusOk = $timeslot->updateAttendance($student->id, StudentAttendanceEnum::TRUE);
+            if ($statusOk == StudentAttendanceEnum::QUOTA){
+                array_push($errors, 'Student'. User::find($student->id)->first_name .' '. User::find($student->id)->last_name .  'is out of quota');
+            }
         }
 
         return response()->json([
             'message' => "Successfully Check All Student",
+            'errors' => $errors,
         ]);
 
     }

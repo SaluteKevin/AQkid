@@ -4,7 +4,7 @@
         <div>{{ props.name }}</div>
         <div>
             <label class="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" value="" class="sr-only peer" :checked="checkToggle" v-on:click="updateAttend()">
+                <input type="checkbox"  class="sr-only peer" :checked="checkToggle" v-on:click="updateAttend()">
                 <div
                     class="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300  rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all  peer-checked:bg-blue-600">
                 </div>
@@ -16,7 +16,9 @@
 
 <script setup lang="ts">
 const config = useRuntimeConfig();
-const props = defineProps(['image_path', 'name', 'checked','id'])
+const route = useRoute();
+const props = defineProps(['image_path', 'name', 'checked', 'id'])
+const emits = defineEmits(['change'])
 const checkToggle = ref(props.checked == "TRUE")
 const checkWord = ref()
 
@@ -24,7 +26,7 @@ function checkToggleForWord() {
     if (checkToggle.value) {
         checkWord.value = 'Attend'
     } else {
-    checkWord.value = 'Absent'
+        checkWord.value = 'Absent'
     }
 }
 
@@ -37,28 +39,33 @@ const errorRemStd = ref('');
 
 async function updateAttend() {
 
-    // if ()
+    if (checkToggle.value) {
+        await RemoveStudent();
+    } else {
+        await AddStudent();
+    }
 
 }
+
 // add student attend
-async function AddStudent(studentId: int) {
+async function AddStudent() {
 
-  const { data: addResponse, error: addError } = await useApiFetch(`api/teacher/attendStudent/${route.params.id}/${studentId}`, {
-    method: "POST"
-  });
+    const { data: addResponse, error: addError } = await useApiFetch(`api/teacher/attendStudent/${route.params.id}/${props.id}`, {
+        method: "POST"
+    });
 
-  if (addResponse.value) {
+    if (addResponse.value) {
 
-    
+        emits('change');
 
-  } else {
+    } else {
 
-    if (addError.value) {
-      errorAddStd.value = "";
+        if (addError.value) {
+            errorAddStd.value = "";
 
-      errorAddStd.value = addError.value.data.message;
+            errorAddStd.value = addError.value.data.message;
+        }
     }
-  }
 
 
 }
@@ -68,25 +75,24 @@ async function AddStudent(studentId: int) {
 
 
 // remove student attend
-async function RemoveStudent(studentId: int) {
+async function RemoveStudent() {
 
-  const { data: removeResponse, error: removeError } = await useApiFetch(`api/teacher/absentStudent/${route.params.id}/${studentId}`, {
-    method: "POST"
-  });
+    const { data: removeResponse, error: removeError } = await useApiFetch(`api/teacher/absentStudent/${route.params.id}/${props.id}`, {
+        method: "POST"
+    });
 
-  if (removeResponse.value) {
+    if (removeResponse.value) {
 
-    
+        emits('change');
 
+    } else {
 
-  } else {
+        if (removeError.value) {
+            errorRemStd.value = "";
 
-    if (removeError.value) {
-      errorRemStd.value = "";
-
-      errorRemStd.value = removeError.value.data.message;
+            errorRemStd.value = removeError.value.data.message;
+        }
     }
-  }
 }
 
 </script>

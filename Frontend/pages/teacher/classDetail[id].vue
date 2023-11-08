@@ -64,7 +64,9 @@
             </svg>
           </span>
         </button>
-
+        <p class="text-red-500 ml-4 mt-2 mb-2" v-for="error in errors" :key="error">
+                                    {{ error }}
+       </p>
         <div ref="student_container" class="flex flex-col w-full items-center gap-4 px-4 pointer-events-none">
           <div class="flex bg-white w-full items-center justify-between rounded-2xl shadow-lg p-4">
             <div>Student Image</div>
@@ -74,7 +76,7 @@
 
           <CheckName v-for="student in allstudents" :image_path="student.profile_image_path"
             :name="student.first_name + ' ' + student.last_name" :checked="student.pivot.has_attended"
-            :id="student.id">
+            :id="student.id" @change="onChange">
           </CheckName>
 
         </div>
@@ -117,9 +119,9 @@ const timeslot = ref({});
 
 async function fetchStudents() {
   const { data: studentData, error: studentError } = await useApiFetch(`api/teacher/getStudentAttend/${route.params.id}`, {});
-
+  
   if (studentData.value) {
-
+    
     for (const student in studentData.value) {
       allstudents.value.push(studentData.value[student])
     }
@@ -136,7 +138,7 @@ await fetchStudents();
 
 
 
-
+const errors = ref([])
 async function checkAll() {
 
   const { data: checkData, error: checkError } = await useApiFetch(`api/teacher/checkAll/${route.params.id}`, {
@@ -144,12 +146,22 @@ async function checkAll() {
   });
 
   if (checkData.value) {
+    
+    for(const error in checkData.value.errors) {
+      errors.value.push(checkData.value.errors[error])
+    }
+
     allstudents.value = []
     await fetchStudents();
   } else {
 
   }
 
+}
+
+async function onChange() {
+    allstudents.value = []
+    await fetchStudents();
 }
 
 const { data: timeslotData, error: timeslotError } = await useApiFetch(`api/teacher/getTimeslot/${route.params.id}`, {});

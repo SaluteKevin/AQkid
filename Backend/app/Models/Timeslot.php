@@ -120,7 +120,7 @@ class Timeslot extends Model
             return false;
         } else if ($studentAttendance == StudentAttendanceEnum::TRUE && User::find($studentId)->studentQuota() < 1) {
             error_log('Attempting to change attendance for a student who is out of quota');
-            return false;
+            return StudentAttendanceEnum::QUOTA;
         }
 
             $this->studentAttendances()->updateExistingPivot($studentId, ['has_attended' => $studentAttendance->name]);
