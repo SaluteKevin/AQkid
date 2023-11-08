@@ -50,6 +50,13 @@ class StudentController extends Controller
         ->get();
 
     }
+    public function getCurrentCourse(User $user){
+        return Course::whereIn('id', Enrollment::where('student_id', $user->id)
+        ->where('status', EnrollmentStatusEnum::SUCCESS->name)
+        ->where('status', CourseStatusEnum::ACTIVE->name)
+        ->pluck('course_id'))
+        ->get();
+    }
 
     public function showCourse(Course $course)
     {
@@ -66,6 +73,7 @@ class StudentController extends Controller
 
         return $course;
     }
+
 
     public function enrollCourse(Course $course, User $user , Request $request){
 
