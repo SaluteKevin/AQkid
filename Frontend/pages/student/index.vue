@@ -317,11 +317,11 @@
         </g>
         <g id="Layer_1"/>
         </svg>
-        <p class="text-2xl font-extrabold text-dark-grey-900">My review Education</p>
-        <p class="text-base leading-7 text-dark-grey-600">See all my review Education here!!</p>
-        <NuxtLink to="/student/review-education"
+        <p class="text-2xl font-extrabold text-dark-grey-900">Make-Up Class</p>
+        <p class="text-base leading-7 text-dark-grey-600">Request for make-up class here!!</p>
+        <NuxtLink to="/student/makeupRequest"
           class="z-10 bg-orange-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
-          <i class="fas fa-heart"></i> My review Education
+          <i class="fas fa-heart"></i> My Request
         </NuxtLink>
 
 
@@ -549,7 +549,7 @@
       </ol>
     </section>
 
-    <button ref="to-top-button" title="Go To Top" v-on:click="toTop"
+    <button v-if="toTopState == true" ref="to-top-button" title="Go To Top" v-on:click="toTop"
       class="fixed z-10 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-cyan-900 hover:bg-cyan-950 text-white text-lg font-semibold transition-colors duration-300">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
         <path d="M12 4l8 8h-6v8h-4v-8H4l8-8z" />
@@ -671,7 +671,7 @@ const toClasses = async () => {
 
 // to Top
 
-
+const toTopState = ref(false);
 
 const toTop = async () => {
 
@@ -680,7 +680,7 @@ const toTop = async () => {
     top: 0,
     behavior: 'smooth',
   });
-
+  toTopState.value = false;
 
 };
 
@@ -690,6 +690,7 @@ const toTop = async () => {
 const showArchive = ref(false);
 
 async function setArchive() {
+  toTopState.value = true;
   showArchive.value = !showArchive.value;
   showClasses.value = false
 }
@@ -697,6 +698,7 @@ async function setArchive() {
 const showClasses = ref(false);
 
 async function setClasses() {
+  toTopState.value = true;
   showClasses.value = !showClasses.value;
   showArchive.value = false
 }
