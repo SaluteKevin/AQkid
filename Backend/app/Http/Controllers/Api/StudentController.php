@@ -243,6 +243,8 @@ class StudentController extends Controller
     }
 
     public function certificate(Course $course) {
+        $course->last_date = $course->timeslots->sortByDesc('datetime')->first()->datetime;
+        $course->teacher = User::find($course->teacher_id);
         return $course;
     }
 
