@@ -37,7 +37,7 @@ const errorRemStd = ref('');
 
 async function updateAttend() {
 
-    if ()
+    // if ()
 
 }
 // add student attend
