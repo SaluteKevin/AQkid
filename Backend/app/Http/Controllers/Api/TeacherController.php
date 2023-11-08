@@ -27,7 +27,7 @@ class TeacherController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['getEvent','getTimeslot','getStudentAttends','studentAttend','studentAbsent',
-        'getTeacherCourses']]);
+        'getTeacherCourses','checkAll']]);
     }
 
     public function getEvent(User $teacher){
@@ -62,6 +62,20 @@ class TeacherController extends Controller
     public function getStudentAttends(Timeslot $timeslot){
       
         return $timeslot->studentAttendances;
+    }
+
+    public function checkAll(Timeslot $timeslot) {
+        
+        $students = $timeslot->studentAttendances;
+
+        foreach($students as $student) {
+            $timeslot->updateAttendance($student->id, StudentAttendanceEnum::TRUE);
+        }
+
+        return response()->json([
+            'message' => "Successfully Check All Student",
+        ]);
+
     }
 
     public function studentAttend(Timeslot $timeslot, User $student) {

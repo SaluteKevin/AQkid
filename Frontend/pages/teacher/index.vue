@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gradient-to-t from-orange-300 h-screen">
+  <div class="bg-gradient-to-t from-orange-300 h-full py-4">
     <div class="container mx-auto grid grid-cols-4 gap-10">
       <div class='app p-12 col-span-3 bg-white shadow-lg rounded-xl mt-16'>
         <FullCalendar :options='calendarOptions' />
