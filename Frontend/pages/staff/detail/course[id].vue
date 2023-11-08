@@ -12,9 +12,6 @@
                 <h4 class="px-2 text-xl font-bold text-navy-700 ">
                     Course Information
                 </h4>
-                <p class="mt-2 px-2 text-base text-gray-600">
-                    {{ course.description }}
-                </p>
             </div>
             <div class="mb-8 w-full flex-col flex ">
                 <span class="mt-2 px-2 text-xl font-semibold text-gray-500">

@@ -151,7 +151,7 @@
           <div class="w-1/3 bg-gray-200 h-full p-2">
             <span>Age type</span>
             <p>B1: 0 - 6 Months</p>
-            <p>B2: 6 - 12 Moths</p>
+            <p>B2: 6 - 12 Months</p>
             <p>T1: 1 - 2 Years</p>
             <p>T2: 2 - 3 Years</p>
             <p>T3: 3 - 4 Years</p>
