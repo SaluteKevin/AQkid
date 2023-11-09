@@ -149,7 +149,7 @@ Route::group([
     Route::get('getReceipt/{enrollment}', [StudentController::class, 'getReceipt']);
 
     //makeupRequest
-    Route::post('getMakeUpClasses/{user}' , [StudentController::class, 'getMakeUpClasses']);
+    Route::get('getMakeUpClasses/{user}' , [StudentController::class, 'getMakeUpClasses']);
 
     // certificate
     Route::get('certificate/{course}', [StudentController::class, 'certificate']);
