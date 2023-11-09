@@ -100,14 +100,14 @@ class TeacherController extends Controller
         // if ($timeslot->studentAttendances->where('pivot.student_id',$student->id)->pivot->course_joint_id != null) {
         //     $courseId = $timeslot->studentAttendances->where('pivot.student_id',$student->id)->pivot->course_joint_id;
         // }
-
-        if ($timeslot->updateAttendance($student->id, StudentAttendanceEnum::TRUE, $courseId) == StudentAttendanceEnum::QUOTA) {
+        $statusOk = $timeslot->updateAttendance($student->id, StudentAttendanceEnum::TRUE, $courseId);
+        if ($statusOk == StudentAttendanceEnum::QUOTA) {
             return response()->json([
                 'message' => 'Student '. User::find($student->id)->first_name .' '. User::find($student->id)->last_name .  ' is out of quota',
             ],422);
         }
 
-        if ($timeslot->updateAttendance($student->id, StudentAttendanceEnum::TRUE, $courseId)) {
+        if ($statusOk) {
 
             return response()->json([
                 'message' => "Successfully Attend Student",
