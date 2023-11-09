@@ -158,6 +158,7 @@ Route::group([
 
     //makeupRequest
     Route::get('getMakeUpClasses/{user}' , [StudentController::class, 'getMakeUpClasses']);
+    Route::post('makeJoinClass/{user}/{course}/{timeslot}' , [StudentController::class, 'makeJoinClass']);
 
     // certificate
     Route::get('certificate/{course}', [StudentController::class, 'certificate']);

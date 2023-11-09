@@ -51,6 +51,46 @@ class UserRequest extends Model
 
     }
 
+    public static function createJoinClass(int $originatorId, int $courseId, string $title, int $timeslotId) {
+
+        $statusOk = false;
+
+        $userRequest = new UserRequest();
+        $userRequest->originator_id = $originatorId;
+        $userRequest->course_id = $courseId;
+        $userRequest->type = UserRequestTypeEnum::GENERAL->name;
+        $userRequest->title = $title;
+        $userRequest->description = "Submitted for general";
+        $userRequest->status = UserRequestStatusEnum::PENDING->name;
+        $userRequest->review_comment = null;
+        $userRequest->timeslot_id = $timeslotId;
+
+        $statusOk = $userRequest->save();
+
+        return $statusOk;
+
+    }
+
+    public static function createMakeUpClass(int $originatorId, int $courseId, string $title, string $datetime) {
+
+        $statusOk = false;
+
+        $userRequest = new UserRequest();
+        $userRequest->originator_id = $originatorId;
+        $userRequest->course_id = $courseId;
+        $userRequest->type = UserRequestTypeEnum::GENERAL->name;
+        $userRequest->title = $title;
+        $userRequest->description = "Submitted for general";
+        $userRequest->status = UserRequestStatusEnum::PENDING->name;
+        $userRequest->review_comment = null;
+        $userRequest->datetime = $datetime;
+
+        $statusOk = $userRequest->save();
+
+        return $statusOk;
+
+    }
+
     public static function getUserRequestWithUser(UserRequest $userRequest): UserRequest
     {
         $user = User::find($userRequest->originator_id);

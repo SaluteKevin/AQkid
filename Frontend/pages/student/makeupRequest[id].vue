@@ -12,16 +12,17 @@
                 <p class="mb-3 font-bold text-gray-700 ">Date: {{ timeslotSelected.start }}</p>
                 <p class="mb-3 font-bold text-gray-700 ">Type: {{ timeslotSelected.type }}</p>
             </div>
+            <div class="text-red-500">{{ showJoinError }}</div>
             <div class="relative inline-flex group h-[50px]">
                 <div
                     class="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt">
                 </div>
-                <a href="#" 
+                <button v-on:click="joinClass"
                     class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                     role="button">Request Join class
-                </a>
+                </button>
             </div>
-            
+
         </div>
     </div>
 </template>
@@ -33,7 +34,8 @@ definePageMeta({
 })
 
 import { useAuthStore } from "~/stores/useAuthStore";
-const user = useAuthStore().user;
+const user = useAuthStore().user
+const route = useRoute();
 
 import FullCalendar from '@fullcalendar/vue3'
 import interactionPlugin from '@fullcalendar/interaction'
@@ -117,8 +119,6 @@ const timeslotSelected = ref();
 const timeslotShow = ref(false);
 const scrollCourse = ref();
 
-
-
 // load classes
 const { data: classesResponse, error: classesError } = await useApiFetch(`api/student/getMakeUpClasses/${user.value.id}`, {});
 
@@ -165,6 +165,26 @@ if (classesResponse.value) {
 else {
     if (classesError.value) {
 
+    }
+}
+
+
+// enroll class
+const showJoinError = ref('')
+async function joinClass() {
+
+    const { data: joinResponse, error: joinError } = await useApiFetch(`api/student/makeJoinClass/${user.value.id}/${route.params.id}/${timeslotSelected.value.uid}`, {
+        method: "POST"
+    });
+
+    if (joinResponse.value) {
+      alert("You have already request a joining class")
+    }
+
+    else {
+        if (joinError.value) {
+            showJoinError.value = joinError.value.data.message
+        }
     }
 }
 

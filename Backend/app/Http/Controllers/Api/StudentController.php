@@ -261,7 +261,36 @@ class StudentController extends Controller
         return $course;
     }
 
-    
+    public function makeJoinClass(User $user, Course $course, Timeslot $timeslot) {
+
+        $statusOk = $user->stillGraduate($course->id);
+
+        if (!$statusOk) {
+            return response()->json([
+                'message' => "You have too little time to accumulate credits.",
+            ],422);
+        }
+
+        $statusOk = $user->haveAskedJoin($course->id); 
+
+        if (!$statusOk) {
+            return response()->json([
+                'message' => "You have Already Created Join Request for this week",
+            ],422);
+        }
+
+        $statusOk = UserRequest::createJoinClass($user->id, $course->id, 'JOIN', $timeslot->id);
+
+        if ($statusOk) {
+            return response()->json([
+                'message' => "Successfully, created Join Request",
+            ]);
+        }
+
+        return response()->json([
+            'message' => "Failed to create Join Request",
+        ],422);
+    }
 
 
 

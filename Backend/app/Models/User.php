@@ -7,6 +7,7 @@ use App\Models\Enums\CourseStatusEnum;
 use App\Models\Enums\EnrollmentStatusEnum;
 use App\Models\Enums\StudentAttendanceEnum;
 use App\Models\Enums\TimeslotTypeEnum;
+use App\Models\Enums\UserRequestStatusEnum;
 use App\Models\Enums\UserRequestTypeEnum;
 use App\Models\Enums\UserRoleEnum;
 use App\Services\FileService;
@@ -113,10 +114,14 @@ class User extends Authenticatable implements JWTSubject
     }
 
     // เรียนมร่วมกดได้ครั้งเดียวเทียบอาทิตย์ ให้กดได้เฉพาะ class ที่ไม่เต็ม
-    public function haveAskedMakeUP ():int {
-        $haveAsked = UserRequest::where('originator_id', $this->id)->where('title','MAKE')->where('type',UserRequestTypeEnum::GENERAL->name)->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
+    public function haveAskedJoin (int $courseId) {
+        $haveAsked = UserRequest::where('originator_id', $this->id)->where('course_id',$courseId)->where('title','JOIN')->where('type',UserRequestTypeEnum::GENERAL->name)->whereIn('status', [UserRequestStatusEnum::PENDING->name,UserRequestStatusEnum::APPROVED->name])
+        ->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
 
-        return $haveAsked;
+        if ($haveAsked > 0) {
+            return false;           
+        }
+        return true;
     }
 
     public function getMakeUpClasses () {
@@ -152,7 +157,7 @@ class User extends Authenticatable implements JWTSubject
         $timeslotIds = $course->timeslots->where('datetime', '<', Carbon::now())->pluck('id');
 
         $myAttended = $this->studentAttendances->whereIn('id', $timeslotIds)->where('pivot.has_attended', StudentAttendanceEnum::TRUE->name)->count()
-        + $this->studentAttendances->where('pivot.course_joint_id',$courseId)->where('pivot.has_attended','TRUE')->where('datetime', '<', Carbon::now())->count();
+        + $this->studentAttendances->where('pivot.course_joint_id',$courseId)->where('pivot.has_attended',StudentAttendanceEnum::TRUE->name)->where('datetime', '<', Carbon::now())->count();
             
         if ($course->quota - $myAttended <= 0 ){
             return 0;
@@ -193,7 +198,7 @@ class User extends Authenticatable implements JWTSubject
         $timeslotIds = $course->timeslots->where('datetime', '<', Carbon::now())->pluck('id');
         // query ตำนวนเรียนร่วม
         $myAttended = $this->studentAttendances->whereIn('id', $timeslotIds)->where('pivot.has_attended', StudentAttendanceEnum::TRUE->name)->count()
-        + $this->studentAttendances->where('pivot.course_joint_id',$courseId)->where('pivot.has_attended','TRUE')->where('datetime', '<', Carbon::now())->count();
+        + $this->studentAttendances->where('pivot.course_joint_id',$courseId)->where('pivot.has_attended',StudentAttendanceEnum::TRUE->name)->where('datetime', '<', Carbon::now())->count();
 
         $remainingClass = $course->timeslots->whereNotIn('id', $timeslotIds)->pluck('id');
 
@@ -212,7 +217,7 @@ class User extends Authenticatable implements JWTSubject
         $courseExpectQuota = $course->quota;
         // query ตำนวนเรียนร่วม
         $can = $this->studentAttendances->where('course_id',$courseId)->where('pivot.has_attended', StudentAttendanceEnum::TRUE->name)->count()
-        + $this->studentAttendances->where('pivot.course_joint_id',$courseId)->where('pivot.has_attended','TRUE')->where('datetime', '<', Carbon::now())->count();
+        + $this->studentAttendances->where('pivot.course_joint_id',$courseId)->where('pivot.has_attended',StudentAttendanceEnum::TRUE->name)->where('datetime', '<', Carbon::now())->count();
 
         if ($can < $courseExpectQuota){
             return false;
