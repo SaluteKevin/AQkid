@@ -9,7 +9,7 @@
     </div>
     <div class="bg-white p-12 transform ease-in-out m-12 shadow-xl border rounded-2xl">
       <div v-for="course in myCourses" class="space-y-4">
-        <div class="flex justify-between px-12 py-2 bg-orange-200 hover:bg-orange-500/60 rounded-lg shadow-lg">
+        <div v-on:click="showCourseTime" class="cursor-pointer flex justify-between px-12 py-2 bg-orange-200 hover:bg-orange-500/60 rounded-lg shadow-lg">
           <div class="text-4xl font-semibold">
             {{ course.title }}
           </div>
@@ -17,11 +17,23 @@
             Start : {{ formatDateTime(new Date(course.starts_on)) }}
           </div>
         </div>
+
+    </div>
+
+
+    <div v-on:click="showCourseTime" class="cursor-pointer flex justify-between px-12 py-2 bg-orange-200 hover:bg-orange-500/60 rounded-lg shadow-lg">
+      <div class="text-4xl font-semibold">
+        hello
+      </div>
+      <div class="text-4xl">
+        adfas   
       </div>
     </div>
-  
-  
-    <div>
+
+
+    </div>
+
+    <div v-if="showTimeslot" >
       <div class="relative flex py-5 items-center w-full px-10 mt-8">
           <div class="flex-grow border-t border-gray-400"></div>
           <span class="flex-shrink mx-4 text-6xl text-gray-400">Course Timeslots</span>
@@ -44,7 +56,7 @@
               </svg>
           </NuxtLink>
       </div>
-    
+      
       <div class='app bg-white p-12 transform ease-in-out m-12 shadow-2xl border rounded-2xl'>
           <FullCalendar :options='calendarOptions' />
       </div>
@@ -72,7 +84,7 @@
                               Comment
                             <input 
                                       class="w-full px-4 py-4 rounded-lg border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                      type="text" name="username" placeholder="comment" />
+                                      type="text" name="comment" placeholder="comment" />
                                   <p class="text-red-500" :key="error">
                                       {{ error }}
                                   </p>
@@ -93,6 +105,11 @@
   
   
     </div>
+
+    <div v-else class="h-[30rem] text-center text-4xl text-gray-700">
+        Select course above to start request a makeup class
+    </div>
+
   </div>
 
 </template>
@@ -111,11 +128,13 @@ import { useAuthStore } from "~/stores/useAuthStore";
 const config = useRuntimeConfig();
 const user = useAuthStore().user;
 
-const allevents = ref([]);
+const showTimeslot = ref(false);
 
-const events = ref([]);
+function showCourseTime(){
+    showTimeslot.value = true;
+}
 
-const showAgenda = ref([]);
+
 
 const calendarOptions = ref({
     plugins: [interactionPlugin, timeGridPlugin, dayGridPlugin],
@@ -150,7 +169,7 @@ const calendarOptions = ref({
 // show my current course
 const myCourses = ref({})
 
-const { data: myCourseResponse, error: myCourseError } = await useApiFetch(`api/student/getCurrentCourses/${user.value.id}`, {});
+const { data: myCourseResponse, error: myCourseError } = await useApiFetch(`api/student/getCurrentCourse/${user.value.id}`, {});
 
 if (myCourseResponse.value) {
     myCourses.value = myCourseResponse.value;
@@ -221,7 +240,7 @@ const route = useRoute();
 
 const course = ref({})
 
-const { data: courseResponse, error: courseError } = await useApiFetch(`api/student/getAllCourses/${route.params.id}`, {});
+const { data: courseResponse, error: courseError } = await useApiFetch(`api/student/getMakeUpClasses/${user.value.id}`, {});
 
 if (courseResponse.value) {
 
