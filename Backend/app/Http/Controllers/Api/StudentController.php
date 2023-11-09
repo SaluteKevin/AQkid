@@ -51,11 +51,8 @@ class StudentController extends Controller
 
     }
     public function getCurrentCourse(User $user){
-        return Course::whereIn('id', Enrollment::where('student_id', $user->id)
-        ->where('status', EnrollmentStatusEnum::SUCCESS->name)
-        ->where('status', CourseStatusEnum::ACTIVE->name)
-        ->pluck('course_id'))
-        ->get();
+        return Course::whereIn('id', Enrollment::where('student_id', $user->id)->where('status', EnrollmentStatusEnum::SUCCESS->name)->distinct('course_id')->pluck('course_id'))
+        ->where('status', CourseStatusEnum::ACTIVE->name)->get();
     }
 
     public function showCourse(Course $course)
