@@ -128,6 +128,7 @@ Route::group([
     Route::get('getClasses/{user}', [StudentController::class, 'getAllClasses']);
     Route::get('getAllCourses/{user}', [StudentController::class, 'getAllCourse']);
     Route::get('showCourse/{course}', [StudentController::class, 'showCourse']);
+    Route::get('getCurrentCourse/{course}', [StudentController::class, 'getCurrentCourse']);
     Route::post('enrollCourse/{course}/{user}', [StudentController::class, 'enrollCourse']);
     
     
@@ -147,8 +148,8 @@ Route::group([
     // receipt
     Route::get('getReceipt/{enrollment}', [StudentController::class, 'getReceipt']);
 
-    //review Student
-    Route::get('reviewStudent/{user}' , [StudentController::class, 'getMyClass']);
+    //makeupRequest
+    Route::post('makeupRequest/{course}' , [StudentController::class, 'getMyClass']);
 
     // certificate
     Route::get('certificate/{course}', [StudentController::class, 'certificate']);
