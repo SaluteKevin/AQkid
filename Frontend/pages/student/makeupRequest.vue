@@ -109,13 +109,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import { Calendar } from '@fullcalendar/core'
 import { useAuthStore } from "~/stores/useAuthStore";
 const config = useRuntimeConfig();
-const user= useAuthStore().user;
-
-const allevents = ref([]);
-
-const events = ref([]);
-
-const showAgenda = ref([]);
+const user = useAuthStore().user;
 
 const calendarOptions = ref({
     plugins: [interactionPlugin, timeGridPlugin, dayGridPlugin],
@@ -150,7 +144,7 @@ const calendarOptions = ref({
 // show my current course
 const myCourses = ref({})
 
-const { data: myCourseResponse, error: myCourseError } = await useApiFetch(`api/student/getCurrentCourses/${user.value.id}`, {});
+const { data: myCourseResponse, error: myCourseError } = await useApiFetch(`api/student/getCurrentCourse/${user.value.id}`, {});
 
 if (myCourseResponse.value) {
     myCourses.value = myCourseResponse.value;
@@ -221,7 +215,7 @@ const route = useRoute();
 
 const course = ref({})
 
-const { data: courseResponse, error: courseError } = await useApiFetch(`api/student/getAllCourses/${route.params.id}`, {});
+const { data: courseResponse, error: courseError } = await useApiFetch(`api/student/getMakeUpClasses/${user.value.id}`, {});
 
 if (courseResponse.value) {
 
