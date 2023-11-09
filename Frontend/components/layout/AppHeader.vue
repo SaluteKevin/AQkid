@@ -15,13 +15,17 @@
             <!-- Logo Container -->
             <div class="flex items-center">
                 <!-- Logo -->
-                <div class="flex items-center space-x-2">
-                        
-                        <div aria-hidden="true" class="flex space-x-1">
-                            <img src="/images/AQKids_logo.png" class="h-12">
-                        </div>
-                        <span class="text-4xl font-bold text-cyan-900">AQKids</span>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <img src="/images/AQKids_logo.png" class="h-14">
+                            
+                            <div aria-hidden="true" class="space-x-1">
+                                    <div class="text-4xl font-bold text-cyan-900">AQKids</div>
+                                    <div class="text-xs text-end font-bold text-orange-500">Chiangmai</div>
+                            </div>
                     </div>
+                </div>
+
             </div>
 
             <!-- Links Section -->

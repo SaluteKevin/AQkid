@@ -1,18 +1,27 @@
 <template>
     
-    <div class="min-h-screen bg-gradient-to-b from-sky-200 from-40% to bg-orange-100 text-gray-900 flex justify-center px-20">
+    <div class="min-h-screen bg-gradient-to-b from-sky-200 from-40% to bg-orange-100 text-gray-900 flex justify-center px-10">
         <div class="m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
-            <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
+            <div class="lg:w-1/2 xl:w-5/12 min-sm:p-12 p-6">
                 <div>
-                    <NuxtLink to="/" class="flex">
-                        <img src="/images/AQKids_logo.png"
-                            class="w-1/3"/>
-                        <div class="p-4 flex text-6xl font-bold text-cyan-900 justify-center items-center">
-                            AquaKids
+                    <NuxtLink to="/" class="">
+                        <div class="flex justify-center space-x-2 mt-12">
+                            <div class="w-16 h-16">
+                                <img src="/images/AQKids_logo.png"
+                                    class=""/>
+                            </div>
+                            <div class="place-items-center grid">
+                                <div class="text-6xl font-bold text-cyan-900">
+                                    AquaKids
+                                </div>
+                                <div class="text-orange-500 font-bold text-2xl place-self-end">
+                                    Chiangmai
+                                </div>
+                            </div>
                         </div>
                     </NuxtLink>
                 </div>
-                <div class="mt-12 flex flex-col items-center">
+                <div class="flex flex-col items-center">
                     <form class="w-full flex-1 mt-8" @submit.prevent="handleLogin()">
                         <div class="mx-auto max-w-xs text-lg space-y-6">
                             <div>
