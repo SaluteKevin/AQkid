@@ -147,6 +147,8 @@ async function checkAll() {
 
   if (checkData.value) {
     
+    errors.value = []
+
     for(const error in checkData.value.errors) {
       errors.value.push(checkData.value.errors[error])
     }
@@ -159,7 +161,9 @@ async function checkAll() {
 
 }
 
-async function onChange() {
+async function onChange(message) {
+    errors.value = []
+    errors.value.push(message)
     allstudents.value = []
     await fetchStudents();
 }

@@ -12,6 +12,7 @@
             </label>
         </div>
     </div>
+    <div class="text-red-500">{{ errorAddStd }}</div>
 </template>
 
 <script setup lang="ts">
@@ -64,6 +65,8 @@ async function AddStudent() {
             errorAddStd.value = "";
 
             errorAddStd.value = addError.value.data.message;
+
+            emits('change',addError.value.data.message);
         }
     }
 
@@ -91,6 +94,7 @@ async function RemoveStudent() {
             errorRemStd.value = "";
 
             errorRemStd.value = removeError.value.data.message;
+            emits('change',removeError.value.data.message);
         }
     }
 }

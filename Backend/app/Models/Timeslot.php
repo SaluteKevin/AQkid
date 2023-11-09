@@ -28,7 +28,7 @@ class Timeslot extends Model
 
     public function studentAttendances(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'student_attendances', 'timeslot_id', 'student_id')->withPivot('has_attended','review_comment');
+        return $this->belongsToMany(User::class, 'student_attendances', 'timeslot_id', 'student_id')->withPivot('has_attended','review_comment','course_joint_id');
     }
 
     public function teacherAttendances(): BelongsToMany
@@ -110,7 +110,7 @@ class Timeslot extends Model
         return true;
     }
 
-    public function updateAttendance(int $studentId, StudentAttendanceEnum $studentAttendance): bool
+    public function updateAttendance(int $studentId, StudentAttendanceEnum $studentAttendance, int $courseId)
     {
         if ($this->studentAttendances()->find($studentId) == null) {
             error_log('Student \'' . $studentId . '\' has not been attached');
@@ -118,7 +118,7 @@ class Timeslot extends Model
         } else if ($this->studentAttendances()->find($studentId)->pivot->has_attended == $studentAttendance->name) {
             error_log('Attempting to change attendance to the same value');
             return false;
-        } else if ($studentAttendance == StudentAttendanceEnum::TRUE && User::find($studentId)->studentQuota() < 1) {
+        } else if ($studentAttendance == StudentAttendanceEnum::TRUE && User::find($studentId)->remainingQuota($courseId) < 1) {
             error_log('Attempting to change attendance for a student who is out of quota');
             return StudentAttendanceEnum::QUOTA;
         }

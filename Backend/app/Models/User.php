@@ -88,7 +88,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function studentAttendances(): BelongsToMany
     {
-        return $this->belongsToMany(Timeslot::class, 'student_attendances', 'student_id', 'timeslot_id')->withPivot('has_attended');
+        return $this->belongsToMany(Timeslot::class, 'student_attendances', 'student_id', 'timeslot_id')->withPivot('has_attended','course_joint_id');
     }
 
     public function teacherAttendances(): BelongsToMany
@@ -148,8 +148,9 @@ class User extends Authenticatable implements JWTSubject
 
         $timeslotIds = $course->timeslots->where('datetime', '<', Carbon::now())->pluck('id');
 
-        $myAttended = $this->studentAttendances->whereIn('id', $timeslotIds)->where('pivot.has_attended', StudentAttendanceEnum::TRUE->name)->count();
-
+        $myAttended = $this->studentAttendances->whereIn('id', $timeslotIds)->where('pivot.has_attended', StudentAttendanceEnum::TRUE->name)->count()
+        + $this->studentAttendances->where('pivot.course_joint_id',$courseId)->where('pivot.has_attended','TRUE')->where('datetime', '<', Carbon::now())->count();
+            
         if ($course->quota - $myAttended <= 0 ){
             return 0;
         }
@@ -186,8 +187,9 @@ class User extends Authenticatable implements JWTSubject
         $courseExpectQuota = $course->quota;
 
         $timeslotIds = $course->timeslots->where('datetime', '<', Carbon::now())->pluck('id');
-
-        $myAttended = $this->studentAttendances->whereIn('id', $timeslotIds)->where('pivot.has_attended', StudentAttendanceEnum::TRUE->name)->count();
+        // query ตำนวนเรียนร่วม
+        $myAttended = $this->studentAttendances->whereIn('id', $timeslotIds)->where('pivot.has_attended', StudentAttendanceEnum::TRUE->name)->count()
+        + $this->studentAttendances->where('pivot.course_joint_id',$courseId)->where('pivot.has_attended','TRUE')->where('datetime', '<', Carbon::now())->count();
 
         $remainingClass = $course->timeslots->whereNotIn('id', $timeslotIds)->pluck('id');
 
@@ -204,8 +206,9 @@ class User extends Authenticatable implements JWTSubject
 
         $course = Course::find($courseId);
         $courseExpectQuota = $course->quota;
-
-        $can = $this->studentAttendances->where('course_id',$courseId)->where('pivot.has_attended', StudentAttendanceEnum::TRUE->name)->count();
+        // query ตำนวนเรียนร่วม
+        $can = $this->studentAttendances->where('course_id',$courseId)->where('pivot.has_attended', StudentAttendanceEnum::TRUE->name)->count()
+        + $this->studentAttendances->where('pivot.course_joint_id',$courseId)->where('pivot.has_attended','TRUE')->where('datetime', '<', Carbon::now())->count();
 
         if ($can < $courseExpectQuota){
             return false;

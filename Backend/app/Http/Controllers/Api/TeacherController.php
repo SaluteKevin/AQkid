@@ -69,10 +69,16 @@ class TeacherController extends Controller
         $students = $timeslot->studentAttendances;
         $errors = [];
         foreach($students as $student) {
-            $statusOk = $timeslot->updateAttendance($student->id, StudentAttendanceEnum::TRUE);
-            // if ($statusOk == StudentAttendanceEnum::QUOTA){
-            //     array_push($errors, 'Student'. User::find($student->id)->first_name .' '. User::find($student->id)->last_name .  'is out of quota');
-            // }
+            $courseId = $timeslot->course_id;
+
+            if ($student->pivot->course_joint_id != null) {
+                $courseId = $student->pivot->course_joint_id;
+            }
+
+            $statusOk = $timeslot->updateAttendance($student->id, StudentAttendanceEnum::TRUE, $courseId);
+            if ($statusOk == StudentAttendanceEnum::QUOTA){
+                array_push($errors, 'Student '. User::find($student->id)->first_name .' '. User::find($student->id)->last_name .  ' is out of quota');
+            }
         }
 
         return response()->json([
@@ -83,8 +89,25 @@ class TeacherController extends Controller
     }
 
     public function studentAttend(Timeslot $timeslot, User $student) {
+        $courseId = $timeslot->course_id;
 
-        if ($timeslot->updateAttendance($student->id, StudentAttendanceEnum::TRUE)) {
+        foreach($timeslot->studentAttendances->where('pivot.student_id',$student->id) as $student) {
+            if ($student->pivot->course_joint_id != null ){
+                $courseId = $student->pivot->course_joint_id;
+                
+            }
+        }
+        // if ($timeslot->studentAttendances->where('pivot.student_id',$student->id)->pivot->course_joint_id != null) {
+        //     $courseId = $timeslot->studentAttendances->where('pivot.student_id',$student->id)->pivot->course_joint_id;
+        // }
+
+        if ($timeslot->updateAttendance($student->id, StudentAttendanceEnum::TRUE, $courseId) == StudentAttendanceEnum::QUOTA) {
+            return response()->json([
+                'message' => 'Student '. User::find($student->id)->first_name .' '. User::find($student->id)->last_name .  ' is out of quota',
+            ],422);
+        }
+
+        if ($timeslot->updateAttendance($student->id, StudentAttendanceEnum::TRUE, $courseId)) {
 
             return response()->json([
                 'message' => "Successfully Attend Student",
@@ -99,7 +122,9 @@ class TeacherController extends Controller
 
     public function studentAbsent(Timeslot $timeslot, User $student) {
 
-        if ($timeslot->updateAttendance($student->id, StudentAttendanceEnum::FALSE)) {
+        $courseId = $timeslot->course_id;
+
+        if ($timeslot->updateAttendance($student->id, StudentAttendanceEnum::FALSE, $courseId)) {
 
             return response()->json([
                 'message' => "Successfully Absent Student",
