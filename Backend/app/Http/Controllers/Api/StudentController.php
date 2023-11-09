@@ -267,7 +267,7 @@ class StudentController extends Controller
 
         if (!$statusOk) {
             return response()->json([
-                'message' => "You have too little time to accumulate credits.",
+                'message' => "You have too little study time to accumulate credits.",
             ],422);
         }
 
@@ -290,6 +290,68 @@ class StudentController extends Controller
         return response()->json([
             'message' => "Failed to create Join Request",
         ],422);
+    }
+
+    public function makeMakeUpClass(User $user, Course $course, Request $request) {
+        
+        $statusOk = $user->stillGraduate($course->id);
+
+        if (!$statusOk) {
+            return response()->json([
+                'message' => "You have too little study time to accumulate credits.",
+            ],422);
+        }
+
+        $statusOk = $user->haveAskedMake($course->id); 
+
+        if (!$statusOk) {
+            return response()->json([
+                'message' => "You Can create 1 class per time",
+            ],422);
+        }
+
+        $statusOk = $user->remainingMakeUpQuota($course->id);
+
+        if ($statusOk < 1) {
+            return response()->json([
+                'message' => "You have no quota left",
+            ],422);
+        }
+
+        $request->validate([
+            'datetime' => 'required|after:tomorrow'
+        ]);
+        
+        $dateTime = strtotime($request->get('datetime'));
+
+        if (Timeslot::where('datetime', date(env('APP_DATETIME_FORMAT'), $dateTime))->exists()) {
+            return response()->json([
+                'message' => "Timeslot has been taken",
+            ],422);
+        }
+
+        $statusOk = UserRequest::createMakeUpClass($user->id, $course->id, 'MAKE', $request->get('datetime'));
+
+        if ($statusOk) {
+            return response()->json([
+                'message' => "Successfully, created MakeUp Request",
+            ]);
+        }
+
+        return response()->json([
+            'message' => "Failed to create MakeUp Request",
+        ],422);
+    }
+
+    public function getMakeUpHistories(User $user, Course $course) {
+        $classes = UserRequest::where('originator_id', $user->id)->where('course_id', $course->id)->get();
+
+        foreach ($classes as $class) {
+            if ($class->timeslot_id != null) {
+                $class->datetime = Timeslot::find($class->timeslot_id)->datetime;
+            }
+        }
+        return $classes->sortByDesc('datetime');
     }
 
 

@@ -1,5 +1,36 @@
 <template>
-    <div class='app bg-white p-12 transform ease-in-out shadow-2xl border rounded-2xl mt-24 mx-12'>
+    <div class=" px-[200px] shadow-2xl pb-12 pt-[100px]">
+        <div class="text-2xl mb-4">Create Timeslot form</div>
+
+        <VueDatePicker class="text-black mb-4" v-model="date" :is-24="true" enable-seconds hours-increment="1"
+            minutes-increment="0" seconds-increment="0" placeholder="Select Date" no-minutes-overlay no-seconds-overlay
+            :min-time="{ hours: 10, minutes: 0, seconds: 0 }" :max-time="{ hours: 17, minutes: 0, seconds: 0 }"
+            :start-time="{ hours: 10, minutes: 0, seconds: 0 }" :state="datePickerState" :disabled-week-days="[1]">
+        </VueDatePicker>
+
+
+
+
+
+
+        <div>
+            <p class="text-red-500 font-normal">
+                {{ showError }}
+            </p>
+            <button v-on:click="submitNewClass" class="
+w-full
+bg-primary
+rounded
+border border-primary
+p-3
+transition
+hover:bg-gray-300
+">
+                Request New Class
+            </button>
+        </div>
+    </div>
+    <div class='app bg-white p-12 transform ease-in-out shadow-2xl border rounded-2xl mt-8 mx-12'>
         <FullCalendar :options='calendarOptions' />
     </div>
 
@@ -17,13 +48,22 @@
                 <div
                     class="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt">
                 </div>
-                <button v-on:click="joinClass"
+                <button v-if="!timeslotSelected.author" v-on:click="joinClass"
                     class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                     role="button">Request Join class
                 </button>
             </div>
 
         </div>
+    </div>
+
+    <div class="relative flex py-5 items-center w-full px-10 mt-4">
+        <div class="flex-grow border-t border-gray-400"></div>
+        <span class="flex-shrink mx-4 text-4xl text-gray-400">Class Request Histories</span>
+        <div class="flex-grow border-t border-gray-400"></div>
+    </div>
+    <div class="min-h-[300px] w-full px-[100px] flex flex-col gap-4">
+        <Makeup v-for="histo in histoResponse" :makeup="histo"></Makeup>
     </div>
 </template>
 
@@ -83,6 +123,7 @@ async function handleEventClick(arg) {
         start: arg.event.extendedProps.datestore,
         uid: arg.event.extendedProps.uid,
         type: arg.event.extendedProps.type,
+        author: arg.event.extendedProps.author,
 
     };
 
@@ -135,6 +176,7 @@ if (classesResponse.value) {
             uid: classesResponse.value[event].id,
             datestore: classesResponse.value[event].datetime,
             type: classesResponse.value[event].type,
+            author: classesResponse.value[event].author
 
         }
 
@@ -178,7 +220,7 @@ async function joinClass() {
     });
 
     if (joinResponse.value) {
-      alert("You have already request a joining class")
+        alert("You have already request a joining class")
     }
 
     else {
@@ -188,5 +230,55 @@ async function joinClass() {
     }
 }
 
+
+// load getMakeUpHistories
+
+const { data: histoResponse, error: histoError } = await useApiFetch(`api/student/getMakeUpHistories/${user.value.id}/${route.params.id}`, {})
+
+if (histoResponse.value) {
+    console.log(histoResponse.value)
+}
+
+
+// datepicker
+
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
+import dayjs from 'dayjs';
+
+const date = ref();
+const datePickerState = ref<any>(null);
+const showError = ref("");
+
+async function submitNewClass() {
+
+    const { data: newClassResponse, error: newClassError } = await useApiFetch(`api/student/makeMakeUpClass/${user.value.id}/${route.params.id}`, {
+        method: "POST",
+        body: {
+            datetime: dayjs(date.value).format('YYYY-MM-DD HH:mm:ss')
+        }
+    });
+
+    if (newClassResponse.value) {
+
+        alert('You have requested to create a new class')
+        window.location.reload();
+
+
+    } else {
+
+        if (newClassError.value) {
+
+            datePickerState.value = false
+
+            showError.value = "";
+
+            showError.value = newClassError.value.data.message;
+
+        }
+
+    }
+
+}
 
 </script>

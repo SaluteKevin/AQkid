@@ -124,6 +124,16 @@ class User extends Authenticatable implements JWTSubject
         return true;
     }
 
+    public function haveAskedMake (int $courseId) {
+        $haveAsked = UserRequest::where('originator_id', $this->id)->where('course_id',$courseId)->where('title','MAKE')->where('type',UserRequestTypeEnum::GENERAL->name)->where('status', UserRequestStatusEnum::PENDING->name)
+        ->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
+
+        if ($haveAsked > 0) {
+            return false;           
+        }
+        return true;
+    }
+
     public function getMakeUpClasses () {
 
         $timeslotInIds = $this->studentAttendances->pluck('id');
@@ -168,7 +178,7 @@ class User extends Authenticatable implements JWTSubject
     }
     
     // เพิ่ม class หลังจบ 10 class quota 2 query จาก make up class และมี student attendance enum ไหนก็ได้ถือว่าใช้สิทธ์สร้างไปแล้ว เวลาไหนก็ได้จาปัจจุบัน
-    public function remainingMakeUpQuota(int $courseId):int {
+    public function remainingMakeUpQuota(int $courseId) {
         
         $course = Course::find($courseId);
 
