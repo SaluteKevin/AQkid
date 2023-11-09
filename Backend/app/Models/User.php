@@ -7,6 +7,7 @@ use App\Models\Enums\CourseStatusEnum;
 use App\Models\Enums\EnrollmentStatusEnum;
 use App\Models\Enums\StudentAttendanceEnum;
 use App\Models\Enums\TimeslotTypeEnum;
+use App\Models\Enums\UserRequestTypeEnum;
 use App\Models\Enums\UserRoleEnum;
 use App\Services\FileService;
 use Illuminate\Contracts\Pagination\Paginator;
@@ -113,7 +114,7 @@ class User extends Authenticatable implements JWTSubject
 
     // เรียนมร่วมกดได้ครั้งเดียวเทียบอาทิตย์ ให้กดได้เฉพาะ class ที่ไม่เต็ม
     public function haveAskedMakeUP ():int {
-        $haveAsked = UserRequest::where('originator_id', $this->id)->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
+        $haveAsked = UserRequest::where('originator_id', $this->id)->where('title','MAKE')->where('type',UserRequestTypeEnum::GENERAL->name)->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
 
         return $haveAsked;
     }
