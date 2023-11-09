@@ -13,5 +13,7 @@
             "database": "aqkid",
             "username": "sail"
         }
-    ]
+    ],
+    "plantuml.exportOutDir": ".",
+    "plantuml.exportSubFolder": false,
 }
