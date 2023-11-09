@@ -70,9 +70,9 @@ class TeacherController extends Controller
         $errors = [];
         foreach($students as $student) {
             $statusOk = $timeslot->updateAttendance($student->id, StudentAttendanceEnum::TRUE);
-            if ($statusOk == StudentAttendanceEnum::QUOTA){
-                array_push($errors, 'Student'. User::find($student->id)->first_name .' '. User::find($student->id)->last_name .  'is out of quota');
-            }
+            // if ($statusOk == StudentAttendanceEnum::QUOTA){
+            //     array_push($errors, 'Student'. User::find($student->id)->first_name .' '. User::find($student->id)->last_name .  'is out of quota');
+            // }
         }
 
         return response()->json([

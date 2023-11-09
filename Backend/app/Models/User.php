@@ -6,6 +6,7 @@ namespace App\Models;
 use App\Models\Enums\CourseStatusEnum;
 use App\Models\Enums\EnrollmentStatusEnum;
 use App\Models\Enums\StudentAttendanceEnum;
+use App\Models\Enums\TimeslotTypeEnum;
 use App\Models\Enums\UserRoleEnum;
 use App\Services\FileService;
 use Illuminate\Contracts\Pagination\Paginator;
@@ -18,6 +19,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Carbon\Carbon;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -108,6 +110,110 @@ class User extends Authenticatable implements JWTSubject
 
         return $count;
     }
+
+    // เรียนมร่วมกดได้ครั้งเดียวเทียบอาทิตย์ ให้กดได้เฉพาะ class ที่ไม่เต็ม
+    public function haveAskedMakeUP ():int {
+        $haveAsked = UserRequest::where('originator_id', $this->id)->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
+
+        return $haveAsked;
+    }
+
+    public function getMakeUpClasses () {
+
+        $timeslotInIds = $this->studentAttendances->pluck('id');
+
+        $availableCourses = Course::get()->filter(function ($course) {
+            return Course::availableSpotCount($course->id) > 0;
+        })->pluck('id');
+
+        $timeslotEnrolls = Timeslot::whereIn('course_id', $availableCourses)->get();
+
+        $timeslotEnrolls->each(function ($time) use ($timeslotInIds) {
+            if (in_array($time->id, $timeslotInIds->toArray())) {
+                $time->author = true;
+                $time->title = Course::find($time->course_id)->title;
+            } else {
+                $time->author = false;
+                $time->title = Course::find($time->course_id)->title;
+            }
+        });
+
+        return $timeslotEnrolls;
+
+    }
+    // เช็คว่าเหลือ quota เรียนไหม ตอนเช็คชื่อ
+    public function remainingQuota(int $courseId):int {
+
+        $course = Course::find($courseId);
+
+        $timeslotIds = $course->timeslots->where('datetime', '<', Carbon::now())->pluck('id');
+
+        $myAttended = $this->studentAttendances->whereIn('id', $timeslotIds)->where('pivot.has_attended', StudentAttendanceEnum::TRUE->name)->count();
+
+        if ($course->quota - $myAttended <= 0 ){
+            return 0;
+        }
+
+        return $course->quota - $myAttended;
+
+    }
+    // เพิ่ม class หลังจบ 10 class quota 2 query จาก make up class และมี student attendance enum ไหนก็ได้ถือว่าใช้สิทธ์สร้างไปแล้ว เวลาไหนก็ได้จาปัจจุบัน
+    public function remainingMakeUpQuota(int $courseId):int {
+        
+        $course = Course::find($courseId);
+
+        $timeslotIds = $course->timeslots->where('datetime', '<', Carbon::now())->pluck('id');
+
+        $myAbsent = $this->studentAttendances->whereIn('id', $timeslotIds)->where('pivot.has_attended', StudentAttendanceEnum::FALSE->name)->count();
+
+        if ($myAbsent >= 2) {
+            $myAbsent = 2;
+        }
+
+        $makeUpclasses = $course->timeslots->where('type', TimeslotTypeEnum::MAKEUP->name)->pluck('id');
+
+        $myQuotaUsed = $this->studentAttendances->whereIn('id', $makeUpclasses)->count();
+        
+        if ($myAbsent - $myQuotaUsed <= 0) {
+            return 0;
+        }
+        return $myAbsent - $myQuotaUsed;
+    }
+    // แก้ปัญหา ก่อนกด function ทั้งคู่เช็คว่า เรียนไปกี่ครั้ง + คาบที่เหลือ + quota make up class ยังพอที่จะเรียนผ่านหลักสูตรไหมถ้าไม่ ไม่อนุญาติให้กดขอเลย
+    public function stillGraduate(int $courseId) {
+
+        $course = Course::find($courseId);
+        $courseExpectQuota = $course->quota;
+
+        $timeslotIds = $course->timeslots->where('datetime', '<', Carbon::now())->pluck('id');
+
+        $myAttended = $this->studentAttendances->whereIn('id', $timeslotIds)->where('pivot.has_attended', StudentAttendanceEnum::TRUE->name)->count();
+
+        $remainingClass = $course->timeslots->whereNotIn('id', $timeslotIds)->pluck('id');
+
+        $myRemainingAttended = $this->studentAttendances->whereIn('id', $remainingClass)->count();
+
+        if ($myAttended + $myRemainingAttended + $this->remainingMakeUpQuota($courseId) < $courseExpectQuota) {
+            return false;
+        }
+
+        return true;
+    }
+    // certificate ผ่านไหม
+    public function canCertified(int $courseId) {
+
+        $course = Course::find($courseId);
+        $courseExpectQuota = $course->quota;
+
+        $can = $this->studentAttendances->where('course_id',$courseId)->where('pivot.has_attended', StudentAttendanceEnum::TRUE->name)->count();
+
+        if ($can < $courseExpectQuota){
+            return false;
+        }
+        return true;
+    }
+    // function accept create timeslot
+    // function accept เรียนร่วม
 
     /**
      * Get all the users in database with the specified role
