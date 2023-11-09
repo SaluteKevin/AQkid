@@ -44,11 +44,20 @@ class StudentController extends Controller
 
     public function getAllCourse(User $user)
     {
-        return Course::whereIn('id', Enrollment::where('student_id', $user->id)
+
+        $allCourses = Course::whereIn('id', Enrollment::where('student_id', $user->id)
         ->where('status', EnrollmentStatusEnum::SUCCESS->name)
         ->pluck('course_id'))
         ->get();
-
+        
+        foreach($allCourses as $course) {
+            if ($user->canCertified($course->id)) {
+                $course->can = true;
+            } else {
+                $course->can = false;
+            }
+        }
+        return $allCourses;
     }
   
 
@@ -262,7 +271,7 @@ class StudentController extends Controller
     }
 
     public function makeJoinClass(User $user, Course $course, Timeslot $timeslot) {
-
+        // within 1 week
         $statusOk = $user->stillGraduate($course->id);
 
         if (!$statusOk) {
@@ -276,6 +285,15 @@ class StudentController extends Controller
         if (!$statusOk) {
             return response()->json([
                 'message' => "You have Already Created Join Request for this week",
+            ],422);
+        }
+
+        $timeslotDateTime = Carbon::parse($timeslot->datetime);
+        $startOfWeek = Carbon::now()->startOfWeek();
+        $endOfWeek = Carbon::now()->endOfWeek();
+        if ($timeslotDateTime->greaterThanOrEqualTo($endOfWeek) || $timeslotDateTime->lessThanOrEqualTo($startOfWeek)) {
+            return response()->json([
+                'message' => "You have to Select a Timeslot that is within this week",
             ],422);
         }
 
@@ -293,7 +311,7 @@ class StudentController extends Controller
     }
 
     public function makeMakeUpClass(User $user, Course $course, Request $request) {
-        
+        // within 2 week
         $statusOk = $user->stillGraduate($course->id);
 
         if (!$statusOk) {
@@ -328,6 +346,16 @@ class StudentController extends Controller
             return response()->json([
                 'message' => "Timeslot has been taken",
             ],422);
+        }
+
+        $timeslotDateTime = Carbon::parse($request->get('datetime'));
+        $startOfTwoWeeks = Carbon::now()->startOfWeek();
+        $endOfTwoWeeks = Carbon::now()->endOfWeek()->addWeeks(2);
+
+        if ($timeslotDateTime->greaterThanOrEqualTo($endOfTwoWeeks) || $timeslotDateTime->lessThanOrEqualTo($startOfTwoWeeks)) {
+            return response()->json([
+                'message' => "You have to select a timeslot that is within 2 weeks",
+            ], 422);
         }
 
         $statusOk = UserRequest::createMakeUpClass($user->id, $course->id, 'MAKE', $request->get('datetime'));

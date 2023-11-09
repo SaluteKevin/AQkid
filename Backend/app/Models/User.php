@@ -135,7 +135,7 @@ class User extends Authenticatable implements JWTSubject
     }
 
     public function getMakeUpClasses () {
-
+        // โหลดทุกเวลา
         $timeslotInIds = $this->studentAttendances->pluck('id');
 
         
@@ -144,9 +144,11 @@ class User extends Authenticatable implements JWTSubject
             return ($course->capacity - Course::studentsIn($course->id)->count()) > 0;
         })->pluck('id');   
 
-        $timeslotEnrolls = Timeslot::whereIn('course_id', $availableCourses)->where('datetime', '>=', Carbon::now())->get();
+        $timeslotEnrolls = Timeslot::whereIn('course_id', $availableCourses)->where('datetime', '>=', Carbon::now())->pluck('id');
 
-        $timeslotEnrolls->each(function ($time) use ($timeslotInIds) {
+        $allTimeslots = Timeslot::where('datetime', '>=', Carbon::now())->get();
+
+        $allTimeslots->each(function ($time) use ($timeslotInIds) {
             if (in_array($time->id, $timeslotInIds->toArray())) {
                 $time->author = true;
                 $time->title = Course::find($time->course_id)->title;
@@ -156,7 +158,17 @@ class User extends Authenticatable implements JWTSubject
             }
         });
 
-        return $timeslotEnrolls;
+        $allTimeslots->each(function ($time) use ($timeslotEnrolls) {
+            if (in_array($time->id, $timeslotEnrolls->toArray())) {
+                $time->can = true;
+            } else {
+                $time->can = false;
+            }
+        });
+
+
+
+        return $allTimeslots;
 
     }
     // เช็คว่าเหลือ quota เรียนไหม ตอนเช็คชื่อ

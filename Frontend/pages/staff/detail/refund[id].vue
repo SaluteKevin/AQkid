@@ -11,18 +11,19 @@
                 <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{ refund.title }}</h1>
 
                 <p class="leading-relaxed mt-4">
+                    <h2 class="text-sm title-font text-gray-500 tracking-widest">User Profile</h2>
                 <div class="card">
-                    <h2><span class="text-gray-500">username :</span> {{ refund.user.username }}</h2>
-                    <div class="title title--epic"><span class="text-gray-500">Fullname :</span> {{ refund.user.first_name }}
+                    <h2><span class="text-gray-500">username: </span> {{ refund.user.username }}</h2>
+                    <div class="title title--epic"><span class="text-gray-500">Fullname: </span> {{ refund.user.first_name }}
                         {{ refund.user.last_name }}</div>
-                    <div class="title title--epic"><span class="text-gray-500">Email :</span>
+                    <div class="title title--epic"><span class="text-gray-500">Email: </span>
                         <span v-if="refund.user.email">{{ refund.user.email }}</span>
                         <span v-else>none</span>
                     </div>
-                    <div class="title title--epic"><span class="text-gray-500">Phone No. :</span>
+                    <div class="title title--epic"><span class="text-gray-500">Phone No: </span>
                         {{ refund.user.phone_number }}
                     </div>
-                    <div class="title title--epic"><span class="text-gray-500">Requested at :</span>
+                    <div class="title title--epic"><span class="text-gray-500">Requested at: </span>
                         {{ formatDateTime(new
                             Date(refund.created_at)) }}
                     </div>
@@ -37,7 +38,7 @@
                                     <span v-if="refund.status == 'APPROVED'" class="text-xl text-green-500">{{refund.status}}</span>
                                     <span v-if="refund.status == 'REJECTED'" class="text-xl text-red-500">{{refund.status}}</span>
                 </label>
-                <div v-if="refund.status != 'PENDING'" class="my-4 block text-2xl font-semibold">Review Comment <br>
+                <div v-if="refund.status != 'PENDING'" class="my-4 block text-2xl font-semibold">Review Comment: <br>
                     <span class="text-xl text-gray-500">{{refund.review_comment}}</span>
                 </div>
                 

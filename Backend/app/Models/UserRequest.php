@@ -138,6 +138,11 @@ class UserRequest extends Model
         $user = User::find($userRequest->originator_id);
         $userRequest->user = $user;
 
+        if ($userRequest->timeslot_id != null) {
+            $userRequest->datetime = Timeslot::find($userRequest->timeslot_id)->datetime;
+        }
+        
+
         return $userRequest;
     }
 

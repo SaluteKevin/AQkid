@@ -34,7 +34,7 @@
                     <div class="bg-white shadow rounded-lg p-6">
                         <h2 class="flex justify-center text-xl font-bold mb-4 ">HISTORY & COURSES</h2>
                         <div v-for="course in courses">
-                            <div v-if="course.status === 'ENDED'"
+                            <div v-if="course.can"
                                 class="mb-3 shadow-xl border bg-green-100 rounded-2xl p-4">
                                 <div class="flex justify-between  p-4 rounded-lg">
                                     <span class="text-gray-600 font-bold">{{ course.title }}</span>
@@ -87,6 +87,7 @@ const { data: courseResponse, error: courseError } = await useApiFetch(`api/stud
 
 if (courseResponse.value) {
     courses.value = courseResponse.value;
+    console.log(courses.value)
 }
 
 else {

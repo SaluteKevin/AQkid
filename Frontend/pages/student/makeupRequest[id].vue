@@ -48,7 +48,7 @@ hover:bg-gray-300
                 <div
                     class="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt">
                 </div>
-                <button v-if="!timeslotSelected.author" v-on:click="joinClass"
+                <button v-if="!timeslotSelected.author && timeslotSelected.can" v-on:click="joinClass"
                     class="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                     role="button">Request Join class
                 </button>
@@ -124,7 +124,7 @@ async function handleEventClick(arg) {
         uid: arg.event.extendedProps.uid,
         type: arg.event.extendedProps.type,
         author: arg.event.extendedProps.author,
-
+        can: arg.event.extendedProps.can
     };
 
     timeslotSelected.value = temp;
@@ -176,22 +176,27 @@ if (classesResponse.value) {
             uid: classesResponse.value[event].id,
             datestore: classesResponse.value[event].datetime,
             type: classesResponse.value[event].type,
-            author: classesResponse.value[event].author
+            author: classesResponse.value[event].author,
+            can: classesResponse.value[event].can
 
         }
 
         if (classesResponse.value[event].author == true) {
-            temp["color"] = 'gray';
+            temp["color"] = 'purple';
 
         }
         else {
-            if (classesResponse.value[event].type === "REGULAR") {
+
+            if (classesResponse.value[event].can == true) {
+
                 temp["color"] = 'green';
+
+            } else {
+
+                temp["color"] = 'gray';
+
             }
 
-            if (classesResponse.value[event].type === "MAKEUP") {
-                temp["color"] = 'purple';
-            }
 
 
         }
@@ -221,6 +226,7 @@ async function joinClass() {
 
     if (joinResponse.value) {
         alert("You have already request a joining class")
+        window.location.reload();
     }
 
     else {
