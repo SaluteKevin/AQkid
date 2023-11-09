@@ -7,37 +7,30 @@ title Use Case 3: สมัครคอร์ส
 mainframe **sd** EnrollCourse
 
 participant "customer:User" as Customer
-participant ":WebBrowser" as Browser
-participant ":WebServer" as Server
+participant ":EnrollmentController" as EnrollmentController
 participant ":Database" as Database
 
 autonumber
 
 activate Customer
-Customer -> Browser: กดปุ่ม "ENROLL COURSE"
+Customer -> EnrollmentController: กดปุ่ม "ENROLL COURSE"
 
-activate Browser
-Browser -> Server: ขอเข้าถึงหน้าสมัครคอร์ส
-
-activate Server
-Server -> Database: ขอข้อมูลคอร์สและตารางเวลา
+activate EnrollmentController
+EnrollmentController -> Database: ขอข้อมูลคอร์สและตารางเวลา
 
 activate Database
-Database --> Server: ข้อมูลคอร์สและตารางเวลา
+Database --> EnrollmentController: ข้อมูลคอร์สและตารางเวลา
 deactivate Database
 
-Server --> Browser: หน้าสมัครคอร์ส
-deactivate Server
+EnrollmentController --> Customer: แสดงหน้าสมัครคอร์ส
 
-Browser --> Customer: แสดงหน้าสมัครคอร์ส
+Customer -> EnrollmentController: เลือกคอร์ส
+Customer -> EnrollmentController: กดปุ่ม "View"
+EnrollmentController --> Customer: แสดงหน้ายืนยันรายละเอียดคอร์ส
 
-Customer -> Browser: เลือกคอร์ส
-Customer -> Browser: กดปุ่ม "View"
-Browser --> Customer: แสดงหน้ายืนยันรายละเอียดคอร์ส
+Customer -> EnrollmentController: กดปุ่ม "Confirm"
 
-Customer -> Browser: กดปุ่ม "Confirm"
-
-deactivate Browser
+deactivate EnrollmentController
 
 deactivate Customer
 @enduml

@@ -1,66 +1,31 @@
 @startuml
-skinparam monochrome true
-skinparam defaultFontName Sarabun
-
-title State Machine Diagram
-mainframe ProgressCourse
-
-state "ไม่มีมีบัญชีผู้ใช้" as notRegistered
-state "มีบัญชีผู้ใช้" as registered
-state "ไม่มีคอร์สพร้อมเรียน" as notEnrolled
-state "มีคอร์สพร้อมเรียน" as enrolled
-state "จบคอร์ส" as attendedCourse
-
-[*] --> notRegistered
-notRegistered -> registered: สมัครบัญชีผู้ใช้
-registered -> notEnrolled: ตรวจสอบคอร์สที่พร้อมเรียน
-notEnrolled -> enrolling: สมัครคอร์ส
-
-state "กำลังสมัครคอร์ส" as enrolling {
-    state "รออัปโหลดหลักฐานการชำระเงิน" as wait4payment
-    state "ขอสมัครคอร์สไม่สำเร็จ" as requestEnrollFailed
-    state "ขอสมัครคอร์สสำเร็จ" as requestEnrollSucceeded
-    state "สมัครคอร์สไม่สำเร็จ" as enrollFailed
-    state "สมัครคอร์สสำเร็จ" as enrollSucceeded
-
-    [*] -> wait4payment: สร้างคำขอสมัครคอร์ส
-
-    wait4payment --> requestEnrollFailed: กด "Cancel"
-    wait4payment --> requestEnrollFailed: ไม่ได้กด "Confirm" ภายใน 5 นาที
-    requestEnrollFailed --> enrollAborted <<exitPoint>>: ละทิ้ง
-
-    wait4payment -> requestEnrollSucceeded: กด "Confirm" ภายใน 5 นาที
-
-    requestEnrollSucceeded --> enrollFailed: กด "Cancel"
-    requestEnrollSucceeded --> enrollFailed: หลักฐานการชำระเงินไม่ถูกต้อง
-    enrollFailed --> enrollAborted: ละทิ้ง
-
-    requestEnrollSucceeded --> enrollSucceeded: หลักฐานการชำระเงินถูกต้อง
-    enrollSucceeded -> [*]
+skinparam {
+    monochrome true
+    defaultFontName Sarabun
 }
 
-enrollAborted --> notEnrolled
-enrolling -down-> enrolled
-enrolled --> attendingCourse: เข้าเรียนคอร์ส
+title State Machine Diagram ของ Course
 
-state "กำลังเรียนคอร์ส" as attendingCourse {
-    ' state "ACTIVE" as active
-    ' state "ENDED" as ended
-    ' state "ยังเรียนไม่ครบตามจำนวนครั้งของคอร์ส" as quotaRemains
-    ' state "เรียนครบตามจำนวนครั้งของคอร์ส" as quotaReached
-    state "กำลังเรียนคอร์สเรียน" as attending
-    state "คอร์สถูกปิด" as courseCompleted
-
-    ' [*] -> active
-    ' active -> active: นักเรียนอย่างน้อย 1 คนยังเรียนไม่ครบตามจำนวนครั้งของคอร์ส
-    ' active -> ended: นักเรียนทุกคนเรียนครบตามจำนวนครั้งของคอร์ส
-    [*] --> attending: เรียน
-    attending --> attending: ยังเรียนไม่ครบตามจำนวนครั้งของคอร์ส
-    attending --> courseCompleted: เรียนครบตามจำนวนครั้งของคอร์ส
-
-    courseCompleted --> [*]
+<style>
+mainframe {
+    margin 50
 }
+</style>
+mainframe CourseStatus
 
-attendingCourse -> attendedCourse
-attendedCourse --> [*]
+state "PENDING" as pending
+state "OPEN" as open
+state "FULL" as full
+state "ACTIVE" as active
+state "ENDED" as ended
+
+[*] -down-> pending: สร้างคอร์ส
+pending -> open: ณ วันและเวลาเปิดรับสมัคร
+open -down-> full: ลูกค้าสมัครจนครบจำนวน
+full -> active: ณ วันและเวลาเริ่มต้นคาบเรียนแรกของคอร์ส
+open -> active: ณ วันและเวลาเริ่มต้นคาบเรียนแรกของคอร์ส
+active -> ended: ลูกค้าทุกคนในคอร์สเรียนครบตามจำนวนครั้งที่คอร์สกำหนด
+active -> ended: ณ วันและเวลาตามปฏิทิน 2 สัปดาห์\nหลังจากวันและเวลาเริ่มต้นคาบเรียนสุดท้ายของคอร์ส\n(2-week offset)
+ended -down-> [*]
+
 @enduml

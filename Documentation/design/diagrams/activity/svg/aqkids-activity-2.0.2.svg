@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 841 2481" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:10;">
+    <g>
+        <path d="M0.5,23.5L0.5,0.5L280.5,0.5L280.5,23.5" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M0.5,23.5L0.5,2480.5L280.5,2480.5L280.5,23.5" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M0.5,23.5L280.5,23.5" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,127.18,15)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:11px;">ลูกค้า</text>
+            </g>
+        </g>
+        <path d="M203,828.67C203,824.161 199.339,820.5 194.83,820.5L86.17,820.5C81.661,820.5 78,824.161 78,828.67L78,866.83C78,871.339 81.661,875 86.17,875L194.83,875C199.339,875 203,871.339 203,866.83L203,828.67Z" style="fill:white;stroke:black;stroke-width:1px;stroke-miterlimit:4;"/>
+        <g transform="matrix(1,0,0,1,140,851.75)">
+            <g>
+                <g transform="matrix(1,0,0,1,-37.686,0)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ชำระเง</text>
+                </g>
+                <g transform="matrix(1,0,0,1,-6.193,0)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ิ<tspan x="0.11px " y="0px ">น</tspan>ค่าคอร์ส</text>
+                </g>
+            </g>
+        </g>
+        <path d="M145.75,1701.52L220.75,1756.02L145.75,1810.52L70.75,1756.02L145.75,1701.52Z" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
+        <g transform="matrix(1,0,0,1,145,1759)">
+            <g>
+                <g>
+                    <g transform="matrix(1,0,0,1,-36.416,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">สามารถเข้าเรียน</text>
+                    </g>
+                    <g>
+                        <g transform="matrix(1,0,0,1,-25.163,11)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ตามเวลาได</text>
+                        </g>
+                        <g transform="matrix(1,0,0,1,25.052,11)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">้</text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <path d="M140.5,775L140.5,814.13" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M140.5,819.38L137,812.38L140.5,814.13L144,812.38L140.5,819.38Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M203,728.67C203,724.161 199.339,720.5 194.83,720.5L86.17,720.5C81.661,720.5 78,724.161 78,728.67L78,766.83C78,771.339 81.661,775 86.17,775L194.83,775C199.339,775 203,771.339 203,766.83L203,728.67Z" style="fill:white;stroke:black;stroke-width:1px;stroke-miterlimit:4;"/>
+        <g transform="matrix(1,0,0,1,140,751.75)">
+            <g>
+                <g transform="matrix(1,0,0,1,-23.688,0)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">เล</text>
+                </g>
+                <g transform="matrix(1,0,0,1,-14.008,0)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ื<tspan x="0.11px " y="0px ">อ</tspan>กคอร์ส</text>
+                </g>
+            </g>
+        </g>
+        <path d="M140.79,229.5L140.79,284.13" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M140.79,289.38L137.29,282.38L140.79,284.13L144.29,282.38L140.79,289.38Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,151.101,250)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ไม่มี</text>
+            </g>
+        </g>
+        <path d="M140.79,120.5L190.79,175L140.79,229.5L90.79,175L140.79,120.5Z" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
+        <g transform="matrix(1,0,0,1,103.491,178)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">มีบัญชีของระบบ</text>
+            </g>
+        </g>
+        <path d="M203.29,298.67C203.29,294.161 199.629,290.5 195.12,290.5L86.46,290.5C81.951,290.5 78.29,294.161 78.29,298.67L78.29,336.83C78.29,341.339 81.951,345 86.46,345L195.12,345C199.629,345 203.29,341.339 203.29,336.83L203.29,298.67Z" style="fill:white;stroke:black;stroke-width:1px;stroke-miterlimit:4;"/>
+        <g transform="matrix(1,0,0,1,117.828,321.75)">
+            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">สร้างบัญชี</text>
+        </g>
+        <path d="M140.5,1019.49L140.5,1064.13" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M140.5,1069.38L137,1062.38L140.5,1064.13L144,1062.38L140.5,1069.38Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,174,1040)">
+            <g>
+                <g>
+                    <g transform="matrix(1,0,0,1,-23.018,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ไม่ท</text>
+                    </g>
+                    <g transform="matrix(1,0,0,1,-4.857,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ั<tspan x="0.11px " y="0px ">น</tspan>เวลา</text>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <path d="M140.5,910.5L215.5,965L140.5,1019.49L65.5,965L140.5,910.5Z" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
+        <g transform="matrix(1,0,0,1,140.676,959.275)">
+            <g>
+                <g>
+                    <g>
+                        <g transform="matrix(1,0,0,1,-37.851,0)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">อ</text>
+                        </g>
+                        <g transform="matrix(1,0,0,1,-31.504,0)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ั<tspan x="0.11px " y="0px ">ป</tspan>โหลดหล</text>
+                        </g>
+                        <g transform="matrix(1,0,0,1,13.134,0)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ั<tspan x="0.11px " y="0px ">ก</tspan>ฐาน</text>
+                        </g>
+                    </g>
+                    <g>
+                        <g transform="matrix(1,0,0,1,-27.802,11)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">การชำระเง</text>
+                        </g>
+                        <g transform="matrix(1,0,0,1,20.686,11)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ิ<tspan x="0.11px " y="0px ">น</tspan></text>
+                        </g>
+                    </g>
+                    <g>
+                        <g transform="matrix(1,0,0,1,-48.648,22)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ค่าคอร์สภายใน 5 นาท</text>
+                        </g>
+                        <g transform="matrix(1,0,0,1,48.538,22)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ี</text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <path d="M140.5,875L140.5,904.13" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M140.5,909.38L137,902.38L140.5,904.13L144,902.38L140.5,909.38Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M203,1078.67C203,1074.16 199.339,1070.5 194.83,1070.5L86.17,1070.5C81.661,1070.5 78,1074.16 78,1078.67L78,1116.83C78,1121.34 81.661,1125 86.17,1125L194.83,1125C199.339,1125 203,1121.34 203,1116.83L203,1078.67Z" style="fill:white;stroke:black;stroke-width:1px;stroke-miterlimit:4;"/>
+        <g transform="matrix(1,0,0,1,140,1101.75)">
+            <g>
+                <g transform="matrix(1,0,0,1,-41.08,0)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ส่งคำร้องขอค</text>
+                </g>
+                <g transform="matrix(1,0,0,1,18.551,0)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ื<tspan x="0.11px " y="0px ">น</tspan>เง</text>
+                </g>
+                <g transform="matrix(1,0,0,1,33.962,0)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ิ<tspan x="0.11px " y="0px ">น</tspan></text>
+                </g>
+            </g>
+        </g>
+        <path d="M203.09,1325.92C203.09,1321.41 199.429,1317.75 194.92,1317.75L86.26,1317.75C81.751,1317.75 78.09,1321.41 78.09,1325.92L78.09,1364.08C78.09,1368.59 81.751,1372.25 86.26,1372.25L194.92,1372.25C199.429,1372.25 203.09,1368.59 203.09,1364.08L203.09,1325.92Z" style="fill:white;stroke:black;stroke-width:1px;stroke-miterlimit:4;"/>
+        <g transform="matrix(1,0,0,1,140.09,1349)">
+            <g>
+                <g transform="matrix(1,0,0,1,-20.735,0)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">รับเง</text>
+                </g>
+                <g transform="matrix(1,0,0,1,-0.022,0)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ิ<tspan x="0.11px 7.117px 13.64px 13.75px " y="0px 0px 0px 0px ">นคืน</tspan></text>
+                </g>
+            </g>
+        </g>
+        <rect x="130.79" y="130.5" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,136.975,143)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">1</text>
+            </g>
+        </g>
+        <rect x="78.38" y="290.5" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,84.975,303)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">2</text>
+            </g>
+        </g>
+        <rect x="78.09" y="720.5" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,84.975,733)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">8</text>
+            </g>
+        </g>
+        <rect x="78.09" y="820.5" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,84.975,833)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">9</text>
+            </g>
+        </g>
+        <rect x="130.5" y="920.5" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,133.95,933)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">10</text>
+            </g>
+        </g>
+        <rect x="78.09" y="1070.5" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,81.95,1083)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">11</text>
+            </g>
+        </g>
+        <rect x="78" y="1317.75" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,81.95,1331)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">14</text>
+            </g>
+        </g>
+        <rect x="135.75" y="1711.52" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,138.95,1724)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">17</text>
+            </g>
+        </g>
+        <path d="M200.5,2278.67C200.5,2274.16 196.839,2270.5 192.33,2270.5L88.67,2270.5C84.161,2270.5 80.5,2274.16 80.5,2278.67L80.5,2316.83C80.5,2321.34 84.161,2325 88.67,2325L192.33,2325C196.839,2325 200.5,2321.34 200.5,2316.83L200.5,2278.67Z" style="fill:white;stroke:black;stroke-width:1px;stroke-miterlimit:4;"/>
+        <g transform="matrix(1,0,0,1,107.583,2301.75)">
+            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">รับ Certiﬁcate</text>
+        </g>
+        <rect x="80.5" y="2270.5" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,83.95,2283)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">21</text>
+            </g>
+        </g>
+        <circle cx="140.5" cy="65.5" r="21" style="stroke:rgb(255,0,0);stroke-width:1px;stroke-miterlimit:4;"/>
+        <path d="M140.5,90.5L140.73,114.13" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M140.78,119.38L137.21,112.42L140.73,114.13L144.21,112.35L140.78,119.38Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M280.5,23.5L280.5,0.5L560.5,0.5L560.5,23.5" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M280.5,23.5L280.5,2480.5L560.5,2480.5L560.5,23.5" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M280.5,23.5L560.5,23.5" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,420,15)">
+            <g>
+                <g>
+                    <g transform="matrix(1,0,0,1,-21.395,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:11px;">เจ้าหน้าที</text>
+                    </g>
+                    <g transform="matrix(1,0,0,1,21.494,-4.158)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:11px;">่</text>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <path d="M420.59,1559.49L420.6,1589.8L420.49,1613.61" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M420.47,1618.86L417,1611.84L420.49,1613.61L424,1611.88L420.47,1618.86Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,446,1580)">
+            <g>
+                <g>
+                    <g transform="matrix(1,0,0,1,-15.428,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ถูกต</text>
+                    </g>
+                    <g transform="matrix(1,0,0,1,3.866,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">้<tspan x="0.11px " y="0px ">อ</tspan>ง</text>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <path d="M420.59,1450.5L495.59,1505L420.59,1559.49L345.59,1505L420.59,1450.5Z" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
+        <g transform="matrix(1,0,0,1,420,1508)">
+            <g>
+                <g>
+                    <g>
+                        <g transform="matrix(1,0,0,1,-49.445,0)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ตรวจสอบความถูกต</text>
+                        </g>
+                        <g transform="matrix(1,0,0,1,37.884,0)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">้<tspan x="0.11px " y="0px ">อ</tspan>ง</text>
+                        </g>
+                    </g>
+                    <g>
+                        <g transform="matrix(1,0,0,1,-46.794,11)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">หล</text>
+                        </g>
+                        <g transform="matrix(1,0,0,1,-33.528,11)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ั<tspan x="0.11px " y="0px ">ก</tspan>ฐานการชำระเง</text>
+                        </g>
+                        <g transform="matrix(1,0,0,1,39.677,11)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ิ<tspan x="0.11px " y="0px ">น</tspan></text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <path d="M420.5,1901.52L420.5,1869.21" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M420.5,1863.96L424,1870.96L420.5,1869.21L417,1870.96L420.5,1863.96Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M483,1909.69C483,1905.18 479.339,1901.52 474.83,1901.52L366.17,1901.52C361.661,1901.52 358,1905.18 358,1909.69L358,1947.85C358,1952.36 361.661,1956.02 366.17,1956.02L474.83,1956.02C479.339,1956.02 483,1952.36 483,1947.85L483,1909.69Z" style="fill:white;stroke:black;stroke-width:1px;stroke-miterlimit:4;"/>
+        <g>
+            <g transform="matrix(1,0,0,1,389.821,1926.27)">
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">จองเวลาเรียน</text>
+            </g>
+            <g transform="matrix(1,0,0,1,405.227,1939.27)">
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ชดเชย</text>
+            </g>
+        </g>
+        <rect x="347" y="1851.94" width="147" height="10.9" style="stroke:black;stroke-width:1px;stroke-miterlimit:4;"/>
+        <path d="M480.5,2278.67C480.5,2274.16 476.839,2270.5 472.33,2270.5L368.67,2270.5C364.161,2270.5 360.5,2274.16 360.5,2278.67L360.5,2316.83C360.5,2321.34 364.161,2325 368.67,2325L472.33,2325C476.839,2325 480.5,2321.34 480.5,2316.83L480.5,2278.67Z" style="fill:white;stroke:black;stroke-width:1px;stroke-miterlimit:4;"/>
+        <g transform="matrix(1,0,0,1,420,2301.75)">
+            <g>
+                <g transform="matrix(1,0,0,1,-38.803,0)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">จ</text>
+                </g>
+                <g transform="matrix(1,0,0,1,-32.797,0)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ั<tspan x="0.11px " y="0px ">ด</tspan>ทำ Certiﬁcate</text>
+                </g>
+            </g>
+        </g>
+        <rect x="346.96" y="1619.98" width="147" height="10.9" style="stroke:black;stroke-width:1px;stroke-miterlimit:4;"/>
+        <path d="M420.5,2053.29L420.5,2095.16" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M420.5,2100.41L417,2093.41L420.5,2095.16L424,2093.41L420.5,2100.41Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <rect x="347" y="2042.39" width="147" height="10.9" style="stroke:black;stroke-width:1px;stroke-miterlimit:4;"/>
+        <path d="M420.5,2210.52L420.5,2264.13" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M420.5,2269.38L417,2262.38L420.5,2264.13L424,2262.38L420.5,2269.38Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,430.588,2231)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ใช่</text>
+            </g>
+        </g>
+        <path d="M420.68,202.25L420.7,321.4L420.51,434.13" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M420.5,439.38L417.01,432.37L420.51,434.13L424.01,432.39L420.5,439.38Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M420.68,675L420.7,697.8L420.62,714.13" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M420.6,719.38L417.13,712.37L420.62,714.13L424.13,712.4L420.6,719.38Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M483.09,1325.92C483.09,1321.41 479.429,1317.75 474.92,1317.75L366.26,1317.75C361.751,1317.75 358.09,1321.41 358.09,1325.92L358.09,1364.08C358.09,1368.59 361.751,1372.25 366.26,1372.25L474.92,1372.25C479.429,1372.25 483.09,1368.59 483.09,1364.08L483.09,1325.92Z" style="fill:white;stroke:black;stroke-width:1px;stroke-miterlimit:4;"/>
+        <g transform="matrix(1,0,0,1,420.09,1349)">
+            <g>
+                <g transform="matrix(1,0,0,1,-14.526,0)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ค</text>
+                </g>
+                <g transform="matrix(1,0,0,1,-8.003,0)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ื<tspan x="0.11px " y="0px ">น</tspan>เง</text>
+                </g>
+                <g transform="matrix(1,0,0,1,7.408,0)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ิ<tspan x="0.11px " y="0px ">น</tspan></text>
+                </g>
+            </g>
+        </g>
+        <path d="M420.59,1269.49L420.59,1311.38" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M420.59,1316.63L417.09,1309.63L420.59,1311.38L424.09,1309.63L420.59,1316.63Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,446,1289)">
+            <g>
+                <g>
+                    <g transform="matrix(1,0,0,1,-15.428,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ถูกต</text>
+                    </g>
+                    <g transform="matrix(1,0,0,1,3.866,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">้<tspan x="0.11px " y="0px ">อ</tspan>ง</text>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <path d="M420.59,1160.5L495.59,1215L420.59,1269.49L345.59,1215L420.59,1160.5Z" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
+        <g transform="matrix(1,0,0,1,420,1218)">
+            <g>
+                <g>
+                    <g>
+                        <g transform="matrix(1,0,0,1,-49.445,0)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ตรวจสอบความถูกต</text>
+                        </g>
+                        <g transform="matrix(1,0,0,1,37.884,0)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">้<tspan x="0.11px " y="0px ">อ</tspan>ง</text>
+                        </g>
+                    </g>
+                    <g>
+                        <g transform="matrix(1,0,0,1,-44.011,11)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">หล</text>
+                        </g>
+                        <g transform="matrix(1,0,0,1,-30.745,11)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ั<tspan x="0.11px " y="0px ">ก</tspan>ฐานการโอนเง</text>
+                        </g>
+                        <g transform="matrix(1,0,0,1,36.894,11)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ิ<tspan x="0.11px " y="0px ">น</tspan></text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <path d="M495.5,2156.02L820.5,2156L820.5,1600.5L457.2,1600.5L457.21,1613.61" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M457.21,1618.86L453.71,1611.86L457.21,1613.61L460.71,1611.86L457.21,1618.86Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,505.066,2142)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ไม่ใช่</text>
+            </g>
+        </g>
+        <path d="M420.5,2101.52L495.5,2156.02L420.5,2210.52L345.5,2156.02L420.5,2101.52Z" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
+        <g transform="matrix(1,0,0,1,420.478,2153.34)">
+            <g>
+                <g>
+                    <g transform="matrix(1,0,0,1,-29.926,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">เรียนครบตาม</text>
+                    </g>
+                    <g transform="matrix(1,0,0,1,-45.3425,15.7177)">
+                        <g transform="matrix(11,0,0,11,6.116,0)">
+                        </g>
+                        <g transform="matrix(11,0,0,11,43.054,0)">
+                            <path d="M0.047,-1.239C0.041,-1.192 0.024,-1.152 -0.004,-1.117C-0.031,-1.082 -0.068,-1.055 -0.113,-1.036C-0.158,-1.016 -0.208,-1.007 -0.263,-1.007L-0.303,-1.007L-0.303,-1.043C-0.268,-1.058 -0.241,-1.078 -0.223,-1.105C-0.226,-1.104 -0.23,-1.104 -0.235,-1.104C-0.258,-1.104 -0.275,-1.111 -0.288,-1.124C-0.301,-1.137 -0.307,-1.155 -0.307,-1.177C-0.307,-1.198 -0.3,-1.216 -0.285,-1.23C-0.27,-1.243 -0.251,-1.25 -0.229,-1.25C-0.206,-1.25 -0.187,-1.243 -0.172,-1.228C-0.157,-1.213 -0.149,-1.194 -0.149,-1.17C-0.149,-1.152 -0.154,-1.133 -0.163,-1.112C-0.172,-1.091 -0.185,-1.073 -0.2,-1.06C-0.151,-1.067 -0.11,-1.088 -0.078,-1.121C-0.046,-1.154 -0.027,-1.194 -0.022,-1.239L0.047,-1.239ZM-0.262,-1.176C-0.262,-1.166 -0.259,-1.158 -0.253,-1.152C-0.246,-1.145 -0.238,-1.142 -0.229,-1.142C-0.219,-1.142 -0.211,-1.145 -0.205,-1.152C-0.198,-1.158 -0.195,-1.166 -0.195,-1.176C-0.195,-1.185 -0.198,-1.193 -0.205,-1.2C-0.211,-1.206 -0.219,-1.209 -0.229,-1.209C-0.238,-1.209 -0.246,-1.206 -0.253,-1.2C-0.259,-1.193 -0.262,-1.185 -0.262,-1.176Z" style="fill-rule:nonzero;"/>
+                        </g>
+                        <g transform="matrix(11,0,0,11,43.054,0)">
+                        </g>
+                        <g transform="matrix(11,0,0,11,90.926,0)">
+                        </g>
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">จ<tspan x="6.006px 6.116px " y="0px 0px ">ํา</tspan>นวนครังของคอร์ส</text>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <circle cx="420.5" cy="2415.5" r="21" style="stroke:rgb(255,0,0);stroke-width:1px;stroke-miterlimit:4;"/>
+        <circle cx="420.5" cy="2415.5" r="25" style="fill:none;stroke:rgb(255,0,0);stroke-width:1px;stroke-miterlimit:4;"/>
+        <path d="M345.59,1215L20.5,1215L20.5,2415.5L389.13,2415.5" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M394.38,2415.5L387.38,2419L389.13,2415.5L387.38,2412L394.38,2415.5Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,315,1203)">
+            <g>
+                <g>
+                    <g transform="matrix(1,0,0,1,-20.95,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ไม่ถูกต</text>
+                    </g>
+                    <g transform="matrix(1,0,0,1,9.388,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">้<tspan x="0.11px " y="0px ">อ</tspan>ง</text>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <path d="M345.59,1505L20.5,1505L20.5,2415.5L389.13,2415.5" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M394.38,2415.5L387.38,2419L389.13,2415.5L387.38,2412L394.38,2415.5Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,315,1492)">
+            <g>
+                <g>
+                    <g transform="matrix(1,0,0,1,-20.95,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ไม่ถูกต</text>
+                    </g>
+                    <g transform="matrix(1,0,0,1,9.388,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">้<tspan x="0.11px " y="0px ">อ</tspan>ง</text>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <rect x="410.5" y="1170.5" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,413.95,1183)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">12</text>
+            </g>
+        </g>
+        <rect x="358" y="1317.75" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,361.95,1331)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">13</text>
+            </g>
+        </g>
+        <rect x="410.5" y="1460.5" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,413.95,1473)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">15</text>
+            </g>
+        </g>
+        <rect x="358.09" y="1901.52" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,361.95,1914)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">18</text>
+            </g>
+        </g>
+        <rect x="410.59" y="2111.52" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,413.95,2124)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">19</text>
+            </g>
+        </g>
+        <rect x="360.5" y="2270.5" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,363.95,2283)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">20</text>
+            </g>
+        </g>
+        <path d="M420.5,451.4L420.5,514.13" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M420.5,519.38L417,512.38L420.5,514.13L424,512.38L420.5,519.38Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <rect x="347" y="440.5" width="147" height="10.9" style="stroke:black;stroke-width:1px;stroke-miterlimit:4;"/>
+        <path d="M483,528.67C483,524.161 479.339,520.5 474.83,520.5L366.17,520.5C361.661,520.5 358,524.161 358,528.67L358,566.83C358,571.339 361.661,575 366.17,575L474.83,575C479.339,575 483,571.339 483,566.83L483,528.67Z" style="fill:white;stroke:black;stroke-width:1px;stroke-miterlimit:4;"/>
+        <g transform="matrix(1,0,0,1,396.586,551.75)">
+            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">สร้างคอร์ส</text>
+        </g>
+        <rect x="358.04" y="520.5" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,364.975,533)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">5</text>
+            </g>
+        </g>
+        <path d="M420.5,575L420.5,597.8L420.63,614.13" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M420.67,619.38L417.12,612.41L420.63,614.13L424.12,612.35L420.67,619.38Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M483.18,628.67C483.18,624.161 479.519,620.5 475.01,620.5L366.35,620.5C361.841,620.5 358.18,624.161 358.18,628.67L358.18,666.83C358.18,671.339 361.841,675 366.35,675L475.01,675C479.519,675 483.18,671.339 483.18,666.83L483.18,628.67Z" style="fill:white;stroke:black;stroke-width:1px;stroke-miterlimit:4;"/>
+        <g>
+            <g transform="matrix(1,0,0,1,420.18,645.25)">
+                <g>
+                    <g transform="matrix(1,0,0,1,-22.072,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">กำหนดคร</text>
+                    </g>
+                    <g transform="matrix(1,0,0,1,21.775,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ู</text>
+                    </g>
+                </g>
+            </g>
+            <g transform="matrix(1,0,0,1,381.366,658.25)">
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ผู้รับผิดชอบคอร์ส</text>
+            </g>
+        </g>
+        <rect x="358.27" y="620.5" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,364.975,633)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">6</text>
+            </g>
+        </g>
+        <path d="M483.09,728.67C483.09,724.161 479.429,720.5 474.92,720.5L366.26,720.5C361.751,720.5 358.09,724.161 358.09,728.67L358.09,766.83C358.09,771.339 361.751,775 366.26,775L474.92,775C479.429,775 483.09,771.339 483.09,766.83L483.09,728.67Z" style="fill:white;stroke:black;stroke-width:1px;stroke-miterlimit:4;"/>
+        <g>
+            <g transform="matrix(1,0,0,1,389.911,745.25)">
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">จองเวลาเรียน</text>
+            </g>
+            <g transform="matrix(1,0,0,1,398.7,758.25)">
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ของคอร์ส</text>
+            </g>
+        </g>
+        <rect x="358.18" y="720.5" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,364.975,733)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">7</text>
+            </g>
+        </g>
+        <path d="M483.18,155.92C483.18,151.411 479.519,147.75 475.01,147.75L366.35,147.75C361.841,147.75 358.18,151.411 358.18,155.92L358.18,194.08C358.18,198.589 361.841,202.25 366.35,202.25L475.01,202.25C479.519,202.25 483.18,198.589 483.18,194.08L483.18,155.92Z" style="fill:white;stroke:black;stroke-width:1px;stroke-miterlimit:4;"/>
+        <g transform="matrix(1,0,0,1,420.18,179)">
+            <g>
+                <g transform="matrix(1,0,0,1,-34.018,0)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">สร้างบัญชีให้คร</text>
+                </g>
+                <g transform="matrix(1,0,0,1,33.72,0)">
+                    <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ู</text>
+                </g>
+            </g>
+        </g>
+        <rect x="358.09" y="147.75" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,364.975,161)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">4</text>
+            </g>
+        </g>
+        <path d="M560.5,23.5L560.5,0.5L840.5,0.5L840.5,23.5" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M560.5,23.5L560.5,2480.5L840.5,2480.5L840.5,23.5" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M560.5,23.5L840.5,23.5" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,700,15)">
+            <g>
+                <g>
+                    <g transform="matrix(1,0,0,1,-6.171,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:11px;">คร</text>
+                    </g>
+                    <g transform="matrix(1,0,0,1,5.962,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Bold', 'Sarabun';font-weight:700;font-size:11px;">ู</text>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <path d="M695.25,1701.52L770.25,1756.02L695.25,1810.52L620.25,1756.02L695.25,1701.52Z" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
+        <g transform="matrix(1,0,0,1,695,1759)">
+            <g>
+                <g>
+                    <g transform="matrix(1,0,0,1,-35.321,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">สามารถเข้าสอน</text>
+                    </g>
+                    <g>
+                        <g transform="matrix(1,0,0,1,-25.163,11)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ตามเวลาได</text>
+                        </g>
+                        <g transform="matrix(1,0,0,1,25.052,11)">
+                            <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">้</text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <rect x="685.25" y="1711.52" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,688.95,1724)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">16</text>
+            </g>
+        </g>
+        <circle cx="700.5" cy="65.5" r="21" style="stroke:rgb(255,0,0);stroke-width:1px;stroke-miterlimit:4;"/>
+        <path d="M700.5,90.5L700.5,114.13" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M700.5,119.38L697,112.38L700.5,114.13L704,112.38L700.5,119.38Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M700.5,120.5L750.5,175L700.5,229.5L650.5,175L700.5,120.5Z" style="fill:white;fill-rule:nonzero;stroke:black;stroke-width:2px;"/>
+        <g transform="matrix(1,0,0,1,663.491,178)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">มีบัญชีของระบบ</text>
+            </g>
+        </g>
+        <rect x="690.5" y="130.5" width="20" height="20" style="fill:none;"/>
+        <g transform="matrix(1,0,0,1,696.975,143)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">3</text>
+            </g>
+        </g>
+        <path d="M145.75,1810.52L145.8,1928.8L351.63,1928.77" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M356.88,1928.77L349.88,1932.27L351.63,1928.77L349.88,1925.27L356.88,1928.77Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,168,1832)">
+            <g>
+                <g>
+                    <g transform="matrix(1,0,0,1,-10.923,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ไม่ได</text>
+                    </g>
+                    <g transform="matrix(1,0,0,1,10.813,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">้</text>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <path d="M695.25,1810.52L695.3,1928.8L489.37,1928.77" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M484.12,1928.77L491.12,1925.27L489.37,1928.77L491.12,1932.27L484.12,1928.77Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,717,1830)">
+            <g>
+                <g>
+                    <g transform="matrix(1,0,0,1,-10.923,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ไม่ได</text>
+                    </g>
+                    <g transform="matrix(1,0,0,1,10.813,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">้</text>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <path d="M457.25,1851.94L457.3,1756L613.88,1756.02" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M619.13,1756.02L612.13,1759.52L613.88,1756.02L612.13,1752.52L619.13,1756.02Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M383.75,1851.94L383.8,1756L227.12,1756.02" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M221.87,1756.02L228.87,1752.52L227.12,1756.02L228.87,1759.52L221.87,1756.02Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M383.71,1630.88L383.7,1666.2L145.8,1666.2L145.76,1695.16" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M145.75,1700.41L142.26,1693.4L145.76,1695.16L149.26,1693.41L145.75,1700.41Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M457.21,1630.88L457.2,1666.2L695.3,1666.2L695.26,1695.16" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M695.25,1700.41L691.76,1693.4L695.26,1695.16L698.76,1693.41L695.25,1700.41Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M650.5,175L489.55,175" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M484.3,175L491.3,171.5L489.55,175L491.3,178.5L484.3,175Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,621.101,163)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ไม่มี</text>
+            </g>
+        </g>
+        <path d="M358.09,1345L209.46,1345" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M204.21,1345L211.21,1341.5L209.46,1345L211.21,1348.5L204.21,1345Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M203,1097.75L420.6,1097.7L420.59,1154.13" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M420.59,1159.38L417.09,1152.38L420.59,1154.13L424.09,1152.38L420.59,1159.38Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M215.5,965L520.5,965L520.5,1420.5L420.6,1420.5L420.59,1444.13" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M420.59,1449.38L417.09,1442.38L420.59,1444.13L424.09,1442.38L420.59,1449.38Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,244,952)">
+            <g>
+                <g>
+                    <g transform="matrix(1,0,0,1,-17.495,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ท</text>
+                    </g>
+                    <g transform="matrix(1,0,0,1,-10.378,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ั<tspan x="0.11px " y="0px ">น</tspan>เวลา</text>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <path d="M140.59,1372.25L140.6,1410.5L20.5,1410.5L20.5,2415.5L389.13,2415.5" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M394.38,2415.5L387.38,2419L389.13,2415.5L387.38,2412L394.38,2415.5Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M70.75,1756.02L40.5,1756L40.5,2011.5L383.8,2011.5L383.76,2036.03" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M383.75,2041.28L380.26,2034.27L383.76,2036.03L387.26,2034.28L383.75,2041.28Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,55,1742)">
+            <g>
+                <g>
+                    <g transform="matrix(1,0,0,1,-5.401,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ได</text>
+                    </g>
+                    <g transform="matrix(1,0,0,1,5.291,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">้</text>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <path d="M770.25,1756.02L800.5,1756L800.5,2011.5L457.3,2011.5L457.26,2036.03" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M457.25,2041.28L453.76,2034.27L457.26,2036.03L460.76,2034.28L457.25,2041.28Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,787,1743)">
+            <g>
+                <g>
+                    <g transform="matrix(1,0,0,1,-5.401,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">ได</text>
+                    </g>
+                    <g transform="matrix(1,0,0,1,5.291,0)">
+                        <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">้</text>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <path d="M360.5,2297.75L206.87,2297.75" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M201.62,2297.75L208.62,2294.25L206.87,2297.75L208.62,2301.25L201.62,2297.75Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M140.5,2325L140.5,2415.5L389.13,2415.5" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M394.38,2415.5L387.38,2419L389.13,2415.5L387.38,2412L394.38,2415.5Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M190.79,175L240.5,175L240.5,400.5L383.8,400.5L383.76,434.13" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M383.75,439.38L380.26,432.38L383.76,434.13L387.26,432.39L383.75,439.38Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,212.623,164)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">มี</text>
+            </g>
+        </g>
+        <path d="M140.79,345L140.8,400.5L383.8,400.5L383.76,434.13" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M383.75,439.38L380.26,432.38L383.76,434.13L387.26,432.39L383.75,439.38Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M700.5,229.5L700.5,400.5L457.3,400.5L457.26,434.13" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M457.25,439.38L453.76,432.38L457.26,434.13L460.76,432.39L457.25,439.38Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <g transform="matrix(1,0,0,1,710.623,255)">
+            <g>
+                <text x="0px" y="0px" style="font-family:'Sarabun-Regular', 'Sarabun';font-size:11px;">มี</text>
+            </g>
+        </g>
+        <path d="M358.09,747.75L209.37,747.75" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+        <path d="M204.12,747.75L211.12,744.25L209.37,747.75L211.12,751.25L204.12,747.75Z" style="fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+    </g>
+</svg>

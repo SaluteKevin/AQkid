@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="629px" preserveAspectRatio="none" style="width:751px;height:629px;background:#FFFFFF;" version="1.1" viewBox="0 0 751 629" width="751px" zoomAndPan="magnify"><defs/><g><rect fill="none" height="28.2" id="_title" style="stroke:none;stroke-width:1.0;" width="167" x="292.75" y="10"/><text fill="#000000" font-family="Sarabun" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="157" x="297.75" y="29.952">Use Case 1: สร้างบัญชีผู้ใช้</text><rect fill="#FFFFFF" height="579.7" style="stroke:#000000;stroke-width:1.5;" width="726.5" x="19" y="44.2"/><path d="M122,44.2 L122,55.4 L112,65.4 L19,65.4 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="Sarabun" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="14" x="22" y="60.152">sd</text><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="76" x="39" y="60.152">RegisterUser</text><rect fill="#FFFFFF" height="434.2" style="stroke:#181818;stroke-width:1.0;" width="10" x="65.5" y="138.5"/><rect fill="#FFFFFF" height="434.2" style="stroke:#181818;stroke-width:1.0;" width="10" x="327.5" y="138.5"/><rect fill="#FFFFFF" height="222.5" style="stroke:#181818;stroke-width:1.0;" width="10" x="509.5" y="288"/><rect fill="#FFFFFF" height="28" style="stroke:#181818;stroke-width:1.0;" width="10" x="514.5" y="388.7"/><rect fill="#FFFFFF" height="30.9" style="stroke:#181818;stroke-width:1.0;" width="10" x="686.5" y="318.9"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="686.5" y="480.5"/><rect fill="none" height="127" style="stroke:#000000;stroke-width:1.5;" width="713.5" x="25" y="438.7"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="70" x2="70" y1="105.6" y2="582.7"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="332" x2="332" y1="105.6" y2="582.7"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="514" x2="514" y1="105.6" y2="582.7"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="691.5" x2="691.5" y1="105.6" y2="582.7"/><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="71" x="35" y="72.4"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="57" x="42" y="94.352">user:User</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="71" x="35" y="581.7"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="57" x="42" y="603.652">user:User</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="129" x="268" y="72.4"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="115" x="275" y="94.352">:RegisterController</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="129" x="268" y="581.7"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="115" x="275" y="603.652">:RegisterController</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="107" x="461" y="72.4"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="93" x="468" y="94.352">:UserController</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="107" x="461" y="581.7"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="93" x="468" y="603.652">:UserController</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="74" x="654.5" y="72.4"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="60" x="661.5" y="94.352">:Database</text><rect fill="#E3E3E3" height="32.2" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="74" x="654.5" y="581.7"/><text fill="#000000" font-family="Sarabun" font-size="14" lengthAdjust="spacing" textLength="60" x="661.5" y="603.652">:Database</text><rect fill="#FFFFFF" height="434.2" style="stroke:#181818;stroke-width:1.0;" width="10" x="65.5" y="138.5"/><rect fill="#FFFFFF" height="434.2" style="stroke:#181818;stroke-width:1.0;" width="10" x="327.5" y="138.5"/><rect fill="#FFFFFF" height="222.5" style="stroke:#181818;stroke-width:1.0;" width="10" x="509.5" y="288"/><rect fill="#FFFFFF" height="28" style="stroke:#181818;stroke-width:1.0;" width="10" x="514.5" y="388.7"/><rect fill="#FFFFFF" height="30.9" style="stroke:#181818;stroke-width:1.0;" width="10" x="686.5" y="318.9"/><rect fill="#FFFFFF" height="30" style="stroke:#181818;stroke-width:1.0;" width="10" x="686.5" y="480.5"/><polygon fill="#181818" points="315.5,134.5,325.5,138.5,315.5,142.5,319.5,138.5" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="75.5" x2="321.5" y1="138.5" y2="138.5"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="82.5" y="133.484">1</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="120" x="93.5" y="133.484">กดลงทะเบียนบัญชีผู้ใช้</text><polygon fill="#181818" points="86.5,165.4,76.5,169.4,86.5,173.4,82.5,169.4" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="80.5" x2="326.5" y1="169.4" y2="169.4"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="92.5" y="164.384">2</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="217" x="103.5" y="164.384">แสดงหน้าฟอร์มลงทะเบียนบัญชีผู้ใช้ระบบ</text><polygon fill="#181818" points="315.5,222.2,325.5,226.2,315.5,230.2,319.5,226.2" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="75.5" x2="321.5" y1="226.2" y2="226.2"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="82.5" y="221.184">3</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="60" x="93.5" y="221.184">กรอกข้อมูล</text><polygon fill="#181818" points="315.5,253.1,325.5,257.1,315.5,261.1,319.5,257.1" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="75.5" x2="321.5" y1="257.1" y2="257.1"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="82.5" y="252.084">4</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="133" x="93.5" y="252.084">กดปุ่ม "Create Account"</text><polygon fill="#181818" points="497.5,284,507.5,288,497.5,292,501.5,288" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="337.5" x2="503.5" y1="288" y2="288"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="344.5" y="282.984">5</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="142" x="355.5" y="282.984">ส่งข้อมูลส่วนตัวที่ผู้ใช้กรอก</text><polygon fill="#181818" points="674.5,314.9,684.5,318.9,674.5,322.9,678.5,318.9" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="519.5" x2="680.5" y1="318.9" y2="318.9"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="526.5" y="313.884">6</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="69" x="537.5" y="313.884">ขอข้อมูลผู้ใช้</text><polygon fill="#181818" points="530.5,345.8,520.5,349.8,530.5,353.8,526.5,349.8" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="524.5" x2="690.5" y1="349.8" y2="349.8"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="536.5" y="344.784">7</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="53" x="547.5" y="344.784">ข้อมูลผู้ใช้</text><line style="stroke:#181818;stroke-width:1.0;" x1="524.5" x2="566.5" y1="380.7" y2="380.7"/><line style="stroke:#181818;stroke-width:1.0;" x1="566.5" x2="566.5" y1="380.7" y2="393.7"/><line style="stroke:#181818;stroke-width:1.0;" x1="525.5" x2="566.5" y1="393.7" y2="393.7"/><polygon fill="#181818" points="535.5,389.7,525.5,393.7,535.5,397.7,531.5,393.7" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="531.5" y="375.684">8</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="142" x="542.5" y="375.684">ตรวจสอบข้อมูลที่ผู้ใช้กรอก</text><path d="M25,438.7 L86,438.7 L86,447.6 L76,457.6 L25,457.6 L25,438.7 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="127" style="stroke:#000000;stroke-width:1.5;" width="713.5" x="25" y="438.7"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="16" x="40" y="453.584">alt</text><text fill="#000000" font-family="Sarabun" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="102" x="101" y="452.448">[ข้อมูลที่กรอกถูกต้อง]</text><line style="stroke:#181818;stroke-width:1.0;" x1="684.5" x2="674.5" y1="480.5" y2="476.5"/><line style="stroke:#181818;stroke-width:1.0;" x1="684.5" x2="674.5" y1="480.5" y2="484.5"/><line style="stroke:#181818;stroke-width:1.0;" x1="519.5" x2="685.5" y1="480.5" y2="480.5"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="526.5" y="475.484">9</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="80" x="537.5" y="475.484">เขียนข้อมูลผู้ใช้</text><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="25" x2="738.5" y1="519.5" y2="519.5"/><text fill="#000000" font-family="Sarabun" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="114" x="30" y="531.248">[ข้อมูลที่กรอกไม่ถูกต้อง]</text><polygon fill="#181818" points="86.5,553.7,76.5,557.7,86.5,561.7,82.5,557.7" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="80.5" x2="326.5" y1="557.7" y2="557.7"/><text fill="#000000" font-family="Sarabun" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="14" x="92.5" y="552.684">10</text><text fill="#000000" font-family="Sarabun" font-size="13" lengthAdjust="spacing" textLength="204" x="110.5" y="552.684">แจ้งเตือนผู้ใช้ให้ตรวจสอบข้อมูลที่กรอก</text><!--MD5=[8484fc55e58f221d37b42a0945772539]
+@startuml
+skinparam monochrome true
+skinparam defaultFontName Sarabun
+autonumber
+
+title Use Case 1: สร้างบัญชีผู้ใช้
+mainframe **sd** RegisterUser
+
+participant "user:User" as User
+participant ":RegisterController" as RegisterController
+participant ":UserController" as UserController
+participant ":Database" as Database
+
+User -> RegisterController: กดลงทะเบียนบัญชีผู้ใช้
+
+activate User
+
+activate RegisterController
+RegisterController - -> User: แสดงหน้าฟอร์มลงทะเบียนบัญชีผู้ใช้ระบบ
+
+' loop 1
+loop ข้อมูลที่กรอกไม่ถูกต้อง
+
+User -> RegisterController: กรอกข้อมูล
+User -> RegisterController: กดปุ่ม "Create Account"
+RegisterController -> UserController: ส่งข้อมูลส่วนตัวที่ผู้ใช้กรอก
+
+activate UserController
+UserController -> Database: ขอข้อมูลผู้ใช้
+
+activate Database
+Database - -> UserController: ข้อมูลผู้ใช้
+deactivate Database
+
+UserController -> UserController: ตรวจสอบข้อมูลที่ผู้ใช้กรอก
+
+activate UserController
+deactivate UserController
+
+' alt 1
+alt ข้อมูลที่กรอกถูกต้อง
+
+UserController ->> Database: เขียนข้อมูลผู้ใช้
+
+activate Database
+deactivate Database
+deactivate UserController
+
+else ข้อมูลที่กรอกไม่ถูกต้อง
+
+RegisterController - -> User: แจ้งเตือนผู้ใช้ให้ตรวจสอบข้อมูลที่กรอก
+
+' alt 1
+end
+
+deactivate RegisterController
+
+deactivate User
+@enduml
+
+@startuml
+skinparam monochrome true
+skinparam defaultFontName Sarabun
+autonumber
+
+title Use Case 1: สร้างบัญชีผู้ใช้
+mainframe **sd** RegisterUser
+
+participant "user:User" as User
+participant ":RegisterController" as RegisterController
+participant ":UserController" as UserController
+participant ":Database" as Database
+
+User -> RegisterController: กดลงทะเบียนบัญชีผู้ใช้
+
+activate User
+
+activate RegisterController
+RegisterController - -> User: แสดงหน้าฟอร์มลงทะเบียนบัญชีผู้ใช้ระบบ
+
+loop ข้อมูลที่กรอกไม่ถูกต้อง
+
+User -> RegisterController: กรอกข้อมูล
+User -> RegisterController: กดปุ่ม "Create Account"
+RegisterController -> UserController: ส่งข้อมูลส่วนตัวที่ผู้ใช้กรอก
+
+activate UserController
+UserController -> Database: ขอข้อมูลผู้ใช้
+
+activate Database
+Database - -> UserController: ข้อมูลผู้ใช้
+deactivate Database
+
+UserController -> UserController: ตรวจสอบข้อมูลที่ผู้ใช้กรอก
+
+activate UserController
+deactivate UserController
+
+alt ข้อมูลที่กรอกถูกต้อง
+
+UserController ->> Database: เขียนข้อมูลผู้ใช้
+
+activate Database
+deactivate Database
+deactivate UserController
+
+else ข้อมูลที่กรอกไม่ถูกต้อง
+
+RegisterController - -> User: แจ้งเตือนผู้ใช้ให้ตรวจสอบข้อมูลที่กรอก
+
+end
+
+deactivate RegisterController
+
+deactivate User
+@enduml
+
+PlantUML version 1.2022.7(Tue Aug 23 00:01:30 ICT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: TH
+--></g></svg>

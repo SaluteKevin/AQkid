@@ -169,6 +169,36 @@ class UserRequest {
     {method} +setReviewComment()
 }
 
+class UserController {
+    {method} +create()
+    {method} +index()
+    {method} +show()
+}
+
+class RegisterController {
+    {method} +registerUser()
+}
+
+class CourseController {
+    {method} +create()
+    {method} +index()
+    {method} +show()
+    {method} +update()
+}
+
+class EnrollmentController {
+    {method} +create()
+    {method} +index()
+    {method} +show()
+    {method} +update()
+}
+
+class PaymentController {
+    {method} +create()
+    {method} +index()
+    {method} +show()
+}
+
 DatabaseModel <|-- User
 DatabaseModel <|-- Course
 DatabaseModel <|-- Enrollment
@@ -182,4 +212,11 @@ Queryable <|... Enrollment
 Queryable <|... Receipt
 Queryable <|... Timeslot
 Queryable <|... UserRequest
+
+User <|... UserController
+UserController <|... RegisterController
+Course <|... CourseController
+Enrollment <|... EnrollmentController
+Receipt <|... PaymentController
+
 @enduml
