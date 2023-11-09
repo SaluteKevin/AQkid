@@ -158,6 +158,7 @@ class User extends Authenticatable implements JWTSubject
         return $course->quota - $myAttended;
 
     }
+    
     // เพิ่ม class หลังจบ 10 class quota 2 query จาก make up class และมี student attendance enum ไหนก็ได้ถือว่าใช้สิทธ์สร้างไปแล้ว เวลาไหนก็ได้จาปัจจุบัน
     public function remainingMakeUpQuota(int $courseId):int {
         
