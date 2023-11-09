@@ -109,7 +109,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import { Calendar } from '@fullcalendar/core'
 import { useAuthStore } from "~/stores/useAuthStore";
 const config = useRuntimeConfig();
-const user= useAuthStore().user;
+const user = useAuthStore().user;
 
 const allevents = ref([]);
 

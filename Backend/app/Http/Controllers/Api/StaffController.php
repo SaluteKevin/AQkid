@@ -413,6 +413,115 @@ class StaffController extends Controller
         ], 422);
     }
 
+    // makeup
+    public function makeupReview(UserRequest $userRequest)
+    {
+
+        $userRequestWithUser = UserRequest::getMakeupWithUser($userRequest);
+
+        return $userRequestWithUser;
+    }
+
+    public function allMakeups()
+    {
+
+        $allUserRequests = UserRequest::getMakeup();
+
+        $allUserRequestsWithUser = UserRequest::getMakeupWithUserPaginate($allUserRequests);
+
+        return $allUserRequestsWithUser;
+    }
+
+    public function allMakeupHistories()
+    {
+
+        $allUserRequests = UserRequest::getMakeupHistories();
+
+        $allUserRequestsWithUser = UserRequest::getMakeupWithUserPaginate($allUserRequests);
+
+        return $allUserRequestsWithUser;
+    }
+
+    public function rejectMakeup(UserRequest $userRequest, Request $request)
+    {
+
+        if ($userRequest->updateStatus(UserRequestStatusEnum::REJECTED, $request->get('comment'))) {
+
+            return response()->json([
+                'message' => "Successfully Rejected UserRequest",
+            ]);
+        }
+
+        return response()->json([
+            'message' => "Failed to Reject UserRequest",
+        ], 422);
+    }
+
+    public function acceptMakeup(UserRequest $userRequest, Request $request)
+    {
+
+        $dateTime = $userRequest->datetime;
+
+        $statusOk = Timeslot::createTimeslot($userRequest->course_id, strtotime($dateTime), TimeslotTypeEnum::MAKEUP);
+
+        if ($statusOk != false) {
+
+            $timeslot = Timeslot::find($statusOk);
+
+            $statusOk = $timeslot->attachStudents(StudentAttendanceEnum::FALSE, $userRequest->originator_id);
+
+            if ($statusOk) {
+
+                $statusOk = $userRequest->updateStatus(UserRequestStatusEnum::APPROVED, $request->get('comment'));
+
+                if ($statusOk) {
+
+                    return response()->json([
+                        'message' => "Successfully Approved UserRequest",
+                    ]);
+    
+                }
+
+
+            }
+            
+        }
+
+        return response()->json([
+            'message' => "Failed to Approve UserRequest",
+        ], 422);
+
+        
+    }
+
+    public function acceptJoin(UserRequest $userRequest, Request $request)
+    {
+        $timeslot = Timeslot::find($userRequest->timeslot_id);
+
+        $statusOk = $timeslot->attachStudents(StudentAttendanceEnum::FALSE, $userRequest->originator_id);
+
+        if ($statusOk) {
+
+            $statusOk = $userRequest->updateStatus(UserRequestStatusEnum::APPROVED, $request->get('comment'));
+
+            if ($statusOk) {
+
+                return response()->json([
+                    'message' => "Successfully Approved UserRequest",
+                ]);
+
+            }
+            
+        }
+
+        return response()->json([
+            'message' => "Failed to Approve UserRequest",
+        ], 422);
+
+        
+    }
+    
+
     // create course
     public function getTeacherList()
     {

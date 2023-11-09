@@ -20,10 +20,13 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->enum('status', ['PENDING', 'APPROVED', 'REJECTED', 'OTHER']);
             $table->string('review_comment')->nullable();
+            $table->datetime('datetime')->nullable();
+            $table->unsignedBigInteger('timeslot_id')->nullable();;
             $table->timestamps();
 
             $table->foreign('originator_id')->references('id')->on('users');
             $table->foreign('course_id')->references('id')->on('courses');
+            $table->foreign('timeslot_id')->references('id')->on('timeslots');
         });
     }
 

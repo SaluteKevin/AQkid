@@ -36,7 +36,7 @@ class Timeslot extends Model
         return $this->belongsToMany(User::class, 'teacher_attendances', 'timeslot_id', 'teacher_id');
     }
 
-    public static function createTimeslot(int $courseId, int $dateTime, TimeslotTypeEnum $timeslotTypeEnum = TimeslotTypeEnum::UNDEFINED): bool
+    public static function createTimeslot(int $courseId, int $dateTime, TimeslotTypeEnum $timeslotTypeEnum = TimeslotTypeEnum::UNDEFINED)
     {
         if (Timeslot::where('datetime', date(env('APP_DATETIME_FORMAT'), $dateTime))->exists()) {
             error_log('Timeslot has been taken');
@@ -68,7 +68,10 @@ class Timeslot extends Model
         $timeslot->datetime = date(env('APP_DATETIME_FORMAT'), $dateTime);
         $timeslot->type = $timeslotTypeEnum->name;
 
-        return $timeslot->save();
+        if ($timeslot->save()) {
+            return $timeslot->id;
+        }
+        return false;
     }
 
     public static function deleteTimeslot(int $timeslotId)

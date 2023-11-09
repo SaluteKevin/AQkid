@@ -59,6 +59,7 @@ class UserRequest extends Model
         return $userRequest;
     }
 
+    // refund
     public static function getUserRequestsWithUserPaginate(Paginator $userRequests): Paginator
     {
 
@@ -86,6 +87,47 @@ class UserRequest extends Model
         $userRequestsId = UserRequest::where('type',UserRequestTypeEnum::REFUND->name)->where('status',UserRequestStatusEnum::PENDING->name)->pluck('id');
 
         $userRequestsNotInQuery = UserRequest::where('type',UserRequestTypeEnum::REFUND->name)->whereNotIn('id', $userRequestsId)->orderBy('created_at', 'desc')->paginate(5);
+
+        return $userRequestsNotInQuery;
+
+    }
+
+    // makeup
+    public static function getMakeupWithUser(UserRequest $userRequest): UserRequest
+    {
+        $user = User::find($userRequest->originator_id);
+        $userRequest->user = $user;
+
+        return $userRequest;
+    }
+
+    public static function getMakeupWithUserPaginate(Paginator $userRequests): Paginator
+    {
+
+        foreach ($userRequests as $userRequest) {
+
+            $user = User::find($userRequest->originator_id);
+
+            $userRequest->user = $user;
+        }
+
+        return $userRequests;
+
+    }
+
+    public static function getMakeup(): Paginator 
+    {
+        $userRequests = UserRequest::where('type',UserRequestTypeEnum::GENERAL->name)->where('status',UserRequestStatusEnum::PENDING->name)->orderBy('created_at', 'desc')->paginate(5);
+
+        return $userRequests;
+
+    }
+
+    public static function getMakeupHistories(): Paginator 
+    {
+        $userRequestsId = UserRequest::where('type',UserRequestTypeEnum::GENERAL->name)->where('status',UserRequestStatusEnum::PENDING->name)->pluck('id');
+
+        $userRequestsNotInQuery = UserRequest::where('type',UserRequestTypeEnum::GENERAL->name)->whereNotIn('id', $userRequestsId)->orderBy('created_at', 'desc')->paginate(5);
 
         return $userRequestsNotInQuery;
 

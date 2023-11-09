@@ -87,7 +87,15 @@ Route::group([
     Route::post('acceptUserRequest/{userRequest}', [StaffController::class,'acceptRequest']);
     Route::post('rejectUserRequest/{userRequest}', [StaffController::class,'rejectRequest']);
     Route::get('getUserRequest/{userRequest}',[StaffController::class, 'userRequestReview']);
-  
+
+    // makeup
+    Route::get('allMakeUps', [StaffController::class, 'allMakeups']);
+    Route::get('allMakeUpHistories', [StaffController::class, 'allMakeupHistories']);
+    Route::post('acceptJoin/{userRequest}', [StaffController::class,'acceptJoin']);
+    Route::post('acceptMakeUp/{userRequest}', [StaffController::class,'acceptMakeup']);
+    Route::post('rejectMakeUp/{userRequest}', [StaffController::class,'rejectMakeup']);
+    Route::get('getMakeUp/{userRequest}',[StaffController::class, 'makeupReview']);
+
     // create course
     Route::get('getTeacherList', [StaffController::class,'getTeacherList']);
     Route::post('createCourse', [StaffController::class,'createCourse']);
