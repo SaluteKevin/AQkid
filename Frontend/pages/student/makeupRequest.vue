@@ -84,7 +84,7 @@
                               Comment
                             <input 
                                       class="w-full px-4 py-4 rounded-lg border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                      type="text" name="username" placeholder="comment" />
+                                      type="text" name="comment" placeholder="comment" />
                                   <p class="text-red-500" :key="error">
                                       {{ error }}
                                   </p>
