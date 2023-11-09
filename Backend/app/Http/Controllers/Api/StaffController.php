@@ -203,7 +203,7 @@ class StaffController extends Controller
     public function addStudentAttendance(Timeslot $timeslot, User $student)
     {
 
-        if ($timeslot->attachStudents(StudentAttendanceEnum::FALSE, $student->id)) {
+        if ($timeslot->attachStudents(StudentAttendanceEnum::FALSE, null, $student->id)) {
 
             return response()->json([
                 'message' => "Successfully Added Student",
@@ -468,7 +468,7 @@ class StaffController extends Controller
 
             $timeslot = Timeslot::find($statusOk);
 
-            $statusOk = $timeslot->attachStudents(StudentAttendanceEnum::FALSE, $userRequest->originator_id);
+            $statusOk = $timeslot->attachStudents(StudentAttendanceEnum::FALSE, null, $userRequest->originator_id);
 
             if ($statusOk) {
 
@@ -498,7 +498,7 @@ class StaffController extends Controller
     {
         $timeslot = Timeslot::find($userRequest->timeslot_id);
 
-        $statusOk = $timeslot->attachStudents(StudentAttendanceEnum::FALSE, $userRequest->originator_id);
+        $statusOk = $timeslot->attachStudents(StudentAttendanceEnum::FALSE, $userRequest->course_id,$userRequest->originator_id);
 
         if ($statusOk) {
 

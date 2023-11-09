@@ -84,7 +84,7 @@ class Timeslot extends Model
         return Timeslot::find($timeslotId)->delete();
     }
 
-    public function attachStudents(StudentAttendanceEnum $studentAttendanceEnum = StudentAttendanceEnum::FALSE, int ...$studentIds): bool
+    public function attachStudents(StudentAttendanceEnum $studentAttendanceEnum = StudentAttendanceEnum::FALSE,  int $course_joint_Id = null, int ...$studentIds): bool
     {
         foreach ($studentIds as $studentId) {
             if (
@@ -96,7 +96,7 @@ class Timeslot extends Model
             }
         }
 
-        $this->studentAttendances()->attach($studentIds, ['has_attended' => $studentAttendanceEnum->name]);
+        $this->studentAttendances()->attach($studentIds, ['has_attended' => $studentAttendanceEnum->name, 'course_joint_id'=> $course_joint_Id]);
         return true;
     }
 

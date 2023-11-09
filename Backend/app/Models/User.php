@@ -123,9 +123,11 @@ class User extends Authenticatable implements JWTSubject
 
         $timeslotInIds = $this->studentAttendances->pluck('id');
 
-        $availableCourses = Course::get()->filter(function ($course) {
-            return Course::availableSpotCount($course->id) > 0;
-        })->pluck('id');
+        
+        $availableCourses = Course::where('status',CourseStatusEnum::ACTIVE->name)->get()
+        ->filter(function ($course) {
+            return ($course->capacity - Course::studentsIn($course->id)->count()) > 0;
+        })->pluck('id');   
 
         $timeslotEnrolls = Timeslot::whereIn('course_id', $availableCourses)->where('datetime', '>=', Carbon::now())->get();
 

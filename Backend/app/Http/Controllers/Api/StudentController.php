@@ -50,10 +50,7 @@ class StudentController extends Controller
         ->get();
 
     }
-    public function getCurrentCourse(User $user){
-        return Course::whereIn('id', Enrollment::where('student_id', $user->id)->where('status', EnrollmentStatusEnum::SUCCESS->name)->distinct('course_id')->pluck('course_id'))
-        ->where('status', CourseStatusEnum::ACTIVE->name)->get();
-    }
+  
 
     public function showCourse(Course $course)
     {
@@ -249,15 +246,22 @@ class StudentController extends Controller
 
     // fix somchoke
 
+    public function getCurrentCourse(User $user){
+        return Course::whereIn('id', Enrollment::where('student_id', $user->id)->where('status', EnrollmentStatusEnum::SUCCESS->name)->distinct('course_id')->pluck('course_id'))
+        ->where('status', CourseStatusEnum::ACTIVE->name)->get();
+    }
+
+    public function getMakeUpClasses(User $user) {
+        return $user->getMakeUpClasses();
+    }
+
     public function certificate(Course $course) {
         $course->last_date = $course->timeslots->sortByDesc('datetime')->first()->datetime;
         $course->teacher = User::find($course->teacher_id);
         return $course;
     }
 
-    public function getMakeUpClasses(User $user) {
-        return $user->getMakeUpClasses();
-    }
+    
 
 
 
