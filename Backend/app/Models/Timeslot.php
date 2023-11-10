@@ -28,7 +28,7 @@ class Timeslot extends Model
 
     public function studentAttendances(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'student_attendances', 'timeslot_id', 'student_id')->withPivot('has_attended','review_comment');
+        return $this->belongsToMany(User::class, 'student_attendances', 'timeslot_id', 'student_id')->withPivot('has_attended','review_comment','course_joint_id');
     }
 
     public function teacherAttendances(): BelongsToMany
@@ -36,7 +36,7 @@ class Timeslot extends Model
         return $this->belongsToMany(User::class, 'teacher_attendances', 'timeslot_id', 'teacher_id');
     }
 
-    public static function createTimeslot(int $courseId, int $dateTime, TimeslotTypeEnum $timeslotTypeEnum = TimeslotTypeEnum::UNDEFINED): bool
+    public static function createTimeslot(int $courseId, int $dateTime, TimeslotTypeEnum $timeslotTypeEnum = TimeslotTypeEnum::UNDEFINED)
     {
         if (Timeslot::where('datetime', date(env('APP_DATETIME_FORMAT'), $dateTime))->exists()) {
             error_log('Timeslot has been taken');
@@ -68,7 +68,10 @@ class Timeslot extends Model
         $timeslot->datetime = date(env('APP_DATETIME_FORMAT'), $dateTime);
         $timeslot->type = $timeslotTypeEnum->name;
 
-        return $timeslot->save();
+        if ($timeslot->save()) {
+            return $timeslot->id;
+        }
+        return false;
     }
 
     public static function deleteTimeslot(int $timeslotId)
@@ -81,7 +84,7 @@ class Timeslot extends Model
         return Timeslot::find($timeslotId)->delete();
     }
 
-    public function attachStudents(StudentAttendanceEnum $studentAttendanceEnum = StudentAttendanceEnum::FALSE, int ...$studentIds): bool
+    public function attachStudents(StudentAttendanceEnum $studentAttendanceEnum = StudentAttendanceEnum::FALSE,  int $course_joint_Id = null, int ...$studentIds): bool
     {
         foreach ($studentIds as $studentId) {
             if (
@@ -93,7 +96,7 @@ class Timeslot extends Model
             }
         }
 
-        $this->studentAttendances()->attach($studentIds, ['has_attended' => $studentAttendanceEnum->name]);
+        $this->studentAttendances()->attach($studentIds, ['has_attended' => $studentAttendanceEnum->name, 'course_joint_id'=> $course_joint_Id]);
         return true;
     }
 
@@ -110,7 +113,7 @@ class Timeslot extends Model
         return true;
     }
 
-    public function updateAttendance(int $studentId, StudentAttendanceEnum $studentAttendance): bool
+    public function updateAttendance(int $studentId, StudentAttendanceEnum $studentAttendance, int $courseId)
     {
         if ($this->studentAttendances()->find($studentId) == null) {
             error_log('Student \'' . $studentId . '\' has not been attached');
@@ -118,9 +121,9 @@ class Timeslot extends Model
         } else if ($this->studentAttendances()->find($studentId)->pivot->has_attended == $studentAttendance->name) {
             error_log('Attempting to change attendance to the same value');
             return false;
-        } else if ($studentAttendance == StudentAttendanceEnum::TRUE && User::find($studentId)->studentQuota() < 1) {
+        } else if ($studentAttendance == StudentAttendanceEnum::TRUE && User::find($studentId)->remainingQuota($courseId) < 1) {
             error_log('Attempting to change attendance for a student who is out of quota');
-            return false;
+            return StudentAttendanceEnum::QUOTA;
         }
 
             $this->studentAttendances()->updateExistingPivot($studentId, ['has_attended' => $studentAttendance->name]);

@@ -31,9 +31,9 @@
     <!-- <div class="flex-grow border-t border-gray-400 mt-6"></div> -->
     <div class="font-semibold px-4 pb-6 pt-2 flex mt-4">
       <div class="w-1/2 mt-4">
-        <div class="flex mb-16">
-          <div class="w-1/2">
-            <span class="text-xl">Course Type</span>
+        <div class="flex mb-16 space-x-2">
+          <div class="w-1/4">
+            <span class="text-xl">Course Selection</span>
             <div class="relative group">
 
               <div v-click-outside="clickOutsideQuo" class="relative">
@@ -68,48 +68,15 @@
               {{ error }}
             </p>
           </div>
-
-
-          <div class="w-1/2">
-            <span class="text-xl">Capacity</span>
-            <div class="relative group">
-
-              <div v-click-outside="clickOutsideCap" class="relative">
-                <button v-on:click="openCapacity = !openCapacity" class="bg-orange-300 rounded-md px-4 py-1 mt-2">
-                  <span>{{ currentCapacity }}</span>
-                  <svg fill="currentColor" viewBox="0 0 20 20"
-                    :class="{ 'rotate-180': openCapacity, 'rotate-0': !openCapacity }"
-                    class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
-                    <path fill-rule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                </button>
-                <div v-if="openCapacity" x-transition:enter="transition ease-out duration-100"
-                  x-transition:enter-start="transform opacity-0 scale-95"
-                  x-transition:enter-end="transform opacity-100 scale-100"
-                  x-transition:leave="transition ease-in duration-75"
-                  x-transition:leave-start="transform opacity-100 scale-100"
-                  x-transition:leave-end="transform opacity-0 scale-95"
-                  class="absolute left-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
-                  <div v-for="number in capacityNumber" :key="number.name" @click="changeCapacity(number)"
-                    v-on:click="openCapacity = !openCapacity"
-                    class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
-                    <button class="px-2">
-                      {{ number }}
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            <p class="text-red-500 font-normal" v-for="error in createError['capacity']" :key="error">
-              {{ error }}
-            </p>
+          <div class="w-2/4 bg-gray-200 h-full p-2">
+            <span>Course type</span>
+            <p>Half Course: 5 classes</p>
+            <p>Full Course: 10 classes</p>
           </div>
+
         </div>
         <div class="flex-grow border-t border-gray-400 w-5/6"></div>
-        <div class="flex mt-10">
+        <div class="flex mt-10 space-x-2">
 
           <div class="w-1/3">
             <span class="text-xl">Age Selection</span>
@@ -117,7 +84,7 @@
 
               <div v-click-outside="clickOutsideMin" class="relative">
                 <button v-on:click="openMinAge = !openMinAge" class="bg-orange-300 rounded-md px-4 py-1 mt-2">
-                  <span>{{ currentMinAge }}</span>
+                  <span>{{ Age }}</span>
                   <svg fill="currentColor" viewBox="0 0 20 20"
                     :class="{ 'rotate-180': openMinAge, 'rotate-0': !openMinAge }"
                     class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
@@ -133,7 +100,7 @@
                   x-transition:leave-start="transform opacity-100 scale-100"
                   x-transition:leave-end="transform opacity-0 scale-95"
                   class="absolute left-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
-                  <div v-for="number in minAgeNumber" :key="number.name" @click="changeMinAge(number)"
+                  <div v-for="number in ageType" :key="number.name" @click="changeMinAge(number)"
                     v-on:click="openMinAge = !openMinAge"
                     class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
                     <button class="px-2">
@@ -148,14 +115,21 @@
               {{ error }}
             </p>
           </div>
-          <div class="w-1/3 bg-gray-200 h-full p-2">
-            <span>Age type</span>
-            <p>B1: 0 - 6 Months</p>
-            <p>B2: 6 - 12 Months</p>
-            <p>T1: 1 - 2 Years</p>
-            <p>T2: 2 - 3 Years</p>
-            <p>T3: 3 - 4 Years</p>
-            <p>Ps: 5 - 10 Years</p>
+          <div class="w-full space-x-4 flex">
+            <div class="w-1/3 bg-gray-200 h-full p-2">
+              <span>Age type</span>
+              <p>B1: 0 - 6 Months</p>
+              <p>B2: 6 - 12 Months</p>
+              <p>T1: 1 - 2 Years</p>
+              <p>T2: 2 - 3 Years</p>
+              <p>T3: 3 - 4 Years</p>
+              <p>Ps: 5 - 10 Years</p>
+            </div>
+            <div class="w-3/6 bg-orange-200 h-min p-2">
+              <span>Capacity rule</span>
+              <p>B and T: hold 4 customers</p>
+              <p>Ps: hold 6 customers</p>
+            </div>
           </div>
         </div>
       </div>
@@ -166,16 +140,16 @@
         <div class="flex h-1/4 ">
           <div class="pt-2 w-full">Open Enroll date
             <VueDatePicker class="text-black" v-model="dateOpen" :is-24="true" enable-seconds hours-increment="1"
-              minutes-increment="1" seconds-increment="1" placeholder="Select Date"
-              :state="datePickerState">
+              minutes-increment="1" seconds-increment="1" placeholder="Select Date" :min-date="new Date()"
+              :state="datePickerState" :max-date="maxDate" prevent-min-max-navigation :disabled-week-days="[1]">
             </VueDatePicker>
           </div>
         </div>
         <div class="flex h-1/4">
           <div class="pt-2 w-full">End Enroll date
             <VueDatePicker class="text-black" v-model="dateUntil" :is-24="true" enable-seconds hours-increment="1"
-              minutes-increment="1" seconds-increment="1" placeholder="Select Date" 
-              :state="datePickerState">
+              minutes-increment="1" seconds-increment="1" placeholder="Select Date" :min-date="new Date()"
+              :state="datePickerState" :max-date="maxDate" prevent-min-max-navigation :disabled-week-days="[1]">
             </VueDatePicker>
             <p class="text-red-500 font-normal" v-for="error in createError['opens_until']" :key="error">
               {{ error }}
@@ -188,41 +162,74 @@
             <VueDatePicker class="text-black z-0" v-model="dateStart" :is-24="true" enable-seconds hours-increment="1"
               minutes-increment="0" seconds-increment="0" placeholder="Select Date" no-minutes-overlay no-seconds-overlay
               :min-time="{ hours: 10, minutes: 0, seconds: 0 }" :max-time="{ hours: 17, minutes: 0, seconds: 0 }"
-              :start-time="{ hours: 10, minutes: 0, seconds: 0 }" :state="datePickerState" :disabled-week-days="[1]">
+              :start-time="{ hours: 10, minutes: 0, seconds: 0 }" :state="datePickerState" :  ="[1]" 
+              :min-date="new Date()" :max-date="maxDate" prevent-min-max-navigation :disabled-week-days="[1]"
+              >
             </VueDatePicker>
             <p class="text-red-500 font-normal" v-for="error in createError['starts_on']" :key="error">
               {{ error }}
             </p>
           </div>
         </div>
-        <div class="font-semibold relative group h-1/4">
-          Select Teacher:
-          <button v-click-outside="clickOutsideTeacher" v-on:click="openTeacher = !openTeacher"
-            class="bg-orange-300 rounded-md px-4 py-1 mt-2">
-            {{ currentTeacher }}
-            <svg fill="currentColor" viewBox="0 0 20 20" :class="{ 'rotate-180': openTeacher, 'rotate-0': !openTeacher }"
-              class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
-              <path fill-rule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </button>
-          <div v-if="openTeacher" x-transition:enter="transition ease-out duration-100"
-            x-transition:enter-start="transform opacity-0 scale-95"
-            x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75"
-            x-transition:leave-start="transform opacity-100 scale-100"
-            x-transition:leave-end="transform opacity-0 scale-95"
-            class="absolute left-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
-            <div v-for="teacher in teachers" :key="teacher.name" @click="changeTeacher(teacher.first_name, teacher.id)"
-              v-on:click="openTeacher = !openTeacher" class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
-              <button class="px-2 z-50">
-                {{ teacher.first_name }}
-              </button>
+        <div>
+          <div class="font-semibold relative group h-1/4">
+            Select Teacher:
+            <button v-click-outside="clickOutsideTeacher" v-on:click="openTeacher = !openTeacher"
+              class="bg-orange-300 rounded-md px-4 py-1 mt-2">
+              {{ currentTeacher }}
+              <svg fill="currentColor" viewBox="0 0 20 20" :class="{ 'rotate-180': openTeacher, 'rotate-0': !openTeacher }"
+                class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
+                <path fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            <div v-if="openTeacher" x-transition:enter="transition ease-out duration-100"
+              x-transition:enter-start="transform opacity-0 scale-95"
+              x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75"
+              x-transition:leave-start="transform opacity-100 scale-100"
+              x-transition:leave-end="transform opacity-0 scale-95"
+              class="absolute left-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
+              <div v-for="teacher in teachers" :key="teacher.name" @click="changeTeacher(teacher.first_name, teacher.id)"
+                v-on:click="openTeacher = !openTeacher" class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
+                <button class="px-2 z-50">
+                  {{ teacher.first_name }}
+                </button>
+              </div>
             </div>
+            <p class="text-red-500 font-normal" v-for="error in createError['teacher_id']" :key="error">
+              {{ error }}
+            </p>
           </div>
-          <p class="text-red-500 font-normal" v-for="error in createError['teacher_id']" :key="error">
-            {{ error }}
-          </p>
+          <!-- <div v-if="Age == 'Ps'" class="font-semibold relative group h-1/4">
+            Select Teacher assistant:
+            <button v-click-outside="clickOutsideTeacher" v-on:click="openTeacher = !openTeacher"
+              class="bg-orange-300 rounded-md px-4 py-1 mt-2">
+              {{ currentTeacher }}
+              <svg fill="currentColor" viewBox="0 0 20 20" :class="{ 'rotate-180': openTeacher, 'rotate-0': !openTeacher }"
+                class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
+                <path fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            <div v-if="openTeacher" x-transition:enter="transition ease-out duration-100"
+              x-transition:enter-start="transform opacity-0 scale-95"
+              x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75"
+              x-transition:leave-start="transform opacity-100 scale-100"
+              x-transition:leave-end="transform opacity-0 scale-95"
+              class="absolute left-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
+              <div v-for="teacher in teachers" :key="teacher.name" @click="changeTeacher(teacher.first_name, teacher.id)"
+                v-on:click="openTeacher = !openTeacher" class="text-black cursor-pointer px-2  bg-white hover:bg-gray-200">
+                <button class="px-2 z-50">
+                  {{ teacher.first_name }}
+                </button>
+              </div>
+            </div>
+            <p class="text-red-500 font-normal" v-for="error in createError['teacher_id']" :key="error">
+              {{ error }}
+            </p>
+          </div> -->
         </div>
       </div>
 
@@ -260,7 +267,6 @@ import dayjs from 'dayjs';
 
 const open = ref(false);
 const openQuota = ref(false);
-const openCapacity = ref(false);
 const openMinAge = ref(false);
 const openTeacher = ref(false);
 const title = ref('');
@@ -278,21 +284,15 @@ function changeQuota(type: string) {
     quotaAmount.value = 5;
   }
 }
-
-const currentCapacity = ref('Not Assign');
-const capacityNumber = [4, 6];
 const capacityAmount = ref();
-function changeCapacity(amount: number) {
-  currentCapacity.value = "Amount: " + amount;
-  capacityAmount.value = amount;
-}
 
-const currentMinAge = ref('Not Assign');
-const minAgeNumber = ['B1', 'B2', 'T1', 'T2', 'T3', 'Ps'];
+const Age = ref('Not Assign');
+const ageType = ['B1', 'B2', 'T1', 'T2', 'T3', 'Ps'];
 const minAgeAmount = ref();
 const maxAgeAmount = ref();
 function changeMinAge(minAge: string) {
-  currentMinAge.value = minAge;
+  Age.value = minAge;
+  capacityAmount.value = 4;
   if(minAge=='B1'){
     minAgeAmount.value = 0;
     maxAgeAmount.value = 6;
@@ -315,6 +315,7 @@ function changeMinAge(minAge: string) {
   if(minAge=='Ps'){
     minAgeAmount.value = 48;
     maxAgeAmount.value = 120;
+    capacityAmount.value = 6;
   }
 }
 
@@ -403,14 +404,8 @@ const clickOutside = () => {
 const clickOutsideQuo = () => {
   openQuota.value = false;
 }
-const clickOutsideCap = () => {
-  openCapacity.value = false;
-}
 const clickOutsideMin = () => {
   openMinAge.value = false;
-}
-const clickOutsideMax = () => {
-  openMaxAge.value = false;
 }
 const clickOutsideTeacher = () => {
   openTeacher.value = false;
@@ -504,17 +499,12 @@ if (timeslotResponse.value) {
 
 }
 
-
-
 // tooltip
 // const showTooltip = ref(false);
 // const tooltipContent = ref('');
 // const tooltipTop = ref(0);
 // const tooltipLeft = ref(0);
 // const tooltipWidth = ref<any>(0);
-
-
-
 
 async function handleEventClick(arg) {
   await navigateTo(`/staff/detail/timeslot${arg.event.extendedProps.uid}`);
@@ -548,10 +538,11 @@ async function handleEventClick(arg) {
 
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
+import { addMonths, getMonth, getYear, subMonths } from 'date-fns';
 const dateOpen = ref();
 const dateUntil = ref();
 const dateStart = ref();
 const datePickerState = ref<any>(null);
-
+const maxDate = computed(() => addMonths(new Date(getYear(new Date()), getMonth(new Date())), 2));
 
 </script>

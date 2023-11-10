@@ -44,12 +44,22 @@ class StudentController extends Controller
 
     public function getAllCourse(User $user)
     {
-        return Course::whereIn('id', Enrollment::where('student_id', $user->id)
+
+        $allCourses = Course::whereIn('id', Enrollment::where('student_id', $user->id)
         ->where('status', EnrollmentStatusEnum::SUCCESS->name)
         ->pluck('course_id'))
         ->get();
-
+        
+        foreach($allCourses as $course) {
+            if ($user->canCertified($course->id)) {
+                $course->can = true;
+            } else {
+                $course->can = false;
+            }
+        }
+        return $allCourses;
     }
+  
 
     public function showCourse(Course $course)
     {
@@ -66,6 +76,7 @@ class StudentController extends Controller
 
         return $course;
     }
+
 
     public function enrollCourse(Course $course, User $user , Request $request){
 
@@ -242,9 +253,138 @@ class StudentController extends Controller
 
     }
 
+    // fix somchoke
+
+    public function getCurrentCourse(User $user){
+        return Course::whereIn('id', Enrollment::where('student_id', $user->id)->where('status', EnrollmentStatusEnum::SUCCESS->name)->distinct('course_id')->pluck('course_id'))
+        ->where('status', CourseStatusEnum::ACTIVE->name)->get();
+    }
+
+    public function getMakeUpClasses(User $user) {
+        return $user->getMakeUpClasses();
+    }
+
     public function certificate(Course $course) {
+        $course->last_date = $course->timeslots->sortByDesc('datetime')->first()->datetime;
+        $course->teacher = User::find($course->teacher_id);
         return $course;
     }
+
+    public function makeJoinClass(User $user, Course $course, Timeslot $timeslot) {
+        // within 1 week
+        $statusOk = $user->stillGraduate($course->id);
+
+        if (!$statusOk) {
+            return response()->json([
+                'message' => "You have too little study time to accumulate credits.",
+            ],422);
+        }
+
+        $statusOk = $user->haveAskedJoin($course->id); 
+
+        if (!$statusOk) {
+            return response()->json([
+                'message' => "You have Already Created Join Request for this week",
+            ],422);
+        }
+
+        $timeslotDateTime = Carbon::parse($timeslot->datetime);
+        $startOfWeek = Carbon::now()->startOfWeek();
+        $endOfWeek = Carbon::now()->endOfWeek();
+        if ($timeslotDateTime->greaterThanOrEqualTo($endOfWeek) || $timeslotDateTime->lessThanOrEqualTo($startOfWeek)) {
+            return response()->json([
+                'message' => "You have to Select a Timeslot that is within this week",
+            ],422);
+        }
+
+        $statusOk = UserRequest::createJoinClass($user->id, $course->id, 'JOIN', $timeslot->id);
+
+        if ($statusOk) {
+            return response()->json([
+                'message' => "Successfully, created Join Request",
+            ]);
+        }
+
+        return response()->json([
+            'message' => "Failed to create Join Request",
+        ],422);
+    }
+
+    public function makeMakeUpClass(User $user, Course $course, Request $request) {
+        // within 2 week
+        $statusOk = $user->stillGraduate($course->id);
+
+        if (!$statusOk) {
+            return response()->json([
+                'message' => "You have too little study time to accumulate credits.",
+            ],422);
+        }
+
+        $statusOk = $user->haveAskedMake($course->id); 
+
+        if (!$statusOk) {
+            return response()->json([
+                'message' => "You Can create 1 class per time",
+            ],422);
+        }
+
+        $statusOk = $user->remainingMakeUpQuota($course->id);
+
+        if ($statusOk < 1) {
+            return response()->json([
+                'message' => "You have no quota left",
+            ],422);
+        }
+
+        $request->validate([
+            'datetime' => 'required|after:tomorrow'
+        ]);
+        
+        $dateTime = strtotime($request->get('datetime'));
+
+        if (Timeslot::where('datetime', date(env('APP_DATETIME_FORMAT'), $dateTime))->exists()) {
+            return response()->json([
+                'message' => "Timeslot has been taken",
+            ],422);
+        }
+
+        $timeslotDateTime = Carbon::parse($request->get('datetime'));
+        $startOfTwoWeeks = Carbon::now()->startOfWeek();
+        $endOfTwoWeeks = Carbon::now()->endOfWeek()->addWeeks(2);
+
+        if ($timeslotDateTime->greaterThanOrEqualTo($endOfTwoWeeks) || $timeslotDateTime->lessThanOrEqualTo($startOfTwoWeeks)) {
+            return response()->json([
+                'message' => "You have to select a timeslot that is within 2 weeks",
+            ], 422);
+        }
+
+        $statusOk = UserRequest::createMakeUpClass($user->id, $course->id, 'MAKE', $request->get('datetime'));
+
+        if ($statusOk) {
+            return response()->json([
+                'message' => "Successfully, created MakeUp Request",
+            ]);
+        }
+
+        return response()->json([
+            'message' => "Failed to create MakeUp Request",
+        ],422);
+    }
+
+    public function getMakeUpHistories(User $user, Course $course) {
+        $classes = UserRequest::where('originator_id', $user->id)->where('course_id', $course->id)->get();
+
+        foreach ($classes as $class) {
+            if ($class->timeslot_id != null) {
+                $class->datetime = Timeslot::find($class->timeslot_id)->datetime;
+            }
+        }
+        return $classes->sortByDesc('datetime');
+    }
+
+
+
+    
 
 
 }

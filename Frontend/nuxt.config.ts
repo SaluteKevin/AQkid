@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   },
 
   dayjs: {
-    locales: ['th'],
+    locales: ['en'],
     plugins: ['relativeTime', 'utc', 'timezone'],
     defaultLocale: 'th',
     defaultTimezone: 'Asia/Bangkok',
@@ -33,6 +33,7 @@ export default defineNuxtConfig({
   build: {
     transpile: ['@vuepic/vue-datepicker']
   },
+  
 
 })
 

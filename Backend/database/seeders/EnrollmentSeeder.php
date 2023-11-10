@@ -154,5 +154,15 @@ class EnrollmentSeeder extends Seeder
             'created_at' => $createdAt,
             'updated_at' => $updatedAt
         ]);
+
+        $studentId = User::where('username', 'std1')->first()->id;
+        Enrollment::create([
+            'course_id' => 26,
+            'student_id' => $studentId,
+            'proof_of_payment_path' => 'users/' . $studentId . '/payments/hashed-slip-file-name.jpg',
+            'status' => EnrollmentStatusEnum::SUCCESS->name,
+            'created_at' => $createdAt,
+            'updated_at' => $updatedAt
+        ]);
     }
 }

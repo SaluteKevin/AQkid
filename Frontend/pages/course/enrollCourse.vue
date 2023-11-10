@@ -127,7 +127,7 @@
                             
                             <span v-else>
                                 <div v-if="enroll_count >= capacity" class="text-red-500">The Course is Full</div>
-                                <div v-if="myAge < min_age && myAge > max_age" class="text-red-500">Your age does not meet the criteria</div>
+                                <div v-if="myAge < min_age || myAge > max_age" class="text-red-500">Your age does not meet the criteria</div>
                             </span>
     
                         </div>

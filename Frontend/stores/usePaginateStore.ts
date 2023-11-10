@@ -9,7 +9,9 @@ export const usePaginateStore = defineStore('paginate', {
             enroll_page: 1,
             enrollHistory_page: 1,
             refund_page: 1,
-            refundHistory_page: 1,     
+            refundHistory_page: 1,  
+            makeup_page: 1,
+            makeupHistory_page: 1,     
     }
   },
   actions: {
@@ -39,6 +41,14 @@ export const usePaginateStore = defineStore('paginate', {
 
     async setRefundHistoryPage(page: number){
       this.refundHistory_page = page;
+    },
+
+    async setMakeUpPage(page: number) {
+      this.makeup_page = page;
+    },
+
+    async setMakeUpHistoryPage(page: number){
+      this.makeupHistory_page = page;
     }
   },
 	persist: true

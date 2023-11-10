@@ -87,7 +87,15 @@ Route::group([
     Route::post('acceptUserRequest/{userRequest}', [StaffController::class,'acceptRequest']);
     Route::post('rejectUserRequest/{userRequest}', [StaffController::class,'rejectRequest']);
     Route::get('getUserRequest/{userRequest}',[StaffController::class, 'userRequestReview']);
-  
+
+    // makeup
+    Route::get('allMakeUps', [StaffController::class, 'allMakeups']);
+    Route::get('allMakeUpHistories', [StaffController::class, 'allMakeupHistories']);
+    Route::post('acceptJoin/{userRequest}', [StaffController::class,'acceptJoin']);
+    Route::post('acceptMakeUp/{userRequest}', [StaffController::class,'acceptMakeup']);
+    Route::post('rejectMakeUp/{userRequest}', [StaffController::class,'rejectMakeup']);
+    Route::get('getMakeUp/{userRequest}',[StaffController::class, 'makeupReview']);
+
     // create course
     Route::get('getTeacherList', [StaffController::class,'getTeacherList']);
     Route::post('createCourse', [StaffController::class,'createCourse']);
@@ -106,6 +114,7 @@ Route::group([
     Route::get('getEvent/{teacher}', [TeacherController::class, 'getEvent']);
     Route::get('getTimeslot/{timeslot}', [TeacherController::class, 'getTimeslot']);
     Route::get('getStudentAttend/{timeslot}', [TeacherController::class, 'getStudentAttends']);
+    Route::post('checkAll/{timeslot}', [TeacherController::class, 'checkAll']);
     Route::post('attendStudent/{timeslot}/{student}', [TeacherController::class, 'studentAttend']);
     Route::post('absentStudent/{timeslot}/{student}', [TeacherController::class, 'studentAbsent']);
     Route::get('getTeacherCourses/{teacher}', [TeacherController::class, 'getTeacherCourses']);
@@ -127,6 +136,7 @@ Route::group([
     Route::get('getClasses/{user}', [StudentController::class, 'getAllClasses']);
     Route::get('getAllCourses/{user}', [StudentController::class, 'getAllCourse']);
     Route::get('showCourse/{course}', [StudentController::class, 'showCourse']);
+    Route::get('getCurrentCourse/{user}', [StudentController::class, 'getCurrentCourse']);
     Route::post('enrollCourse/{course}/{user}', [StudentController::class, 'enrollCourse']);
     
     
@@ -146,8 +156,11 @@ Route::group([
     // receipt
     Route::get('getReceipt/{enrollment}', [StudentController::class, 'getReceipt']);
 
-    //review Student
-    Route::get('reviewStudent/{user}' , [StudentController::class, 'getMyClass']);
+    //makeupRequest
+    Route::get('getMakeUpClasses/{user}' , [StudentController::class, 'getMakeUpClasses']);
+    Route::post('makeJoinClass/{user}/{course}/{timeslot}' , [StudentController::class, 'makeJoinClass']);
+    Route::post('makeMakeUpClass/{user}/{course}' , [StudentController::class, 'makeMakeUpClass']);
+    Route::get('getMakeUpHistories/{user}/{course}' , [StudentController::class, 'getMakeUpHistories']);
 
     // certificate
     Route::get('certificate/{course}', [StudentController::class, 'certificate']);

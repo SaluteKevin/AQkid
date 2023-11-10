@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-t from-cyan-400 from-20% to-white to-70%">
+  <div class="min-h-screen">
     <div class="flex px-16 mt-24 divide-x-2 space-x-10">
 
       <!--Class information-->
@@ -49,58 +49,52 @@
           <div class="flex-grow border-t border-gray-400 mt-4"></div>
         </div>
 
-        <div class="flex w-full p-8 gap-4 ">
-          <div
-            class="rounded-lg shadow-lg flex-1 flex flex-col gap-2 border p-4 bg-gradient-to-b from-80% from-green-100">
-            <h1>Attend Students </h1>
-            <p class="text-red-500 font-normal">
-              {{ errorRemStd }}
-            </p>
-
-            <div v-for="student in allstudents">
-              <div class="flex justify-between rounded-lg shadow-md p-4 border bg-white"
-                v-if="student.pivot.has_attended == 'TRUE'" :key="student.id">
-                <p>{{ student.first_name }} {{ student.last_name }}</p>
-                <button type="button" v-on:click="RemoveStudent(student.id)"
-                  class="bg-gray-800 text-white rounded-md py-2 border-l border-gray-200 hover:bg-red-700 hover:text-white px-3">
-                  <div class="flex flex-row align-middle">
-                    <span class="mr-2">Remove</span>
-                    <svg class="w-5 ml-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd"
-                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                        clip-rule="evenodd"></path>
-                    </svg>
-                  </div>
-                </button>
-              </div>
-            </div>
-
+        <button v-on:click="checkAll" ref="checkAll_button"
+          class="ml-4 w-fit flex flex-row items-center justify-center  p-2 mb-4 text-sm font-bold bg-green-300 leading-6 capitalize duration-100 transform rounded-sm shadow cursor-pointer focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 focus:outline-none  hover:shadow-lg hover:-translate-y-1 pointer-events-none">
+          Check All
+          <span class="ml-4">
+            <svg viewBox="0 -0.5 25 25" width="20px" height="20px" fill="none" xmlns="http://www.w3.org/2000/svg"
+              stroke="#000000">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path d="M5.5 12.5L10.167 17L19.5 8" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </g>
+            </svg>
+          </span>
+        </button>
+        <p class="text-red-500 ml-4 mt-2 mb-2" v-for="error in errors" :key="error">
+                                    {{ error }}
+       </p>
+        <div ref="student_container" class="flex flex-col w-full items-center gap-4 px-4 pointer-events-none">
+          <div class="flex bg-white w-full items-center justify-between rounded-2xl shadow-lg p-4">
+            <div>Student Image</div>
+            <div>Student Name</div>
+            <div>Attendance</div>
           </div>
-          <div class="rounded-lg shadow-lg flex-1 flex flex-col gap-2 border p-4 bg-gradient-to-b from-80% from-red-100">
-            <h1>Absent Students</h1>
-            <p class="text-red-500 font-normal">
-              {{ errorAddStd }}
-            </p>
 
-            <div v-for="student in allstudents">
-              <div class="flex justify-between rounded-lg shadow-md p-4 border bg-white"
-                v-if="student.pivot.has_attended == 'FALSE'" :key="student.id">
-                <button type="button" v-on:click="AddStudent(student.id)"
-                  class="bg-gray-800 text-white rounded-md border-r border-gray-100 py-2 hover:bg-red-700 hover:text-white px-3">
-                  <div class="flex flex-row align-middle">
-                    <svg class="w-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd"
-                        d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z"
-                        clip-rule="evenodd"></path>
-                    </svg>
-                    <p class="ml-2">Add</p>
-                  </div>
-                </button>
-                <p>{{ student.first_name }} {{ student.last_name }}</p>
-              </div>
-            </div>
+          <CheckName v-for="student in allstudents" :image_path="student.profile_image_path"
+            :name="student.first_name + ' ' + student.last_name" :checked="student.pivot.has_attended"
+            :id="student.id" @change="onChange">
+          </CheckName>
 
+        </div>
+
+        <div v-if="!canEdit" class="flex ml-4">
+          <div class="flex gap-3 max-w-sm mt-4 ml-4 items-center">
+            <button  v-if="!isCanAttend" v-on:click="canAttend"
+              class="py-2.5 px-6 rounded-lg text-sm font-medium text-white bg-teal-600">Edit</button>
+              <button  v-if="isCanAttend" v-on:click="canAttend"
+              class="py-2.5 px-6 rounded-lg text-sm font-medium text-white bg-red-600">Cancel</button>
           </div>
+          <div class="ml-4 flex items-center mt-4">
+            <div v-if="isCanAttend" class="text-green-500">{{ showCanAttend }}</div>
+            <div v-if="!isCanAttend" class="text-red-500">{{ showCantAttend }}</div>
+          </div>
+        </div>
+        <div v-else>
+          This Timeslot is Read-only
         </div>
 
       </div>
@@ -114,25 +108,23 @@ definePageMeta({
   middleware: ['is-authorized', 'is-teacher']
 })
 const route = useRoute();
-import { DelayedRunner } from '@fullcalendar/core/internal';
+
 import dayjs from 'dayjs';
 
 
-const modal = ref(false);
+
 const allstudents = ref([]);
 
 const timeslot = ref({});
 
 async function fetchStudents() {
   const { data: studentData, error: studentError } = await useApiFetch(`api/teacher/getStudentAttend/${route.params.id}`, {});
-
+  
   if (studentData.value) {
-
-    allstudents.value = studentData.value;
-
-    // for (const i in allstudents.value){
-    //   console.log(allstudents.value[i].pivot.has_attended)
-    // }
+    
+    for (const student in studentData.value) {
+      allstudents.value.push(studentData.value[student])
+    }
 
   }
   else {
@@ -146,9 +138,35 @@ await fetchStudents();
 
 
 
-// if (studentData.value) {
-//   console.log(studentData.value)
-// }
+const errors = ref([])
+async function checkAll() {
+
+  const { data: checkData, error: checkError } = await useApiFetch(`api/teacher/checkAll/${route.params.id}`, {
+    method: "POST"
+  });
+
+  if (checkData.value) {
+    
+    errors.value = []
+
+    for(const error in checkData.value.errors) {
+      errors.value.push(checkData.value.errors[error])
+    }
+
+    allstudents.value = []
+    await fetchStudents();
+  } else {
+
+  }
+
+}
+
+async function onChange(message) {
+    errors.value = []
+    errors.value.push(message)
+    allstudents.value = []
+    await fetchStudents();
+}
 
 const { data: timeslotData, error: timeslotError } = await useApiFetch(`api/teacher/getTimeslot/${route.params.id}`, {});
 
@@ -161,58 +179,31 @@ else {
 
 }
 
+// edit
 
 
-const errorAddStd = ref('');
+const late_datetime = dayjs(new Date(timeslot.value.datetime).setHours(new Date(timeslot.value.datetime).getHours() + 2)).unix()
+const currentDatetime = dayjs(new Date()).unix()
+const canEdit = ref(currentDatetime > late_datetime)
+const showCanAttend = ref("Allow modifications")
+const showCantAttend = ref("Do not allow modifications")
+const isCanAttend = ref(false)
+const student_container = ref()
+const checkAll_button = ref()
 
-// add student attend
-async function AddStudent(studentId: int) {
 
-  const { data: addResponse, error: addError } = await useApiFetch(`api/teacher/attendStudent/${route.params.id}/${studentId}`, {
-    method: "POST"
-  });
-
-  if (addResponse.value) {
-
-    await fetchStudents();
-
+function canAttend() {
+  if (isCanAttend.value == false) {
+    student_container.value.classList.remove('pointer-events-none')
+    checkAll_button.value.classList.remove('pointer-events-none')
+    isCanAttend.value = true
   } else {
-
-    if (addError.value) {
-      errorAddStd.value = "";
-
-      errorAddStd.value = addError.value.data.message;
-    }
-  }
-
-
-}
-
-
-
-
-const errorRemStd = ref('');
-// remove student attend
-async function RemoveStudent(studentId: int) {
-
-  const { data: removeResponse, error: removeError } = await useApiFetch(`api/teacher/absentStudent/${route.params.id}/${studentId}`, {
-    method: "POST"
-  });
-
-  if (removeResponse.value) {
-
-    await fetchStudents();
-
-
-  } else {
-
-    if (removeError.value) {
-      errorRemStd.value = "";
-
-      errorRemStd.value = removeError.value.data.message;
-    }
+  student_container.value.classList.add('pointer-events-none')
+  checkAll_button.value.classList.add('pointer-events-none')
+  isCanAttend.value = false
   }
 }
+
 
 
 
