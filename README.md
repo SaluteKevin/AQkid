@@ -3,9 +3,8 @@
 A swimming academy management web application built with Laravel 10 and Nuxt 3.
 
 This is a term project.  
-01418442 – Web Technology and Web Services  
-01418321 – System Analysis and System Design  
-Class of 2023.
+- 01418442 – Web Technology and Web Services
+- 01418321 – System Analysis and System Design
 
 > **Note**
 > This project was developed and tested on Unix or Unix-like environments.
@@ -15,7 +14,7 @@ Class of 2023.
 
 1. Make sure you have these tools installed:
     - [Docker](https://www.docker.com/)
-    - [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) – required to run the backend server on a Windows machine
+    - [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) – required to run the backend server on Windows machines
     - [Node.js](https://nodejs.org/en/) – version 18 (LTS)
 1. Set up the backend server
     1. With Docker running, change to `Backend/` directory in this project
